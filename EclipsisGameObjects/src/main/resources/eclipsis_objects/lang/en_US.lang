@@ -1,0 +1,25 @@
+﻿#-- Descriptions --#
+eclipsis_objects.desc.opaque=§7Прозрачный
+eclipsis_objects.desc.light=§7Светящийся
+eclipsis_objects.desc.collidable=§7Непроходимый
+eclipsis_objects.desc.uncollidable=§7Проходимый
+
+#-- Tabs --#
+item_group.eclipsis_objects=Eclipsis
+
+#-- Blocks --#
+tile.eclipsis_objects:border.name=Барьер
+tile.eclipsis_objects:light.name=Свет
+tile.eclipsis_objects:border_light.name=Светящийся барьер
+tile.eclipsis_objects:empty.name=Пустой блок
+tile.eclipsis_objects:rail_cloth.name=Веревка (Рельс)
+tile.eclipsis_objects:rail_ironchain.name=Железная цепь (Рельс)
+tile.eclipsis_objects:rope_cloth.name=Веревка
+tile.eclipsis_objects:rope_ironchain.name=Железная цепь
+tile.eclipsis_objects:rope_smallchain.name=Мелкая цепь
+tile.eclipsis_objects:rope_rustychain.name=Ржавая цепь
+tile.eclipsis_objects:rope_goldchain.name=Золотая цепь
+tile.eclipsis_objects:hook_rope.name=Веревочный крюк
+tile.eclipsis_objects:hook_iron.name=Железный крюк
+
+#-- Items --#

@@ -1,0 +1,15 @@
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = modVersion
+group = modGroup
+archivesBaseName = 'EclipsisObjects'
+
+minecraft {
+    version = project.forgeVersion
+    mappings = project.mcpVersion
+    runDir = 'run'
+}
+
+dependencies {
+    implementation(project(':EclipsisCommon'))
+}

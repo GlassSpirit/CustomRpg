@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "normal": {
+      "model": "eclipsis_objects:empty"
+    }
+  }
+}

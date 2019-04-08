@@ -1,0 +1,15 @@
+[
+  {
+    "modid": "eclipsis_objects",
+    "name": "EclipsisObjects",
+    "description": "Eclipsis objects by GlassSpirit <3",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "authorList": [
+      "GlassSpirit"
+    ],
+    "dependencies": [
+      "eclipsis"
+    ]
+  }
+]

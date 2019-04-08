@@ -1,0 +1,14 @@
+{
+  "required": false,
+  "package": "shouldersurfing.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.glassspirit.refmap.json",
+  "client": [
+    "MixinEntityPlayer",
+    "MixinEntityRenderer"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.7.4"
+}

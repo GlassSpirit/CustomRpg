@@ -1,0 +1,29 @@
+apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'org.spongepowered.plugin'
+
+version = modVersion
+group = modGroup
+archivesBaseName = 'EclipsisPlugin'
+
+sponge {
+    plugin {
+        meta {
+            id = 'eclipsis_plugin'
+        }
+    }
+}
+
+minecraft {
+    version = project.forgeVersion
+    mappings = project.mcpVersion
+    runDir = 'run'
+}
+
+dependencies {
+    implementation('org.spongepowered:spongeforge:1.12.2-2768-7.1.6-RC3639:dev') {
+        exclude module: 'testmods'
+    }
+    implementation('com.github.Sponge-RPG-dev.NT-RPG:NT-RPG:class-refactor-SNAPSHOT')
+    annotationProcessor('com.github.Sponge-RPG-dev.NT-RPG:Generator:class-refactor-SNAPSHOT')
+    implementation(project(':EclipsisCommon'))
+}

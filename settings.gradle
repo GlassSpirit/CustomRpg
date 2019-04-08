@@ -1,0 +1,5 @@
+rootProject.name = 'CustomRpg'
+
+include 'EclipsisCommon'
+include 'EclipsisPlugin'
+include 'EclipsisGameObjects'
