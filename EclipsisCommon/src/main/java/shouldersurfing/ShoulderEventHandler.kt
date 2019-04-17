@@ -20,7 +20,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import shouldersurfing.math.RayTracer
-import shouldersurfing.renderer.ShoulderRenderBin
 
 @SideOnly(Side.CLIENT)
 @Mod.EventBusSubscriber(modid = ShoulderSurfing.MODID)
@@ -37,12 +36,12 @@ object ShoulderEventHandler {
     @JvmStatic
     @SubscribeEvent
     fun renderEvent(event: RenderTickEvent) {
-        ShoulderRenderBin.skipPlayerRender = false
+        RayTracer.skipPlayerRender = false
         RayTracer.traceFromEyes(1.0f)
 
-        if (ShoulderRenderBin.rayTraceHit != null) {
+        if (RayTracer.rayTraceHit != null) {
             if (Minecraft.getMinecraft().player != null) {
-                ShoulderRenderBin.rayTraceHit = ShoulderRenderBin.rayTraceHit!!.subtract(Vec3d(Minecraft.getMinecraft().player.posX, Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ))
+                RayTracer.rayTraceHit = RayTracer.rayTraceHit!!.subtract(Vec3d(Minecraft.getMinecraft().player.posX, Minecraft.getMinecraft().player.posY, Minecraft.getMinecraft().player.posZ))
             }
         }
 
@@ -95,7 +94,7 @@ object ShoulderEventHandler {
     @JvmStatic
     @SubscribeEvent
     fun preRenderPlayer(event: RenderPlayerEvent.Pre) {
-        if (ShoulderRenderBin.skipPlayerRender && (event.renderer.renderManager.playerViewY != 180f || Minecraft.getMinecraft().inGameHasFocus)) {
+        if (RayTracer.skipPlayerRender && (event.renderer.renderManager.playerViewY != 180f || Minecraft.getMinecraft().inGameHasFocus)) {
             if (event.isCancelable) {
                 event.isCanceled = true
             }
@@ -147,9 +146,9 @@ object ShoulderEventHandler {
                         var diffX = (width * scale / 2 - lastX) * tick
                         var diffY = (height * scale / 2 - lastY) * tick
 
-                        if (ShoulderRenderBin.projectedVector != null) {
-                            diffX = (ShoulderRenderBin.projectedVector!!.x - lastX) * tick
-                            diffY = (ShoulderRenderBin.projectedVector!!.y - lastY) * tick
+                        if (RayTracer.projectedVector != null) {
+                            diffX = (RayTracer.projectedVector!!.x - lastX) * tick
+                            diffY = (RayTracer.projectedVector!!.y - lastY) * tick
                         }
 
                         animLastX = diffX * 0.05f

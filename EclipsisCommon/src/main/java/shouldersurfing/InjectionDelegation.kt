@@ -1,6 +1,7 @@
 package shouldersurfing
 
-import net.minecraft.client.Minecraft
+import com.teamwizardry.librarianlib.features.helpers.vec
+import com.teamwizardry.librarianlib.features.kotlin.Minecraft
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.RayTraceResult
@@ -8,8 +9,8 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
+import shouldersurfing.math.RayTracer
 import shouldersurfing.math.VectorConverter
-import shouldersurfing.renderer.ShoulderRenderBin
 
 /**
  * @author Joshua Powers <jsh.powers></jsh.powers>@yahoo.com>
@@ -21,6 +22,9 @@ import shouldersurfing.renderer.ShoulderRenderBin
  */
 @SideOnly(Side.CLIENT)
 object InjectionDelegation {
+
+    private var CAMERA_DISTANCE = 0.0
+
     /**
      * Called by injected code to modify the camera rotation yaw
      */
@@ -45,15 +49,13 @@ object InjectionDelegation {
             ShoulderCamera.SHOULDER_ZOOM_MOD - ShoulderCamera.SHOULDER_ZOOM_MOD_ANIMATION
         } else 1.0f
 
-    private var CAMERA_DISTANCE = 0.0
-
     /**
      * Called by injected code to project a raytrace hit to the screen
      */
     fun calculateRayTraceProjection() {
-        if (ShoulderRenderBin.rayTraceHit != null) {
-            ShoulderRenderBin.projectedVector = VectorConverter.project2D(ShoulderRenderBin.rayTraceHit!!.x.toFloat(), ShoulderRenderBin.rayTraceHit!!.y.toFloat(), ShoulderRenderBin.rayTraceHit!!.z.toFloat())
-            ShoulderRenderBin.rayTraceHit = null
+        if (RayTracer.rayTraceHit != null) {
+            RayTracer.projectedVector = VectorConverter.project2D(RayTracer.rayTraceHit!!)
+            RayTracer.rayTraceHit = null
         }
     }
 
@@ -63,7 +65,7 @@ object InjectionDelegation {
      */
     fun verifyReverseBlockDist(distance: Double) {
         if (distance < 0.80 && ShoulderSettings.HIDE_PLAYER_IF_TOO_CLOSE_TO_CAMERA) {
-            ShoulderRenderBin.skipPlayerRender = true
+            RayTracer.skipPlayerRender = true
         }
     }
 
@@ -74,13 +76,12 @@ object InjectionDelegation {
         return if (ShoulderSettings.IGNORE_BLOCKS_WITHOUT_COLLISION) {
             world.rayTraceBlocks(vec1, vec2, false, true, false)
         } else world.rayTraceBlocks(vec1, vec2)
-
     }
 
     /**
      * Called by injected code to get the maximum possible distance for the camera
      */
-    fun checkDistance(distance: Double, yaw: Float, posX: Double, posY: Double, posZ: Double, cameraXoffset: Double, cameraYoffset: Double, cameraZoffset: Double): Double {
+    fun checkDistance(distance: Double, yaw: Float, posX: Double, posY: Double, posZ: Double, cameraXoffset: Double, cameraZoffset: Double, cameraYoffset: Double): Double {
         if (ShoulderCamera.isThirdPersonView()) {
             var result = distance
             val radiant = (Math.PI / 180f).toFloat()
@@ -100,10 +101,12 @@ object InjectionDelegation {
                 offsetY *= 0.1f
                 offsetZ *= 0.1f
 
-                val raytraceresult = getRayTraceResult(Minecraft.getMinecraft().world, Vec3d(posX + offsetX, posY + offsetY, posZ + offsetZ), Vec3d(posX - (cameraXoffset + addX) + offsetX.toDouble() + offsetZ.toDouble(), posY - cameraYoffset + offsetY, posZ - (cameraZoffset + addZ) + offsetZ))
+                val raytraceresult = getRayTraceResult(Minecraft().world,
+                        vec(posX + offsetX, posY + offsetY, posZ + offsetZ),
+                        vec(posX - (cameraXoffset + addX) + offsetX + offsetZ, posY - cameraYoffset + offsetY, posZ - (cameraZoffset + addZ) + offsetZ))
 
                 if (raytraceresult != null) {
-                    val newDistance = raytraceresult.hitVec.distanceTo(Vec3d(posX, posY, posZ))
+                    val newDistance = raytraceresult.hitVec.distanceTo(vec(posX, posY, posZ))
 
                     if (newDistance < result) {
                         result = newDistance

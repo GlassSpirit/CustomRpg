@@ -49,6 +49,11 @@ public abstract class MixinEntityRenderer {
 
     @ModifyVariable(method = "orientCamera", at = @At(value = "FIELD", target = "Lnet/minecraft/client/settings/GameSettings;thirdPersonView:I", opcode = Opcodes.GETFIELD, ordinal = 1), name = "d3")
     private double applyShoulderZoomMod(double d3) {
+        return d3 * InjectionDelegation.INSTANCE.getShoulderZoomMod();
+    }
+
+    @ModifyVariable(method = "orientCamera", at = @At(value = "FIELD", target = "Lnet/minecraft/client/settings/GameSettings;thirdPersonView:I", opcode = Opcodes.GETFIELD, ordinal = 2), name = "d3")
+    private double checkDistance(double d3) {
         Entity entity = mc.getRenderViewEntity();
         float partialTicks = mc.getRenderPartialTicks();
         float f = entity.getEyeHeight();
@@ -60,7 +65,6 @@ public abstract class MixinEntityRenderer {
         if (mc.gameSettings.thirdPersonView == 2) {
             f2 += 180.0F;
         }
-        d3 *= InjectionDelegation.INSTANCE.getShoulderZoomMod();
         double d4 = (double) (-MathHelper.sin(f1 * 0.017453292F) * MathHelper.cos(f2 * 0.017453292F)) * d3;
         double d5 = (double) (MathHelper.cos(f1 * 0.017453292F) * MathHelper.cos(f2 * 0.017453292F)) * d3;
         double d6 = (double) (-MathHelper.sin(f2 * 0.017453292F)) * d3;

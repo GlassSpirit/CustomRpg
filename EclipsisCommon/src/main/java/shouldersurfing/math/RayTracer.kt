@@ -2,70 +2,73 @@ package shouldersurfing.math
 
 import com.teamwizardry.librarianlib.features.helpers.vec
 import com.teamwizardry.librarianlib.features.kotlin.Minecraft
+import net.minecraft.util.math.Vec2f
 import net.minecraft.util.math.Vec3d
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 import shouldersurfing.ShoulderCamera
 import shouldersurfing.ShoulderSettings
-import shouldersurfing.renderer.ShoulderRenderBin
 
 @SideOnly(Side.CLIENT)
 object RayTracer {
+    var rayTraceInReach = false
+    var skipPlayerRender = false
+    var projectedVector: Vec2f? = null
+    var rayTraceHit: Vec3d? = null
 
     private val mc = Minecraft()
 
     fun traceFromEyes(tick: Float) {
-        ShoulderRenderBin.projectedVector = null
+        this.projectedVector = null
         val entity = mc.renderViewEntity
-        if (entity == null || mc.world == null) return
-        if (ShoulderCamera.isThirdPersonView()) {
-            val playerReach: Double = if (ShoulderSettings.USE_CUSTOM_RAYTRACE_DISTANCE) {
-                ShoulderSettings.RAYTRACE_DISTANCE.toDouble()
-            } else {
-                mc.playerController.blockReachDistance.toDouble()
-            }
+        if (entity == null || mc.world == null || !ShoulderCamera.isThirdPersonView()) return
 
-            // block collision
-            val omo = entity.rayTrace(playerReach, tick)
-            var blockDist = 0.0
+        val playerReach: Double = if (ShoulderSettings.USE_CUSTOM_RAYTRACE_DISTANCE) {
+            ShoulderSettings.RAYTRACE_DISTANCE.toDouble()
+        } else {
+            mc.playerController.blockReachDistance.toDouble()
+        }
 
-            if (omo != null) {
-                ShoulderRenderBin.rayTraceHit = omo.hitVec
-                blockDist = omo.hitVec.distanceTo(Vec3d(entity.posX, entity.posY, entity.posZ))
-                ShoulderRenderBin.rayTraceInReach = blockDist <= mc.playerController.blockReachDistance.toDouble()
-            } else {
-                ShoulderRenderBin.rayTraceHit = null
-            }
+        // block collision
+        val result = entity.rayTrace(playerReach, tick)
+        var blockDist = 0.0
+        if (result != null) {
+            this.rayTraceHit = result.hitVec
+            blockDist = result.hitVec.distanceTo(vec(entity.posX, entity.posY, entity.posZ))
+            this.rayTraceInReach = blockDist <= mc.playerController.blockReachDistance
+        } else {
+            this.rayTraceHit = null
+        }
 
-            // entity collision
-            val renderViewPos = entity.getPositionEyes(tick)
-            val sightVector = entity.getLook(tick)
-            val sightRay = renderViewPos.add(sightVector.x * playerReach - 5, sightVector.y * playerReach, sightVector.z * playerReach)
+        // entity collision
+        val renderViewPos = entity.getPositionEyes(tick)
+        val sightVector = entity.getLook(tick)
+        val sightRay = renderViewPos.add(sightVector.x * playerReach - 5.0, sightVector.y * playerReach, sightVector.z * playerReach)
 
-            val entityList = mc.world.getEntitiesWithinAABBExcludingEntity(entity,
-                    entity.entityBoundingBox.expand(
-                            sightVector.x * playerReach,
-                            sightVector.y * playerReach,
-                            sightVector.z * playerReach)
-                            .expand(1.0, 1.0, 1.0))
+        val entityList = mc.world.getEntitiesWithinAABBExcludingEntity(entity,
+                entity.entityBoundingBox.expand(
+                        sightVector.x * playerReach,
+                        sightVector.y * playerReach,
+                        sightVector.z * playerReach)
+                        .expand(1.0, 1.0, 1.0))
 
-            for (ent in entityList) {
-                if (ent.canBeCollidedWith()) {
-                    val collisionSize = ent.collisionBorderSize
+        for (ent in entityList) {
+            if (ent.canBeCollidedWith()) {
+                val collisionSize = ent.collisionBorderSize
 
-                    val aabb = ent.entityBoundingBox.expand(collisionSize.toDouble(), collisionSize.toDouble(), collisionSize.toDouble())
-                    val potentialIntercept = aabb.calculateIntercept(renderViewPos, sightRay)
+                val aabb = ent.entityBoundingBox.expand(collisionSize.toDouble(), collisionSize.toDouble(), collisionSize.toDouble())
+                val potentialIntercept = aabb.calculateIntercept(renderViewPos, sightRay)
 
-                    if (potentialIntercept != null) {
-                        val entityDist = potentialIntercept.hitVec.distanceTo(vec(entity.posX, entity.posY, entity.posZ))
+                if (potentialIntercept != null) {
+                    val entityDist = potentialIntercept.hitVec.distanceTo(vec(entity.posX, entity.posY, entity.posZ))
 
-                        if (entityDist < blockDist) {
-                            ShoulderRenderBin.rayTraceHit = potentialIntercept.hitVec
-                            ShoulderRenderBin.rayTraceInReach = entityDist <= mc.playerController.blockReachDistance.toDouble()
-                        }
+                    if (entityDist < blockDist) {
+                        this.rayTraceHit = potentialIntercept.hitVec
+                        this.rayTraceInReach = entityDist <= mc.playerController.blockReachDistance
                     }
                 }
             }
         }
+
     }
 }
