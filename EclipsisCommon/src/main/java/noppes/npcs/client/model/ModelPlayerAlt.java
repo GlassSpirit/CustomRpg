@@ -25,7 +25,7 @@ import java.util.*;
 public class ModelPlayerAlt extends ModelPlayer {
     private ModelRenderer body, head;
 
-    private Map<EnumParts, List<ModelScaleRenderer>> map = new HashMap<EnumParts, List<ModelScaleRenderer>>();
+    private Map<EnumParts, List<ModelScaleRenderer>> map = new HashMap<>();
 
 
     public ModelPlayerAlt(float scale, boolean arms) {
@@ -36,8 +36,10 @@ public class ModelPlayerAlt extends ModelPlayer {
         this.body.setTextureSize(64, 32);
         this.body.addBox(-5.0F, 0.0F, -1.0F, 10, 16, 1, scale);
 
-        ObfuscationReflectionHelper.setPrivateValue(ModelPlayer.class, this, head, 6);
-        ObfuscationReflectionHelper.setPrivateValue(ModelPlayer.class, this, body, 5);
+        //ModelPlayer.bipedCape
+        ObfuscationReflectionHelper.setPrivateValue(ModelPlayer.class, this, body, "field_178729_w");
+        //ModelPlayer.bipedDeadmau5Head
+        ObfuscationReflectionHelper.setPrivateValue(ModelPlayer.class, this, head, "field_178736_x");
 
         this.bipedLeftArm = createScale(bipedLeftArm, EnumParts.ARM_LEFT);
         this.bipedRightArm = createScale(bipedRightArm, EnumParts.ARM_RIGHT);
@@ -57,19 +59,22 @@ public class ModelPlayerAlt extends ModelPlayer {
     }
 
     private ModelScaleRenderer createScale(ModelRenderer renderer, EnumParts part) {
-        int textureX = ObfuscationReflectionHelper.getPrivateValue(ModelRenderer.class, renderer, 2);
-        int textureY = ObfuscationReflectionHelper.getPrivateValue(ModelRenderer.class, renderer, 3);
+        //ModelRenderer.textureOffsetX
+        int textureX = ObfuscationReflectionHelper.getPrivateValue(ModelRenderer.class, renderer, "field_78803_o");
+        //ModelRenderer.textureOffsetY
+        int textureY = ObfuscationReflectionHelper.getPrivateValue(ModelRenderer.class, renderer, "field_78813_p");
+
         ModelScaleRenderer model = new ModelScaleRenderer(this, textureX, textureY, part);
         model.textureHeight = renderer.textureHeight;
         model.textureWidth = renderer.textureWidth;
         if (renderer.childModels != null)
-            model.childModels = new ArrayList<ModelRenderer>(renderer.childModels);
-        model.cubeList = new ArrayList<ModelBox>(renderer.cubeList);
+            model.childModels = new ArrayList<>(renderer.childModels);
+        model.cubeList = new ArrayList<>(renderer.cubeList);
         copyModelAngles(renderer, model);
 
         List<ModelScaleRenderer> list = map.get(part);
         if (list == null)
-            map.put(part, list = new ArrayList<ModelScaleRenderer>());
+            map.put(part, list = new ArrayList<>());
         list.add(model);
         return model;
     }
