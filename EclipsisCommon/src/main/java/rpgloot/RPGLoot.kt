@@ -15,7 +15,8 @@ import rpgloot.packets.DisposePacket
 import rpgloot.packets.LootPacket
 import rpgloot.packets.ReqCorpseSyncPacket
 
-@Mod(modid = RPGLoot.MODID, name = RPGLoot.MODNAME, version = RPGLoot.VERSION, modLanguageAdapter = RPGLoot.ADAPTER)
+@Mod(modid = RPGLoot.MODID, name = RPGLoot.MODNAME, version = RPGLoot.VERSION,
+        dependencies = "after:eclipsis", modLanguageAdapter = RPGLoot.ADAPTER)
 object RPGLoot {
     const val MODID = "rpgloot"
     const val MODNAME = "RPGLoot"

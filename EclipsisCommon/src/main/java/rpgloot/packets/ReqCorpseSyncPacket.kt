@@ -9,7 +9,7 @@ class ReqCorpseSyncPacket : CorpsePacket {
 
     constructor()
 
-    constructor(corpse: EntCorpse) : super(corpse) {}
+    constructor(corpse: EntCorpse) : super(corpse)
 
     class HANDLER : IMessageHandler<ReqCorpseSyncPacket, IMessage> {
 
