@@ -1,0 +1,78 @@
+package noppes.npcs.client.controllers;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.ISound;
+import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.audio.SoundHandler;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+
+
+public class MusicController {
+    //public TreeSet<String> sounds = new TreeSet<String>();
+    //public TreeSet<String> music = new TreeSet<String>();
+
+    public static MusicController Instance;
+    public PositionedSoundRecord playing;
+    public ResourceLocation playingResource;
+    public Entity playingEntity;
+
+    //private SoundPoolEntry musicPool;
+
+    public MusicController() {
+        Instance = this;
+    }
+
+
+    public void stopMusic() {
+        SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+        if (playing != null)
+            handler.stopSound(playing);
+        handler.stop("", SoundCategory.MUSIC);
+        handler.stop("", SoundCategory.AMBIENT);
+        handler.stop("", SoundCategory.RECORDS);
+        playingResource = null;
+        playingEntity = null;
+        playing = null;
+    }
+
+    public void playStreaming(String music, Entity entity) {
+        if (isPlaying(music)) {
+            return;
+        }
+        stopMusic();
+        playingEntity = entity;
+        playingResource = new ResourceLocation(music);
+        SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+        playing = new PositionedSoundRecord(playingResource, SoundCategory.RECORDS, 4.0F, 1.0F, false, 0, ISound.AttenuationType.LINEAR, (float) entity.posX, (float) entity.posY, (float) entity.posZ);
+        handler.playSound(playing);
+    }
+
+    public void playMusic(String music, Entity entity) {
+        if (isPlaying(music))
+            return;
+        stopMusic();
+        playingResource = new ResourceLocation(music);
+
+        playingEntity = entity;
+
+        SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+        playing = new PositionedSoundRecord(playingResource, SoundCategory.MUSIC, 1.0F, 1.0F, false, 0, ISound.AttenuationType.NONE, 0.0F, 0.0F, 0.0F);
+        handler.playSound(playing);
+    }
+
+
+    public boolean isPlaying(String music) {
+        ResourceLocation resource = new ResourceLocation(music);
+        if (playingResource == null || !playingResource.equals(resource)) {
+            return false;
+        }
+        return Minecraft.getMinecraft().getSoundHandler().isSoundPlaying(playing);
+    }
+
+    public void playSound(SoundCategory cat, String music, float x, float y, float z) {
+        PositionedSoundRecord rec = new PositionedSoundRecord(new ResourceLocation(music), cat, 1, 1, false, 0, ISound.AttenuationType.LINEAR, x, y, z);
+        Minecraft.getMinecraft().getSoundHandler().playSound(rec);
+    }
+}
