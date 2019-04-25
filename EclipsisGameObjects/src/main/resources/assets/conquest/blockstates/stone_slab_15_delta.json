@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "half_slab",
+    "textures": {
+      "bottom": "conquest:blocks/bone_block_top",
+      "top": "conquest:blocks/bone_block_top",
+      "side": "conquest:blocks/bone_block_side"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "half": {
+      "bottom": {},
+      "top": {
+        "model": "upper_slab"
+      }
+    }
+  }
+}

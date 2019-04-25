@@ -1,0 +1,35 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:fodder_dried_height2"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "layers": {
+      "1": {},
+      "2": {
+        "model": "conquest:fodder_dried_height4"
+      },
+      "3": {
+        "model": "conquest:fodder_dried_height6"
+      },
+      "4": {
+        "model": "conquest:fodder_dried_height8"
+      },
+      "5": {
+        "model": "conquest:fodder_dried_height10"
+      },
+      "6": {
+        "model": "conquest:fodder_dried_height12"
+      },
+      "7": {
+        "model": "conquest:fodder_dried_height14"
+      },
+      "8": {
+        "model": "conquest:fodder_dried"
+      }
+    }
+  }
+}

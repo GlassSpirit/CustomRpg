@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "half_slab",
+    "textures": {
+      "bottom": "conquest:blocks/stonebrick5_top",
+      "top": "conquest:blocks/stonebrick5_top",
+      "side": "conquest:blocks/stonebrick5"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "half": {
+      "bottom": {},
+      "top": {
+        "model": "upper_slab"
+      }
+    }
+  }
+}

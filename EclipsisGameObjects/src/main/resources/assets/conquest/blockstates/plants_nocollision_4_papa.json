@@ -1,0 +1,14 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "dense_cross",
+    "textures": {
+      "cross": "conquest:blocks/plants_rushes"
+    }
+  },
+  "variants": {
+    "normal": [
+      {}
+    ]
+  }
+}

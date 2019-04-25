@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "half_slab",
+    "textures": {
+      "bottom": "conquest:blocks/plank15desert",
+      "top": "conquest:blocks/plank15desert",
+      "side": "conquest:blocks/plank15desert"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "half": {
+      "bottom": {},
+      "top": {
+        "model": "upper_slab"
+      }
+    }
+  }
+}

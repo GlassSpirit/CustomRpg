@@ -1,0 +1,38 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:snowlayer8plains_height2",
+    "textures": {
+      "all": "blocks/dirt"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "layers": {
+      "1": {},
+      "2": {
+        "model": "conquest:snowlayer8plains_height4"
+      },
+      "3": {
+        "model": "conquest:snowlayer8plains_height6"
+      },
+      "4": {
+        "model": "conquest:snowlayer8plains_height8"
+      },
+      "5": {
+        "model": "conquest:snowlayer8plains_height10"
+      },
+      "6": {
+        "model": "conquest:snowlayer8plains_height12"
+      },
+      "7": {
+        "model": "conquest:snowlayer8plains_height14"
+      },
+      "8": {
+        "model": "cube_all"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "half_slab",
+    "textures": {
+      "bottom": "conquest:blocks/sandstone_redroughnatural",
+      "top": "conquest:blocks/sandstone_redroughnatural",
+      "side": "conquest:blocks/sandstone_redroughnatural"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "half": {
+      "bottom": {},
+      "top": {
+        "model": "upper_slab"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "half_slab",
+    "textures": {
+      "bottom": "conquest:blocks/tiles_light",
+      "top": "conquest:blocks/tiles_light",
+      "side": "conquest:blocks/tiles_light"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "half": {
+      "bottom": {},
+      "top": {
+        "model": "upper_slab"
+      }
+    }
+  }
+}

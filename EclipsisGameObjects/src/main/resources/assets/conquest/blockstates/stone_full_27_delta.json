@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_bottom_top",
+    "textures": {
+      "bottom": "conquest:blocks/walldesign_asian",
+      "top": "conquest:blocks/walldesign_asian",
+      "side": "conquest:blocks/walldesign_asian"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

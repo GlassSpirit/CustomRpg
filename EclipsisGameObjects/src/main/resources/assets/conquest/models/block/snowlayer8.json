@@ -1,0 +1,54 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "blocks/grass_top",
+    "bottom": "blocks/dirt",
+    "top": "blocks/grass_top",
+    "side": "blocks/grass_top"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#bottom",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#top",
+          "cullface": "up",
+          "tintindex": 0
+        },
+        "north": {
+          "texture": "#top",
+          "cullface": "north",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#top",
+          "cullface": "south",
+          "tintindex": 0
+        },
+        "west": {
+          "texture": "#top",
+          "cullface": "west",
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#top",
+          "cullface": "east",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

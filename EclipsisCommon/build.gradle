@@ -3,7 +3,7 @@ apply plugin: 'org.spongepowered.mixin'
 
 version = modVersion
 group = modGroup
-archivesBaseName = 'EclipsisCommon'
+archivesBaseName = 'CustomRPG'
 
 minecraft {
     version = project.forgeVersion
@@ -30,7 +30,7 @@ dependencies {
 
     //Needed for MixinAvailabilityServer character level redirect
     compileOnly 'org.spongepowered:spongeapi:7.1.0'
-    compileOnly 'com.github.Sponge-RPG-dev.NT-RPG:NT-RPG:class-refactor-SNAPSHOT'
+    compileOnly 'com.github.Sponge-RPG-dev.NT-RPG:NT-RPG:2.0.0-SNAPSHOT-9'
 }
 
 sourceSets {

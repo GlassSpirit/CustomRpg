@@ -1,0 +1,1480 @@
+{
+  "__comment": "Designed by Jugbot with BDcraft Cubik PRO 0.96 Beta - http://bdcraft.net",
+  "parent": "block/block",
+  "textures": {
+    "particle": "conquest:blocks/acacia_plank",
+    "texture": "conquest:blocks/acacia_plank",
+    "acacia_fence": "conquest:blocks/acacia_fence",
+    "acacia_fence_top": "conquest:blocks/acacia_fence_top",
+    "acacia_fence_gate": "conquest:blocks/acacia_fence_gate"
+  },
+  "elements": [
+    {
+      "__comment": "Stair",
+      "from": [
+        -0.01,
+        4,
+        8
+      ],
+      "to": [
+        0.99,
+        8,
+        19.3137
+      ],
+      "rotation": {
+        "origin": [
+          -0.01,
+          8,
+          8
+        ],
+        "axis": "x",
+        "angle": 45
+      },
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8,
+            5,
+            9.5
+          ],
+          "rotation": 90,
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            5,
+            8,
+            16,
+            9.5
+          ],
+          "rotation": 90,
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1,
+            0,
+            2.5,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1,
+            0,
+            2.5,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5,
+            12,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            16,
+            0,
+            5,
+            4
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        -0.01,
+        12,
+        0
+      ],
+      "to": [
+        0.99,
+        16,
+        11.3137
+      ],
+      "rotation": {
+        "origin": [
+          -0.01,
+          16,
+          0
+        ],
+        "axis": "x",
+        "angle": 45
+      },
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8,
+            5,
+            9.5
+          ],
+          "rotation": 90,
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            5,
+            8,
+            16,
+            9.5
+          ],
+          "rotation": 90,
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1,
+            0,
+            2.5,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1,
+            0,
+            2.5,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5,
+            12,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            16,
+            0,
+            5,
+            4
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        0,
+        15,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        4
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            4,
+            0,
+            0
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            1
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            16,
+            1
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            4,
+            1
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            12,
+            0,
+            16,
+            1
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        0,
+        7,
+        7.5
+      ],
+      "to": [
+        16,
+        8,
+        12
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            8,
+            16,
+            12
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            8,
+            16,
+            12
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0,
+            8,
+            16,
+            9
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            8,
+            16,
+            9
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            8,
+            8,
+            12,
+            9
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            8,
+            8,
+            12,
+            9
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        0,
+        3,
+        11.5
+      ],
+      "to": [
+        16,
+        4,
+        16
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            16,
+            0,
+            11.5
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            11.5,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0,
+            12,
+            16,
+            13
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            12,
+            16,
+            13
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            11.5,
+            12,
+            16,
+            13
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            12,
+            4.5,
+            13
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        0,
+        8,
+        5
+      ],
+      "to": [
+        1,
+        11,
+        8
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8,
+            15,
+            5
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            5,
+            1,
+            8
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            15,
+            4.5,
+            16,
+            7.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            4.5,
+            1,
+            7.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            3.5,
+            4.5,
+            6.5,
+            7.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            10.5,
+            4.5,
+            13.5,
+            7.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        0,
+        4,
+        9
+      ],
+      "to": [
+        1,
+        7,
+        12
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            12,
+            15,
+            9
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            9,
+            1,
+            12
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            15,
+            8.5,
+            16,
+            11.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            8.5,
+            1,
+            11.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            8,
+            8.5,
+            11,
+            11.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            6.5,
+            8.5,
+            9.5,
+            11.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        0,
+        0,
+        13
+      ],
+      "to": [
+        1,
+        3,
+        16
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            16,
+            15,
+            13
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            13,
+            1,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            15,
+            12.5,
+            16,
+            15.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            12.5,
+            1,
+            15.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            7.5,
+            12.5,
+            10.5,
+            15.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            2.5,
+            12.5,
+            5.5,
+            15.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        0,
+        11,
+        3.5
+      ],
+      "to": [
+        16,
+        12,
+        8
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8,
+            0,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            3.5,
+            16,
+            8
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            0,
+            4,
+            16,
+            5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            4,
+            16,
+            5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            3.5,
+            4,
+            8,
+            5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            8,
+            4,
+            12.5,
+            5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        0,
+        12,
+        1
+      ],
+      "to": [
+        1,
+        15,
+        4
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            4,
+            15,
+            1
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            1,
+            1,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            15,
+            0.5,
+            16,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            0.5,
+            1,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            3.5,
+            0.5,
+            6.5,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            9.5,
+            0.5,
+            12.5,
+            3.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        15,
+        8,
+        5
+      ],
+      "to": [
+        16,
+        11,
+        8
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8,
+            15,
+            5
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            5,
+            1,
+            8
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            15,
+            4.5,
+            16,
+            7.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            4.5,
+            1,
+            7.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            3.5,
+            4.5,
+            6.5,
+            7.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            10.5,
+            4.5,
+            13.5,
+            7.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        15,
+        4,
+        9
+      ],
+      "to": [
+        16,
+        7,
+        12
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            12,
+            15,
+            9
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            9,
+            1,
+            12
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            15,
+            8.5,
+            16,
+            11.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            8.5,
+            1,
+            11.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            8,
+            8.5,
+            11,
+            11.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            6.5,
+            8.5,
+            9.5,
+            11.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        15,
+        0,
+        13
+      ],
+      "to": [
+        16,
+        3,
+        16
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            16,
+            15,
+            13
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            13,
+            1,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            15,
+            12.5,
+            16,
+            15.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            12.5,
+            1,
+            15.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            7.5,
+            12.5,
+            10.5,
+            15.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            2.5,
+            12.5,
+            5.5,
+            15.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        15,
+        12,
+        1
+      ],
+      "to": [
+        16,
+        15,
+        4
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            4,
+            15,
+            1
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            1,
+            1,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            15,
+            0.5,
+            16,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            0.5,
+            1,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            3.5,
+            0.5,
+            6.5,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            9.5,
+            0.5,
+            12.5,
+            3.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        15.01,
+        4,
+        8
+      ],
+      "to": [
+        16.01,
+        8,
+        19.3137
+      ],
+      "rotation": {
+        "origin": [
+          15.01,
+          8,
+          8
+        ],
+        "axis": "x",
+        "angle": 45
+      },
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8,
+            5,
+            9.5
+          ],
+          "rotation": 90,
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            5,
+            8,
+            16,
+            9.5
+          ],
+          "rotation": 90,
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1,
+            0,
+            2.5,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1,
+            0,
+            2.5,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5,
+            12,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            16,
+            0,
+            5,
+            4
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        15.01,
+        12,
+        0
+      ],
+      "to": [
+        16.01,
+        16,
+        11.3137
+      ],
+      "rotation": {
+        "origin": [
+          15.01,
+          16,
+          0
+        ],
+        "axis": "x",
+        "angle": 45
+      },
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8,
+            5,
+            9.5
+          ],
+          "rotation": 90,
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            5,
+            8,
+            16,
+            9.5
+          ],
+          "rotation": 90,
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1,
+            0,
+            2.5,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1,
+            0,
+            2.5,
+            4
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5,
+            12,
+            16,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            16,
+            0,
+            5,
+            4
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        1,
+        11,
+        2.5
+      ],
+      "to": [
+        15,
+        15,
+        3.5
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            15,
+            3.5,
+            1,
+            2.5
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            1,
+            2.5,
+            15,
+            3.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1,
+            1,
+            15,
+            5
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1,
+            1,
+            15,
+            5
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            2.5,
+            1,
+            3.5,
+            5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            12.5,
+            1,
+            13.5,
+            5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        1,
+        7,
+        6.5
+      ],
+      "to": [
+        15,
+        11,
+        7.5
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            15,
+            7.5,
+            1,
+            6.5
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            1,
+            6.5,
+            15,
+            7.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1,
+            5,
+            15,
+            9
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1,
+            5,
+            15,
+            9
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            5,
+            7.5,
+            9
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            8.5,
+            5,
+            9.5,
+            9
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        1,
+        4,
+        10.5
+      ],
+      "to": [
+        15,
+        7,
+        11.5
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            15,
+            11.5,
+            1,
+            10.5
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            1,
+            10.5,
+            15,
+            11.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1,
+            9,
+            15,
+            12
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1,
+            9,
+            15,
+            12
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            10.5,
+            9,
+            11.5,
+            12
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            4.5,
+            9,
+            5.5,
+            12
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        1,
+        0,
+        14.5
+      ],
+      "to": [
+        15,
+        3,
+        15.5
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            15,
+            15.5,
+            1,
+            14.5
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            1,
+            14.5,
+            15,
+            15.5
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            1,
+            13,
+            15,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            1,
+            13,
+            15,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            14.5,
+            13,
+            15.5,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0.5,
+            13,
+            1.5,
+            16
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Stair",
+      "from": [
+        1,
+        -0.0525,
+        15.5
+      ],
+      "to": [
+        15,
+        0.01,
+        16
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1,
+            15.5,
+            15,
+            16
+          ],
+          "texture": "#texture"
+        }
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    }
+  }
+}

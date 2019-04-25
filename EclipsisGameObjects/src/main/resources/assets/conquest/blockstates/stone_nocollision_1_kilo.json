@@ -1,0 +1,18 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "carpet",
+    "textures": {
+      "particle": "conquest:blocks/holeplate",
+      "wool": "conquest:blocks/holeplate"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

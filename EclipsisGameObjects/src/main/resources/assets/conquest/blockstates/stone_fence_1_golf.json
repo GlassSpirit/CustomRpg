@@ -1,0 +1,107 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:marble_rail_fence_post",
+    "uvlock": true
+  },
+  "variants": {
+    "inventory": [
+      {
+        "model": "fence_inventory",
+        "textures": {
+          "particle": "conquest:blocks/fence_marble_top",
+          "side": "conquest:blocks/fence_marble",
+          "texture": "conquest:blocks/fence_marble_top"
+        }
+      }
+    ],
+    "east=false,north=false,south=false,west=false": [
+      {}
+    ],
+    "east=false,north=true,south=false,west=false": [
+      {
+        "model": "conquest:marble_rail_fence_n"
+      }
+    ],
+    "east=true,north=false,south=false,west=false": [
+      {
+        "model": "conquest:marble_rail_fence_n",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,west=false": [
+      {
+        "model": "conquest:marble_rail_fence_n",
+        "y": 180
+      }
+    ],
+    "east=false,north=false,south=false,west=true": [
+      {
+        "model": "conquest:marble_rail_fence_n",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=false,west=false": [
+      {
+        "model": "conquest:marble_rail_fence_ne"
+      }
+    ],
+    "east=true,north=false,south=true,west=false": [
+      {
+        "model": "conquest:marble_rail_fence_ne",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,west=true": [
+      {
+        "model": "conquest:marble_rail_fence_ne",
+        "y": 180
+      }
+    ],
+    "east=false,north=true,south=false,west=true": [
+      {
+        "model": "conquest:marble_rail_fence_ne",
+        "y": 270
+      }
+    ],
+    "east=false,north=true,south=true,west=false": [
+      {
+        "model": "conquest:marble_rail_fence_ns"
+      }
+    ],
+    "east=true,north=false,south=false,west=true": [
+      {
+        "model": "conquest:marble_rail_fence_ns",
+        "y": 90
+      }
+    ],
+    "east=true,north=true,south=true,west=false": [
+      {
+        "model": "conquest:marble_rail_fence_nse"
+      }
+    ],
+    "east=true,north=false,south=true,west=true": [
+      {
+        "model": "conquest:marble_rail_fence_nse",
+        "y": 90
+      }
+    ],
+    "east=false,north=true,south=true,west=true": [
+      {
+        "model": "conquest:marble_rail_fence_nse",
+        "y": 180
+      }
+    ],
+    "east=true,north=true,south=false,west=true": [
+      {
+        "model": "conquest:marble_rail_fence_nse",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=true,west=true": [
+      {
+        "model": "conquest:marble_rail_fence_nsew"
+      }
+    ]
+  }
+}

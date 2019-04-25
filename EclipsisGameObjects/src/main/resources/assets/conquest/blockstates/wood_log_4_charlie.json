@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_bottom_top",
+    "textures": {
+      "bottom": "conquest:blocks/emeraldblock1_top",
+      "top": "conquest:blocks/emeraldblock1_top",
+      "side": "conquest:blocks/emeraldblock1",
+      "side1": "conquest:blocks/emeraldblock1_top"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "z": {
+        "model": "shelf_log"
+      },
+      "x": {
+        "model": "shelf_log",
+        "y": 90
+      },
+      "none": {}
+    }
+  }
+}

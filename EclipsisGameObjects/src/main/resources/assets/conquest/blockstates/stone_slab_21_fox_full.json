@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_column",
+    "textures": {
+      "particle": "conquest:blocks/roman_base_marble",
+      "end": "conquest:blocks/roman_capital_marble_top",
+      "side": "conquest:blocks/roman_base_marble"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:jar_apple"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {},
+      {
+        "model": "conquest:jar_jams"
+      },
+      {
+        "model": "conquest:jar_strawberry"
+      },
+      {
+        "model": "conquest:jar_raspberry"
+      }
+    ]
+  }
+}

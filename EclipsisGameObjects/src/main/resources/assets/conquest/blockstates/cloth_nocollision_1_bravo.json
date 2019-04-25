@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:bookpile_1"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {
+        "weight": 100
+      },
+      {
+        "model": "conquest:bookpile_2",
+        "weight": 100
+      },
+      {
+        "model": "conquest:bookpile_3",
+        "weight": 100
+      },
+      {
+        "model": "conquest:bookpile_4",
+        "weight": 100
+      }
+    ]
+  }
+}

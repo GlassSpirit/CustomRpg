@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:capitalionian_marble_full"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "z": {
+        "model": "conquest:capitalionian_marble_full_side"
+      },
+      "x": {
+        "model": "conquest:capitalionian_marble_full_side",
+        "y": 90
+      },
+      "none": {}
+    }
+  }
+}

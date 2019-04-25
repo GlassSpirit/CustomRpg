@@ -22,7 +22,7 @@ public abstract class MixinMinecraft {
 
     @Inject(method = "createDisplay", at = @At(value = "INVOKE", target = "Lorg/lwjgl/opengl/Display;setTitle(Ljava/lang/String;)V", shift = At.Shift.AFTER, remap = false))
     private void setDisplayTitle(CallbackInfo ci) {
-        Display.setTitle("эклыпсис");
+        Display.setTitle("ЦыФФрАзыйа");
         try {
             if (Minecraft.getMinecraft().gameSettings.fullScreen) {
                 checkFullscreen();

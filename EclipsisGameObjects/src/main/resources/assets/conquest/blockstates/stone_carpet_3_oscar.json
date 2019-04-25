@@ -1,0 +1,18 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "carpet",
+    "textures": {
+      "particle": "conquest:blocks/roman_marble_design4",
+      "wool": "conquest:blocks/roman_marble_design4"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

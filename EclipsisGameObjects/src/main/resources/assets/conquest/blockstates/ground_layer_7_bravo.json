@@ -1,0 +1,38 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:ants_snowlayer_height2",
+    "textures": {
+      "all": "conquest:blocks/soulsand2"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "layers": {
+      "1": {},
+      "2": {
+        "model": "conquest:ants_snowlayer_height4"
+      },
+      "3": {
+        "model": "conquest:ants_snowlayer_height6"
+      },
+      "4": {
+        "model": "conquest:ants_snowlayer_height8"
+      },
+      "5": {
+        "model": "conquest:ants_snowlayer_height10"
+      },
+      "6": {
+        "model": "conquest:ants_snowlayer_height12"
+      },
+      "7": {
+        "model": "conquest:ants_snowlayer_height14"
+      },
+      "8": {
+        "model": "cube_all"
+      }
+    }
+  }
+}

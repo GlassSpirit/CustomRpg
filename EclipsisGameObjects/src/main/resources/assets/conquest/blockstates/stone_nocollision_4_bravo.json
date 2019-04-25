@@ -1,0 +1,20 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:jar_salt"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {},
+      {
+        "model": "conquest:jar_spice"
+      },
+      {
+        "model": "conquest:jar_ingredients"
+      }
+    ]
+  }
+}

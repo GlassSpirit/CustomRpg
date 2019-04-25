@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_bottom_top",
+    "textures": {
+      "bottom": "conquest:blocks/broken_reticulated_brick",
+      "top": "conquest:blocks/broken_reticulated_brick",
+      "side": "conquest:blocks/broken_reticulated_brick"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

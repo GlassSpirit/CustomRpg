@@ -1,0 +1,49 @@
+{
+  "parent": "block/block",
+  "textures": {
+    "particle": "conquest:blocks/roman_architrave_polychrome",
+    "side": "conquest:blocks/roman_architrave_polychrome",
+    "down": "conquest:blocks/roman_marble_top1",
+    "up": "conquest:blocks/roman_marble_top1"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#up",
+          "cullface": "up"
+        },
+        "north": {
+          "texture": "#side",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#side",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#side",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#side",
+          "cullface": "east"
+        }
+      }
+    }
+  ]
+}

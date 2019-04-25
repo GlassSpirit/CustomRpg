@@ -1,0 +1,41 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:dirt_borderlog_snowlayer_height2",
+    "textures": {
+      "particle": "conquest:blocks/dirt_with_log_border",
+      "bottom": "conquest:blocks/dirt_with_log_border",
+      "top": "conquest:blocks/dirt_with_log_border",
+      "side": "conquest:blocks/plank7"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "layers": {
+      "1": {},
+      "2": {
+        "model": "conquest:dirt_borderlog_snowlayer_height4"
+      },
+      "3": {
+        "model": "conquest:dirt_borderlog_snowlayer_height6"
+      },
+      "4": {
+        "model": "conquest:dirt_borderlog_snowlayer_height8"
+      },
+      "5": {
+        "model": "conquest:dirt_borderlog_snowlayer_height10"
+      },
+      "6": {
+        "model": "conquest:dirt_borderlog_snowlayer_height12"
+      },
+      "7": {
+        "model": "conquest:dirt_borderlog_snowlayer_height14"
+      },
+      "8": {
+        "model": "cube_bottom_top"
+      }
+    }
+  }
+}

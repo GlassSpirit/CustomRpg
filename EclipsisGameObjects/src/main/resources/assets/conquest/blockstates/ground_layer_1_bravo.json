@@ -1,0 +1,35 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:snowlayerdirtgravel_height2"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "layers": {
+      "1": {},
+      "2": {
+        "model": "conquest:snowlayerdirtgravel_height4"
+      },
+      "3": {
+        "model": "conquest:snowlayerdirtgravel_height6"
+      },
+      "4": {
+        "model": "conquest:snowlayerdirtgravel_height8"
+      },
+      "5": {
+        "model": "conquest:snowlayerdirtgravel_height10"
+      },
+      "6": {
+        "model": "conquest:snowlayerdirtgravel_height12"
+      },
+      "7": {
+        "model": "conquest:snowlayerdirtgravel_height14"
+      },
+      "8": {
+        "model": "conquest:snowlayerdirtgravel"
+      }
+    }
+  }
+}

@@ -18,7 +18,7 @@ object EclipsisGameObjectsMod {
     private const val CLIENT = "ru.glassspirit.eclipsis.objects.ObjectsClientProxy"
     private const val SERVER = "ru.glassspirit.eclipsis.objects.ObjectsCommonProxy"
 
-    @SidedProxy(clientSide = EclipsisGameObjectsMod.CLIENT, serverSide = EclipsisGameObjectsMod.SERVER)
+    @SidedProxy(clientSide = CLIENT, serverSide = SERVER)
     lateinit var proxy: ObjectsCommonProxy
 
     @Mod.EventHandler

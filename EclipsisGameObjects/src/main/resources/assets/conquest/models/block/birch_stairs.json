@@ -1,0 +1,1005 @@
+{
+  "__comment": "Designed by Jugbot with BDcraft Cubik PRO 0.96 Beta - http://bdcraft.net",
+  "parent": "block/block",
+  "textures": {
+    "particle": "conquest:blocks/plank14",
+    "texture": "conquest:blocks/plank14_sides",
+    "up": "conquest:blocks/planks_birch",
+    "down": "conquest:blocks/birch_side"
+  },
+  "elements": [
+    {
+      "__comment": "Step",
+      "from": [
+        0,
+        12.5,
+        0
+      ],
+      "to": [
+        16,
+        14.5,
+        8
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            12,
+            0,
+            4
+          ],
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            0,
+            4,
+            16,
+            12
+          ],
+          "texture": "#up"
+        },
+        "north": {
+          "uv": [
+            16,
+            3.5,
+            0,
+            5.5
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            0,
+            3.5,
+            16,
+            5.5
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            0,
+            3.5,
+            8,
+            5.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            8,
+            3.5,
+            0,
+            5.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        2,
+        4,
+        8
+      ],
+      "to": [
+        6,
+        8,
+        19.3137
+      ],
+      "rotation": {
+        "origin": [
+          2,
+          8,
+          8
+        ],
+        "axis": "x",
+        "angle": 45
+      },
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8.5,
+            5,
+            12.5
+          ],
+          "rotation": 90,
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            5,
+            6,
+            16,
+            10
+          ],
+          "rotation": 90,
+          "texture": "#down"
+        },
+        "north": {
+          "uv": [
+            7.5,
+            3,
+            11.5,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            12,
+            3,
+            16,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5,
+            8,
+            16,
+            12
+          ],
+          "texture": "#down"
+        },
+        "east": {
+          "uv": [
+            16,
+            8,
+            5,
+            12
+          ],
+          "texture": "#down"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        0,
+        10.5,
+        2
+      ],
+      "to": [
+        16,
+        11.5,
+        6
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            10,
+            0,
+            6
+          ],
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            0,
+            6,
+            16,
+            10
+          ],
+          "texture": "#up"
+        },
+        "north": {
+          "uv": [
+            0,
+            6.5,
+            16,
+            7.5
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            0,
+            6.5,
+            16,
+            7.5
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            2,
+            6.5,
+            6,
+            7.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            10,
+            6.5,
+            14,
+            7.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        0.005,
+        9.67157,
+        0
+      ],
+      "to": [
+        15.995,
+        12.5,
+        1
+      ],
+      "rotation": {
+        "origin": [
+          0.005,
+          12.5,
+          0
+        ],
+        "axis": "x",
+        "angle": -45
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            4.5,
+            16,
+            7
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            0,
+            4.5,
+            16,
+            7
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            0,
+            4.5,
+            1,
+            7.3125
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            4.5,
+            1,
+            7.3125
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        0,
+        11.5,
+        1
+      ],
+      "to": [
+        16,
+        12.5,
+        7
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            7,
+            0,
+            1
+          ],
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            0,
+            1,
+            16,
+            7
+          ],
+          "texture": "#up"
+        },
+        "north": {
+          "uv": [
+            16,
+            5.5,
+            0,
+            6.5
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            0,
+            5.5,
+            16,
+            6.5
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            1,
+            5.5,
+            7,
+            6.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            7,
+            5.5,
+            1,
+            6.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        0.005,
+        10.3591,
+        7.3125
+      ],
+      "to": [
+        15.995,
+        13.1875,
+        8.3125
+      ],
+      "rotation": {
+        "origin": [
+          0.005,
+          13.1875,
+          7.3125
+        ],
+        "axis": "x",
+        "angle": 45
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            4.5,
+            16,
+            7
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            0,
+            4.5,
+            16,
+            7
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            4.5,
+            7.5,
+            7.3125
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            7.5,
+            8,
+            8.5,
+            10.8125
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        0,
+        4.5,
+        8
+      ],
+      "to": [
+        16,
+        6.5,
+        16
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            12,
+            0,
+            4
+          ],
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            0,
+            4,
+            16,
+            12
+          ],
+          "texture": "#up"
+        },
+        "north": {
+          "uv": [
+            16,
+            11.5,
+            0,
+            13.5
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            0,
+            11.5,
+            16,
+            13.5
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            8,
+            11.5,
+            16,
+            13.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            16,
+            11.5,
+            8,
+            13.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        0,
+        2.5,
+        10
+      ],
+      "to": [
+        16,
+        3.5,
+        14
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            10,
+            0,
+            6
+          ],
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            0,
+            5,
+            16,
+            9
+          ],
+          "texture": "#up"
+        },
+        "north": {
+          "uv": [
+            0,
+            14.5,
+            16,
+            15.5
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            0,
+            14.5,
+            16,
+            15.5
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            10,
+            14.5,
+            14,
+            15.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            2,
+            14.5,
+            6,
+            15.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        0.005,
+        1.67157,
+        8
+      ],
+      "to": [
+        15.995,
+        4.5,
+        9
+      ],
+      "rotation": {
+        "origin": [
+          0.005,
+          4.5,
+          8
+        ],
+        "axis": "x",
+        "angle": -45
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            15.9375,
+            13.5,
+            0,
+            16
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            0,
+            13.5,
+            16,
+            16
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            8,
+            12,
+            9,
+            14.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            9,
+            12,
+            8,
+            14.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        0,
+        3.5,
+        9
+      ],
+      "to": [
+        16,
+        4.5,
+        15
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            15,
+            0,
+            9
+          ],
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            0,
+            9,
+            16,
+            15
+          ],
+          "texture": "#up"
+        },
+        "north": {
+          "uv": [
+            16,
+            13.5,
+            0,
+            14.5
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            0,
+            13.5,
+            16,
+            14.5
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            9,
+            13.5,
+            15,
+            14.5
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            15,
+            13.5,
+            9,
+            14.5
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        0.005,
+        2.35907,
+        15.3125
+      ],
+      "to": [
+        15.995,
+        5.1875,
+        16.3125
+      ],
+      "rotation": {
+        "origin": [
+          0.005,
+          5.1875,
+          15.3125
+        ],
+        "axis": "x",
+        "angle": 45
+      },
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            4.5,
+            16,
+            7
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            0,
+            4.5,
+            16,
+            7
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            4.5,
+            7.5,
+            7.3125
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            7.5,
+            8,
+            8.5,
+            10.8125
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        2,
+        12,
+        0
+      ],
+      "to": [
+        6,
+        16,
+        11.3137
+      ],
+      "rotation": {
+        "origin": [
+          2,
+          16,
+          0
+        ],
+        "axis": "x",
+        "angle": 45
+      },
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8.5,
+            5,
+            12.5
+          ],
+          "rotation": 90,
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            0,
+            5.5,
+            11,
+            9.5
+          ],
+          "rotation": 90,
+          "texture": "#down"
+        },
+        "north": {
+          "uv": [
+            12,
+            3,
+            16,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            12,
+            3,
+            16,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5,
+            8,
+            16,
+            12
+          ],
+          "texture": "#down"
+        },
+        "east": {
+          "uv": [
+            16,
+            8,
+            5,
+            12
+          ],
+          "texture": "#down"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        10,
+        4,
+        8
+      ],
+      "to": [
+        14,
+        8,
+        19.3137
+      ],
+      "rotation": {
+        "origin": [
+          10,
+          8,
+          8
+        ],
+        "axis": "x",
+        "angle": 45
+      },
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8.5,
+            5,
+            12.5
+          ],
+          "rotation": 90,
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            5,
+            6,
+            16,
+            10
+          ],
+          "rotation": 90,
+          "texture": "#down"
+        },
+        "north": {
+          "uv": [
+            7.5,
+            3,
+            11.5,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            12,
+            3,
+            16,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5,
+            8,
+            16,
+            12
+          ],
+          "texture": "#down"
+        },
+        "east": {
+          "uv": [
+            16,
+            8,
+            5,
+            12
+          ],
+          "texture": "#down"
+        }
+      }
+    },
+    {
+      "__comment": "Step",
+      "from": [
+        10,
+        12,
+        0
+      ],
+      "to": [
+        14,
+        16,
+        11.3137
+      ],
+      "rotation": {
+        "origin": [
+          10,
+          16,
+          0
+        ],
+        "axis": "x",
+        "angle": 45
+      },
+      "faces": {
+        "down": {
+          "uv": [
+            16,
+            8.5,
+            5,
+            12.5
+          ],
+          "rotation": 90,
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            0,
+            5.5,
+            11,
+            9.5
+          ],
+          "rotation": 90,
+          "texture": "#down"
+        },
+        "north": {
+          "uv": [
+            12,
+            3,
+            16,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            12,
+            3,
+            16,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            5,
+            8,
+            16,
+            12
+          ],
+          "texture": "#down"
+        },
+        "east": {
+          "uv": [
+            16,
+            8,
+            5,
+            12
+          ],
+          "texture": "#down"
+        }
+      }
+    }
+  ],
+  "display": {
+    "gui": {
+      "rotation": [
+        30,
+        45,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        0.625,
+        0.625,
+        0.625
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_column",
+    "textures": {
+      "end": "conquest:blocks/storage_side",
+      "side": "conquest:blocks/cabinet_elven0",
+      "top": "conquest:blocks/storage_side",
+      "side1": "conquest:blocks/storage_side"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "z": {
+        "model": "shelf_log"
+      },
+      "x": {
+        "model": "shelf_log",
+        "y": 90
+      },
+      "none": {}
+    }
+  }
+}

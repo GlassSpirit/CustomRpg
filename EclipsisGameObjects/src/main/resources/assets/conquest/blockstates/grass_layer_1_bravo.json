@@ -1,0 +1,35 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:grass_forest_snowlayer_height2"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "layers": {
+      "1": {},
+      "2": {
+        "model": "conquest:grass_forest_snowlayer_height4"
+      },
+      "3": {
+        "model": "conquest:grass_forest_snowlayer_height6"
+      },
+      "4": {
+        "model": "conquest:grass_forest_snowlayer_height8"
+      },
+      "5": {
+        "model": "conquest:grass_forest_snowlayer_height10"
+      },
+      "6": {
+        "model": "conquest:grass_forest_snowlayer_height12"
+      },
+      "7": {
+        "model": "conquest:grass_forest_snowlayer_height14"
+      },
+      "8": {
+        "model": "conquest:grass_forest_snowlayer"
+      }
+    }
+  }
+}

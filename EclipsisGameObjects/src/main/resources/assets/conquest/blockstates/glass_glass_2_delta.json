@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_bottom_top",
+    "textures": {
+      "bottom": "conquest:blocks/whiteglassbirchforest",
+      "top": "conquest:blocks/whiteglassbirchforest",
+      "side": "conquest:blocks/whiteglassbirchforest"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

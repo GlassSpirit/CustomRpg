@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "grass",
+    "textures": {
+      "particle": "conquest:blocks/grass2_side",
+      "bottom": "blocks/stone",
+      "top": "blocks/grass_top",
+      "side": "conquest:blocks/grass2_side",
+      "overlay": "blocks/grass_side_overlay"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

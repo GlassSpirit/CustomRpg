@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_column",
+    "textures": {
+      "particle": "conquest:blocks/planks_oaklog",
+      "side": "conquest:blocks/planks_oaklogslab",
+      "end": "conquest:blocks/planks_oaklog"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

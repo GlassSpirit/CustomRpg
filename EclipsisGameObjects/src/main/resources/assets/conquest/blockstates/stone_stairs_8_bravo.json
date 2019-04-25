@@ -1,0 +1,237 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:roman_base_marble_stairs_normal",
+    "uvlock": true
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "facing=east,half=bottom,shape=straight": [
+      {}
+    ],
+    "facing=west,half=bottom,shape=straight": [
+      {
+        "y": 180
+      }
+    ],
+    "facing=south,half=bottom,shape=straight": [
+      {
+        "y": 90
+      }
+    ],
+    "facing=north,half=bottom,shape=straight": [
+      {
+        "y": 270
+      }
+    ],
+    "facing=east,half=bottom,shape=outer_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer"
+      }
+    ],
+    "facing=west,half=bottom,shape=outer_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer",
+        "y": 180
+      }
+    ],
+    "facing=south,half=bottom,shape=outer_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer",
+        "y": 90
+      }
+    ],
+    "facing=north,half=bottom,shape=outer_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer",
+        "y": 270
+      }
+    ],
+    "facing=east,half=bottom,shape=outer_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer",
+        "y": 270
+      }
+    ],
+    "facing=west,half=bottom,shape=outer_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer",
+        "y": 90
+      }
+    ],
+    "facing=south,half=bottom,shape=outer_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer"
+      }
+    ],
+    "facing=north,half=bottom,shape=outer_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer",
+        "y": 180
+      }
+    ],
+    "facing=east,half=bottom,shape=inner_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner"
+      }
+    ],
+    "facing=west,half=bottom,shape=inner_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner",
+        "y": 180
+      }
+    ],
+    "facing=south,half=bottom,shape=inner_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner",
+        "y": 90
+      }
+    ],
+    "facing=north,half=bottom,shape=inner_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner",
+        "y": 270
+      }
+    ],
+    "facing=east,half=bottom,shape=inner_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner",
+        "y": 270
+      }
+    ],
+    "facing=west,half=bottom,shape=inner_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner",
+        "y": 90
+      }
+    ],
+    "facing=south,half=bottom,shape=inner_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner"
+      }
+    ],
+    "facing=north,half=bottom,shape=inner_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner",
+        "y": 180
+      }
+    ],
+    "facing=east,half=top,shape=straight": [
+      {
+        "model": "conquest:roman_base_marble_stairs_normal_up"
+      }
+    ],
+    "facing=west,half=top,shape=straight": [
+      {
+        "model": "conquest:roman_base_marble_stairs_normal_up",
+        "y": 180
+      }
+    ],
+    "facing=south,half=top,shape=straight": [
+      {
+        "model": "conquest:roman_base_marble_stairs_normal_up",
+        "y": 90
+      }
+    ],
+    "facing=north,half=top,shape=straight": [
+      {
+        "model": "conquest:roman_base_marble_stairs_normal_up",
+        "y": 270
+      }
+    ],
+    "facing=east,half=top,shape=outer_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer_up",
+        "y": 90
+      }
+    ],
+    "facing=west,half=top,shape=outer_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer_up",
+        "y": 270
+      }
+    ],
+    "facing=south,half=top,shape=outer_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer_up",
+        "y": 180
+      }
+    ],
+    "facing=north,half=top,shape=outer_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer_up"
+      }
+    ],
+    "facing=east,half=top,shape=outer_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer_up"
+      }
+    ],
+    "facing=west,half=top,shape=outer_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer_up",
+        "y": 180
+      }
+    ],
+    "facing=south,half=top,shape=outer_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer_up",
+        "y": 90
+      }
+    ],
+    "facing=north,half=top,shape=outer_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_outer_up",
+        "y": 270
+      }
+    ],
+    "facing=east,half=top,shape=inner_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner_up",
+        "y": 90
+      }
+    ],
+    "facing=west,half=top,shape=inner_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner_up",
+        "y": 270
+      }
+    ],
+    "facing=south,half=top,shape=inner_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner_up",
+        "y": 180
+      }
+    ],
+    "facing=north,half=top,shape=inner_right": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner_up"
+      }
+    ],
+    "facing=east,half=top,shape=inner_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner_up"
+      }
+    ],
+    "facing=west,half=top,shape=inner_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner_up",
+        "y": 180
+      }
+    ],
+    "facing=south,half=top,shape=inner_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner_up",
+        "y": 90
+      }
+    ],
+    "facing=north,half=top,shape=inner_left": [
+      {
+        "model": "conquest:roman_base_marble_stairs_inner_up",
+        "y": 270
+      }
+    ]
+  }
+}

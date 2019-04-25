@@ -1,0 +1,34 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_bottom_top",
+    "textures": {
+      "bottom": "conquest:blocks/craftingtable1_bottom",
+      "top": "conquest:blocks/craftingtable1_bottom",
+      "side": "conquest:blocks/craftingtable3",
+      "side1": "blocks/planks_oak"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "z": {
+        "model": "shelf_log",
+        "textures": {
+          "top": "blocks/planks_oak"
+        }
+      },
+      "x": {
+        "model": "shelf_log",
+        "textures": {
+          "top": "blocks/planks_oak"
+        },
+        "y": 90
+      },
+      "none": {}
+    }
+  }
+}

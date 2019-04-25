@@ -1,0 +1,193 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "wall_post_topbottom",
+    "textures": {
+      "wall": "conquest:blocks/quartzblock6",
+      "top": "blocks/quartz_block_lines_top",
+      "bottom": "blocks/quartz_block_lines_top"
+    },
+    "uvlock": true
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "east=false,north=false,south=false,up=false,west=false": [
+      {}
+    ],
+    "east=false,north=true,south=false,up=false,west=false": [
+      {
+        "model": "wall_n_topbottom"
+      }
+    ],
+    "east=true,north=false,south=false,up=false,west=false": [
+      {
+        "model": "wall_n_topbottom",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,up=false,west=false": [
+      {
+        "model": "wall_n_topbottom",
+        "y": 180
+      }
+    ],
+    "east=false,north=false,south=false,up=false,west=true": [
+      {
+        "model": "wall_n_topbottom",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=false,up=false,west=false": [
+      {
+        "model": "wall_ne_topbottom"
+      }
+    ],
+    "east=true,north=false,south=true,up=false,west=false": [
+      {
+        "model": "wall_ne_topbottom",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,up=false,west=true": [
+      {
+        "model": "wall_ne_topbottom",
+        "y": 180
+      }
+    ],
+    "east=false,north=true,south=false,up=false,west=true": [
+      {
+        "model": "wall_ne_topbottom",
+        "y": 270
+      }
+    ],
+    "east=false,north=true,south=true,up=false,west=false": [
+      {
+        "model": "wall_ns_topbottom"
+      }
+    ],
+    "east=true,north=false,south=false,up=false,west=true": [
+      {
+        "model": "wall_ns_topbottom",
+        "y": 90
+      }
+    ],
+    "east=true,north=true,south=true,up=false,west=false": [
+      {
+        "model": "wall_nse_topbottom"
+      }
+    ],
+    "east=true,north=false,south=true,up=false,west=true": [
+      {
+        "model": "wall_nse_topbottom",
+        "y": 90
+      }
+    ],
+    "east=false,north=true,south=true,up=false,west=true": [
+      {
+        "model": "wall_nse_topbottom",
+        "y": 180
+      }
+    ],
+    "east=true,north=true,south=false,up=false,west=true": [
+      {
+        "model": "wall_nse_topbottom",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=true,up=false,west=true": [
+      {
+        "model": "wall_nsew_topbottom"
+      }
+    ],
+    "east=false,north=false,south=false,up=true,west=false": [
+      {}
+    ],
+    "east=false,north=true,south=false,up=true,west=false": [
+      {
+        "model": "wall_n_topbottom"
+      }
+    ],
+    "east=true,north=false,south=false,up=true,west=false": [
+      {
+        "model": "wall_n_topbottom",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,up=true,west=false": [
+      {
+        "model": "wall_n_topbottom",
+        "y": 180
+      }
+    ],
+    "east=false,north=false,south=false,up=true,west=true": [
+      {
+        "model": "wall_n_topbottom",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=false,up=true,west=false": [
+      {
+        "model": "wall_ne_topbottom"
+      }
+    ],
+    "east=true,north=false,south=true,up=true,west=false": [
+      {
+        "model": "wall_ne_topbottom",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,up=true,west=true": [
+      {
+        "model": "wall_ne_topbottom",
+        "y": 180
+      }
+    ],
+    "east=false,north=true,south=false,up=true,west=true": [
+      {
+        "model": "wall_ne_topbottom",
+        "y": 270
+      }
+    ],
+    "east=false,north=true,south=true,up=true,west=false": [
+      {
+        "model": "wall_ns_above_topbottom"
+      }
+    ],
+    "east=true,north=false,south=false,up=true,west=true": [
+      {
+        "model": "wall_ns_above_topbottom",
+        "y": 90
+      }
+    ],
+    "east=true,north=true,south=true,up=true,west=false": [
+      {
+        "model": "wall_nse_topbottom"
+      }
+    ],
+    "east=true,north=false,south=true,up=true,west=true": [
+      {
+        "model": "wall_nse_topbottom",
+        "y": 90
+      }
+    ],
+    "east=false,north=true,south=true,up=true,west=true": [
+      {
+        "model": "wall_nse_topbottom",
+        "y": 180
+      }
+    ],
+    "east=true,north=true,south=false,up=true,west=true": [
+      {
+        "model": "wall_nse_topbottom",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=true,up=true,west=true": [
+      {
+        "model": "wall_nsew_topbottom"
+      }
+    ]
+  }
+}

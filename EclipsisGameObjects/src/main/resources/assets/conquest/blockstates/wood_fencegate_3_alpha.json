@@ -1,0 +1,37 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "acacia_fence_gate_closed"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "facing": {
+      "south": {},
+      "west": {
+        "y": 90
+      },
+      "north": {
+        "y": 180
+      },
+      "east": {
+        "y": 270
+      }
+    },
+    "open": {
+      "false": {},
+      "true": {
+        "model": "acacia_fence_gate_open"
+      }
+    },
+    "in_wall": {
+      "false": {},
+      "true": {}
+    },
+    "powered": {
+      "false": {},
+      "true": {}
+    }
+  }
+}

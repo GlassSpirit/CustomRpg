@@ -1,0 +1,101 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "acacia_fence_post"
+  },
+  "variants": {
+    "inventory": [
+      {
+        "model": "acacia_fence_inventory"
+      }
+    ],
+    "east=false,north=false,south=false,west=false": [
+      {}
+    ],
+    "east=false,north=true,south=false,west=false": [
+      {
+        "model": "acacia_fence_ns"
+      }
+    ],
+    "east=true,north=false,south=false,west=false": [
+      {
+        "model": "acacia_fence_ns",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,west=false": [
+      {
+        "model": "acacia_fence_ns",
+        "y": 180
+      }
+    ],
+    "east=false,north=false,south=false,west=true": [
+      {
+        "model": "acacia_fence_ns",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=false,west=false": [
+      {
+        "model": "acacia_fence_nsew"
+      }
+    ],
+    "east=true,north=false,south=true,west=false": [
+      {
+        "model": "acacia_fence_nsew",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,west=true": [
+      {
+        "model": "acacia_fence_nsew",
+        "y": 180
+      }
+    ],
+    "east=false,north=true,south=false,west=true": [
+      {
+        "model": "acacia_fence_nsew",
+        "y": 270
+      }
+    ],
+    "east=false,north=true,south=true,west=false": [
+      {
+        "model": "acacia_fence_ns"
+      }
+    ],
+    "east=true,north=false,south=false,west=true": [
+      {
+        "model": "acacia_fence_ns",
+        "y": 90
+      }
+    ],
+    "east=true,north=true,south=true,west=false": [
+      {
+        "model": "acacia_fence_nsew"
+      }
+    ],
+    "east=true,north=false,south=true,west=true": [
+      {
+        "model": "acacia_fence_nsew",
+        "y": 90
+      }
+    ],
+    "east=false,north=true,south=true,west=true": [
+      {
+        "model": "acacia_fence_nsew",
+        "y": 180
+      }
+    ],
+    "east=true,north=true,south=false,west=true": [
+      {
+        "model": "acacia_fence_nsew",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=true,west=true": [
+      {
+        "model": "acacia_fence_nsew"
+      }
+    ]
+  }
+}

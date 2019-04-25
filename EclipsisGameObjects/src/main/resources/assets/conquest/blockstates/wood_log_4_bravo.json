@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_column",
+    "textures": {
+      "end": "blocks/planks_oak",
+      "side": "blocks/bookshelf",
+      "top": "blocks/planks_oak",
+      "side1": "blocks/planks_oak"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "z": {
+        "model": "shelf_log"
+      },
+      "x": {
+        "model": "shelf_log",
+        "y": 90
+      },
+      "none": {}
+    }
+  }
+}

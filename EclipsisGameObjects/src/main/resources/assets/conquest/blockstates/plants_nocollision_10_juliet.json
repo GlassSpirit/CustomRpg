@@ -1,0 +1,24 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "bracken1_model1",
+    "textures": {
+      "texture": "conquest:blocks/plants_brackendarkred",
+      "texture1": "conquest:blocks/glasspane6"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {},
+      {
+        "model": "bracken_model2"
+      },
+      {
+        "model": "plant_model3"
+      }
+    ]
+  }
+}

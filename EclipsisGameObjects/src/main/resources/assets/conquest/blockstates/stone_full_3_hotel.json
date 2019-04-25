@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube",
+    "textures": {
+      "particle": "conquest:blocks/tudorframe_slashctm",
+      "down": "conquest:blocks/plank12",
+      "up": "conquest:blocks/plank12",
+      "north": "conquest:blocks/tudorframe_backslashctm",
+      "east": "conquest:blocks/tudorframe_slashctm",
+      "south": "conquest:blocks/tudorframe_backslashctm",
+      "west": "conquest:blocks/tudorframe_slashctm"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

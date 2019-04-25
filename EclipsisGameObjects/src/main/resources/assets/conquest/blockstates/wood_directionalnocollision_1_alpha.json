@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "carpet",
+    "textures": {
+      "particle": "conquest:blocks/bow",
+      "wool": "conquest:blocks/bow"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "facing": {
+      "south": {
+        "y": 90
+      },
+      "west": {
+        "y": 180
+      },
+      "north": {
+        "y": 270
+      },
+      "east": {}
+    }
+  }
+}

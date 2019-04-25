@@ -1,0 +1,191 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "wall_post",
+    "textures": {
+      "wall": "conquest:blocks/planks_pinesmooth"
+    },
+    "uvlock": true
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "east=false,north=false,south=false,up=false,west=false": [
+      {}
+    ],
+    "east=false,north=true,south=false,up=false,west=false": [
+      {
+        "model": "wall_n"
+      }
+    ],
+    "east=true,north=false,south=false,up=false,west=false": [
+      {
+        "model": "wall_n",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,up=false,west=false": [
+      {
+        "model": "wall_n",
+        "y": 180
+      }
+    ],
+    "east=false,north=false,south=false,up=false,west=true": [
+      {
+        "model": "wall_n",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=false,up=false,west=false": [
+      {
+        "model": "wall_ne"
+      }
+    ],
+    "east=true,north=false,south=true,up=false,west=false": [
+      {
+        "model": "wall_ne",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,up=false,west=true": [
+      {
+        "model": "wall_ne",
+        "y": 180
+      }
+    ],
+    "east=false,north=true,south=false,up=false,west=true": [
+      {
+        "model": "wall_ne",
+        "y": 270
+      }
+    ],
+    "east=false,north=true,south=true,up=false,west=false": [
+      {
+        "model": "wall_ns"
+      }
+    ],
+    "east=true,north=false,south=false,up=false,west=true": [
+      {
+        "model": "wall_ns",
+        "y": 90
+      }
+    ],
+    "east=true,north=true,south=true,up=false,west=false": [
+      {
+        "model": "wall_nse"
+      }
+    ],
+    "east=true,north=false,south=true,up=false,west=true": [
+      {
+        "model": "wall_nse",
+        "y": 90
+      }
+    ],
+    "east=false,north=true,south=true,up=false,west=true": [
+      {
+        "model": "wall_nse",
+        "y": 180
+      }
+    ],
+    "east=true,north=true,south=false,up=false,west=true": [
+      {
+        "model": "wall_nse",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=true,up=false,west=true": [
+      {
+        "model": "wall_nsew"
+      }
+    ],
+    "east=false,north=false,south=false,up=true,west=false": [
+      {}
+    ],
+    "east=false,north=true,south=false,up=true,west=false": [
+      {
+        "model": "wall_n"
+      }
+    ],
+    "east=true,north=false,south=false,up=true,west=false": [
+      {
+        "model": "wall_n",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,up=true,west=false": [
+      {
+        "model": "wall_n",
+        "y": 180
+      }
+    ],
+    "east=false,north=false,south=false,up=true,west=true": [
+      {
+        "model": "wall_n",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=false,up=true,west=false": [
+      {
+        "model": "wall_ne"
+      }
+    ],
+    "east=true,north=false,south=true,up=true,west=false": [
+      {
+        "model": "wall_ne",
+        "y": 90
+      }
+    ],
+    "east=false,north=false,south=true,up=true,west=true": [
+      {
+        "model": "wall_ne",
+        "y": 180
+      }
+    ],
+    "east=false,north=true,south=false,up=true,west=true": [
+      {
+        "model": "wall_ne",
+        "y": 270
+      }
+    ],
+    "east=false,north=true,south=true,up=true,west=false": [
+      {
+        "model": "wall_ns_above"
+      }
+    ],
+    "east=true,north=false,south=false,up=true,west=true": [
+      {
+        "model": "wall_ns_above",
+        "y": 90
+      }
+    ],
+    "east=true,north=true,south=true,up=true,west=false": [
+      {
+        "model": "wall_nse"
+      }
+    ],
+    "east=true,north=false,south=true,up=true,west=true": [
+      {
+        "model": "wall_nse",
+        "y": 90
+      }
+    ],
+    "east=false,north=true,south=true,up=true,west=true": [
+      {
+        "model": "wall_nse",
+        "y": 180
+      }
+    ],
+    "east=true,north=true,south=false,up=true,west=true": [
+      {
+        "model": "wall_nse",
+        "y": 270
+      }
+    ],
+    "east=true,north=true,south=true,up=true,west=true": [
+      {
+        "model": "wall_nsew"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_bottom_top",
+    "textures": {
+      "bottom": "conquest:blocks/plank8",
+      "top": "conquest:blocks/plank8",
+      "side": "conquest:blocks/wardrobe_fancy",
+      "side1": "conquest:blocks/plank8"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "z": {
+        "model": "shelf_log"
+      },
+      "x": {
+        "model": "shelf_log",
+        "y": 90
+      },
+      "none": {}
+    }
+  }
+}

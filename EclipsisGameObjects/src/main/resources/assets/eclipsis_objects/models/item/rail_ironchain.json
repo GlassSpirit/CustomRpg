@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "eclipsis_objects:blocks/rail_ironchain"
-  }
-}

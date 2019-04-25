@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "half_slab",
+    "textures": {
+      "bottom": "conquest:blocks/planks_whitepaintedhorizontal",
+      "top": "conquest:blocks/planks_whitepaintedhorizontal",
+      "side": "conquest:blocks/planks_whitepaintedhorizontal"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "half": {
+      "bottom": {},
+      "top": {
+        "model": "upper_slab"
+      }
+    }
+  }
+}

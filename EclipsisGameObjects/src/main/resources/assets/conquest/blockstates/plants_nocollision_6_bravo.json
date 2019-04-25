@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:cannonball",
+    "textures": {
+      "particle": "blocks/hay",
+      "texture": "blocks/hay",
+      "hay_overlay": "blocks/hay_overlay",
+      "hanging plant hook": "blocks/hanging plant hook",
+      "hanging plant top s": "blocks/hanging plant 2 top s",
+      "hanging plant 1-1": "blocks/hanging plant 2-1",
+      "hanging plant 1-2": "blocks/hanging plant 2-2"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:snowlayerstones_height2"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "layers": {
+      "1": {},
+      "2": {
+        "model": "conquest:snowlayerstones_height4"
+      },
+      "3": {
+        "model": "conquest:snowlayerstones_height6"
+      },
+      "4": {
+        "model": "conquest:snowlayerstones_height8"
+      },
+      "5": {
+        "model": "conquest:snowlayerstones_height10"
+      },
+      "6": {
+        "model": "conquest:snowlayerstones_height12"
+      },
+      "7": {
+        "model": "conquest:snowlayerstones_height14"
+      },
+      "8": {
+        "model": "conquest:snowlayerstones"
+      }
+    }
+  }
+}

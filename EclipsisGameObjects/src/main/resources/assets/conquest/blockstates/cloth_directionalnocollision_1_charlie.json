@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:chess_board"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "facing": {
+      "south": {
+        "y": 180
+      },
+      "west": {
+        "y": 90
+      },
+      "north": {
+        "y": 270
+      },
+      "east": {}
+    }
+  }
+}

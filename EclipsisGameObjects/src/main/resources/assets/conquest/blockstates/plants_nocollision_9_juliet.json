@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "plant_model1",
+    "textures": {
+      "texture": "conquest:blocks/plants_equisetumsylvaticum"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {},
+      {
+        "model": "plant_model2"
+      },
+      {
+        "model": "plant_model3"
+      }
+    ]
+  }
+}

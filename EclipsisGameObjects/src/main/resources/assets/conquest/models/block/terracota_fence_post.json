@@ -1,0 +1,79 @@
+{
+  "__comment": "Designed by Jugbot with BDcraft Cubik PRO 0.76 Beta - http://bdcraft.net",
+  "parent": "block/block",
+  "textures": {
+    "particle": "conquest:blocks/fence_terracota_top",
+    "texture": "conquest:blocks/fence_terracota_top"
+  },
+  "elements": [
+    {
+      "__comment": "Center",
+      "from": [
+        6.5,
+        0,
+        6.5
+      ],
+      "to": [
+        9.5,
+        16,
+        9.5
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            0,
+            3,
+            3,
+            0
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            3,
+            3
+          ],
+          "texture": "#texture"
+        },
+        "north": {
+          "uv": [
+            9.5,
+            0,
+            6.5,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            6.5,
+            0,
+            9.5,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            0,
+            9.5,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            9.5,
+            0,
+            6.5,
+            16
+          ],
+          "texture": "#texture"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:dirt_mossyrocks_snowlayer_height2",
+    "textures": {
+      "all": "conquest:blocks/dirt_mossyrocks"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "layers": {
+      "1": {},
+      "2": {
+        "model": "conquest:dirt_mossyrocks_snowlayer_height4"
+      },
+      "3": {
+        "model": "conquest:dirt_mossyrocks_snowlayer_height6"
+      },
+      "4": {
+        "model": "conquest:dirt_mossyrocks_snowlayer_height8"
+      },
+      "5": {
+        "model": "conquest:dirt_mossyrocks_snowlayer_height10"
+      },
+      "6": {
+        "model": "conquest:dirt_mossyrocks_snowlayer_height12"
+      },
+      "7": {
+        "model": "conquest:dirt_mossyrocks_snowlayer_height14"
+      },
+      "8": {
+        "model": "cube_all"
+      }
+    }
+  }
+}

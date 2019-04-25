@@ -1,0 +1,38 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:concretepowder_orange_height2",
+    "textures": {
+      "all": "blocks/concrete_powder_orange"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "layers": {
+      "1": {},
+      "2": {
+        "model": "conquest:concretepowder_orange_height4"
+      },
+      "3": {
+        "model": "conquest:concretepowder_orange_height6"
+      },
+      "4": {
+        "model": "conquest:concretepowder_orange_height8"
+      },
+      "5": {
+        "model": "conquest:concretepowder_orange_height10"
+      },
+      "6": {
+        "model": "conquest:concretepowder_orange_height12"
+      },
+      "7": {
+        "model": "conquest:concretepowder_orange_height14"
+      },
+      "8": {
+        "model": "cube_all"
+      }
+    }
+  }
+}

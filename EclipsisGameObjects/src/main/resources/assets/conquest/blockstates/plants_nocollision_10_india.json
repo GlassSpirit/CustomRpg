@@ -1,0 +1,14 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cross",
+    "textures": {
+      "cross": "conquest:blocks/plants_sprucecones"
+    }
+  },
+  "variants": {
+    "normal": [
+      {}
+    ]
+  }
+}

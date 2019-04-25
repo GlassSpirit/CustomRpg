@@ -1,0 +1,38 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:concretepowder_yellow_height2",
+    "textures": {
+      "all": "blocks/concrete_powder_yellow"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "layers": {
+      "1": {},
+      "2": {
+        "model": "conquest:concretepowder_yellow_height4"
+      },
+      "3": {
+        "model": "conquest:concretepowder_yellow_height6"
+      },
+      "4": {
+        "model": "conquest:concretepowder_yellow_height8"
+      },
+      "5": {
+        "model": "conquest:concretepowder_yellow_height10"
+      },
+      "6": {
+        "model": "conquest:concretepowder_yellow_height12"
+      },
+      "7": {
+        "model": "conquest:concretepowder_yellow_height14"
+      },
+      "8": {
+        "model": "cube_all"
+      }
+    }
+  }
+}

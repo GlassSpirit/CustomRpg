@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "half_slab",
+    "textures": {
+      "bottom": "conquest:blocks/cobblestone_fishscalecolorful",
+      "top": "conquest:blocks/cobblestone_fishscalecolorful",
+      "side": "conquest:blocks/cobblestone_fishscalecolorful"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "half": {
+      "bottom": {},
+      "top": {
+        "model": "upper_slab"
+      }
+    }
+  }
+}

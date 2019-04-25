@@ -1,11 +1,7 @@
 package ru.glassspirit.eclipsis.objects
 
 import com.teamwizardry.librarianlib.features.base.ModCreativeTab
-import net.minecraft.block.material.Material
 import net.minecraft.item.ItemStack
-import ru.glassspirit.eclipsis.objects.block.decorations.BlockDecorationFullNoCollision
-import ru.glassspirit.eclipsis.objects.block.decorations.BlockModRail
-import ru.glassspirit.eclipsis.objects.block.decorations.BlockModRope
 import ru.glassspirit.eclipsis.objects.block.miscellanous.BlockBorder
 import ru.glassspirit.eclipsis.objects.block.miscellanous.BlockBorderLight
 import ru.glassspirit.eclipsis.objects.block.miscellanous.BlockEmpty
@@ -21,27 +17,8 @@ object EclipsisBlocks {
     @JvmField
     val emptyBlock = BlockEmpty("empty")
 
-    @JvmField
-    val railClothBlock = BlockModRail("rail_cloth")
-    @JvmField
-    val railIronchainBlock = BlockModRail("rail_ironchain")
-
-    @JvmField
-    val ropeClothBlock = BlockModRope("rope_cloth", Material.CLOTH)
-    @JvmField
-    val ropeIronchainBlock = BlockModRope("rope_ironchain", Material.IRON)
-    @JvmField
-    val ropeSmallchainBlock = BlockModRope("rope_smallchain", Material.IRON)
-    @JvmField
-    val ropeRustychainBlock = BlockModRope("rope_rustychain", Material.IRON)
-    @JvmField
-    val ropeGoldchainBlock = BlockModRope("rope_goldchain", Material.IRON)
-
-    @JvmField
-    val hookClothBlock = BlockDecorationFullNoCollision("hook_rope", Material.CLOTH)
-    @JvmField
-    val hookIronBlock = BlockDecorationFullNoCollision("hook_iron", Material.IRON)
-
+    init {
+    }
 }
 
 object EclipsisItems {

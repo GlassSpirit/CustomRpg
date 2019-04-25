@@ -2,7 +2,7 @@ apply plugin: 'net.minecraftforge.gradle.forge'
 
 version = modVersion
 group = modGroup
-archivesBaseName = 'EclipsisObjects'
+archivesBaseName = 'CustomRPG_Objects'
 
 minecraft {
     version = project.forgeVersion

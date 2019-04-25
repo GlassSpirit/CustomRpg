@@ -1,7 +1,7 @@
 package ru.glassspirit.plugin
 
 import cz.neumimto.rpg.NtRpgPlugin
-import cz.neumimto.rpg.common.logging.Log
+import cz.neumimto.rpg.api.logging.Log
 import cz.neumimto.rpg.configuration.DebugLevel
 import cz.neumimto.rpg.players.CharacterService
 import cz.neumimto.rpg.players.ExperienceSources

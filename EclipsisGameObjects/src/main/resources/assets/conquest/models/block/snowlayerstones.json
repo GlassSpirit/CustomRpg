@@ -1,0 +1,57 @@
+{
+  "textures": {
+    "particle": "conquest:blocks/gravel1",
+    "down": "conquest:blocks/gravel1",
+    "up": "conquest:blocks/gravel1",
+    "north": "conquest:blocks/gravel1",
+    "east": "conquest:blocks/gravel1",
+    "south": "conquest:blocks/gravel1",
+    "west": "conquest:blocks/gravel1"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down",
+          "cullface": "down",
+          "tintindex": 0
+        },
+        "up": {
+          "texture": "#up",
+          "cullface": "up",
+          "tintindex": 0
+        },
+        "north": {
+          "texture": "#north",
+          "cullface": "north",
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#south",
+          "cullface": "south",
+          "tintindex": 0
+        },
+        "west": {
+          "texture": "#west",
+          "cullface": "west",
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#east",
+          "cullface": "east",
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

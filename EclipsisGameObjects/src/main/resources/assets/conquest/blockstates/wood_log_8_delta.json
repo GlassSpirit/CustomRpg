@@ -1,0 +1,28 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_column",
+    "textures": {
+      "end": "conquest:blocks/bookshelf_topbottom",
+      "side": "conquest:blocks/rack_scrollsempty",
+      "top": "conquest:blocks/bookshelf_topbottom",
+      "side1": "conquest:blocks/bookshelf_topbottom"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "z": {
+        "model": "shelf_log"
+      },
+      "x": {
+        "model": "shelf_log",
+        "y": 90
+      },
+      "none": {}
+    }
+  }
+}

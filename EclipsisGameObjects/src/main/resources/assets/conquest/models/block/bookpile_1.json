@@ -1,0 +1,244 @@
+{
+  "parent": "block/block",
+  "__comment": "Designed by Snoku bot with Cubik Studio - https://cubik.studio",
+  "textures": {
+    "particle": "blocks/rebellion/book_covers",
+    "0": "blocks/rebellion/book_covers"
+  },
+  "elements": [
+    {
+      "name": "Element",
+      "from": [
+        1.5,
+        0.0,
+        3.5
+      ],
+      "to": [
+        7.5,
+        1.0,
+        12.0
+      ],
+      "faces": {
+        "north": {
+          "texture": "#0",
+          "uv": [
+            7.5,
+            5.0,
+            5.0,
+            4.0
+          ]
+        },
+        "east": {
+          "texture": "#0",
+          "uv": [
+            5.0,
+            12.0,
+            6.0,
+            16.0
+          ],
+          "rotation": 90
+        },
+        "south": {
+          "texture": "#0",
+          "uv": [
+            5.0,
+            4.0,
+            7.5,
+            5.0
+          ]
+        },
+        "west": {
+          "texture": "#0",
+          "uv": [
+            1.5,
+            0.0,
+            2.5,
+            3.999999
+          ],
+          "rotation": 270
+        },
+        "up": {
+          "texture": "#0",
+          "uv": [
+            0.0,
+            0.0,
+            2.5,
+            4.0
+          ]
+        },
+        "down": {
+          "texture": "#0",
+          "uv": [
+            2.5,
+            4.0,
+            0.0,
+            0.0
+          ],
+          "cullface": "down"
+        }
+      }
+    },
+    {
+      "name": "Element",
+      "from": [
+        2.0,
+        1.0,
+        4.0
+      ],
+      "to": [
+        7.0,
+        2.0,
+        11.5
+      ],
+      "rotation": {
+        "origin": [
+          8.0,
+          8.0,
+          8.0
+        ],
+        "axis": "y",
+        "angle": -22.5
+      },
+      "faces": {
+        "north": {
+          "texture": "#0",
+          "uv": [
+            7.5,
+            5.0,
+            5.0,
+            4.0
+          ]
+        },
+        "east": {
+          "texture": "#0",
+          "uv": [
+            5.0,
+            12.0,
+            6.0,
+            16.0
+          ],
+          "rotation": 90
+        },
+        "south": {
+          "texture": "#0",
+          "uv": [
+            5.0,
+            4.0,
+            7.5,
+            5.0
+          ]
+        },
+        "west": {
+          "texture": "#0",
+          "uv": [
+            2.5,
+            0.0,
+            3.0,
+            4.0
+          ],
+          "rotation": 270
+        },
+        "up": {
+          "texture": "#0",
+          "uv": [
+            2.5,
+            0.0,
+            5.0,
+            4.0
+          ]
+        },
+        "down": {
+          "texture": "#0",
+          "uv": [
+            2.5,
+            4.0,
+            5.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "name": "Element",
+      "from": [
+        9.8407,
+        0.0,
+        3.3386
+      ],
+      "to": [
+        14.8407,
+        0.5,
+        10.8386
+      ],
+      "rotation": {
+        "origin": [
+          8.0,
+          8.0,
+          8.0
+        ],
+        "axis": "y",
+        "angle": 22.5
+      },
+      "faces": {
+        "north": {
+          "texture": "#0",
+          "uv": [
+            5.0,
+            5.0,
+            7.5,
+            6.0
+          ]
+        },
+        "east": {
+          "texture": "#0",
+          "uv": [
+            7.0,
+            0.0,
+            7.5,
+            4.0
+          ],
+          "rotation": 90
+        },
+        "south": {
+          "texture": "#0",
+          "uv": [
+            7.5,
+            6.0,
+            5.0,
+            5.0
+          ]
+        },
+        "west": {
+          "texture": "#0",
+          "uv": [
+            6.0,
+            12.0,
+            7.0,
+            16.0
+          ],
+          "rotation": 270
+        },
+        "up": {
+          "texture": "#0",
+          "uv": [
+            5.0,
+            4.0,
+            7.5,
+            0.0
+          ],
+          "rotation": 180
+        },
+        "down": {
+          "texture": "#0",
+          "uv": [
+            5.0,
+            0.0,
+            7.5,
+            4.0
+          ],
+          "rotation": 180
+        }
+      }
+    }
+  ]
+}
