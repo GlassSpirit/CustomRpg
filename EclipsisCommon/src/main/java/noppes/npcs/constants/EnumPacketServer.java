@@ -1,6 +1,6 @@
 package noppes.npcs.constants;
 
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.CustomNpcsPermissions;
 
 public enum EnumPacketServer {
@@ -121,6 +121,6 @@ public enum EnumPacketServer {
     }
 
     public boolean isExempt() {
-        return CustomNpcs.OpsOnly || exempt;
+        return CustomNpcsConfig.OpsOnly || exempt;
     }
 }

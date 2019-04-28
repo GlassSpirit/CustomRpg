@@ -17,7 +17,7 @@ import java.util.List;
 
 public class LinkedNpcController {
     public static LinkedNpcController Instance;
-    public List<LinkedData> list = new ArrayList<LinkedData>();
+    public List<LinkedData> list = new ArrayList<>();
 
     public LinkedNpcController() {
         Instance = this;
@@ -33,7 +33,7 @@ public class LinkedNpcController {
     }
 
     public File getDir() {
-        File dir = new File(CustomNpcs.getWorldSaveDirectory(), "linkednpcs");
+        File dir = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "linkednpcs");
         if (!dir.exists())
             dir.mkdir();
         return dir;
@@ -43,7 +43,7 @@ public class LinkedNpcController {
         LogWriter.info("Loading Linked Npcs");
         File dir = getDir();
         if (dir.exists()) {
-            List<LinkedData> list = new ArrayList<LinkedData>();
+            List<LinkedData> list = new ArrayList<>();
             for (File file : dir.listFiles()) {
                 if (file.getName().endsWith(".json")) {
                     try {

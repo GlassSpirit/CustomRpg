@@ -30,7 +30,7 @@ import noppes.npcs.api.entity.IEntityLiving;
 import noppes.npcs.api.entity.data.IData;
 import noppes.npcs.api.item.IItemStack;
 import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.items.ItemScripted;
+import noppes.npcs.objects.items.ItemScripted;
 
 import java.util.*;
 import java.util.Map.Entry;

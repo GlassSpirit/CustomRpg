@@ -80,7 +80,7 @@ object InvisibleBlockParticleSystemListener {
     }
 
     @SideOnly(Side.CLIENT)
-    private object BorderBlockParticleSystem : InvisibleBlockParticleSystem("eclipsis_objects:textures/items/border.png".toRl())
+    private object BorderBlockParticleSystem : InvisibleBlockParticleSystem("eclipsis_objects:textures/items/borderBlock.png".toRl())
 
     @SideOnly(Side.CLIENT)
     private object BorderLightBlockParticleSystem : InvisibleBlockParticleSystem("eclipsis_objects:textures/items/border_light.png".toRl())

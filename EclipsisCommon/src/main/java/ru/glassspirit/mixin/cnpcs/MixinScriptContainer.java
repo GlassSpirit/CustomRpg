@@ -1,7 +1,7 @@
 package ru.glassspirit.mixin.cnpcs;
 
 import net.minecraftforge.fml.common.eventhandler.Event;
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.controllers.IScriptHandler;
 import noppes.npcs.controllers.ScriptContainer;
@@ -60,7 +60,7 @@ public abstract class MixinScriptContainer implements IScriptContainerExtended {
 
     @Override
     public Object invoke(String function, Event event) {
-        if (!this.errored && this.hasCode() && !this.unknownFunctions.contains(function) && CustomNpcs.EnableScripting) {
+        if (!this.errored && this.hasCode() && !this.unknownFunctions.contains(function) && CustomNpcsConfig.EnableScripting) {
             this.setEngine(this.handler.getLanguage());
             if (this.engine != null) {
                 if (ScriptController.Instance.lastLoaded > this.lastCreated) {

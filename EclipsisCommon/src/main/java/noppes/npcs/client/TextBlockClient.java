@@ -59,7 +59,7 @@ public class TextBlockClient extends TextBlock {
             else
                 newLine = line + " " + word;
 
-            if ((mcFont ? font.getStringWidth(newLine) : ClientProxy.Font.width(newLine)) > lineWidth) {
+            if ((mcFont ? font.getStringWidth(newLine) : ClientProxy.Companion.getFont().width(newLine)) > lineWidth) {
                 addLine(line);
                 line = word.trim();
             } else {

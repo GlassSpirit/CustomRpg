@@ -19,7 +19,7 @@ public class GlobalDataController {
     }
 
     private void load() {
-        File saveDir = CustomNpcs.getWorldSaveDirectory();
+        File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
         try {
             File file = new File(saveDir, "global.dat");
             if (file.exists()) {
@@ -45,7 +45,7 @@ public class GlobalDataController {
 
     public void saveData() {
         try {
-            File saveDir = CustomNpcs.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
 
             NBTTagCompound nbttagcompound = new NBTTagCompound();
             nbttagcompound.setInteger("itemGiverId", itemGiverId);

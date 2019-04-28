@@ -33,7 +33,7 @@ import java.io.File;
 import java.util.Map;
 
 public class WrapperNpcAPI extends NpcAPI {
-    private static final Map<Integer, WorldWrapper> worldCache = new LRUHashMap<Integer, WorldWrapper>(10);
+    private static final Map<Integer, WorldWrapper> worldCache = new LRUHashMap<>(10);
     public static final EventBus EVENT_BUS = new EventBus();
 
     private static NpcAPI instance = null;
@@ -129,7 +129,7 @@ public class WrapperNpcAPI extends NpcAPI {
 
     @Override
     public IWorld getIWorld(int dimensionId) {
-        for (WorldServer world : CustomNpcs.Server.worlds) {
+        for (WorldServer world : CustomNpcs.INSTANCE.getServer().worlds) {
             if (world.provider.getDimension() == dimensionId)
                 return getIWorld(world);
         }
@@ -153,7 +153,7 @@ public class WrapperNpcAPI extends NpcAPI {
     }
 
     private void checkWorld() {
-        if (CustomNpcs.Server == null || CustomNpcs.Server.isServerStopped())
+        if (CustomNpcs.INSTANCE.getServer() == null || CustomNpcs.INSTANCE.getServer().isServerStopped())
             throw new CustomNPCsException("No world is loaded right now");
     }
 
@@ -172,9 +172,9 @@ public class WrapperNpcAPI extends NpcAPI {
     @Override
     public IWorld[] getIWorlds() {
         checkWorld();
-        IWorld[] worlds = new IWorld[CustomNpcs.Server.worlds.length];
-        for (int i = 0; i < CustomNpcs.Server.worlds.length; i++) {
-            worlds[i] = getIWorld(CustomNpcs.Server.worlds[i]);
+        IWorld[] worlds = new IWorld[CustomNpcs.INSTANCE.getServer().worlds.length];
+        for (int i = 0; i < CustomNpcs.INSTANCE.getServer().worlds.length; i++) {
+            worlds[i] = getIWorld(CustomNpcs.INSTANCE.getServer().worlds[i]);
         }
         return worlds;
     }
@@ -186,12 +186,12 @@ public class WrapperNpcAPI extends NpcAPI {
 
     @Override
     public File getGlobalDir() {
-        return CustomNpcs.Dir;
+        return CustomNpcs.INSTANCE.getDir();
     }
 
     @Override
     public File getWorldDir() {
-        return CustomNpcs.getWorldSaveDirectory();
+        return CustomNpcs.INSTANCE.getWorldSaveDirectory();
     }
 
     @Override

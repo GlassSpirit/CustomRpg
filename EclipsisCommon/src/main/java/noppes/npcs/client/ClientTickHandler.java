@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import noppes.npcs.CustomNpcs;
+import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.NoppesUtilPlayer;
 import noppes.npcs.client.controllers.MusicController;
 import noppes.npcs.client.gui.player.GuiQuestLog;
@@ -50,22 +51,22 @@ public class ClientTickHandler {
 
     @SubscribeEvent
     public void onKey(InputEvent.KeyInputEvent event) {
-        if (CustomNpcs.SceneButtonsEnabled) {
-            if (ClientProxy.Scene1.isPressed()) {
+        if (CustomNpcsConfig.SceneButtonsEnabled) {
+            if (ClientProxy.Companion.getScene1().isPressed()) {
                 Client.sendData(EnumPacketServer.SceneStart, 1);
             }
-            if (ClientProxy.Scene2.isPressed()) {
+            if (ClientProxy.Companion.getScene2().isPressed()) {
                 Client.sendData(EnumPacketServer.SceneStart, 2);
             }
-            if (ClientProxy.Scene3.isPressed()) {
+            if (ClientProxy.Companion.getScene3().isPressed()) {
                 Client.sendData(EnumPacketServer.SceneStart, 3);
             }
-            if (ClientProxy.SceneReset.isPressed()) {
+            if (ClientProxy.Companion.getSceneReset().isPressed()) {
                 Client.sendData(EnumPacketServer.SceneReset);
             }
         }
         Minecraft mc = Minecraft.getMinecraft();
-        if (ClientProxy.QuestLog.isPressed()) {
+        if (ClientProxy.Companion.getQuestLog().isPressed()) {
             if (mc.currentScreen == null)
                 NoppesUtil.openGUI(mc.player, new GuiQuestLog(mc.player));
             else if (mc.currentScreen instanceof GuiQuestLog)

@@ -4,7 +4,7 @@ import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.constants.AiMutex;
 import noppes.npcs.entity.EntityNPCInterface;
 
@@ -53,7 +53,7 @@ public class EntityAIReturn extends EntityAIBase {
         if (!npc.isAttacking() && wasAttacked) {
             return true;
         }
-        if (npc.ais.getMovingType() == 2 && npc.ais.getDistanceSqToPathPoint() < CustomNpcs.NpcNavRange * CustomNpcs.NpcNavRange)
+        if (npc.ais.getMovingType() == 2 && npc.ais.getDistanceSqToPathPoint() < CustomNpcsConfig.NpcNavRange * CustomNpcsConfig.NpcNavRange)
             return false;
 
         if (npc.ais.getMovingType() == 1) {
@@ -133,10 +133,10 @@ public class EntityAIReturn extends EntityAIBase {
         double posY = endPosY;
         double posZ = endPosZ;
         double range = npc.getDistance(posX, posY, posZ);
-        if (range > CustomNpcs.NpcNavRange || towards) {
+        if (range > CustomNpcsConfig.NpcNavRange || towards) {
             int distance = (int) range;
-            if (distance > CustomNpcs.NpcNavRange)
-                distance = CustomNpcs.NpcNavRange / 2;
+            if (distance > CustomNpcsConfig.NpcNavRange)
+                distance = CustomNpcsConfig.NpcNavRange / 2;
             else
                 distance /= 2;
             if (distance > 2) {

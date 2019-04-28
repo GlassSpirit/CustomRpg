@@ -48,6 +48,7 @@ public class GuiNpcMobSpawnerMounter extends GuiNPCInterface implements IGuiData
         setBackground("menubg.png");
     }
 
+    @Override
     public void initGui() {
         super.initGui();
         guiTop += 10;
@@ -71,7 +72,7 @@ public class GuiNpcMobSpawnerMounter extends GuiNPCInterface implements IGuiData
         addTopButton(button = new GuiMenuTopButton(5, button, "gui.server"));
         button.active = showingClones == 2;
 
-        addButton(new GuiNpcButton(1, guiLeft + 170, guiTop + 6, 82, 20, "spawner.mount"));
+        addButton(new GuiNpcButton(1, guiLeft + 170, guiTop + 6, 82, 20, "spawner.mounter"));
 
         addButton(new GuiNpcButton(2, guiLeft + 170, guiTop + 50, 82, 20, "spawner.mountplayer"));
 
@@ -93,7 +94,7 @@ public class GuiNpcMobSpawnerMounter extends GuiNPCInterface implements IGuiData
     }
 
     private void showEntities() {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         for (EntityEntry ent : ForgeRegistries.ENTITIES.getValues()) {
             Class<? extends Entity> c = ent.getEntityClass();
             String name = ent.getName();
@@ -116,11 +117,12 @@ public class GuiNpcMobSpawnerMounter extends GuiNPCInterface implements IGuiData
             return;
         }
 
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         this.list = ClientCloneController.Instance.getClones(activeTab);
         scroll.setList(getSearchList());
     }
 
+    @Override
     public void keyTyped(char c, int i) {
         super.keyTyped(c, i);
 
@@ -132,8 +134,8 @@ public class GuiNpcMobSpawnerMounter extends GuiNPCInterface implements IGuiData
 
     private List<String> getSearchList() {
         if (search.isEmpty())
-            return new ArrayList<String>(list);
-        List<String> list = new ArrayList<String>();
+            return new ArrayList<>(list);
+        List<String> list = new ArrayList<>();
         for (String name : this.list) {
             if (name.toLowerCase().contains(search))
                 list.add(name);
@@ -159,6 +161,7 @@ public class GuiNpcMobSpawnerMounter extends GuiNPCInterface implements IGuiData
 
     }
 
+    @Override
     protected void actionPerformed(GuiButton guibutton) {
         int id = guibutton.id;
         if (id == 0) {
@@ -216,7 +219,7 @@ public class GuiNpcMobSpawnerMounter extends GuiNPCInterface implements IGuiData
     @Override
     public void setGuiData(NBTTagCompound compound) {
         NBTTagList nbtlist = compound.getTagList("List", 8);
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         for (int i = 0; i < nbtlist.tagCount(); i++) {
             list.add(nbtlist.getStringTagAt(i));
         }

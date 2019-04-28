@@ -13,7 +13,7 @@ import noppes.npcs.controllers.IScriptHandler;
 import noppes.npcs.controllers.ScriptContainer;
 import noppes.npcs.controllers.ScriptController;
 import noppes.npcs.controllers.SyncController;
-import noppes.npcs.items.ItemScripted;
+import noppes.npcs.objects.items.ItemScripted;
 
 import java.util.ArrayList;
 import java.util.List;

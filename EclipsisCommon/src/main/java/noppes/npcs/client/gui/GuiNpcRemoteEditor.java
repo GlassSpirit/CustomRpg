@@ -3,8 +3,8 @@ package noppes.npcs.client.gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiYesNo;
 import net.minecraft.client.gui.GuiYesNoCallback;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.util.*;
@@ -17,7 +17,7 @@ import java.util.Vector;
 public class GuiNpcRemoteEditor extends GuiNPCInterface implements IScrollData, GuiYesNoCallback {
 
     private GuiCustomScroll scroll;
-    private HashMap<String, Integer> data = new HashMap<String, Integer>();
+    private HashMap<String, Integer> data = new HashMap<>();
 
     public GuiNpcRemoteEditor() {
         super();
@@ -41,7 +41,7 @@ public class GuiNpcRemoteEditor extends GuiNPCInterface implements IScrollData, 
         scroll.guiTop = guiTop + 4;
         addScroll(scroll);
 
-        String title = I18n.translateToLocal("remote.title");
+        String title = I18n.format("remote.title");
         int x = (xSize - this.fontRenderer.getStringWidth(title)) / 2;
 
         this.addLabel(new GuiNpcLabel(0, title, guiLeft + x, guiTop - 8));
@@ -84,13 +84,13 @@ public class GuiNpcRemoteEditor extends GuiNPCInterface implements IScrollData, 
             Client.sendData(EnumPacketServer.RemoteMainMenu, data.get(scroll.getSelected()));
         }
         if (id == 1) {
-            GuiYesNo guiyesno = new GuiYesNo(this, "", I18n.translateToLocal("gui.deleteMessage"), 0);
+            GuiYesNo guiyesno = new GuiYesNo(this, "", I18n.format("gui.deleteMessage"), 0);
             displayGuiScreen(guiyesno);
         }
         if (id == 2) {
             Client.sendData(EnumPacketServer.RemoteReset, data.get(scroll.getSelected()));
             Entity entity = player.world.getEntityByID(data.get(scroll.getSelected()));
-            if (entity != null && entity instanceof EntityNPCInterface)
+            if (entity instanceof EntityNPCInterface)
                 ((EntityNPCInterface) entity).reset();
         }
         if (id == 4) {

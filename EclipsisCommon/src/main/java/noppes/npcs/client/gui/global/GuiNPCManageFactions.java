@@ -1,8 +1,8 @@
 package noppes.npcs.client.gui.global;
 
 import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.SubGuiColorSelector;
 import noppes.npcs.client.gui.SubGuiNpcFactionPoints;
@@ -18,7 +18,7 @@ import java.util.Vector;
 
 public class GuiNPCManageFactions extends GuiNPCInterface2 implements IScrollData, ICustomScrollListener, ITextfieldListener, IGuiData, ISubGuiListener {
     private GuiCustomScroll scrollFactions;
-    private HashMap<String, Integer> data = new HashMap<String, Integer>();
+    private HashMap<String, Integer> data = new HashMap<>();
     private Faction faction = new Faction();
     private String selected = null;
 
@@ -27,6 +27,7 @@ public class GuiNPCManageFactions extends GuiNPCInterface2 implements IScrollDat
         Client.sendData(EnumPacketServer.FactionsGet);
     }
 
+    @Override
     public void initGui() {
         super.initGui();
 
@@ -70,10 +71,10 @@ public class GuiNPCManageFactions extends GuiNPCInterface2 implements IScrollDat
 
         addLabel(new GuiNpcLabel(6, "faction.hostiles", guiLeft + 8, guiTop + 145));
 
-        ArrayList<String> hostileList = new ArrayList<String>(scrollFactions.getList());
+        ArrayList<String> hostileList = new ArrayList<>(scrollFactions.getList());
         hostileList.remove(faction.name);
 
-        HashSet<String> set = new HashSet<String>();
+        HashSet<String> set = new HashSet<>();
         for (String s : data.keySet()) {
             if (!s.equals(faction.name) && faction.attackFactions.contains(data.get(s)))
                 set.add(s);
@@ -93,7 +94,7 @@ public class GuiNPCManageFactions extends GuiNPCInterface2 implements IScrollDat
         GuiNpcButton button = (GuiNpcButton) guibutton;
         if (button.id == 0) {
             save();
-            String name = I18n.translateToLocal("gui.new");
+            String name = I18n.format("gui.new");
             while (data.containsKey(name))
                 name += "_";
             Faction faction = new Faction(-1, name, 0x00FF00, 1000);
@@ -157,7 +158,7 @@ public class GuiNPCManageFactions extends GuiNPCInterface2 implements IScrollDat
             selected = scrollFactions.getSelected();
             Client.sendData(EnumPacketServer.FactionGet, data.get(selected));
         } else if (guiCustomScroll.id == 1) {
-            HashSet<Integer> set = new HashSet<Integer>();
+            HashSet<Integer> set = new HashSet<>();
             for (String s : guiCustomScroll.getSelectedList()) {
                 if (data.containsKey(s))
                     set.add(data.get(s));
@@ -167,6 +168,7 @@ public class GuiNPCManageFactions extends GuiNPCInterface2 implements IScrollDat
         }
     }
 
+    @Override
     public void save() {
         if (selected != null && data.containsKey(selected) && faction != null) {
             NBTTagCompound compound = new NBTTagCompound();

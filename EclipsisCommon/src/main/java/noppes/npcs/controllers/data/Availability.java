@@ -19,7 +19,7 @@ import noppes.npcs.controllers.PlayerQuestController;
 import java.util.HashSet;
 
 public class Availability implements ICompatibilty, IAvailability {
-    public static HashSet<String> scoreboardValues = new HashSet<String>();
+    public static HashSet<String> scoreboardValues = new HashSet<>();
 
     public int version = VersionCompatibility.ModRev;
 
@@ -118,9 +118,9 @@ public class Availability implements ICompatibilty, IAvailability {
             return;
         scoreboardValues.add(objective);
 
-        if (CustomNpcs.Server == null)
+        if (CustomNpcs.INSTANCE.getServer() == null)
             return;
-        for (WorldServer world : CustomNpcs.Server.worlds) {
+        for (WorldServer world : CustomNpcs.INSTANCE.getServer().worlds) {
             ServerScoreboard board = (ServerScoreboard) world.worldScoreboard;
             ScoreObjective so = board.getObjective(objective);
             if (so != null) {
@@ -129,6 +129,7 @@ public class Availability implements ICompatibilty, IAvailability {
         }
     }
 
+    @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setInteger("ModRev", version);
 

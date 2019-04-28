@@ -18,7 +18,7 @@ import java.util.TreeMap;
 
 public class ForgeScriptData implements IScriptHandler {
 
-    private List<ScriptContainer> scripts = new ArrayList<ScriptContainer>();
+    private List<ScriptContainer> scripts = new ArrayList<>();
 
     private String scriptLanguage = "ECMAScript";
 
@@ -28,7 +28,7 @@ public class ForgeScriptData implements IScriptHandler {
 
 
     public void clear() {
-        scripts = new ArrayList<ScriptContainer>();
+        scripts = new ArrayList<>();
     }
 
     public void readFromNBT(NBTTagCompound compound) {
@@ -44,6 +44,7 @@ public class ForgeScriptData implements IScriptHandler {
         return compound;
     }
 
+    @Override
     public void runScript(EnumScriptType type, Event event) {
         //not used
     }
@@ -51,7 +52,7 @@ public class ForgeScriptData implements IScriptHandler {
     public void runScript(String type, Event event) {
         if (!isEnabled())
             return;
-        CustomNpcs.Server.addScheduledTask(() -> {
+        CustomNpcs.INSTANCE.getServer().addScheduledTask(() -> {
             if (ScriptController.Instance.lastLoaded > lastInited) {
                 lastInited = ScriptController.Instance.lastLoaded;
                 if (!type.equals("init"))
@@ -104,7 +105,7 @@ public class ForgeScriptData implements IScriptHandler {
 
     @Override
     public Map<Long, String> getConsoleText() {
-        Map<Long, String> map = new TreeMap<Long, String>();
+        Map<Long, String> map = new TreeMap<>();
         int tab = 0;
         for (ScriptContainer script : getScripts()) {
             tab++;

@@ -15,7 +15,7 @@ import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.containers.ContainerNPCBankInterface;
 import noppes.npcs.controllers.BankController;
 import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.util.CustomNPCsScheduler;
+import noppes.npcs.util.CustomNpcsScheduler;
 
 import java.util.HashMap;
 
@@ -26,8 +26,8 @@ public class BankData {
     public int bankId = -1;
 
     public BankData() {
-        itemSlots = new HashMap<Integer, NpcMiscInventory>();
-        upgradedSlots = new HashMap<Integer, Boolean>();
+        itemSlots = new HashMap<>();
+        upgradedSlots = new HashMap<>();
 
         for (int i = 0; i < 6; i++) {
             itemSlots.put(i, new NpcMiscInventory(54));
@@ -43,7 +43,7 @@ public class BankData {
     }
 
     private HashMap<Integer, NpcMiscInventory> getItemSlots(NBTTagList tagList) {
-        HashMap<Integer, NpcMiscInventory> list = new HashMap<Integer, NpcMiscInventory>();
+        HashMap<Integer, NpcMiscInventory> list = new HashMap<>();
         for (int i = 0; i < tagList.tagCount(); i++) {
             NBTTagCompound nbttagcompound = tagList.getCompoundTagAt(i);
             int slot = nbttagcompound.getInteger("Slot");
@@ -101,7 +101,7 @@ public class BankData {
             NoppesUtilServer.sendOpenGui(player, EnumGuiType.PlayerBankSmall, npc, slot, bank.id, 0);
         }
         final ItemStack item = currency;
-        CustomNPCsScheduler.runTack(() -> {
+        CustomNpcsScheduler.runTack(() -> {
             NBTTagCompound compound = new NBTTagCompound();
             compound.setInteger("MaxSlots", bank.getMaxSlots());
             compound.setInteger("UnlockedSlots", unlockedSlots);

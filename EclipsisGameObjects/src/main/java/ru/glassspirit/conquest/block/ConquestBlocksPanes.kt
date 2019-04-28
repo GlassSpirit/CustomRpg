@@ -64,6 +64,9 @@ object ConquestBlocksPanes {
         BlockModPane("cloth_climbironbar_1_fox", true, Blocks.WOOL.defaultState).setModCreativeTab(CreativeTabs.DECORATIONS)
         BlockModPane("cloth_climbironbar_1_golf", true, Blocks.WOOL.defaultState).setModCreativeTab(CreativeTabs.DECORATIONS)
         BlockModPane("cloth_climbironbar_1_hotel", true, Blocks.WOOL.defaultState).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockModPane("cloth_ironclimbironbar_1_alpha", true, Blocks.WOOL.defaultState).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockModPane("cloth_ironclimbironbar_1_bravo", true, Blocks.WOOL.defaultState).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockModPane("cloth_ironclimbironbar_1_charlie", true, Blocks.WOOL.defaultState).setModCreativeTab(CreativeTabs.DECORATIONS)
 
         BlockModPane("iron_ironbar_1_bravo", true, Blocks.IRON_BLOCK.defaultState).setModCreativeTab(ConquestTabs.ConquestBuildingOtherTab)
         BlockModPane("iron_ironbar_1_charlie", true, Blocks.IRON_BLOCK.defaultState).setModCreativeTab(ConquestTabs.ConquestBuildingOtherTab)
@@ -76,6 +79,5 @@ object ConquestBlocksPanes {
         BlockModPane("wood_ironbar_1_echo", true, Blocks.LOG.defaultState).setModCreativeTab(CreativeTabs.DECORATIONS)
         BlockModPane("wood_ironbar_1_fox", true, Blocks.LOG.defaultState).setModCreativeTab(CreativeTabs.DECORATIONS)
         BlockModPane("wood_ironbar_1_golf", true, Blocks.LOG.defaultState).setModCreativeTab(CreativeTabs.DECORATIONS)
-
     }
 }

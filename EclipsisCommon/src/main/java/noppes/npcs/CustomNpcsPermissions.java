@@ -52,7 +52,7 @@ public class CustomNpcsPermissions {
 
     public CustomNpcsPermissions() {
         Instance = this;
-        if (!CustomNpcs.DisablePermissions) {
+        if (!CustomNpcsConfig.DisablePermissions) {
             LogManager.getLogger(CustomNpcs.class).info("CustomNPC Permissions available:");
             Collections.sort(Permission.permissions, (o1, o2) -> o1.name.compareToIgnoreCase(o2.name));
             for (Permission p : Permission.permissions) {
@@ -63,19 +63,19 @@ public class CustomNpcsPermissions {
     }
 
     public static boolean hasPermission(EntityPlayer player, Permission permission) {
-        if (CustomNpcs.DisablePermissions)
+        if (CustomNpcsConfig.DisablePermissions)
             return permission.defaultValue;
         return hasPermissionString(player, permission.name);
     }
 
     public static boolean hasPermissionString(EntityPlayer player, String permission) {
-        if (CustomNpcs.DisablePermissions)
+        if (CustomNpcsConfig.DisablePermissions)
             return true;
         return PermissionAPI.hasPermission(player, permission);
     }
 
     public static class Permission {
-        private static final List<Permission> permissions = new ArrayList<Permission>();
+        private static final List<Permission> permissions = new ArrayList<>();
         public String name;
         public boolean defaultValue = true;
 

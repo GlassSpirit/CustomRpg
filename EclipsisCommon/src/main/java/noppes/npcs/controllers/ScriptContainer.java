@@ -25,7 +25,7 @@ public class ScriptContainer {
     public static ScriptContainer Current;
     private static String CurrentType;
 
-    private final static HashMap<String, Object> Data = new HashMap<String, Object>();
+    private final static HashMap<String, Object> Data = new HashMap<>();
 
     static {
         FillMap(AnimationType.class);
@@ -57,11 +57,11 @@ public class ScriptContainer {
 
     public String fullscript = "";
     public String script = "";
-    public TreeMap<Long, String> console = new TreeMap<Long, String>();
+    public TreeMap<Long, String> console = new TreeMap<>();
     public boolean errored = false;
-    public List<String> scripts = new ArrayList<String>();
+    public List<String> scripts = new ArrayList<>();
 
-    private HashSet<String> unknownFunctions = new HashSet<String>();
+    private HashSet<String> unknownFunctions = new HashSet<>();
 
     public long lastCreated = 0;
 
@@ -102,7 +102,7 @@ public class ScriptContainer {
                 if (code != null && !code.isEmpty())
                     fullscript += code + "\n";
             }
-            unknownFunctions = new HashSet<String>();
+            unknownFunctions = new HashSet<>();
         }
         return fullscript;
     }
@@ -112,7 +112,7 @@ public class ScriptContainer {
     }
 
     public void run(String type, Event event) {
-        if (errored || !hasCode() || unknownFunctions.contains(type) || !CustomNpcs.EnableScripting)
+        if (errored || !hasCode() || unknownFunctions.contains(type) || !CustomNpcsConfig.EnableScripting)
             return;
 
         setEngine(handler.getLanguage());

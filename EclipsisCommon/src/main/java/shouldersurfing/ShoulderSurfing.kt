@@ -76,7 +76,7 @@ object ShoulderSurfing {
         ShoulderSettings.ENABLE_CROSSHAIR = CONFIG.get(Configuration.CATEGORY_GENERAL, "Third Person Crosshair", ShoulderSettings.ENABLE_CROSSHAIR, "Enable or disable the crosshair in third person").getBoolean(ShoulderSettings.ENABLE_CROSSHAIR)
         ShoulderSettings.ENABLE_ATTACK_INDICATOR = CONFIG.get(Configuration.CATEGORY_GENERAL, "Third Person Attack Indicator", ShoulderSettings.ENABLE_ATTACK_INDICATOR, "Enable or disable the attack indicator in third person").getBoolean(ShoulderSettings.ENABLE_ATTACK_INDICATOR)
         ShoulderSettings.IGNORE_BLOCKS_WITHOUT_COLLISION = CONFIG.get(Configuration.CATEGORY_GENERAL, "Ignore Blocks Without Collision", ShoulderSettings.IGNORE_BLOCKS_WITHOUT_COLLISION, "Whether or not the camera ignores blocks without collision").getBoolean(ShoulderSettings.IGNORE_BLOCKS_WITHOUT_COLLISION)
-        ShoulderSettings.DEFAULT_PERSPECTIVE = CONFIG.get(Configuration.CATEGORY_GENERAL, "Default Perspective", ShoulderSettings.DEFAULT_PERSPECTIVE, "The default perspective when you load the game", arrayOf("First person", "Third person", "Front third person", "Shoulder surfing")).string
+        ShoulderSettings.DEFAULT_PERSPECTIVE = CONFIG.get(Configuration.CATEGORY_GENERAL, "Default Perspective", ShoulderSettings.DEFAULT_PERSPECTIVE, "The default perspective when you init the game", arrayOf("First person", "Third person", "Front third person", "Shoulder surfing")).string
 
         if (ShoulderSurfing.CONFIG.hasChanged()) {
             ShoulderSurfing.CONFIG.save()

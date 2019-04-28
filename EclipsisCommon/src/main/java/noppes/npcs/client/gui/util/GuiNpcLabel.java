@@ -3,7 +3,7 @@ package noppes.npcs.client.gui.util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import noppes.npcs.client.CustomNpcResourceListener;
 
 public class GuiNpcLabel {
@@ -14,7 +14,7 @@ public class GuiNpcLabel {
 
     public GuiNpcLabel(int id, Object label, int x, int y, int color) {
         this.id = id;
-        this.label = I18n.translateToLocal(label.toString());
+        this.label = I18n.format(label.toString());
         this.x = x;
         this.y = y;
         this.color = color;

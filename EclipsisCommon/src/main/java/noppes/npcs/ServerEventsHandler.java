@@ -35,7 +35,8 @@ import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.controllers.ServerCloneController;
 import noppes.npcs.controllers.data.*;
 import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.items.ItemSoulstoneEmpty;
+import noppes.npcs.objects.NpcObjects;
+import noppes.npcs.objects.items.ItemSoulstoneEmpty;
 import noppes.npcs.quests.QuestKill;
 
 import java.util.HashMap;
@@ -55,21 +56,21 @@ public class ServerEventsHandler {
         boolean isRemote = event.getEntityPlayer().world.isRemote;
         boolean npcInteracted = event.getTarget() instanceof EntityNPCInterface;
 
-        if (!isRemote && CustomNpcs.OpsOnly && !event.getEntityPlayer().getServer().getPlayerList().canSendCommands(event.getEntityPlayer().getGameProfile())) {
+        if (!isRemote && CustomNpcsConfig.OpsOnly && !event.getEntityPlayer().getServer().getPlayerList().canSendCommands(event.getEntityPlayer().getGameProfile())) {
             return;
         }
 
-        if (!isRemote && item.getItem() == CustomItems.soulstoneEmpty && event.getTarget() instanceof EntityLivingBase) {
+        if (!isRemote && item.getItem() == NpcObjects.soulstoneEmpty && event.getTarget() instanceof EntityLivingBase) {
             ((ItemSoulstoneEmpty) item.getItem()).store((EntityLivingBase) event.getTarget(), item, event.getEntityPlayer());
         }
 
-        if (item.getItem() == CustomItems.wand && npcInteracted && !isRemote) {
+        if (item.getItem() == NpcObjects.wand && npcInteracted && !isRemote) {
             if (!CustomNpcsPermissions.hasPermission(event.getEntityPlayer(), CustomNpcsPermissions.NPC_GUI)) {
                 return;
             }
             event.setCanceled(true);
             NoppesUtilServer.sendOpenGui(event.getEntityPlayer(), EnumGuiType.MainMenuDisplay, (EntityNPCInterface) event.getTarget());
-        } else if (item.getItem() == CustomItems.cloner && !isRemote && !(event.getTarget() instanceof EntityPlayer)) {
+        } else if (item.getItem() == NpcObjects.mobCloner && !isRemote && !(event.getTarget() instanceof EntityPlayer)) {
             NBTTagCompound compound = new NBTTagCompound();
             if (!event.getTarget().writeToNBTAtomically(compound))
                 return;
@@ -79,20 +80,20 @@ public class ServerEventsHandler {
                 event.getEntityPlayer().sendMessage(new TextComponentString("Entity too big to clone"));
             data.cloned = compound;
             event.setCanceled(true);
-        } else if (item.getItem() == CustomItems.scripter && !isRemote && npcInteracted) {
+        } else if (item.getItem() == NpcObjects.scripter && !isRemote && npcInteracted) {
             if (!CustomNpcsPermissions.hasPermission(event.getEntityPlayer(), CustomNpcsPermissions.NPC_GUI))
                 return;
             NoppesUtilServer.setEditingNpc(event.getEntityPlayer(), (EntityNPCInterface) event.getTarget());
             event.setCanceled(true);
             Server.sendData((EntityPlayerMP) event.getEntityPlayer(), EnumPacketClient.GUI, EnumGuiType.Script.ordinal(), 0, 0, 0);
-        } else if (item.getItem() == CustomItems.mount) {
+        } else if (item.getItem() == NpcObjects.mounter) {
             if (!CustomNpcsPermissions.hasPermission(event.getEntityPlayer(), CustomNpcsPermissions.TOOL_MOUNTER))
                 return;
             event.setCanceled(true);
             mounted = event.getTarget();
             if (isRemote)
                 CustomNpcs.proxy.openGui(MathHelper.floor(mounted.posX), MathHelper.floor(mounted.posY), MathHelper.floor(mounted.posZ), EnumGuiType.MobSpawnerMounter, event.getEntityPlayer());
-        } else if (item.getItem() == CustomItems.wand && event.getTarget() instanceof EntityVillager) {
+        } else if (item.getItem() == NpcObjects.wand && event.getTarget() instanceof EntityVillager) {
             if (!CustomNpcsPermissions.hasPermission(event.getEntityPlayer(), CustomNpcsPermissions.EDIT_VILLAGER))
                 return;
             event.setCanceled(true);
@@ -100,7 +101,7 @@ public class ServerEventsHandler {
 
             if (!isRemote) {
                 EntityPlayerMP player = (EntityPlayerMP) event.getEntityPlayer();
-                player.openGui(CustomNpcs.instance, EnumGuiType.MerchantAdd.ordinal(), player.world, 0, 0, 0);
+                player.openGui(CustomNpcs.INSTANCE, EnumGuiType.MerchantAdd.ordinal(), player.world, 0, 0, 0);
                 MerchantRecipeList merchantrecipelist = Merchant.getRecipes(player);
 
                 if (merchantrecipelist != null) {

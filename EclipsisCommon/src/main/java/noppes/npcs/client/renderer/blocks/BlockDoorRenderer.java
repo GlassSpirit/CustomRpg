@@ -12,9 +12,9 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import noppes.npcs.CustomItems;
-import noppes.npcs.blocks.BlockNpcDoorInterface;
-import noppes.npcs.blocks.tiles.TileDoor;
+import noppes.npcs.objects.NpcObjects;
+import noppes.npcs.objects.blocks.BlockNpcDoorInterface;
+import noppes.npcs.objects.blocks.tiles.TileDoor;
 
 import java.util.Random;
 
@@ -25,7 +25,7 @@ public class BlockDoorRenderer extends BlockRendererInterface {
     @Override
     public void render(TileEntity te, double x, double y, double z, float partialTicks, int destroyStage, float alpha) {
         TileDoor tile = (TileDoor) te;
-        IBlockState original = CustomItems.scriptedDoor.getStateFromMeta(tile.getBlockMetadata());
+        IBlockState original = NpcObjects.scriptedDoor.getStateFromMeta(tile.getBlockMetadata());
 
         BlockPos lowerPos = tile.getPos();
 
@@ -41,8 +41,8 @@ public class BlockDoorRenderer extends BlockRendererInterface {
         if (lowerTile == null || upperTile == null)
             return;
 
-        IBlockState lowerState = CustomItems.scriptedDoor.getStateFromMeta(lowerTile.getBlockMetadata());
-        IBlockState upperState = CustomItems.scriptedDoor.getStateFromMeta(upperTile.getBlockMetadata());
+        IBlockState lowerState = NpcObjects.scriptedDoor.getStateFromMeta(lowerTile.getBlockMetadata());
+        IBlockState upperState = NpcObjects.scriptedDoor.getStateFromMeta(upperTile.getBlockMetadata());
 
 
         int meta = BlockNpcDoorInterface.combineMetadata(getWorld(), tile.getPos());
@@ -50,7 +50,7 @@ public class BlockDoorRenderer extends BlockRendererInterface {
         Block b = lowerTile.blockModel;
 
         if (overrideModel()) {
-            b = CustomItems.scriptedDoor;
+            b = NpcObjects.scriptedDoor;
         }
 
         IBlockState state = b.getStateFromMeta(meta);
@@ -93,6 +93,6 @@ public class BlockDoorRenderer extends BlockRendererInterface {
         if (held == null)
             return false;
 
-        return held.getItem() == CustomItems.wand || held.getItem() == CustomItems.scripter || held.getItem() == CustomItems.scriptedDoorTool;
+        return held.getItem() == NpcObjects.wand || held.getItem() == NpcObjects.scripter || held.getItem() == NpcObjects.scriptedDoorTool;
     }
 }

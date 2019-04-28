@@ -14,7 +14,7 @@ import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.block.IBlockScripted;
 import noppes.npcs.api.block.ITextPlane;
 import noppes.npcs.api.item.IItemStack;
-import noppes.npcs.blocks.tiles.TileScripted;
+import noppes.npcs.objects.blocks.tiles.TileScripted;
 import noppes.npcs.entity.EntityNPCInterface;
 
 public class BlockScriptedWrapper extends BlockWrapper implements IBlockScripted {

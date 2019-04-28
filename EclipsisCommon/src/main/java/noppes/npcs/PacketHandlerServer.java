@@ -27,10 +27,6 @@ import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.constants.JobType;
 import noppes.npcs.api.constants.RoleType;
 import noppes.npcs.api.wrapper.ItemScriptedWrapper;
-import noppes.npcs.blocks.tiles.TileBuilder;
-import noppes.npcs.blocks.tiles.TileCopy;
-import noppes.npcs.blocks.tiles.TileScripted;
-import noppes.npcs.blocks.tiles.TileScriptedDoor;
 import noppes.npcs.constants.*;
 import noppes.npcs.containers.ContainerMail;
 import noppes.npcs.controllers.*;
@@ -39,6 +35,10 @@ import noppes.npcs.controllers.data.*;
 import noppes.npcs.entity.EntityCustomNpc;
 import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.entity.data.DataScenes;
+import noppes.npcs.objects.blocks.tiles.TileBuilder;
+import noppes.npcs.objects.blocks.tiles.TileCopy;
+import noppes.npcs.objects.blocks.tiles.TileScripted;
+import noppes.npcs.objects.blocks.tiles.TileScriptedDoor;
 import noppes.npcs.roles.JobSpawner;
 import noppes.npcs.roles.RoleCompanion;
 import noppes.npcs.roles.RoleTrader;
@@ -56,7 +56,7 @@ public class PacketHandlerServer {
     @SubscribeEvent
     public void onServerPacket(ServerCustomPacketEvent event) {
         final EntityPlayerMP player = ((NetHandlerPlayServer) event.getHandler()).player;
-        if (CustomNpcs.OpsOnly && !NoppesUtilServer.isOp(player)) {
+        if (CustomNpcsConfig.OpsOnly && !NoppesUtilServer.isOp(player)) {
             warn(player, "tried to use custom npcs without being an op");
             return;
         }
@@ -111,19 +111,19 @@ public class PacketHandlerServer {
         } else if (type == EnumPacketServer.LinkedAdd) {
             LinkedNpcController.Instance.addData(Server.readString(buffer));
 
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             for (LinkedData data : LinkedNpcController.Instance.list)
                 list.add(data.name);
             Server.sendData(player, EnumPacketClient.SCROLL_LIST, list);
         } else if (type == EnumPacketServer.LinkedRemove) {
             LinkedNpcController.Instance.removeData(Server.readString(buffer));
 
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             for (LinkedData data : LinkedNpcController.Instance.list)
                 list.add(data.name);
             Server.sendData(player, EnumPacketClient.SCROLL_LIST, list);
         } else if (type == EnumPacketServer.LinkedGetAll) {
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             for (LinkedData data : LinkedNpcController.Instance.list)
                 list.add(data.name);
             Server.sendData(player, EnumPacketClient.SCROLL_LIST, list);
@@ -173,13 +173,13 @@ public class PacketHandlerServer {
             Server.sendData(player, EnumPacketClient.SCROLL_SELECTED, CustomNpcs.FreezeNPCs ? "Unfreeze Npcs" : "Freeze Npcs");
         } else if (type == EnumPacketServer.RemoteReset) {
             Entity entity = player.world.getEntityByID(buffer.readInt());
-            if (entity == null || !(entity instanceof EntityNPCInterface))
+            if (!(entity instanceof EntityNPCInterface))
                 return;
             npc = (EntityNPCInterface) entity;
             npc.reset();
         } else if (type == EnumPacketServer.RemoteTpToNpc) {
             Entity entity = player.world.getEntityByID(buffer.readInt());
-            if (entity == null || !(entity instanceof EntityNPCInterface))
+            if (!(entity instanceof EntityNPCInterface))
                 return;
             npc = (EntityNPCInterface) entity;
             player.connection.setPlayerLocation(npc.posX, npc.posY, npc.posZ, 0, 0);
@@ -246,7 +246,7 @@ public class PacketHandlerServer {
             int gui = buffer.readInt();
             quest.readNBT(Server.readNBT(buffer));
             NoppesUtilServer.setEditingQuest(player, quest);
-            player.openGui(CustomNpcs.instance, gui, player.world, 0, 0, 0);
+            player.openGui(CustomNpcs.INSTANCE, gui, player.world, 0, 0, 0);
         } else if (type == EnumPacketServer.DialogNpcGet) {
             NoppesUtilServer.sendNpcDialogs(player);
         } else if (type == EnumPacketServer.DialogNpcSet) {
@@ -449,7 +449,7 @@ public class PacketHandlerServer {
             PlayerMail mail = new PlayerMail();
             mail.readNBT(Server.readNBT(buffer));
             ContainerMail.staticmail = mail;
-            player.openGui(CustomNpcs.instance, EnumGuiType.PlayerMailman.ordinal(), player.world, 1, 0, 0);
+            player.openGui(CustomNpcs.INSTANCE, EnumGuiType.PlayerMailman.ordinal(), player.world, 1, 0, 0);
         } else if (type == EnumPacketServer.TransformSave) {
             boolean isValid = npc.transform.isValid();
             npc.transform.readOptions(Server.readNBT(buffer));
@@ -549,7 +549,7 @@ public class PacketHandlerServer {
             compound.setTag("Languages", ScriptController.Instance.nbtLanguages());
             Server.sendData(player, EnumPacketClient.GUI_DATA, compound);
         } else if (type == EnumPacketServer.DimensionsGet) {
-            HashMap<String, Integer> map = new HashMap<String, Integer>();
+            HashMap<String, Integer> map = new HashMap<>();
             for (int id : DimensionManager.getStaticDimensionIDs()) {
                 WorldProvider provider = DimensionManager.createProviderFor(id);
                 map.put(provider.getDimensionType().getName(), id);

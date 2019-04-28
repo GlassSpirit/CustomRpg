@@ -20,7 +20,7 @@ public class BankController {
 
     public BankController() {
         instance = this;
-        banks = new HashMap<Integer, Bank>();
+        banks = new HashMap<>();
         loadBanks();
 
         if (banks.isEmpty()) {
@@ -44,7 +44,7 @@ public class BankController {
     private static boolean newInstance() {
         if (instance == null)
             return true;
-        File file = CustomNpcs.getWorldSaveDirectory();
+        File file = CustomNpcs.INSTANCE.getWorldSaveDirectory();
         if (file == null)
             return false;
         return !instance.filePath.equals(file.getAbsolutePath());
@@ -52,7 +52,7 @@ public class BankController {
     }
 
     private void loadBanks() {
-        File saveDir = CustomNpcs.getWorldSaveDirectory();
+        File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
         if (saveDir == null)
             return;
 
@@ -80,7 +80,7 @@ public class BankController {
     }
 
     public void loadBanks(NBTTagCompound nbttagcompound1) throws IOException {
-        HashMap<Integer, Bank> banks = new HashMap<Integer, Bank>();
+        HashMap<Integer, Bank> banks = new HashMap<>();
         NBTTagList list = nbttagcompound1.getTagList("Data", 10);
         if (list != null) {
             for (int i = 0; i < list.tagCount(); i++) {
@@ -115,7 +115,7 @@ public class BankController {
 
     public void saveBanks() {
         try {
-            File saveDir = CustomNpcs.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
             File file = new File(saveDir, "bank.dat_new");
             File file1 = new File(saveDir, "bank.dat_old");
             File file2 = new File(saveDir, "bank.dat");

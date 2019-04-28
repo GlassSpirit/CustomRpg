@@ -5,6 +5,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import noppes.npcs.CustomNpcs;
+import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.ModelData;
 import noppes.npcs.ModelPartData;
 import noppes.npcs.client.EntityUtil;
@@ -15,7 +16,7 @@ public class EntityCustomNpc extends EntityNPCFlying {
 
     public EntityCustomNpc(World world) {
         super(world);
-        if (!CustomNpcs.EnableDefaultEyes) {
+        if (!CustomNpcsConfig.EnableDefaultEyes) {
             modelData.eyes.type = -1;
         }
     }

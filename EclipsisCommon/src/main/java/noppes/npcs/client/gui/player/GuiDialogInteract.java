@@ -92,7 +92,7 @@ public class GuiDialogInteract extends GuiNPCInterface implements IGuiClose {
         GlStateManager.translate(0.0F, 0.5f, 100.065F);
         int count = 0;
         for (TextBlockClient block : new ArrayList<>(lines)) {
-            int size = ClientProxy.Font.width(block.getName() + ": ");
+            int size = ClientProxy.Companion.getFont().width(block.getName() + ": ");
             drawString(block.getName() + ": ", -4 - size, block.color, count);
             for (ITextComponent line : block.lines) {
                 drawString(line.getFormattedText(), 0, block.color, count);
@@ -150,7 +150,7 @@ public class GuiDialogInteract extends GuiNPCInterface implements IGuiClose {
             if (slot == (selected))
                 color = 0x838FD8;
             //drawString(fontRenderer, option.title, width/2 -50 ,yoffset+ 162 + slot * 13 , color);
-            int height = ClientProxy.Font.height(option.title);
+            int height = ClientProxy.Companion.getFont().height(option.title);
             if (slot == 0)
                 drawString(fontRenderer, option.title, width / 2 + 13, yoffset - height, color);
             if (slot == 1)
@@ -158,11 +158,11 @@ public class GuiDialogInteract extends GuiNPCInterface implements IGuiClose {
             if (slot == 2)
                 drawString(fontRenderer, option.title, width / 2 + 27, yoffset + 27, color);
             if (slot == 3)
-                drawString(fontRenderer, option.title, width / 2 - 13 - ClientProxy.Font.width(option.title), yoffset - height, color);
+                drawString(fontRenderer, option.title, width / 2 - 13 - ClientProxy.Companion.getFont().width(option.title), yoffset - height, color);
             if (slot == 4)
-                drawString(fontRenderer, option.title, width / 2 - 33 - ClientProxy.Font.width(option.title), yoffset - height / 2 + 14, color);
+                drawString(fontRenderer, option.title, width / 2 - 33 - ClientProxy.Companion.getFont().width(option.title), yoffset - height / 2 + 14, color);
             if (slot == 5)
-                drawString(fontRenderer, option.title, width / 2 - 27 - ClientProxy.Font.width(option.title), yoffset + 27, color);
+                drawString(fontRenderer, option.title, width / 2 - 27 - ClientProxy.Companion.getFont().width(option.title), yoffset + 27, color);
 
         }
         mc.renderEngine.bindTexture(indicator);
@@ -170,10 +170,10 @@ public class GuiDialogInteract extends GuiNPCInterface implements IGuiClose {
     }
 
     private void drawLinedOptions(int j) {
-        drawHorizontalLine(guiLeft - 60, guiLeft + xSize + 120, guiTop + dialogHeight - ClientProxy.Font.height(null) / 3, 0xFFFFFFFF);
+        drawHorizontalLine(guiLeft - 60, guiLeft + xSize + 120, guiTop + dialogHeight - ClientProxy.Companion.getFont().height(null) / 3, 0xFFFFFFFF);
         int offset = dialogHeight;
         if (j >= (guiTop + offset)) {
-            int selected = ((j - (guiTop + offset)) / (ClientProxy.Font.height(null)));
+            int selected = ((j - (guiTop + offset)) / (ClientProxy.Companion.getFont().height(null)));
             if (selected < options.size())
                 this.selected = selected;
         }
@@ -185,7 +185,7 @@ public class GuiDialogInteract extends GuiNPCInterface implements IGuiClose {
         for (int k = 0; k < options.size(); k++) {
             int id = options.get(k);
             DialogOption option = dialog.options.get(id);
-            int y = ((guiTop + offset + (k * ClientProxy.Font.height(null))));
+            int y = ((guiTop + offset + (k * ClientProxy.Companion.getFont().height(null))));
             if (selected == k) {
                 drawString(fontRenderer, ">", guiLeft - 60, y, 0xe0e0e0);
             }
@@ -195,12 +195,12 @@ public class GuiDialogInteract extends GuiNPCInterface implements IGuiClose {
 
     private void drawString(String text, int left, int color, int count) {
         int height = count - rowStart;
-        drawString(fontRenderer, text, guiLeft + left, guiTop + (height * ClientProxy.Font.height(null)), color);
+        drawString(fontRenderer, text, guiLeft + left, guiTop + (height * ClientProxy.Companion.getFont().height(null)), color);
     }
 
     @Override
     public void drawString(FontRenderer fontRendererIn, String text, int x, int y, int color) {
-        ClientProxy.Font.drawString(text, x, y, color);
+        ClientProxy.Companion.getFont().drawString(text, x, y, color);
         //super.drawString(fontRendererIn, text, x, y, color);
     }
 
@@ -299,16 +299,16 @@ public class GuiDialogInteract extends GuiNPCInterface implements IGuiClose {
         if (dialog.showWheel) {
             dialogHeight = ySize - 58;
         } else {
-            dialogHeight = ySize - 3 * ClientProxy.Font.height(null) - 4;
+            dialogHeight = ySize - 3 * ClientProxy.Companion.getFont().height(null) - 4;
             if (dialog.options.size() > 3) {
-                dialogHeight -= (dialog.options.size() - 3) * ClientProxy.Font.height(null);
+                dialogHeight -= (dialog.options.size() - 3) * ClientProxy.Companion.getFont().height(null);
             }
         }
         rowTotal = 0;
         for (TextBlockClient block : lines) {
             rowTotal += block.lines.size() + 1;
         }
-        int max = dialogHeight / ClientProxy.Font.height(null);
+        int max = dialogHeight / ClientProxy.Companion.getFont().height(null);
 
         rowStart = rowTotal - max;
         if (rowStart < 0)

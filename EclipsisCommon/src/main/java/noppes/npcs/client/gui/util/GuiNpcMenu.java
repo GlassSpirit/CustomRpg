@@ -5,7 +5,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiYesNo;
 import net.minecraft.client.gui.GuiYesNoCallback;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import noppes.npcs.CustomNpcs;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.NoppesUtil;
@@ -59,7 +59,7 @@ public class GuiNpcMenu implements GuiYesNoCallback {
             close();
             return;
         } else if (id == 66) {
-            GuiYesNo guiyesno = new GuiYesNo(this, "", I18n.translateToLocal("gui.deleteMessage"), 0);
+            GuiYesNo guiyesno = new GuiYesNo(this, "", I18n.format("gui.deleteMessage"), 0);
             mc.displayGuiScreen(guiyesno);
             return;
         }

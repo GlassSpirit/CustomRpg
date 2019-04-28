@@ -1,0 +1,23 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "plant_tinted_model1",
+    "textures": {
+      "texture": "conquest:blocks/thick_fern"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {},
+      {
+        "model": "plant_tinted_model2"
+      },
+      {
+        "model": "plant_tinted_model3"
+      }
+    ]
+  }
+}

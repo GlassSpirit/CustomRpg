@@ -22,7 +22,7 @@ public class CustomNpcResourceListener implements IResourceManagerReloadListener
 
             SimpleReloadableResourceManager simplemanager = (SimpleReloadableResourceManager) var1;
 
-            FolderResourcePack pack = new FolderResourcePack(CustomNpcs.Dir);
+            FolderResourcePack pack = new FolderResourcePack(CustomNpcs.INSTANCE.getDir());
             simplemanager.reloadResourcePack(pack);
 
             try {

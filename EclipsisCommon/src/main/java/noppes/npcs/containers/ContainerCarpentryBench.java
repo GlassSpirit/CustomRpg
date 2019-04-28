@@ -8,9 +8,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketSetSlot;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import noppes.npcs.CustomItems;
 import noppes.npcs.controllers.RecipeController;
 import noppes.npcs.controllers.data.RecipeCarpentry;
+import noppes.npcs.objects.NpcObjects;
 
 public class ContainerCarpentryBench extends Container {
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);
@@ -82,7 +82,7 @@ public class ContainerCarpentryBench extends Container {
 
     @Override
     public boolean canInteractWith(EntityPlayer par1EntityPlayer) {
-        return this.worldObj.getBlockState(pos).getBlock() == CustomItems.carpentyBench && par1EntityPlayer.getDistanceSq(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) <= 64.0D;
+        return this.worldObj.getBlockState(pos).getBlock() == NpcObjects.carpentyBench && par1EntityPlayer.getDistanceSq(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) <= 64.0D;
     }
 
     /**

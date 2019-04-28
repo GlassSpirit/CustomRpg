@@ -2,14 +2,12 @@ package noppes.npcs;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
 import net.minecraftforge.fml.relauncher.Side;
-import noppes.npcs.client.AnalyticsTracking;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.SyncType;
 import noppes.npcs.controllers.MassBlockController;
@@ -20,12 +18,11 @@ import noppes.npcs.entity.data.DataScenes;
 import noppes.npcs.entity.data.DataScenes.SceneContainer;
 import noppes.npcs.entity.data.DataScenes.SceneState;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 
 public class ServerTickHandler {
     public int ticks = 0;
+    private String serverName = null;
 
     @SubscribeEvent
     public void onServerTick(TickEvent.PlayerTickEvent event) {
@@ -61,33 +58,13 @@ public class ServerTickHandler {
             for (SceneContainer entry : DataScenes.ScenesToRun) {
                 entry.update();
             }
-            DataScenes.ScenesToRun = new ArrayList<SceneContainer>();
+            DataScenes.ScenesToRun = new ArrayList<>();
 
         }
     }
 
-    private String serverName = null;
-
     @SubscribeEvent
     public void playerLogin(PlayerEvent.PlayerLoggedInEvent event) {
-        if (serverName == null) {
-            String e = "local";
-            MinecraftServer server = event.player.getServer();
-            if (server.isDedicatedServer()) {
-                try {
-                    e = InetAddress.getByName(server.getServerHostname()).getCanonicalHostName();
-                } catch (UnknownHostException e1) {
-                    e = server.getServerHostname();
-                }
-                if (server.getServerPort() != 25565)
-                    e += ":" + server.getServerPort();
-            }
-            if (e == null || e.startsWith("192.168") || e.contains("127.0.0.1") || e.startsWith("localhost"))
-                e = "local";
-            serverName = e;
-        }
-        AnalyticsTracking.sendData(event.player, "join", serverName);
-
         SyncController.syncPlayer((EntityPlayerMP) event.player);
     }
 }

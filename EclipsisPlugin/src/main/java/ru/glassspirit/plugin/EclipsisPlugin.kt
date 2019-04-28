@@ -63,7 +63,7 @@ class EclipsisPlugin @Inject constructor() {
             config.save(node)
             reloadReflectingConfig()
         } catch (e: Exception) {
-            logger.error("Could not load config", e)
+            logger.error("Could not init config", e)
         }
     }
 

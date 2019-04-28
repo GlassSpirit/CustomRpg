@@ -72,7 +72,7 @@ public class GuiNpcQuestTypeItem extends GuiContainerNPCInterface implements ITe
 //    	for(int i= 0;i < container.invMatrix.getSizeInventory();i++){
 //    		ItemStack item = container.invMatrix.getStackInSlot(i);
 //    		if(item != null)
-//    			map.put(i, item.copy());
+//    			map.put(i, item.copyBlock());
 //        }
 //    	((QuestItem)quest.questInterface).items = map;
 //    	QuestController.saveQuest(quest);

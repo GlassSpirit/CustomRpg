@@ -28,9 +28,9 @@ public abstract class LayerInterface implements LayerRenderer {
 
     public void preRender(ModelPartData data) {
         if (data.playerTexture)
-            ClientProxy.bindTexture(npc.textureLocation);
+            ClientProxy.Companion.bindTexture(npc.textureLocation);
         else
-            ClientProxy.bindTexture(data.getResource());
+            ClientProxy.Companion.bindTexture(data.getResource());
         if (npc.hurtTime > 0 || npc.deathTime > 0) {
             return;
         }

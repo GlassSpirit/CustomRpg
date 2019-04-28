@@ -57,7 +57,7 @@ public class RoleTrader extends RoleInterface implements IRoleTrader {
         marketName = nbttagcompound.getString("TraderMarket");
         readNBT(nbttagcompound);
         try {
-            //Market.load(this, marketName);
+            //Market.init(this, marketName);
         } catch (Exception ex) {
             LogWriter.except(ex);
 
@@ -192,7 +192,7 @@ public class RoleTrader extends RoleInterface implements IRoleTrader {
     }
 
     private static File getFile(String name) {
-        File dir = new File(CustomNpcs.getWorldSaveDirectory(), "markets");
+        File dir = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "markets");
         if (!dir.exists())
             dir.mkdir();
         return new File(dir, name.toLowerCase() + ".json");

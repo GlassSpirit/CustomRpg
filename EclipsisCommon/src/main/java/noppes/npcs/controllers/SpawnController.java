@@ -13,8 +13,8 @@ import java.util.*;
 import java.util.zip.GZIPInputStream;
 
 public class SpawnController {
-    public HashMap<String, List<SpawnData>> biomes = new HashMap<String, List<SpawnData>>();
-    public ArrayList<SpawnData> data = new ArrayList<SpawnData>();
+    public HashMap<String, List<SpawnData>> biomes = new HashMap<>();
+    public ArrayList<SpawnData> data = new ArrayList<>();
     public Random random = new Random();
 
     public static SpawnController instance;
@@ -29,7 +29,7 @@ public class SpawnController {
 
     private void loadData() {
 
-        File saveDir = CustomNpcs.getWorldSaveDirectory();
+        File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
         if (saveDir == null) {
             return;
         }
@@ -57,7 +57,7 @@ public class SpawnController {
     }
 
     public void loadData(DataInputStream stream) throws IOException {
-        ArrayList<SpawnData> data = new ArrayList<SpawnData>();
+        ArrayList<SpawnData> data = new ArrayList<>();
         NBTTagCompound nbttagcompound1 = CompressedStreamTools.read(stream);
         lastUsedID = nbttagcompound1.getInteger("lastID");
         NBTTagList nbtlist = nbttagcompound1.getTagList("NPCSpawnData", 10);
@@ -89,7 +89,7 @@ public class SpawnController {
 
     public void saveData() {
         try {
-            File saveDir = CustomNpcs.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
             File file = new File(saveDir, "spawns.dat_new");
             File file1 = new File(saveDir, "spawns.dat_old");
             File file2 = new File(saveDir, "spawns.dat");
@@ -131,12 +131,12 @@ public class SpawnController {
     }
 
     private void fillBiomeData() {
-        HashMap<String, List<SpawnData>> biomes = new HashMap<String, List<SpawnData>>();
+        HashMap<String, List<SpawnData>> biomes = new HashMap<>();
         for (SpawnData spawn : data) {
             for (String s : spawn.biomes) {
                 List<SpawnData> list = biomes.get(s);
                 if (list == null)
-                    biomes.put(s, (list = new ArrayList<SpawnData>()));
+                    biomes.put(s, (list = new ArrayList<>()));
                 list.add(spawn);
             }
         }
@@ -149,7 +149,7 @@ public class SpawnController {
     }
 
     public void removeSpawnData(int id) {
-        ArrayList<SpawnData> data = new ArrayList<SpawnData>();
+        ArrayList<SpawnData> data = new ArrayList<>();
 
         for (SpawnData spawn : this.data) {
             if (spawn.id == id)
@@ -174,7 +174,7 @@ public class SpawnController {
     }
 
     public Map<String, Integer> getScroll() {
-        Map<String, Integer> map = new HashMap<String, Integer>();
+        Map<String, Integer> map = new HashMap<>();
         for (SpawnData spawn : data) {
             map.put(spawn.name, spawn.id);
         }

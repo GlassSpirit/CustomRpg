@@ -143,7 +143,7 @@ public class BlueprintUtil {
             for (int i = 0; i < modListSize; i++) {
                 requiredMods.add(((NBTTagString) modsList.get(i)).getString());
                 if (!Loader.isModLoaded(requiredMods.get(i))) {
-                    Logger.getGlobal().log(Level.WARNING, "Couldn't load Blueprint, the following mod is missing: " + requiredMods.get(i));
+                    Logger.getGlobal().log(Level.WARNING, "Couldn't init Blueprint, the following mod is missing: " + requiredMods.get(i));
                     return null;
                 }
             }

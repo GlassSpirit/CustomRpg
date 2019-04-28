@@ -15,10 +15,10 @@ import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import noppes.npcs.LogWriter;
 import noppes.npcs.api.constants.MarkType;
-import noppes.npcs.blocks.tiles.TileBuilder;
 import noppes.npcs.client.renderer.MarkRenderer;
 import noppes.npcs.controllers.data.MarkData;
 import noppes.npcs.controllers.data.MarkData.Mark;
+import noppes.npcs.objects.blocks.tiles.TileBuilder;
 import noppes.npcs.schematics.SchematicWrapper;
 import org.lwjgl.opengl.GL11;
 
@@ -87,7 +87,7 @@ public class ClientEventHandler {
 
                 }
             } catch (Exception e) {
-                LogWriter.error("Error preview builder block", e);
+                LogWriter.error("Error preview builderBlock block", e);
             } finally {
                 GL11.glEndList();
                 if (GL11.glGetError() == 0)

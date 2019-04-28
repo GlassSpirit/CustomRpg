@@ -7,7 +7,6 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetHandlerPlayServer;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ServerCustomPacketEvent;
 import noppes.npcs.api.constants.RoleType;
 import noppes.npcs.api.event.ItemEvent;
@@ -24,7 +23,8 @@ import noppes.npcs.controllers.PlayerQuestController;
 import noppes.npcs.controllers.ScriptController;
 import noppes.npcs.controllers.data.*;
 import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.items.ItemScripted;
+import noppes.npcs.objects.NpcObjects;
+import noppes.npcs.objects.items.ItemScripted;
 import noppes.npcs.roles.RoleCompanion;
 import noppes.npcs.roles.RoleTransporter;
 
@@ -32,7 +32,7 @@ import java.util.Iterator;
 
 public class PacketHandlerPlayer {
 
-    @SubscribeEvent
+    //@SubscribeEvent
     public void onServerPacket(ServerCustomPacketEvent event) {
         final EntityPlayerMP player = ((NetHandlerPlayServer) event.getHandler()).player;
         final ByteBuf buffer = event.getPacket().payload();
@@ -53,15 +53,15 @@ public class PacketHandlerPlayer {
     private void player(ByteBuf buffer, EntityPlayerMP player, EnumPlayerPacket type) throws Exception {
         if (type == EnumPlayerPacket.MarkData) {
             Entity entity = player.getServer().getEntityFromUuid(Server.readUUID(buffer));
-            if (entity == null || !(entity instanceof EntityLivingBase))
+            if (!(entity instanceof EntityLivingBase))
                 return;
             MarkData data = MarkData.get((EntityLivingBase) entity);
         } else if (type == EnumPlayerPacket.KeyPressed) {
-            if (!CustomNpcs.EnableScripting || ScriptController.Instance.languages.isEmpty())
+            if (!CustomNpcsConfig.EnableScripting || ScriptController.Instance.languages.isEmpty())
                 return;
             EventHooks.onPlayerKeyPressed(player, buffer.readInt(), buffer.readBoolean(), buffer.readBoolean(), buffer.readBoolean(), buffer.readBoolean());
         } else if (type == EnumPlayerPacket.LeftClick) {
-            if (!CustomNpcs.EnableScripting || ScriptController.Instance.languages.isEmpty())
+            if (!CustomNpcsConfig.EnableScripting || ScriptController.Instance.languages.isEmpty())
                 return;
             ItemStack item = player.getHeldItemMainhand();
 
@@ -69,7 +69,7 @@ public class PacketHandlerPlayer {
             PlayerEvent.AttackEvent ev = new PlayerEvent.AttackEvent(handler.getPlayer(), 0, null);
             EventHooks.onPlayerAttack(handler, ev);
 
-            if (item.getItem() == CustomItems.scripted_item) {
+            if (item.getItem() == NpcObjects.scriptedItem) {
                 ItemScriptedWrapper isw = ItemScripted.GetWrapper(item);
                 ItemEvent.AttackEvent eve = new ItemEvent.AttackEvent(isw, handler.getPlayer(), 0, null);
                 EventHooks.onScriptItemAttack(isw, eve);
@@ -210,7 +210,7 @@ public class PacketHandlerPlayer {
                 PlayerMail mail = it.next();
                 if (mail.time == time && mail.sender.equals(username)) {
                     ContainerMail.staticmail = mail;
-                    player.openGui(CustomNpcs.instance, EnumGuiType.PlayerMailman.ordinal(), player.world, 0, 0, 0);
+                    player.openGui(CustomNpcs.INSTANCE, EnumGuiType.PlayerMailman.ordinal(), player.world, 0, 0, 0);
                     break;
                 }
             }

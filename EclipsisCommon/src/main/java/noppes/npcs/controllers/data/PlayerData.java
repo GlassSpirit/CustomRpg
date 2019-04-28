@@ -18,7 +18,7 @@ import noppes.npcs.entity.EntityCustomNpc;
 import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.entity.data.DataTimers;
 import noppes.npcs.roles.RoleCompanion;
-import noppes.npcs.util.CustomNPCsScheduler;
+import noppes.npcs.util.CustomNpcsScheduler;
 import noppes.npcs.util.NBTJsonUtil;
 
 import java.io.File;
@@ -182,9 +182,9 @@ public class PlayerData implements ICapabilityProvider {
         final NBTTagCompound compound = getNBT();
         final String filename = uuid + ".json";
 
-        CustomNPCsScheduler.runTack(() -> {
+        CustomNpcsScheduler.runTack(() -> {
             try {
-                File saveDir = CustomNpcs.getWorldSaveDirectory("playerdata");
+                File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory("playerdata");
                 File file = new File(saveDir, filename + "_new");
                 File file1 = new File(saveDir, filename);
                 NBTJsonUtil.SaveFile(file, compound);
@@ -202,7 +202,7 @@ public class PlayerData implements ICapabilityProvider {
     }
 
     public static NBTTagCompound loadPlayerDataOld(String player) {
-        File saveDir = CustomNpcs.getWorldSaveDirectory("playerdata");
+        File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory("playerdata");
         String filename = player;
         if (filename.isEmpty())
             filename = "noplayername";
@@ -234,7 +234,7 @@ public class PlayerData implements ICapabilityProvider {
     }
 
     public static NBTTagCompound loadPlayerData(String player) {
-        File saveDir = CustomNpcs.getWorldSaveDirectory("playerdata");
+        File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory("playerdata");
         String filename = player;
         if (filename.isEmpty())
             filename = "noplayername";

@@ -21,9 +21,9 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 public class FactionController implements IFactionHandler {
-    public HashMap<Integer, Faction> factionsSync = new HashMap<Integer, Faction>();
+    public HashMap<Integer, Faction> factionsSync = new HashMap<>();
 
-    public HashMap<Integer, Faction> factions = new HashMap<Integer, Faction>();
+    public HashMap<Integer, Faction> factions = new HashMap<>();
 
     public static FactionController instance = new FactionController();
 
@@ -37,10 +37,10 @@ public class FactionController implements IFactionHandler {
     }
 
     public void load() {
-        factions = new HashMap<Integer, Faction>();
+        factions = new HashMap<>();
         lastUsedID = 0;
         try {
-            File saveDir = CustomNpcs.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
             if (saveDir == null) {
                 return;
             }
@@ -76,7 +76,7 @@ public class FactionController implements IFactionHandler {
     }
 
     public void loadFactions(DataInputStream stream) throws IOException {
-        HashMap<Integer, Faction> factions = new HashMap<Integer, Faction>();
+        HashMap<Integer, Faction> factions = new HashMap<>();
         NBTTagCompound nbttagcompound1 = CompressedStreamTools.read(stream);
         lastUsedID = nbttagcompound1.getInteger("lastID");
         NBTTagList list = nbttagcompound1.getTagList("NPCFactions", 10);
@@ -108,7 +108,7 @@ public class FactionController implements IFactionHandler {
 
     public void saveFactions() {
         try {
-            File saveDir = CustomNpcs.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
             File file = new File(saveDir, "factions.dat_new");
             File file1 = new File(saveDir, "factions.dat_old");
             File file2 = new File(saveDir, "factions.dat");
@@ -146,7 +146,7 @@ public class FactionController implements IFactionHandler {
         }
         factions.remove(faction.id);
         factions.put(faction.id, faction);
-        Server.sendToAll(CustomNpcs.Server, EnumPacketClient.SYNC_UPDATE, SyncType.FACTION, faction.writeNBT(new NBTTagCompound()));
+        Server.sendToAll(CustomNpcs.INSTANCE.getServer(), EnumPacketClient.SYNC_UPDATE, SyncType.FACTION, faction.writeNBT(new NBTTagCompound()));
         saveFactions();
     }
 
@@ -160,6 +160,7 @@ public class FactionController implements IFactionHandler {
         return lastUsedID;
     }
 
+    @Override
     public IFaction delete(int id) {
         if (id < 0 || factions.size() <= 1)
             return null;
@@ -168,7 +169,7 @@ public class FactionController implements IFactionHandler {
             return null;
         saveFactions();
         faction.id = -1;
-        Server.sendToAll(CustomNpcs.Server, EnumPacketClient.SYNC_REMOVE, SyncType.FACTION, id);
+        Server.sendToAll(CustomNpcs.INSTANCE.getServer(), EnumPacketClient.SYNC_REMOVE, SyncType.FACTION, id);
         return faction;
     }
 
@@ -210,7 +211,7 @@ public class FactionController implements IFactionHandler {
 
     @Override
     public List<IFaction> list() {
-        return new ArrayList<IFaction>(factions.values());
+        return new ArrayList<>(factions.values());
     }
 
     @Override

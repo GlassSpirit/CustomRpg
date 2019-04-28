@@ -19,8 +19,8 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class TransportController {
-    private HashMap<Integer, TransportLocation> locations = new HashMap<Integer, TransportLocation>();
-    public HashMap<Integer, TransportCategory> categories = new HashMap<Integer, TransportCategory>();
+    private HashMap<Integer, TransportLocation> locations = new HashMap<>();
+    public HashMap<Integer, TransportCategory> categories = new HashMap<>();
 
     private int lastUsedID = 0;
 
@@ -38,7 +38,7 @@ public class TransportController {
     }
 
     private void loadCategories() {
-        File saveDir = CustomNpcs.getWorldSaveDirectory();
+        File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
         if (saveDir == null)
             return;
         try {
@@ -61,8 +61,8 @@ public class TransportController {
     }
 
     public void loadCategories(File file) throws IOException {
-        HashMap<Integer, TransportLocation> locations = new HashMap<Integer, TransportLocation>();
-        HashMap<Integer, TransportCategory> categories = new HashMap<Integer, TransportCategory>();
+        HashMap<Integer, TransportLocation> locations = new HashMap<>();
+        HashMap<Integer, TransportCategory> categories = new HashMap<>();
         NBTTagCompound nbttagcompound1 = CompressedStreamTools.readCompressed(new FileInputStream(file));
         lastUsedID = nbttagcompound1.getInteger("lastID");
         NBTTagList list = nbttagcompound1.getTagList("NPCTransportCategories", 10);
@@ -98,7 +98,7 @@ public class TransportController {
 
     public void saveCategories() {
         try {
-            File saveDir = CustomNpcs.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
             File file = new File(saveDir, "transport.dat_new");
             File file1 = new File(saveDir, "transport.dat_old");
             File file2 = new File(saveDir, "transport.dat");

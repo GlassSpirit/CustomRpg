@@ -1,7 +1,5 @@
 package noppes.npcs.client.gui.player;
 
-import micdoodle8.mods.galacticraft.api.client.tabs.InventoryTabQuests;
-import micdoodle8.mods.galacticraft.api.client.tabs.TabRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -26,22 +24,18 @@ import java.util.List;
 public class GuiQuestLog extends GuiNPCInterface implements ITopButtonListener, ICustomScrollListener {
 
     private final ResourceLocation resource = new ResourceLocation("customnpcs", "textures/gui/standardbg.png");
-
-    public HashMap<String, List<Quest>> activeQuests = new HashMap<String, List<Quest>>();
-    private HashMap<String, Quest> categoryQuests = new HashMap<String, Quest>();
+    private final int maxLines = 10;
+    public HashMap<String, List<Quest>> activeQuests = new HashMap<>();
     public Quest selectedQuest = null;
     public String selectedCategory = "";
+    TextBlockClient textblock = null;
+    private HashMap<String, Quest> categoryQuests = new HashMap<>();
     private EntityPlayer player;
     private GuiCustomScroll scroll;
-    private HashMap<Integer, GuiMenuSideButton> sideButtons = new HashMap<Integer, GuiMenuSideButton>();
+    private HashMap<Integer, GuiMenuSideButton> sideButtons = new HashMap<>();
     private boolean noQuests = false;
-
-    private final int maxLines = 10;
     private int currentPage = 0;
     private int maxPages = 1;
-
-    TextBlockClient textblock = null;
-
     private Minecraft mc = Minecraft.getMinecraft();
 
     public GuiQuestLog(EntityPlayer player) {
@@ -58,7 +52,7 @@ public class GuiQuestLog extends GuiNPCInterface implements ITopButtonListener, 
         for (Quest quest : PlayerQuestController.getActiveQuests(player)) {
             String category = quest.category.title;
             if (!activeQuests.containsKey(category))
-                activeQuests.put(category, new ArrayList<Quest>());
+                activeQuests.put(category, new ArrayList<>());
             List<Quest> list = activeQuests.get(category);
             list.add(quest);
         }
@@ -66,16 +60,13 @@ public class GuiQuestLog extends GuiNPCInterface implements ITopButtonListener, 
         sideButtons.clear();
         guiTop += 10;
 
-        TabRegistry.updateTabValues(guiLeft, guiTop, InventoryTabQuests.class);
-        TabRegistry.addTabsToList(buttonList);
-
         noQuests = false;
 
         if (activeQuests.isEmpty()) {
             noQuests = true;
             return;
         }
-        List<String> categories = new ArrayList<String>();
+        List<String> categories = new ArrayList<>();
         categories.addAll(activeQuests.keySet());
         Collections.sort(categories, new NaturalOrderComparator());
         int i = 0;
@@ -90,13 +81,13 @@ public class GuiQuestLog extends GuiNPCInterface implements ITopButtonListener, 
         if (scroll == null)
             scroll = new GuiCustomScroll(this, 0);
 
-        HashMap<String, Quest> categoryQuests = new HashMap<String, Quest>();
+        HashMap<String, Quest> categoryQuests = new HashMap<>();
         for (Quest q : activeQuests.get(selectedCategory)) {
             categoryQuests.put(q.title, q);
         }
         this.categoryQuests = categoryQuests;
 
-        scroll.setList(new ArrayList<String>(categoryQuests.keySet()));
+        scroll.setList(new ArrayList<>(categoryQuests.keySet()));
         scroll.setSize(134, 174);
         scroll.guiLeft = guiLeft + 5;
         scroll.guiTop = guiTop + 15;
@@ -196,7 +187,7 @@ public class GuiQuestLog extends GuiNPCInterface implements ITopButtonListener, 
         if (k == 0) {
             if (scroll != null)
                 scroll.mouseClicked(i, j, k);
-            for (GuiMenuSideButton button : new ArrayList<GuiMenuSideButton>(sideButtons.values())) {
+            for (GuiMenuSideButton button : new ArrayList<>(sideButtons.values())) {
                 if (button.mousePressed(mc, i, j)) {
                     sideButtonPressed(button);
                 }

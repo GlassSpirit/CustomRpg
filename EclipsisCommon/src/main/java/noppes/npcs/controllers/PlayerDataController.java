@@ -27,8 +27,8 @@ public class PlayerDataController {
 
     public PlayerDataController() {
         instance = this;
-        File dir = CustomNpcs.getWorldSaveDirectory("playerdata");
-        Map<String, String> map = new HashMap<String, String>();
+        File dir = CustomNpcs.INSTANCE.getWorldSaveDirectory("playerdata");
+        Map<String, String> map = new HashMap<>();
         for (File file : dir.listFiles()) {
             if (file.isDirectory() || !file.getName().endsWith(".json"))
                 continue;
@@ -88,7 +88,7 @@ public class PlayerDataController {
     }
 
     public List<PlayerData> getPlayersData(ICommandSender sender, String username) throws CommandException {
-        ArrayList<PlayerData> list = new ArrayList<PlayerData>();
+        ArrayList<PlayerData> list = new ArrayList<>();
         List<EntityPlayerMP> players = EntitySelector.matchEntities(sender, username, EntityPlayerMP.class);
         if (players.isEmpty()) {
             PlayerData data = getDataFromUsername(sender.getServer(), username);

@@ -3,10 +3,10 @@ package noppes.npcs.client.gui.player;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.NoppesUtilPlayer;
 import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.client.CustomNpcResourceListener;
@@ -36,9 +36,10 @@ public class GuiNpcFollower extends GuiContainerNPCInterface implements IGuiData
     public void initGui() {
         super.initGui();
         buttonList.clear();
-        addButton(new GuiNpcButton(4, guiLeft + 100, guiTop + 110, 50, 20, new String[]{I18n.translateToLocal("follower.waiting"), I18n.translateToLocal("follower.following")}, role.isFollowing ? 1 : 0));
+        addButton(new GuiNpcButton(4, guiLeft + 100, guiTop + 110, 50, 20, new String[]{I18n.format("follower.waiting"), I18n.format(
+                "follower.following")}, role.isFollowing ? 1 : 0));
         if (!role.infiniteDays)
-            addButton(new GuiNpcButton(5, guiLeft + 8, guiTop + 30, 50, 20, I18n.translateToLocal("follower.hire")));
+            addButton(new GuiNpcButton(5, guiLeft + 8, guiTop + 30, 50, 20, I18n.format("follower.hire")));
     }
 
     @Override
@@ -55,12 +56,12 @@ public class GuiNpcFollower extends GuiContainerNPCInterface implements IGuiData
 
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
-        fontRenderer.drawString(I18n.translateToLocal("follower.health") + ": " + npc.getHealth() + "/" + npc.getMaxHealth(), 62, 70, CustomNpcResourceListener.DefaultTextColor);
+        fontRenderer.drawString(I18n.format("follower.health") + ": " + npc.getHealth() + "/" + npc.getMaxHealth(), 62, 70, CustomNpcResourceListener.DefaultTextColor);
         if (!role.infiniteDays) {
             if (role.getDays() <= 1)
-                fontRenderer.drawString(I18n.translateToLocal("follower.daysleft") + ": " + I18n.translateToLocal("follower.lastday"), 62, 94, CustomNpcResourceListener.DefaultTextColor);
+                fontRenderer.drawString(I18n.format("follower.daysleft") + ": " + I18n.format("follower.lastday"), 62, 94, CustomNpcResourceListener.DefaultTextColor);
             else
-                fontRenderer.drawString(I18n.translateToLocal("follower.daysleft") + ": " + (role.getDays() - 1), 62, 94, CustomNpcResourceListener.DefaultTextColor);
+                fontRenderer.drawString(I18n.format("follower.daysleft") + ": " + (role.getDays() - 1), 62, 94, CustomNpcResourceListener.DefaultTextColor);
         }
     }
 
@@ -92,7 +93,7 @@ public class GuiNpcFollower extends GuiContainerNPCInterface implements IGuiData
                 RenderHelper.disableStandardItemLighting();
                 GlStateManager.disableRescaleNormal();
 
-                String daysS = days + " " + ((days == 1) ? I18n.translateToLocal("follower.day") : I18n.translateToLocal("follower.days"));
+                String daysS = days + " " + ((days == 1) ? I18n.format("follower.day") : I18n.format("follower.days"));
                 fontRenderer.drawString(" = " + daysS, x + 27, y + 4, CustomNpcResourceListener.DefaultTextColor);
                 //fontRenderer.drawString(quantity, x + 0 + (12-fontRenderer.getStringWidth(quantity))/2, y + 4, 0x404040);
 

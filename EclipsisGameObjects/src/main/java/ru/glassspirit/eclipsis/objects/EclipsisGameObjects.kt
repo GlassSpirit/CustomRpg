@@ -25,21 +25,21 @@ object EclipsisItems {
     /*val testItem = object : ItemMod("test_item") {
         override fun onItemRightClick(worldIn: World, playerIn: EntityPlayer, handIn: EnumHand): ActionResult<ItemStack> {
             if (worldIn.isRemote) {
-                val builder = ParticleBuilder(500)
-                builder.setDeceleration(vec(1, 0, 1))
-                builder.disableRandom()
-                //builder.setColorFunction(InterpColorHSV(Color.WHITE, Color.YELLOW))
-                //builder.setAcceleration(vec(0, -0.05, 0))
-                //builder.setCollision(true)
+                val builderBlock = ParticleBuilder(500)
+                builderBlock.setDeceleration(vec(1, 0, 1))
+                builderBlock.disableRandom()
+                //builderBlock.setColorFunction(InterpColorHSV(Color.WHITE, Color.YELLOW))
+                //builderBlock.setAcceleration(vec(0, -0.05, 0))
+                //builderBlock.setCollision(true)
                 val loc = ResourceLocation("items/snowball")
                 if (playerIn.isSneaking) {
-                    builder.setRender(loc)
+                    builderBlock.setRender(loc)
                 } else {
-                    builder.setRenderNormalLayer(loc)
+                    builderBlock.setRenderNormalLayer(loc)
                 }
-                builder.setRotation(InterpLinearFloat(0f, 3 * Math.PI.toFloat()))
+                builderBlock.setRotation(InterpLinearFloat(0f, 3 * Math.PI.toFloat()))
 
-                ParticleSpawner.spawn(builder, worldIn,
+                ParticleSpawner.spawn(builderBlock, worldIn,
                         InterpHelix(playerIn.getPositionEyes(0f).add(playerIn.getLook(Minecraft().renderPartialTicks)),
                                 playerIn.getPositionEyes(0f).add(playerIn.getLook(Minecraft().renderPartialTicks) * 0.1),
                                 1f, 2f, 5f, 0f), 300, 200)

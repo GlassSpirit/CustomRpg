@@ -18,6 +18,7 @@ object ConquestBlocks {
         ConquestBlocksLayers
         ConquestBlocksCarpets
         ConquestBlocksNoCollision
+        ConquestBlocksOther
     }
 }
 

@@ -3,10 +3,10 @@ package noppes.npcs.client.gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
-import noppes.npcs.blocks.tiles.TileCopy;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
+import noppes.npcs.objects.blocks.tiles.TileCopy;
 
 public class GuiBlockCopy extends GuiNPCInterface implements IGuiData, ITextfieldListener {
     private int x, y, z;
@@ -52,7 +52,7 @@ public class GuiBlockCopy extends GuiNPCInterface implements IGuiData, ITextfiel
         addTextField(new GuiNpcTextField(5, this, guiLeft + 104, y += 23, 100, 20, ""));
         addLabel(new GuiNpcLabel(5, "gui.name", guiLeft + 5, y + 5));
 
-        addButton(new GuiNpcButton(6, guiLeft + 5, y += 23, 200, 20, 0, "copy.schematic", "copy.blueprint"));
+        addButton(new GuiNpcButton(6, guiLeft + 5, y += 23, 200, 20, 0, "copyBlock.schematic", "copyBlock.blueprint"));
 
         addButton(new GuiNpcButton(0, guiLeft + 5, y += 30, 60, 20, "gui.save"));
         addButton(new GuiNpcButton(1, guiLeft + 67, y, 60, 20, "gui.cancel"));

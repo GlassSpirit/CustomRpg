@@ -31,7 +31,7 @@ public class SchematicController {
 
 
     public List<String> list() {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         list.addAll(included);
         for (File file : getDir().listFiles()) {
             String name = file.getName();
@@ -44,7 +44,7 @@ public class SchematicController {
     }
 
     public File getDir() {
-        File dir = new File(CustomNpcs.getWorldSaveDirectory(), "schematics");
+        File dir = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "schematics");
         if (!dir.exists())
             dir.mkdir();
 

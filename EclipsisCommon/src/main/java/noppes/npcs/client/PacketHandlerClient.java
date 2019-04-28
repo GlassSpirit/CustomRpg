@@ -39,7 +39,8 @@ import noppes.npcs.controllers.data.MarkData;
 import noppes.npcs.entity.EntityCustomNpc;
 import noppes.npcs.entity.EntityDialogNpc;
 import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.items.ItemScripted;
+import noppes.npcs.objects.NpcObjects;
+import noppes.npcs.objects.items.ItemScripted;
 
 import java.util.Map.Entry;
 
@@ -111,15 +112,15 @@ public class PacketHandlerClient extends PacketHandlerServer {
             SyncController.clientSync(synctype, compound, type == EnumPacketClient.SYNC_END);
 
             if (synctype == SyncType.PLAYER_DATA) {
-                ClientProxy.playerData.setNBT(compound);
+                ClientProxy.Companion.getPlayerData().setNBT(compound);
             } else if (synctype == SyncType.SCRIPTED_ITEM_RESOURCES) {
                 if (player.getServer() == null) {
                     ItemScripted.Resources = NBTTags.getIntegerStringMap(compound.getTagList("List", 10));
                 }
                 for (Entry<Integer, String> entry : ItemScripted.Resources.entrySet()) {
                     ModelResourceLocation mrl = new ModelResourceLocation(entry.getValue(), "inventory");
-                    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(CustomItems.scripted_item, entry.getKey(), mrl);
-                    ModelLoader.setCustomModelResourceLocation(CustomItems.scripted_item, entry.getKey(), mrl);
+                    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(NpcObjects.scriptedItem, entry.getKey(), mrl);
+                    ModelLoader.setCustomModelResourceLocation(NpcObjects.scriptedItem, entry.getKey(), mrl);
                 }
             }
         } else if (type == EnumPacketClient.SYNC_UPDATE) {
@@ -133,14 +134,14 @@ public class PacketHandlerClient extends PacketHandlerServer {
             SyncController.clientSyncRemove(synctype, id);
         } else if (type == EnumPacketClient.MARK_DATA) {
             Entity entity = Minecraft.getMinecraft().world.getEntityByID(buffer.readInt());
-            if (entity == null || !(entity instanceof EntityLivingBase))
+            if (!(entity instanceof EntityLivingBase))
                 return;
             MarkData data = MarkData.get((EntityLivingBase) entity);
             data.setNBT(Server.readNBT(buffer));
         } else if (type == EnumPacketClient.DIALOG) {
             Entity entity = Minecraft.getMinecraft().world.getEntityByID(buffer.readInt());
 
-            if (entity == null || !(entity instanceof EntityNPCInterface))
+            if (!(entity instanceof EntityNPCInterface))
                 return;
             Dialog dialog = DialogController.instance.dialogs.get(buffer.readInt());
             NoppesUtil.openDialog(dialog, (EntityNPCInterface) entity, player);
@@ -258,14 +259,14 @@ public class PacketHandlerClient extends PacketHandlerServer {
                 final int size = buffer.readInt();
                 Runnable run = () -> {
                     if (!font.isEmpty()) {
-                        CustomNpcs.FontType = font;
-                        CustomNpcs.FontSize = size;
-                        ClientProxy.Font.clear();
-                        ClientProxy.Font = new FontContainer(CustomNpcs.FontType, CustomNpcs.FontSize);
-                        CustomNpcs.Config.updateConfig();
-                        player.sendMessage(new TextComponentTranslation("Font set to %s", ClientProxy.Font.getName()));
+                        CustomNpcsConfig.FontType = font;
+                        CustomNpcsConfig.FontSize = size;
+                        ClientProxy.Companion.getFont().clear();
+                        ClientProxy.Companion.setFont(new FontContainer(CustomNpcsConfig.FontType, CustomNpcsConfig.FontSize));
+                        CustomNpcsConfig.INSTANCE.updateConfig();
+                        player.sendMessage(new TextComponentTranslation("Font set to %s", ClientProxy.Companion.getFont().getName()));
                     } else
-                        player.sendMessage(new TextComponentTranslation("Current font is %s", ClientProxy.Font.getName()));
+                        player.sendMessage(new TextComponentTranslation("Current font is %s", ClientProxy.Companion.getFont().getName()));
                 };
                 Minecraft.getMinecraft().addScheduledTask(run);
             }

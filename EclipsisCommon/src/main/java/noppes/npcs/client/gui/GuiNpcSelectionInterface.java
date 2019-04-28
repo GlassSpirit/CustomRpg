@@ -2,7 +2,7 @@ package noppes.npcs.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.resources.I18n;
 import noppes.npcs.client.AssetsBrowser;
 import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.util.*;
@@ -18,12 +18,12 @@ public abstract class GuiNpcSelectionInterface extends GuiNPCInterface {
     public GuiNPCStringSlot slot;
     public GuiScreen parent;
 
-    private String up = "..<" + I18n.translateToLocal("gui.up") + ">..";
+    private String up = "..<" + I18n.format("gui.up") + ">..";
 
     private String root = "";
     public AssetsBrowser assets;
-    private HashSet<String> dataFolder = new HashSet<String>();
-    protected HashSet<String> dataTextures = new HashSet<String>();
+    private HashSet<String> dataFolder = new HashSet<>();
+    protected HashSet<String> dataTextures = new HashSet<>();
 
     public GuiNpcSelectionInterface(EntityNPCInterface npc, GuiScreen parent, String sound) {
         super(npc);
@@ -40,7 +40,7 @@ public abstract class GuiNpcSelectionInterface extends GuiNPCInterface {
         dataFolder.clear();
         String ss = "Current Folder: /assets" + root;
         addLabel(new GuiNpcLabel(0, ss, width / 2 - (this.fontRenderer.getStringWidth(ss) / 2), 20, 0xffffff));
-        Vector<String> list = new Vector<String>();
+        Vector<String> list = new Vector<>();
         if (!assets.isRoot)
             list.add(up);
         for (String folder : assets.folders) {

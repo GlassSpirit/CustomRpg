@@ -21,13 +21,13 @@ public class TrueTypeFont {
 
     private final static int MaxWidth = 512;
     private static final List<Font> allFonts = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getAllFonts());
-    private List<Font> usedFonts = new ArrayList<Font>();
+    private List<Font> usedFonts = new ArrayList<>();
 
-    private LinkedHashMap<String, GlyphCache> textcache = new LRUHashMap<String, GlyphCache>(100);
-    private Map<Character, Glyph> glyphcache = new HashMap<Character, Glyph>();
-    private List<TextureCache> textures = new ArrayList<TextureCache>();
+    private LinkedHashMap<String, GlyphCache> textcache = new LRUHashMap<>(100);
+    private Map<Character, Glyph> glyphcache = new HashMap<>();
+    private List<TextureCache> textures = new ArrayList<>();
 
-    private Font font;
+    public Font font;
     private int lineHeight = 1;
 
     private Graphics2D globalG = (Graphics2D) new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB).getGraphics();
@@ -264,7 +264,7 @@ public class TrueTypeFont {
 
     class GlyphCache {
         public int width, height;
-        List<Glyph> glyphs = new ArrayList<Glyph>();
+        List<Glyph> glyphs = new ArrayList<>();
     }
 
     public String getFontName() {

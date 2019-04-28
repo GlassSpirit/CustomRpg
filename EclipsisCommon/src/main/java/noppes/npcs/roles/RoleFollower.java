@@ -1,9 +1,9 @@
 package noppes.npcs.roles;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.*;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.constants.JobType;
@@ -19,24 +19,23 @@ import java.util.UUID;
 
 public class RoleFollower extends RoleInterface implements IRoleFollower {
 
-    private String ownerUUID;
     public boolean isFollowing = true;
     public HashMap<Integer, Integer> rates;
     public NpcMiscInventory inventory;
-    public String dialogHire = I18n.translateToLocal("follower.hireText") + " {days} " + I18n.translateToLocal("follower.days");
-    public String dialogFarewell = I18n.translateToLocal("follower.farewellText") + " {player}";
+    public String dialogHire = I18n.format("follower.hireText") + " {days} " + I18n.format("follower.days");
+    public String dialogFarewell = I18n.format("follower.farewellText") + " {player}";
     public int daysHired;
     public long hiredTime;
     public boolean disableGui = false;
     public boolean infiniteDays = false;
     public boolean refuseSoulStone = false;
-
     public EntityPlayer owner = null;
+    private String ownerUUID;
 
     public RoleFollower(EntityNPCInterface npc) {
         super(npc);
         inventory = new NpcMiscInventory(3);
-        rates = new HashMap<Integer, Integer>();
+        rates = new HashMap<>();
     }
 
     @Override
@@ -97,6 +96,13 @@ public class RoleFollower extends RoleInterface implements IRoleFollower {
         return npc.world.getPlayerEntityByName(ownerUUID);
     }
 
+    public void setOwner(EntityPlayer player) {
+        UUID id = player.getUniqueID();
+        if (ownerUUID == null || !ownerUUID.equals(id.toString()))
+            killed();
+        ownerUUID = id.toString();
+    }
+
     public boolean hasOwner() {
         if (!infiniteDays && daysHired <= 0)
             return false;
@@ -139,13 +145,6 @@ public class RoleFollower extends RoleInterface implements IRoleFollower {
     @Override
     public boolean isFollowing() {
         return owner != null && isFollowing && getDays() > 0;
-    }
-
-    public void setOwner(EntityPlayer player) {
-        UUID id = player.getUniqueID();
-        if (ownerUUID == null || id == null || !ownerUUID.equals(id.toString()))
-            killed();
-        ownerUUID = id.toString();
     }
 
     @Override

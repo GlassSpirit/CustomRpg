@@ -5,8 +5,8 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiYesNo;
 import net.minecraft.client.gui.GuiYesNoCallback;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.SubGuiEditText;
@@ -20,14 +20,11 @@ import noppes.npcs.entity.EntityNPCInterface;
 import java.util.HashMap;
 
 public class GuiNPCManageDialogs extends GuiNPCInterface2 implements ISubGuiListener, ICustomScrollListener, GuiYesNoCallback {
-    private HashMap<String, DialogCategory> categoryData = new HashMap<String, DialogCategory>();
-    private HashMap<String, Dialog> dialogData = new HashMap<String, Dialog>();
-
+    public static GuiScreen Instance;
+    private HashMap<String, DialogCategory> categoryData = new HashMap<>();
+    private HashMap<String, Dialog> dialogData = new HashMap<>();
     private GuiCustomScroll scrollCategories;
     private GuiCustomScroll scrollDialogs;
-
-    public static GuiScreen Instance;
-
     private DialogCategory selectedCategory;
     private Dialog selectedDialog;
 
@@ -52,8 +49,8 @@ public class GuiNPCManageDialogs extends GuiNPCInterface2 implements ISubGuiList
         this.addButton(new GuiNpcButton(2, guiLeft + 356, guiTop + 143, 58, 20, "gui.remove", selectedCategory != null));
         this.addButton(new GuiNpcButton(1, guiLeft + 356, guiTop + 166, 58, 20, "gui.add"));
 
-        HashMap<String, DialogCategory> categoryData = new HashMap<String, DialogCategory>();
-        HashMap<String, Dialog> dialogData = new HashMap<String, Dialog>();
+        HashMap<String, DialogCategory> categoryData = new HashMap<>();
+        HashMap<String, Dialog> dialogData = new HashMap<>();
 
         for (DialogCategory category : DialogController.instance.categories.values()) {
             categoryData.put(category.title, category);
@@ -93,20 +90,20 @@ public class GuiNPCManageDialogs extends GuiNPCInterface2 implements ISubGuiList
         GuiNpcButton button = (GuiNpcButton) guibutton;
 
         if (button.id == 1) {
-            setSubGui(new SubGuiEditText(1, I18n.translateToLocal("gui.new")));
+            setSubGui(new SubGuiEditText(1, I18n.format("gui.new")));
         }
         if (button.id == 2) {
-            GuiYesNo guiyesno = new GuiYesNo(this, selectedCategory.title, I18n.translateToLocal("gui.deleteMessage"), 2);
+            GuiYesNo guiyesno = new GuiYesNo(this, selectedCategory.title, I18n.format("gui.deleteMessage"), 2);
             displayGuiScreen(guiyesno);
         }
         if (button.id == 3) {
             setSubGui(new SubGuiEditText(3, selectedCategory.title));
         }
         if (button.id == 11) {
-            setSubGui(new SubGuiEditText(11, I18n.translateToLocal("gui.new")));
+            setSubGui(new SubGuiEditText(11, I18n.format("gui.new")));
         }
         if (button.id == 12) {
-            GuiYesNo guiyesno = new GuiYesNo(this, selectedDialog.title, I18n.translateToLocal("gui.deleteMessage"), 12);
+            GuiYesNo guiyesno = new GuiYesNo(this, selectedDialog.title, I18n.format("gui.deleteMessage"), 12);
             displayGuiScreen(guiyesno);
         }
         if (button.id == 13) {
@@ -178,6 +175,7 @@ public class GuiNPCManageDialogs extends GuiNPCInterface2 implements ISubGuiList
         GuiNpcTextField.unfocus();
     }
 
+    @Override
     public void confirmClicked(boolean result, int id) {
         NoppesUtil.openGUI(player, this);
         if (!result)

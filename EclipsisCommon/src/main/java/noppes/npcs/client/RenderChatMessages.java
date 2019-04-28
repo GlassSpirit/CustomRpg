@@ -7,7 +7,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.text.ITextComponent;
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.IChatMessages;
 import noppes.npcs.entity.EntityNPCInterface;
 import org.lwjgl.opengl.GL11;
@@ -17,7 +17,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class RenderChatMessages implements IChatMessages {
-    private Map<Long, TextBlockClient> messages = new TreeMap<Long, TextBlockClient>();
+    private Map<Long, TextBlockClient> messages = new TreeMap<>();
 
     private int boxLength = 46;
     private float scale = 0.5f;
@@ -27,13 +27,13 @@ public class RenderChatMessages implements IChatMessages {
 
     @Override
     public void addMessage(String message, EntityNPCInterface npc) {
-        if (!CustomNpcs.EnableChatBubbles)
+        if (!CustomNpcsConfig.EnableChatBubbles)
             return;
         long time = System.currentTimeMillis();
         if (message.equals(lastMessage) && lastMessageTime + 5000 > time) {
             return;
         }
-        Map<Long, TextBlockClient> messages = new TreeMap<Long, TextBlockClient>(this.messages);
+        Map<Long, TextBlockClient> messages = new TreeMap<>(this.messages);
         messages.put(time, new TextBlockClient(message, (boxLength * 4), true, Minecraft.getMinecraft().player, npc));
 
         if (messages.size() > 3) {
@@ -158,7 +158,7 @@ public class RenderChatMessages implements IChatMessages {
     }
 
     private Map<Long, TextBlockClient> getMessages() {
-        Map<Long, TextBlockClient> messages = new TreeMap<Long, TextBlockClient>();
+        Map<Long, TextBlockClient> messages = new TreeMap<>();
         long time = System.currentTimeMillis();
         for (Entry<Long, TextBlockClient> entry : this.messages.entrySet()) {
             if (time > entry.getKey() + 10000)

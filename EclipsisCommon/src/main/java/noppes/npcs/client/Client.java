@@ -7,20 +7,20 @@ import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
 import noppes.npcs.Server;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.util.CustomNPCsScheduler;
+import noppes.npcs.util.CustomNpcsScheduler;
 
 import java.io.IOException;
 
 public class Client {
 
     public static void sendData(final EnumPacketServer type, final Object... obs) {
-        CustomNPCsScheduler.runTack(() -> {
+        CustomNpcsScheduler.runTack(() -> {
             PacketBuffer buffer = new PacketBuffer(Unpooled.buffer());
             try {
                 if (!Server.fillBuffer(buffer, type, obs))
                     return;
                 LogWriter.debug("Send: " + type);
-                CustomNpcs.Channel.sendToServer(new FMLProxyPacket(buffer, "CustomNPCs"));
+                CustomNpcs.INSTANCE.getChannel().sendToServer(new FMLProxyPacket(buffer, "CustomNPCs"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

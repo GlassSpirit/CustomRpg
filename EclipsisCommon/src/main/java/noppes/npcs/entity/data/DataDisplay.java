@@ -446,7 +446,7 @@ public class DataDisplay implements INPCDisplay {
             return null;
 
         String name = modeldata.entityClass.getCanonicalName();
-        for (EntityEntry ent : ForgeRegistries.ENTITIES.getValues()) {
+        for (EntityEntry ent : ForgeRegistries.ENTITIES.getValuesCollection()) {
             Class<? extends Entity> c = ent.getEntityClass();
             if (c.getCanonicalName().equals(name) && EntityLivingBase.class.isAssignableFrom(c)) {
                 return ent.getRegistryName().toString();

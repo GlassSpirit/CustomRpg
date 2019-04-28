@@ -6,7 +6,7 @@ import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.ai.selector.NPCInteractSelector;
 import noppes.npcs.constants.AiMutex;
 import noppes.npcs.controllers.data.Line;
@@ -85,19 +85,19 @@ public class EntityAIWander extends EntityAIBase {
             BlockPos start = new BlockPos(this.entity.getStartXPos(), this.entity.getStartYPos(), this.entity.getStartZPos());
             int distance = (int) MathHelper.sqrt(this.entity.getDistanceSq(start));
             int range = this.entity.ais.walkingRange - distance;
-            if (range > CustomNpcs.NpcNavRange)
-                range = CustomNpcs.NpcNavRange;
+            if (range > CustomNpcsConfig.NpcNavRange)
+                range = CustomNpcsConfig.NpcNavRange;
             if (range < 3) {
                 range = this.entity.ais.walkingRange;
-                if (range > CustomNpcs.NpcNavRange)
-                    range = CustomNpcs.NpcNavRange;
+                if (range > CustomNpcsConfig.NpcNavRange)
+                    range = CustomNpcsConfig.NpcNavRange;
                 Vec3d pos2 = new Vec3d((entity.posX + start.getX()) / 2, (entity.posY + start.getY()) / 2, (entity.posZ + start.getZ()) / 2);
                 return RandomPositionGenerator.findRandomTargetBlockTowards(entity, distance / 2, distance / 2 > 7 ? 7 : distance / 2, pos2);
             } else {
                 return RandomPositionGenerator.findRandomTarget(this.entity, range / 2, range / 2 > 7 ? 7 : range / 2);
             }
         }
-        return RandomPositionGenerator.findRandomTarget(this.entity, CustomNpcs.NpcNavRange, 7);
+        return RandomPositionGenerator.findRandomTarget(this.entity, CustomNpcsConfig.NpcNavRange, 7);
     }
 
     @Override

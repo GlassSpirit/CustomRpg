@@ -3,9 +3,9 @@ package noppes.npcs.client.gui.script;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiConfirmOpenLink;
 import net.minecraft.client.gui.GuiYesNo;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.NoppesStringUtils;
 import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.util.*;
@@ -69,7 +69,7 @@ public class GuiScriptInterface extends GuiNPCInterface implements IGuiData, ITe
 
             addButton(new GuiNpcButton(102, left, guiTop + yoffset, 60, 20, "gui.clear"));
             addButton(new GuiNpcButton(101, left + 61, guiTop + yoffset, 60, 20, "gui.paste"));
-            addButton(new GuiNpcButton(100, left, guiTop + 21 + yoffset, 60, 20, "gui.copy"));
+            addButton(new GuiNpcButton(100, left, guiTop + 21 + yoffset, 60, 20, "gui.copyBlock"));
             addButton(new GuiNpcButton(105, left + 61, guiTop + 21 + yoffset, 60, 20, "gui.remove"));
 
             addButton(new GuiNpcButton(107, left, guiTop + 66 + yoffset, 80, 20, "script.loadscript"));
@@ -88,7 +88,7 @@ public class GuiScriptInterface extends GuiNPCInterface implements IGuiData, ITe
 
             int left = guiLeft + xSize - 150;
 
-            addButton(new GuiNpcButton(100, left, guiTop + 125, 60, 20, "gui.copy"));
+            addButton(new GuiNpcButton(100, left, guiTop + 125, 60, 20, "gui.copyBlock"));
             addButton(new GuiNpcButton(102, left, guiTop + 146, 60, 20, "gui.clear"));
 
             addLabel(new GuiNpcLabel(1, "script.language", left, guiTop + 15));
@@ -195,7 +195,7 @@ public class GuiScriptInterface extends GuiNPCInterface implements IGuiData, ITe
             handler.setEnabled(((GuiNpcButton) guibutton).getValue() == 1);
         }
         if (guibutton.id == 105) {
-            GuiYesNo guiyesno = new GuiYesNo(this, "", I18n.translateToLocal("gui.deleteMessage"), 10);
+            GuiYesNo guiyesno = new GuiYesNo(this, "", I18n.format("gui.deleteMessage"), 10);
             displayGuiScreen(guiyesno);
         }
         if (guibutton.id == 106) {

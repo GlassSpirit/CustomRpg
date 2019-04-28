@@ -49,7 +49,7 @@ public class DataAI implements INPCAi {
     public int walkingRange = 10;
     private int moveSpeed = 5;
 
-    private List<int[]> movingPath = new ArrayList<int[]>();
+    private List<int[]> movingPath = new ArrayList<>();
     private BlockPos startPos = null;
     public int movingPos = 0;
     public int movingPattern = 0; // 0:Looping 1:Backtracking
@@ -281,7 +281,7 @@ public class DataAI implements INPCAi {
     @Override
     public void setMovingType(int type) {
         if (type < 0 || type > 2)
-            throw new CustomNPCsException("Unknown moving type: " + type);
+            throw new CustomNPCsException("Unknown pather type: " + type);
         movingType = type;
         npc.updateAI = true;
     }

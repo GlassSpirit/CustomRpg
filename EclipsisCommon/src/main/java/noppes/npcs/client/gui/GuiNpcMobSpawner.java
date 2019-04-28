@@ -46,6 +46,7 @@ public class GuiNpcMobSpawner extends GuiNPCInterface implements IGuiData {
         setBackground("menubg.png");
     }
 
+    @Override
     public void initGui() {
         super.initGui();
         guiTop += 10;
@@ -93,9 +94,9 @@ public class GuiNpcMobSpawner extends GuiNPCInterface implements IGuiData {
     }
 
     private void showEntities() {
-        ArrayList<String> list = new ArrayList<String>();
-        List<Class> classes = new ArrayList<Class>();
-        for (EntityEntry ent : ForgeRegistries.ENTITIES.getValues()) {
+        ArrayList<String> list = new ArrayList<>();
+        List<Class> classes = new ArrayList<>();
+        for (EntityEntry ent : ForgeRegistries.ENTITIES.getValuesCollection()) {
             Class<? extends Entity> c = ent.getEntityClass();
             String name = ent.getName();
             try {
@@ -119,11 +120,12 @@ public class GuiNpcMobSpawner extends GuiNPCInterface implements IGuiData {
             return;
         }
 
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         this.list = ClientCloneController.Instance.getClones(activeTab);
         scroll.setList(getSearchList());
     }
 
+    @Override
     public void keyTyped(char c, int i) {
         super.keyTyped(c, i);
 
@@ -135,8 +137,8 @@ public class GuiNpcMobSpawner extends GuiNPCInterface implements IGuiData {
 
     private List<String> getSearchList() {
         if (search.isEmpty())
-            return new ArrayList<String>(list);
-        List<String> list = new ArrayList<String>();
+            return new ArrayList<>(list);
+        List<String> list = new ArrayList<>();
         for (String name : this.list) {
             if (name.toLowerCase().contains(search))
                 list.add(name);
@@ -237,7 +239,7 @@ public class GuiNpcMobSpawner extends GuiNPCInterface implements IGuiData {
     @Override
     public void setGuiData(NBTTagCompound compound) {
         NBTTagList nbtlist = compound.getTagList("List", 8);
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         for (int i = 0; i < nbtlist.tagCount(); i++) {
             list.add(nbtlist.getStringTagAt(i));
         }

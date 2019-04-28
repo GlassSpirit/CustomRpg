@@ -68,7 +68,7 @@ public abstract class GuiCreationScreenInterface extends GuiNPCInterface impleme
             addButton(new GuiNpcButton(3, guiLeft + 62, guiTop + 23, 60, 20, "gui.scale"));
         if (hasSaving) {
             addButton(new GuiNpcButton(4, guiLeft, guiTop + ySize - 24, 60, 20, "gui.save"));
-            addButton(new GuiNpcButton(5, guiLeft + 62, guiTop + ySize - 24, 60, 20, "gui.load"));
+            addButton(new GuiNpcButton(5, guiLeft + 62, guiTop + ySize - 24, 60, 20, "gui.init"));
         }
         if (getButton(active) == null) {
             openGui(new GuiCreationEntities(npc));
@@ -146,6 +146,7 @@ public abstract class GuiCreationScreenInterface extends GuiNPCInterface impleme
         mc.displayGuiScreen(gui);
     }
 
+    @Override
     public void subGuiClosed(SubGuiInterface subgui) {
         initGui();
     }

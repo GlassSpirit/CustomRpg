@@ -1,8 +1,8 @@
 package noppes.npcs.quests;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.NBTTags;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.constants.QuestType;
@@ -18,7 +18,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class QuestKill extends QuestInterface {
-    public TreeMap<String, Integer> targets = new TreeMap<String, Integer>();
+    public TreeMap<String, Integer> targets = new TreeMap<>();
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
@@ -61,7 +61,7 @@ public class QuestKill extends QuestInterface {
 
     @Override
     public IQuestObjective[] getObjectives(EntityPlayer player) {
-        List<IQuestObjective> list = new ArrayList<IQuestObjective>();
+        List<IQuestObjective> list = new ArrayList<>();
         for (Entry<String, Integer> entry : targets.entrySet()) {
             list.add(new QuestKillObjective(player, entry.getKey(), entry.getValue()));
         }
@@ -123,7 +123,7 @@ public class QuestKill extends QuestInterface {
         @Override
         public String getText() {
             String name = "entity." + entity + ".name";
-            String transName = I18n.translateToLocal(name);
+            String transName = I18n.format(name);
             if (name.equals(transName)) {
                 transName = entity;
             }

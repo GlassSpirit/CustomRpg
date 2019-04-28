@@ -6,6 +6,7 @@ import net.minecraft.nbt.NBTTagString;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import noppes.npcs.CustomNpcs;
+import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.LogWriter;
 import noppes.npcs.api.wrapper.WorldWrapper;
 import noppes.npcs.controllers.data.ForgeScriptData;
@@ -31,9 +32,9 @@ public class ScriptController {
     public static ScriptController Instance;
     public static boolean HasStart = false;
     private ScriptEngineManager manager;
-    public Map<String, String> languages = new HashMap<String, String>();
-    public Map<String, ScriptEngineFactory> factories = new HashMap<String, ScriptEngineFactory>();
-    public Map<String, String> scripts = new HashMap<String, String>();
+    public Map<String, String> languages = new HashMap<>();
+    public Map<String, ScriptEngineFactory> factories = new HashMap<>();
+    public Map<String, String> scripts = new HashMap<>();
     public PlayerScriptData playerScripts = new PlayerScriptData(null);
     public ForgeScriptData forgeScripts = new ForgeScriptData();
     public long lastLoaded = 0;
@@ -47,7 +48,7 @@ public class ScriptController {
     public ScriptController() {
         loaded = false;
         Instance = this;
-        System.setProperty("nashorn.args", CustomNpcs.NashorArguments);
+        System.setProperty("nashorn.args", CustomNpcsConfig.NashorArguments);
         manager = new ScriptEngineManager();
         try {
             Class c = Class.forName("org.jetbrains.kotlin.script.jsr223.KotlinJsr223JvmLocalScriptEngineFactory");
@@ -80,7 +81,7 @@ public class ScriptController {
     }
 
     public void loadCategories() {
-        dir = new File(CustomNpcs.getWorldSaveDirectory(), "scripts");
+        dir = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "scripts");
         if (!dir.exists())
             dir.mkdirs();
         if (!worldDataFile().exists())
@@ -239,7 +240,7 @@ public class ScriptController {
     }
 
     private List<String> getScripts(String language) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         String ext = languages.get(language);
         if (ext == null)
             return list;

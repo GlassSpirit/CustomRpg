@@ -6,7 +6,7 @@ import net.minecraft.util.math.AxisAlignedBB
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockAccess
 
-class BlockDecorDirectionalLight(name: String, material: Material, lightLevel: Float) : BlockDecorDirectional(name, material) {
+class BlockDecorDirectionalLight(name: String, material: Material, lightLevel: Float) : BlockDecorDirectionalPassable(name, material) {
     companion object {
         private val FLOWER_POT_AABB = AxisAlignedBB(0.3125, 0.0, 0.3125, 0.6875, 0.375, 0.6875)
     }

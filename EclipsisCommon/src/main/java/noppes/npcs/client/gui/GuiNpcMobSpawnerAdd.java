@@ -4,10 +4,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiYesNo;
 import net.minecraft.client.gui.GuiYesNoCallback;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.controllers.ClientCloneController;
 import noppes.npcs.client.gui.util.*;
@@ -15,10 +15,10 @@ import noppes.npcs.constants.EnumPacketServer;
 
 public class GuiNpcMobSpawnerAdd extends GuiNPCInterface implements GuiYesNoCallback, IGuiData {
 
-    private Entity toClone;
-    private NBTTagCompound compound;
     private static boolean serverSide = false;
     private static int tab = 1;
+    private Entity toClone;
+    private NBTTagCompound compound;
 
     public GuiNpcMobSpawnerAdd(NBTTagCompound compound) {
         this.toClone = EntityList.createEntityFromNBT(compound, Minecraft.getMinecraft().world);
@@ -46,6 +46,7 @@ public class GuiNpcMobSpawnerAdd extends GuiNPCInterface implements GuiYesNoCall
         addButton(new GuiNpcButton(1, guiLeft + 86, guiTop + 70, 80, 20, "gui.cancel"));
     }
 
+    @Override
     public void buttonEvent(GuiButton guibutton) {
         int id = guibutton.id;
         if (id == 0) {
@@ -55,7 +56,7 @@ public class GuiNpcMobSpawnerAdd extends GuiNPCInterface implements GuiYesNoCall
             int tab = ((GuiNpcButton) guibutton).getValue() + 1;
             if (!serverSide) {
                 if (ClientCloneController.Instance.getCloneData(null, name, tab) != null)
-                    displayGuiScreen(new GuiYesNo(this, "", I18n.translateToLocal("clone.overwrite"), 1));
+                    displayGuiScreen(new GuiYesNo(this, "", I18n.format("clone.overwrite"), 1));
                 else
                     confirmClicked(true, 0);
             } else
@@ -94,7 +95,7 @@ public class GuiNpcMobSpawnerAdd extends GuiNPCInterface implements GuiYesNoCall
     public void setGuiData(NBTTagCompound compound) {
         if (compound.hasKey("NameExists")) {
             if (compound.getBoolean("NameExists"))
-                displayGuiScreen(new GuiYesNo(this, "", I18n.translateToLocal("clone.overwrite"), 1));
+                displayGuiScreen(new GuiYesNo(this, "", I18n.format("clone.overwrite"), 1));
             else
                 confirmClicked(true, 0);
         }

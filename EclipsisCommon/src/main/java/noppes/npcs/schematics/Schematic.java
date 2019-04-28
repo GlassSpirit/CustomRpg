@@ -9,8 +9,8 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import noppes.npcs.CustomItems;
 import noppes.npcs.NoppesUtilServer;
+import noppes.npcs.objects.NpcObjects;
 
 public class Schematic implements ISchematic {
 
@@ -40,6 +40,7 @@ public class Schematic implements ISchematic {
         tileList = compound.getTagList("TileEntities", (byte) 10);
     }
 
+    @Override
     public NBTTagCompound getNBT() {
         NBTTagCompound compound = new NBTTagCompound();
         compound.setShort("Width", width);
@@ -98,6 +99,7 @@ public class Schematic implements ISchematic {
         return (y * length + z) * width + x;
     }
 
+    @Override
     public IBlockState getBlockState(int x, int y, int z) {
         int i = xyzToIndex(x, y, z);
         Block b = Block.getBlockById(blockArray[i]);
@@ -165,7 +167,7 @@ public class Schematic implements ISchematic {
             int y = (((i - x) / width) - z) / length;
 
             IBlockState state = world.getBlockState(pos.add(x, y, z));
-            if (state.getBlock() == Blocks.AIR || state.getBlock() == CustomItems.copy)
+            if (state.getBlock() == Blocks.AIR || state.getBlock() == NpcObjects.copyBlock)
                 continue;
             schema.blockArray[i] = (short) Block.REGISTRY.getIDForObject(state.getBlock());
             schema.blockDataArray[i] = (byte) state.getBlock().getMetaFromState(state);

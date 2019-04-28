@@ -55,14 +55,14 @@ public class ServerCloneController implements ICloneHandler {
     }
 
     public File getDir() {
-        File dir = new File(CustomNpcs.getWorldSaveDirectory(), "clones");
+        File dir = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "clones");
         if (!dir.exists())
             dir.mkdir();
         return dir;
     }
 
     private Map<Integer, Map<String, NBTTagCompound>> loadOldClones(File file) throws Exception {
-        Map<Integer, Map<String, NBTTagCompound>> clones = new HashMap<Integer, Map<String, NBTTagCompound>>();
+        Map<Integer, Map<String, NBTTagCompound>> clones = new HashMap<>();
         NBTTagCompound nbttagcompound1 = CompressedStreamTools.readCompressed(new FileInputStream(file));
         NBTTagList list = nbttagcompound1.getTagList("Data", 10);
         if (list == null) {
@@ -76,7 +76,7 @@ public class ServerCloneController implements ICloneHandler {
 
             Map<String, NBTTagCompound> tab = clones.get(compound.getInteger("ClonedTab"));
             if (tab == null)
-                clones.put(compound.getInteger("ClonedTab"), tab = new HashMap<String, NBTTagCompound>());
+                clones.put(compound.getInteger("ClonedTab"), tab = new HashMap<>());
 
             String name = compound.getString("ClonedName");
             int number = 1;
@@ -131,7 +131,7 @@ public class ServerCloneController implements ICloneHandler {
     }
 
     public List<String> getClones(int tab) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         File dir = new File(getDir(), tab + "");
         if (!dir.exists() || !dir.isDirectory())
             return list;

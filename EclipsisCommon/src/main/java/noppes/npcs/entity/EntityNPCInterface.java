@@ -70,7 +70,8 @@ import noppes.npcs.controllers.LinkedNpcController;
 import noppes.npcs.controllers.LinkedNpcController.LinkedData;
 import noppes.npcs.controllers.data.*;
 import noppes.npcs.entity.data.*;
-import noppes.npcs.items.ItemSoulstoneFilled;
+import noppes.npcs.objects.NpcObjects;
+import noppes.npcs.objects.items.ItemSoulstoneFilled;
 import noppes.npcs.roles.*;
 import noppes.npcs.util.GameProfileAlt;
 
@@ -153,8 +154,8 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
         if (!isRemote())
             wrappedNPC = new NPCWrapper(this);
         dialogs = new HashMap<>();
-        if (!CustomNpcs.DefaultInteractLine.isEmpty())
-            advanced.interactLines.lines.put(0, new Line(CustomNpcs.DefaultInteractLine));
+        if (!CustomNpcsConfig.DefaultInteractLine.isEmpty())
+            advanced.interactLines.lines.put(0, new Line(CustomNpcsConfig.DefaultInteractLine));
 
         experienceValue = 0;
         scaleX = scaleY = scaleZ = 0.9375f;
@@ -194,7 +195,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
 
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(stats.maxHealth);
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(CustomNpcs.NpcNavRange);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(CustomNpcsConfig.NpcNavRange);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(this.getSpeed());
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(stats.melee.getStrength());
         this.getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(this.getSpeed() * 10);
@@ -381,12 +382,12 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
         ItemStack stack = player.getHeldItem(hand);
         if (stack != null) {
             Item item = stack.getItem();
-            if (item == CustomItems.cloner || item == CustomItems.wand || item == CustomItems.mount || item == CustomItems.scripter) {
+            if (item == NpcObjects.mobCloner || item == NpcObjects.wand || item == NpcObjects.mounter || item == NpcObjects.scripter) {
                 setAttackTarget(null);
                 setRevengeTarget(null);
                 return true;
             }
-            if (item == CustomItems.moving) {
+            if (item == NpcObjects.pather) {
                 setAttackTarget(null);
                 stack.setTagInfo("NPCID", new NBTTagInt(getEntityId()));
                 player.sendMessage(new TextComponentTranslation("Registered " + this.getName() + " to your NPC Pather"));
@@ -574,7 +575,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
             EntityProjectile projectile = shoot(entity, stats.ranged.getAccuracy(), proj, f == 1);
             projectile.damage = event.damage;
             projectile.callback = (projectile1, pos, entity1) -> {
-                if (proj.getItem() == CustomItems.soulstoneFull) {
+                if (proj.getItem() == NpcObjects.soulstoneFull) {
                     Entity e = ItemSoulstoneFilled.Spawn(null, proj, EntityNPCInterface.this.world, pos);
                     if (e instanceof EntityLivingBase && entity1 instanceof EntityLivingBase) {
                         if (e instanceof EntityLiving)
@@ -925,7 +926,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
         if (!isRemote())
             LinkedNpcController.Instance.loadNpcData(this);
 
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(CustomNpcs.NpcNavRange);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(CustomNpcsConfig.NpcNavRange);
 
         updateAI = true;
     }
@@ -1582,7 +1583,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 
     @Override
     public boolean isInvisibleToPlayer(EntityPlayer player) {
-        return display.getVisible() == 1 && (player.getHeldItemMainhand().isEmpty() || player.getHeldItemMainhand().getItem() != CustomItems.wand);
+        return display.getVisible() == 1 && (player.getHeldItemMainhand().isEmpty() || player.getHeldItemMainhand().getItem() != NpcObjects.wand);
     }
 
     @Override

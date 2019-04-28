@@ -61,7 +61,7 @@ public class EntityEnderFX extends ParticlePortal {
         scale *= scale;
         scale = 1.0F - scale;
         particleScale = portalParticleScale * scale;
-        ClientProxy.bindTexture(location);
+        ClientProxy.Companion.bindTexture(location);
 
         float f = 0.875f;
         float f1 = f + 0.125f;
@@ -86,7 +86,7 @@ public class EntityEnderFX extends ParticlePortal {
         renderer.pos((f5 + par3 * f4) - par6 * f4, f6 - par4 * f4, (f7 + par5 * f4) - par7 * f4).tex(f, f3).color(particleRed, particleGreen, particleBlue, 1).lightmap(j, k).endVertex();
 
         tessellator.draw();
-        ClientProxy.bindTexture(resource);
+        ClientProxy.Companion.bindTexture(resource);
         renderer.begin(7, DefaultVertexFormats.PARTICLE_POSITION_TEX_COLOR_LMAP);
     }
 

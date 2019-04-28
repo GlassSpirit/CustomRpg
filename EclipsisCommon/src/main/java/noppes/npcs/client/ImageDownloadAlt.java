@@ -51,6 +51,7 @@ public class ImageDownloadAlt extends SimpleTexture {
         }
     }
 
+    @Override
     public int getGlTextureId() {
         this.checkTextureUploaded();
         return super.getGlTextureId();
@@ -64,6 +65,7 @@ public class ImageDownloadAlt extends SimpleTexture {
         }
     }
 
+    @Override
     public void loadTexture(IResourceManager resourceManager) throws IOException {
         if (this.bufferedImage == null && this.textureLocation != null) {
             super.loadTexture(resourceManager);
@@ -80,7 +82,7 @@ public class ImageDownloadAlt extends SimpleTexture {
                         this.setBufferedImage(this.imageBuffer.parseUserSkin(this.bufferedImage));
                     }
                 } catch (IOException ioexception) {
-                    logger.error("Couldn\'t load skin " + this.cacheFile, ioexception);
+                    logger.error("Couldn\'t init skin " + this.cacheFile, ioexception);
                     this.loadTextureFromServer();
                 }
             } else {
@@ -93,6 +95,7 @@ public class ImageDownloadAlt extends SimpleTexture {
         this.imageThread = new Thread("Texture Downloader #" + threadDownloadCounter.incrementAndGet()) {
             private static final String __OBFID = "CL_00001050";
 
+            @Override
             public void run() {
                 HttpURLConnection connection = null;
                 ImageDownloadAlt.logger.debug("Downloading http texture from {} to {}", new Object[]{ImageDownloadAlt.this.imageUrl, ImageDownloadAlt.this.cacheFile});

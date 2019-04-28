@@ -13,9 +13,9 @@ import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.entity.data.role.IJobBuilder;
 import noppes.npcs.api.item.IItemStack;
-import noppes.npcs.blocks.tiles.TileBuilder;
 import noppes.npcs.controllers.data.BlockData;
 import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.objects.blocks.tiles.TileBuilder;
 
 import java.util.Stack;
 

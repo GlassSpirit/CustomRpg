@@ -11,7 +11,7 @@ import noppes.npcs.Server;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.SyncType;
 import noppes.npcs.controllers.data.*;
-import noppes.npcs.items.ItemScripted;
+import noppes.npcs.objects.items.ItemScripted;
 
 import java.util.HashMap;
 
@@ -101,7 +101,7 @@ public class SyncController {
     public static void syncScriptItemsEverybody() {
         NBTTagCompound comp = new NBTTagCompound();
         comp.setTag("List", NBTTags.nbtIntegerStringMap(ItemScripted.Resources));
-        for (EntityPlayerMP player : CustomNpcs.Server.getPlayerList().getPlayers()) {
+        for (EntityPlayerMP player : CustomNpcs.INSTANCE.getServer().getPlayerList().getPlayers()) {
             Server.sendData(player, EnumPacketClient.SYNC_END, SyncType.SCRIPTED_ITEM_RESOURCES, comp);
         }
     }

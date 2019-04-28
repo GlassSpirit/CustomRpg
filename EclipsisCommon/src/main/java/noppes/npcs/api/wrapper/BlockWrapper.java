@@ -16,9 +16,9 @@ import net.minecraftforge.fluids.BlockFluidBase;
 import noppes.npcs.api.*;
 import noppes.npcs.api.block.IBlock;
 import noppes.npcs.api.entity.data.IData;
-import noppes.npcs.blocks.BlockScripted;
-import noppes.npcs.blocks.BlockScriptedDoor;
-import noppes.npcs.blocks.tiles.TileNpcEntity;
+import noppes.npcs.objects.blocks.BlockScripted;
+import noppes.npcs.objects.blocks.BlockScriptedDoor;
+import noppes.npcs.objects.blocks.tiles.TileNpcEntity;
 import noppes.npcs.util.LRUHashMap;
 
 import java.util.Map;

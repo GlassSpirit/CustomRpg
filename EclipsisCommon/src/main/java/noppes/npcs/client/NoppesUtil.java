@@ -117,7 +117,7 @@ public class NoppesUtil {
             gui = ((GuiNPCInterface) gui).getSubGui();
         if (gui == null || !(gui instanceof IScrollData))
             return;
-        Vector<String> data = new Vector<String>();
+        Vector<String> data = new Vector<>();
         String line;
 
         try {
@@ -132,7 +132,7 @@ public class NoppesUtil {
         ((IScrollData) gui).setData(data, null);
     }
 
-    private static HashMap<String, Integer> data = new HashMap<String, Integer>();
+    private static HashMap<String, Integer> data = new HashMap<>();
 
     public static void addScrollData(ByteBuf buffer) {
         try {
@@ -166,8 +166,8 @@ public class NoppesUtil {
             gui = ((GuiContainerNPCInterface) gui).getSubGui();
         }
         if (gui instanceof IScrollData)
-            ((IScrollData) gui).setData(new Vector<String>(data.keySet()), data);
-        data = new HashMap<String, Integer>();
+            ((IScrollData) gui).setData(new Vector<>(data.keySet()), data);
+        data = new HashMap<>();
     }
 
     public static void openDialog(Dialog dialog, EntityNPCInterface npc, EntityPlayer player) {
