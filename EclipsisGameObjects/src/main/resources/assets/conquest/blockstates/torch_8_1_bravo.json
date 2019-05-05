@@ -1,0 +1,29 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "torch_wall",
+    "textures": {
+      "torch": "conquest:blocks/lantern_hangingopaque"
+    }
+  },
+  "variants": {
+    "facing": {
+      "east": {},
+      "south": {
+        "y": 90
+      },
+      "west": {
+        "y": 180
+      },
+      "north": {
+        "y": 270
+      },
+      "up": {
+        "model": "torch"
+      },
+      "down": {
+        "model": "torch"
+      }
+    }
+  }
+}

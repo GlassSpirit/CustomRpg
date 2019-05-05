@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "parent_capital_doric_wall_post",
+    "textures": {
+      "side": "conquest:blocks/roman_column_red_capital_marble",
+      "down": "conquest:blocks/roman_column_red_top",
+      "up": "conquest:blocks/roman_capital_marble_top"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

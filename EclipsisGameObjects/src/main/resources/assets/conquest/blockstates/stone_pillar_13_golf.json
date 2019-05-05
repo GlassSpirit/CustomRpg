@@ -1,0 +1,17 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "wall_post",
+    "textures": {
+      "wall": "conquest:blocks/plaster_forlond_white_trim_2"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

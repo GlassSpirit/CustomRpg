@@ -7,7 +7,7 @@ import net.minecraft.util.BlockRenderLayer
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-open class BlockDecorDirectional(name: String, material: Material) : BlockModDirectional(name, material, true) {
+open class BlockDecorDirectional(name: String, material: Material, horizontal: Boolean = true) : BlockModDirectional(name, material, horizontal) {
     init {
         this.setLightOpacity(0)
     }

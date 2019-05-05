@@ -10,6 +10,7 @@ import ru.glassspirit.eclipsis.objects.block.BlockModGlass
 import ru.glassspirit.eclipsis.objects.block.BlockModHalf
 import ru.glassspirit.eclipsis.objects.block.BlockModPlate
 import ru.glassspirit.eclipsis.objects.block.BlockModStandartLeaves
+import ru.glassspirit.eclipsis.objects.block.decorations.BlockDecor
 
 object ConquestBlocksFull {
     init {
@@ -387,21 +388,6 @@ object ConquestBlocksFull {
         BlockMod("stone_full_29_oscar", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
         BlockMod("stone_full_29_papa", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
         BlockMod("stone_full_30_alpha", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_bravo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_charlie", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_delta", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_echo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_fox", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_golf", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_hotel", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_india", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_juliet", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_kilo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_lima", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_mike", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_november", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_oscar", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
-        BlockMod("stone_full_30_papa", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
 
         BlockMod("stone_full_hard2_alpha", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
         BlockMod("stone_full_hard2_bravo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
@@ -537,6 +523,8 @@ object ConquestBlocksFull {
         BlockMod("wood_full_7_golf", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
         BlockMod("wood_full_7_hotel", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
         BlockMod("wood_full_7_india", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
+        BlockDecor("wood_fullpartial_2_alpha", Material.WOOD, cutout = true).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
+        BlockDecor("wood_fullpartial_2_bravo", Material.WOOD, cutout = true).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
 
         BlockModPlanks("wood_full_6_papa").setModCreativeTab(ConquestTabs.ConquestBuildingWoodTab)
         BlockModPlanks("wood_full_7_alpha").setModCreativeTab(ConquestTabs.ConquestBuildingWoodTab)

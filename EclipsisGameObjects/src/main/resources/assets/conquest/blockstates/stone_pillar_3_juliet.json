@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "parent_column_wall_post",
+    "textures": {
+      "wall": "conquest:blocks/roman_column_sandstone",
+      "top": "conquest:blocks/roman_column_sandstone_top",
+      "bottom": "conquest:blocks/roman_column_sandstone_top"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

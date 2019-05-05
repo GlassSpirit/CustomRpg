@@ -1,33 +1,16 @@
 package ru.glassspirit.eclipsis.objects.block
 
-import com.teamwizardry.librarianlib.features.base.block.BlockMod
 import net.minecraft.block.material.Material
 import net.minecraft.block.state.BlockFaceShape
 import net.minecraft.block.state.IBlockState
 import net.minecraft.util.EnumFacing
-import net.minecraft.util.math.AxisAlignedBB
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockAccess
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
+import ru.glassspirit.eclipsis.objects.block.decorations.BlockDecor
 
-open class BlockModCarpet(name: String, material: Material) : BlockMod(name, material) {
-    companion object {
-        private val CARPET_AABB = AxisAlignedBB(0.0, 0.0, 0.0, 1.0, 0.0625, 1.0)
-    }
-
-    override fun getBoundingBox(state: IBlockState, source: IBlockAccess, pos: BlockPos): AxisAlignedBB {
-        return CARPET_AABB
-    }
-
-    override fun isOpaqueCube(state: IBlockState): Boolean {
-        return false
-    }
-
-    override fun isFullCube(state: IBlockState): Boolean {
-        return false
-    }
-
+open class BlockModCarpet(name: String, material: Material) : BlockDecor(name, material, cutout = true, model = BlockModel.CARPET) {
     @SideOnly(Side.CLIENT)
     override fun shouldSideBeRendered(blockState: IBlockState, blockAccess: IBlockAccess, pos: BlockPos, side: EnumFacing): Boolean {
         return if (side == EnumFacing.UP) {

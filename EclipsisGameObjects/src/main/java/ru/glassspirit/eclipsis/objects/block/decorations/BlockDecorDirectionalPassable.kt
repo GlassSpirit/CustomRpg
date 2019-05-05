@@ -11,7 +11,7 @@ import net.minecraft.world.IBlockAccess
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
 
-open class BlockDecorDirectionalPassable(name: String, material: Material) : BlockDecorDirectional(name, material) {
+open class BlockDecorDirectionalPassable(name: String, material: Material, horizontal: Boolean = true) : BlockDecorDirectional(name, material, horizontal) {
     init {
         this.setLightOpacity(0)
     }

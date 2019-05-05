@@ -1,6 +1,5 @@
 package ru.glassspirit.eclipsis.objects.block
 
-import com.teamwizardry.librarianlib.features.base.block.BlockMod
 import net.minecraft.block.material.Material
 import net.minecraft.block.properties.PropertyInteger
 import net.minecraft.block.state.BlockFaceShape
@@ -14,10 +13,11 @@ import net.minecraft.world.IBlockAccess
 import net.minecraft.world.World
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
+import ru.glassspirit.eclipsis.objects.block.decorations.BlockDecor
 import ru.glassspirit.eclipsis.objects.item.ItemModBlockLayer
 import java.util.*
 
-open class BlockModLayer(name: String, material: Material) : BlockMod(name, material) {
+open class BlockModLayer(name: String, material: Material) : BlockDecor(name, material, cutout = true) {
     companion object {
         @JvmStatic
         val LAYERS = PropertyInteger.create("layers", 1, 8)
@@ -63,14 +63,6 @@ open class BlockModLayer(name: String, material: Material) : BlockMod(name, mate
         val i = blockState.getValue(LAYERS) - 1
         val axisalignedbb = blockState.getBoundingBox(worldIn, pos)
         return AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY, axisalignedbb.minZ, axisalignedbb.maxX, i * 0.125, axisalignedbb.maxZ)
-    }
-
-    override fun isOpaqueCube(state: IBlockState): Boolean {
-        return false
-    }
-
-    override fun isFullCube(state: IBlockState): Boolean {
-        return false
     }
 
     override fun canPlaceBlockAt(worldIn: World, pos: BlockPos): Boolean {

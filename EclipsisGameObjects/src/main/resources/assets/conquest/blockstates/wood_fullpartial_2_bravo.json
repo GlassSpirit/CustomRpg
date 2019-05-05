@@ -1,0 +1,11 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:basket_wickerlight"
+  },
+  "variants": {
+    "normal": [
+      {}
+    ]
+  }
+}

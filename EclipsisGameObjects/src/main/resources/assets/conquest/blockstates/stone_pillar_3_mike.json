@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "parent_column_wall_post",
+    "textures": {
+      "wall": "conquest:blocks/roman_column_red",
+      "top": "conquest:blocks/roman_column_red_top",
+      "bottom": "conquest:blocks/roman_column_red_top"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

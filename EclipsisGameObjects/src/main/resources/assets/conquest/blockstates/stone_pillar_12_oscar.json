@@ -1,0 +1,19 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "parent_column_wall_post",
+    "textures": {
+      "wall": "conquest:blocks/pillar_smoothmarble",
+      "top": "conquest:blocks/roman_marble_white",
+      "bottom": "conquest:blocks/roman_marble_white"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {}
+    ]
+  }
+}

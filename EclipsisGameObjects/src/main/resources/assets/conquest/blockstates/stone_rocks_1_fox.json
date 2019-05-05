@@ -1,0 +1,44 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:sandstone_roughnatural_rock_1"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {
+        "weight": 40
+      },
+      {
+        "model": "conquest:sandstone_roughnatural_rock_2",
+        "weight": 30
+      },
+      {
+        "model": "conquest:sandstone_roughnatural_rock_3",
+        "weight": 50
+      },
+      {
+        "model": "conquest:sandstone_roughnatural_rock_4",
+        "weight": 40
+      },
+      {
+        "model": "conquest:sandstone_roughnatural_rock_5",
+        "weight": 50
+      },
+      {
+        "model": "conquest:sandstone_roughnatural_rock_6",
+        "weight": 50
+      },
+      {
+        "model": "conquest:sandstone_roughnatural_rock_7_nse",
+        "weight": 40
+      },
+      {
+        "model": "conquest:sandstone_roughnatural_rock_8",
+        "weight": 40
+      }
+    ]
+  }
+}

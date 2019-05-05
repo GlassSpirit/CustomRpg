@@ -1,9 +1,11 @@
 package ru.glassspirit.conquest.block
 
 import com.teamwizardry.librarianlib.features.base.block.BlockModWall
+import net.minecraft.block.material.Material
 import net.minecraft.init.Blocks
 import ru.glassspirit.conquest.ConquestTabs
 import ru.glassspirit.eclipsis.kotlin.setModCreativeTab
+import ru.glassspirit.eclipsis.objects.block.decorations.BlockDecorWall
 
 object ConquestBlocksWalls {
     init {
@@ -153,6 +155,28 @@ object ConquestBlocksWalls {
         BlockModWall("stone_wall_14_oscar", Blocks.STONE.defaultState).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
         BlockModWall("stone_wall_14_papa", Blocks.STONE.defaultState).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
 
+        BlockDecorWall("stone_pillar_3_juliet", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_3_kilo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_3_lima", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_3_mike", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_3_november", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_3_oscar", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_3_papa", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_4_alpha", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_11_charlie", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_11_lima", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_12_oscar", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_13_delta", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_13_echo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_13_fox", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_13_golf", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_pillar_13_kilo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+
+        BlockDecorWall("stone_smallpillar_9_juliet", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_smallpillar_9_kilo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_smallpillar_9_lima", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+        BlockDecorWall("stone_smallpillar_9_mike", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestBuildingStoneTab)
+
         BlockModWall("wood_wall_5_echo", Blocks.LOG.defaultState).setModCreativeTab(ConquestTabs.ConquestBuildingWoodTab)
         BlockModWall("wood_wall_5_papa", Blocks.LOG.defaultState).setModCreativeTab(ConquestTabs.ConquestBuildingWoodTab)
         BlockModWall("wood_wall_6_alpha", Blocks.LOG.defaultState).setModCreativeTab(ConquestTabs.ConquestBuildingWoodTab)
@@ -171,5 +195,7 @@ object ConquestBlocksWalls {
         BlockModWall("wood_wall_6_november", Blocks.LOG.defaultState).setModCreativeTab(ConquestTabs.ConquestBuildingWoodTab)
         BlockModWall("wood_wall_6_oscar", Blocks.LOG.defaultState).setModCreativeTab(ConquestTabs.ConquestBuildingWoodTab)
         BlockModWall("wood_wall_6_papa", Blocks.LOG.defaultState).setModCreativeTab(ConquestTabs.ConquestBuildingWoodTab)
+
+        BlockDecorWall("wood_smallpillar_4_delta", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestBuildingWoodTab)
     }
 }

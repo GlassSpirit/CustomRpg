@@ -1,13 +1,12 @@
 package ru.glassspirit.conquest.block
 
-import com.teamwizardry.librarianlib.features.base.block.BlockModPane
 import net.minecraft.block.material.Material
 import net.minecraft.creativetab.CreativeTabs
-import net.minecraft.init.Blocks
 import ru.glassspirit.conquest.ConquestTabs
 import ru.glassspirit.eclipsis.kotlin.setModCreativeTab
+import ru.glassspirit.eclipsis.objects.block.BlockModCarpet
 import ru.glassspirit.eclipsis.objects.block.BlockModFullNoCollision
-import ru.glassspirit.eclipsis.objects.block.BlockModPlate
+import ru.glassspirit.eclipsis.objects.block.BlockModHalf
 import ru.glassspirit.eclipsis.objects.block.BlockModRail
 import ru.glassspirit.eclipsis.objects.block.decorations.*
 
@@ -116,12 +115,9 @@ object ConquestBlocksNoCollision {
         BlockDecorBush("plants_nocollision_5_delta", Material.PLANTS).setModCreativeTab(ConquestTabs.ConquestPlantsTab)
         BlockDecorBush("plants_nocollision_3_delta", Material.PLANTS).setModCreativeTab(ConquestTabs.ConquestPlantsTab)
         BlockDecorBush("plants_nocollision_3_echo", Material.PLANTS).setModCreativeTab(ConquestTabs.ConquestPlantsTab)
-        BlockModPlate("plants_lilypad_1_normal", Material.PLANTS).setModCreativeTab(ConquestTabs.ConquestPlantsTab)
-        BlockModPlate("plants_lilypad_2_normal", Material.PLANTS).setModCreativeTab(ConquestTabs.ConquestPlantsTab)
         BlockModFullNoCollision("plants_nocollisionbiome_1_alpha", Material.PLANTS).setModCreativeTab(ConquestTabs.ConquestPlantsTab)
         BlockModFullNoCollision("plants_nocollisionbiome_1_bravo", Material.PLANTS).setModCreativeTab(ConquestTabs.ConquestPlantsTab)
         BlockModFullNoCollision("plants_nocollisionbiome_1_charlie", Material.PLANTS).setModCreativeTab(ConquestTabs.ConquestPlantsTab)
-        BlockModPane("plants_nocollisionconnectedxz_1_alpha", true, Blocks.WOOL.defaultState).setModCreativeTab(ConquestTabs.ConquestPlantsTab)
 
         BlockModFullNoCollision("plants_nocollision_6_alpha", Material.PLANTS).setModCreativeTab(CreativeTabs.DECORATIONS)
         BlockModFullNoCollision("plants_nocollision_6_bravo", Material.PLANTS).setModCreativeTab(CreativeTabs.DECORATIONS)
@@ -198,6 +194,13 @@ object ConquestBlocksNoCollision {
         BlockDecorBush("stone_nocollision_3_hotel", Material.ROCK).setModCreativeTab(CreativeTabs.DECORATIONS)
         BlockDecorBush("stone_nocollision_3_india", Material.ROCK).setModCreativeTab(CreativeTabs.DECORATIONS)
         BlockModFullNoCollision("stone_nocollision_3_juliet", Material.ROCK).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecorLight("iron_fullpartiallight10_1_alpha", Material.IRON, 1f).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecorLight("iron_fullpartiallight10_1_bravo", Material.IRON, 1f).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecorLight("iron_fullpartiallight10_1_charlie", Material.IRON, 1f).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecorLight("iron_fullpartiallight10_1_echo", Material.IRON, 1f).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecorLight("iron_fullpartiallight10_1_fox", Material.IRON, 1f).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecorLight("iron_fullpartiallight10_1_golf", Material.IRON, 1f).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecorLight("iron_fullpartiallight10_1_hotel", Material.IRON, 1f).setModCreativeTab(CreativeTabs.DECORATIONS)
         BlockModFullNoCollision("stone_nocollision_4_bravo", Material.ROCK).setModCreativeTab(CreativeTabs.DECORATIONS)
         BlockModFullNoCollision("stone_nocollision_4_charlie", Material.ROCK).setModCreativeTab(CreativeTabs.DECORATIONS)
 
@@ -227,5 +230,28 @@ object ConquestBlocksNoCollision {
         BlockDecorDirectionalPassable("wood_hopperdirectional_8_bravo", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
         BlockDecorDirectionalPassable("wood_hopperdirectional_8_charlie", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
         BlockDecorDirectionalPassable("wood_hopperdirectional_8_delta", Material.WOOD).setModCreativeTab(CreativeTabs.DECORATIONS)
+
+        BlockModCarpet("stone_rocks_1_alpha", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_bravo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_charlie", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_delta", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_echo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_fox", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_golf", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_hotel", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_india", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_juliet", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_kilo", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+        BlockModCarpet("stone_rocks_1_lima", Material.ROCK).setModCreativeTab(ConquestTabs.ConquestTopographyTab)
+
+        BlockDecor("stone_fullpartial_6_lima", Material.ROCK, cutout = true).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecorFlowerPot("stone_fullpartial_7_kilo", Material.ROCK).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecor("wood_fullpartial_1_alpha", Material.WOOD, cutout = true).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecor("wood_fullpartial_1_charlie", Material.WOOD, cutout = true).setModCreativeTab(ConquestTabs.ConquestPlantsTab)
+        BlockModHalf("wood_fullpartial_1_papa", Material.WOOD).setModCreativeTab(CreativeTabs.DECORATIONS)
+
+        BlockDecorDirectionalLight("torch_10_1_alpha", Material.WOOD, 1f, false).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecorDirectionalLight("torch_10_1_bravo", Material.WOOD, 1f, false).setModCreativeTab(CreativeTabs.DECORATIONS)
+        BlockDecorDirectionalLight("torch_10_2_alpha", Material.WOOD, 1f, false).setModCreativeTab(CreativeTabs.DECORATIONS)
     }
 }

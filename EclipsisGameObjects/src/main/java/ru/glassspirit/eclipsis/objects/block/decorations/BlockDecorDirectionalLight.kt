@@ -1,21 +1,9 @@
 package ru.glassspirit.eclipsis.objects.block.decorations
 
 import net.minecraft.block.material.Material
-import net.minecraft.block.state.IBlockState
-import net.minecraft.util.math.AxisAlignedBB
-import net.minecraft.util.math.BlockPos
-import net.minecraft.world.IBlockAccess
 
-class BlockDecorDirectionalLight(name: String, material: Material, lightLevel: Float) : BlockDecorDirectionalPassable(name, material) {
-    companion object {
-        private val FLOWER_POT_AABB = AxisAlignedBB(0.3125, 0.0, 0.3125, 0.6875, 0.375, 0.6875)
-    }
-
+class BlockDecorDirectionalLight(name: String, material: Material, lightLevel: Float, horizontal: Boolean = true) : BlockDecorDirectionalPassable(name, material, horizontal) {
     init {
         setLightLevel(lightLevel)
-    }
-
-    override fun getBoundingBox(state: IBlockState, source: IBlockAccess, pos: BlockPos): AxisAlignedBB {
-        return FLOWER_POT_AABB
     }
 }

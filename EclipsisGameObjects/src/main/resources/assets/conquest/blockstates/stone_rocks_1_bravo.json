@@ -1,0 +1,47 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "rock_1",
+    "textures": {
+      "rock": "conquest:blocks/granite_rock"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "normal": [
+      {
+        "weight": 40
+      },
+      {
+        "model": "rock_2",
+        "weight": 30
+      },
+      {
+        "model": "rock_3",
+        "weight": 50
+      },
+      {
+        "model": "rock_4",
+        "weight": 40
+      },
+      {
+        "model": "rock_5",
+        "weight": 50
+      },
+      {
+        "model": "rock_6",
+        "weight": 50
+      },
+      {
+        "model": "rock_7_nse",
+        "weight": 40
+      },
+      {
+        "model": "rock_8",
+        "weight": 40
+      }
+    ]
+  }
+}
