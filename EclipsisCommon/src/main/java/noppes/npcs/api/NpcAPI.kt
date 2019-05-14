@@ -128,7 +128,7 @@ interface NpcAPI {
 
             try {
                 val c = Class.forName("noppes.npcs.api.wrapper.WrapperNpcAPI")
-                instance = c.getMethod("instance").invoke(null) as NpcAPI
+                instance = c.getField("INSTANCE").get(null) as NpcAPI
             } catch (e: Exception) {
                 e.printStackTrace()
             }
