@@ -8,19 +8,12 @@
     "blocks.MixinBlockFence",
     "blocks.MixinBlockLadder",
     "blocks.MixinBlockLeaves",
-    "blocks.MixinBlockRail",
-    "cnpcs.MixinAvailability",
-    "cnpcs.MixinDataInventory",
-    "cnpcs.MixinScriptContainer"
-  ],
-  "server": [
-    "cnpcs.server.MixinAvailabilityServer"
+    "blocks.MixinBlockRail"
   ],
   "client": [
     "client.MixinLoadController",
     "client.MixinMinecraft",
-    "client.MixinSplashProgress",
-    "cnpcs.client.MixinGuiDialogEdit"
+    "client.MixinSplashProgress"
   ],
   "minVersion": "0.7.4",
   "injectors": {

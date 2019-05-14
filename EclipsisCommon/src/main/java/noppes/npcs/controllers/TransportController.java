@@ -4,12 +4,12 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
 import noppes.npcs.api.constants.RoleType;
+import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.controllers.data.TransportCategory;
 import noppes.npcs.controllers.data.TransportLocation;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleTransporter;
 
 import java.io.File;

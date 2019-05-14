@@ -21,6 +21,8 @@ import noppes.npcs.api.constants.RoleType;
 import noppes.npcs.api.event.QuestEvent;
 import noppes.npcs.api.event.RoleEvent;
 import noppes.npcs.api.item.IItemStack;
+import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.EnumPlayerPacket;
 import noppes.npcs.containers.ContainerNPCBankInterface;
@@ -31,10 +33,10 @@ import noppes.npcs.controllers.DialogController;
 import noppes.npcs.controllers.PlayerDataController;
 import noppes.npcs.controllers.PlayerQuestController;
 import noppes.npcs.controllers.data.*;
-import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleCompanion;
 import noppes.npcs.roles.RoleDialog;
 import noppes.npcs.roles.RoleFollower;
+import noppes.npcs.util.NoppesStringUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -323,7 +325,7 @@ public class NoppesUtilPlayer {
         List<IItemStack> list = new ArrayList<>();
         for (ItemStack item : quest.rewardItems.items) {
             if (!item.isEmpty())
-                list.add(NpcAPI.Instance().getIItemStack(item));
+                list.add(NpcAPI.instance().getIItemStack(item));
         }
 
         if (!quest.randomReward) {

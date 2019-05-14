@@ -4,12 +4,10 @@ import net.minecraft.client.Minecraft
 import net.minecraftforge.common.config.Configuration
 import net.minecraftforge.fml.client.registry.ClientRegistry
 import net.minecraftforge.fml.common.Mod
-import net.minecraftforge.fml.common.Mod.Instance
 import net.minecraftforge.fml.common.event.FMLLoadCompleteEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
 import net.minecraftforge.fml.relauncher.Side
 import net.minecraftforge.fml.relauncher.SideOnly
-import org.apache.logging.log4j.LogManager
 
 /**
  * @author Joshua Powers <jsh.powers></jsh.powers>@yahoo.com>
@@ -25,13 +23,8 @@ object ShoulderSurfing {
 
     const val NAME = "Shoulder Surfing"
     const val MODID = "shouldersurfing"
-    const val VERSION = "1.12"
+    const val VERSION = "GlassSpirit <3"
     const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
-    const val DEVELOPERS = "Joshua Powers, Exopandora (for 1.8+)"
-    val LOGGER = LogManager.getLogger("Shoulder Surfing")
-
-    @Instance(ShoulderSurfing.MODID)
-    lateinit var INSTACE: ShoulderSurfing
 
     private var shadersEnabled = false
 
@@ -82,9 +75,4 @@ object ShoulderSurfing {
             ShoulderSurfing.CONFIG.save()
         }
     }
-
-    fun areShadersEnabled(): Boolean {
-        return this.shadersEnabled
-    }
-
 }

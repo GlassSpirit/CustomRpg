@@ -9,7 +9,7 @@ import net.minecraft.client.resources.IResourceManagerReloadListener;
 import net.minecraft.client.resources.SimpleReloadableResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.common.CustomNpcs;
 
 public class CustomNpcResourceListener implements IResourceManagerReloadListener {
 

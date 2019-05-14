@@ -4,10 +4,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ChatAllowedCharacters;
-import noppes.npcs.CustomNpcsConfig;
-import noppes.npcs.NoppesStringUtils;
+import noppes.npcs.common.CustomNpcsConfig;
+import noppes.npcs.util.NoppesStringUtils;
 import noppes.npcs.client.gui.util.TextContainer.LineData;
-import noppes.npcs.config.TrueTypeFont;
+import noppes.npcs.common.config.TrueTypeFont;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 

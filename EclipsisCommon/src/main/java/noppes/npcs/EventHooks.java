@@ -22,14 +22,14 @@ import noppes.npcs.api.handler.IFactionHandler;
 import noppes.npcs.api.handler.IRecipeHandler;
 import noppes.npcs.api.wrapper.ItemScriptedWrapper;
 import noppes.npcs.api.wrapper.WrapperNpcAPI;
+import noppes.npcs.common.entity.EntityDialogNpc;
+import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityProjectile;
 import noppes.npcs.constants.EnumScriptType;
 import noppes.npcs.controllers.IScriptBlockHandler;
 import noppes.npcs.controllers.ScriptContainer;
 import noppes.npcs.controllers.ScriptController;
 import noppes.npcs.controllers.data.*;
-import noppes.npcs.entity.EntityDialogNpc;
-import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.entity.EntityProjectile;
 import org.apache.commons.lang3.StringUtils;
 
 public class EventHooks {
@@ -317,7 +317,7 @@ public class EventHooks {
     }
 
     public static boolean onPlayerToss(PlayerScriptData handler, EntityItem entityItem) {
-        PlayerEvent.TossEvent event = new PlayerEvent.TossEvent(handler.getPlayer(), NpcAPI.Instance().getIItemStack(entityItem.getItem()));
+        PlayerEvent.TossEvent event = new PlayerEvent.TossEvent(handler.getPlayer(), NpcAPI.instance().getIItemStack(entityItem.getItem()));
         handler.runScript(EnumScriptType.TOSS, event);
         return WrapperNpcAPI.EVENT_BUS.post(event);
     }
@@ -329,19 +329,19 @@ public class EventHooks {
     }
 
     public static boolean onPlayerPickUp(PlayerScriptData handler, EntityItem entityItem) {
-        PlayerEvent.PickUpEvent event = new PlayerEvent.PickUpEvent(handler.getPlayer(), NpcAPI.Instance().getIItemStack(entityItem.getItem()));
+        PlayerEvent.PickUpEvent event = new PlayerEvent.PickUpEvent(handler.getPlayer(), NpcAPI.instance().getIItemStack(entityItem.getItem()));
         handler.runScript(EnumScriptType.PICKUP, event);
         return WrapperNpcAPI.EVENT_BUS.post(event);
     }
 
     public static void onPlayerContainerOpen(PlayerScriptData handler, Container container) {
-        PlayerEvent.ContainerOpen event = new PlayerEvent.ContainerOpen(handler.getPlayer(), NpcAPI.Instance().getIContainer(container));
+        PlayerEvent.ContainerOpen event = new PlayerEvent.ContainerOpen(handler.getPlayer(), NpcAPI.instance().getIContainer(container));
         handler.runScript(EnumScriptType.CONTAINER_OPEN, event);
         WrapperNpcAPI.EVENT_BUS.post(event);
     }
 
     public static void onPlayerContainerClose(PlayerScriptData handler, Container container) {
-        PlayerEvent.ContainerClosed event = new PlayerEvent.ContainerClosed(handler.getPlayer(), NpcAPI.Instance().getIContainer(container));
+        PlayerEvent.ContainerClosed event = new PlayerEvent.ContainerClosed(handler.getPlayer(), NpcAPI.instance().getIContainer(container));
         handler.runScript(EnumScriptType.CONTAINER_CLOSED, event);
         WrapperNpcAPI.EVENT_BUS.post(event);
     }
@@ -414,14 +414,14 @@ public class EventHooks {
     public static void onForgeEntityEvent(EntityEvent event) {
         if (!ScriptController.Instance.forgeScripts.isEnabled())
             return;
-        IEntity e = NpcAPI.Instance().getIEntity(event.getEntity());
+        IEntity e = NpcAPI.instance().getIEntity(event.getEntity());
         onForgeEvent(new ForgeEvent.EntityEvent(event, e), event);
     }
 
     public static void onForgeWorldEvent(WorldEvent event) {
         if (!ScriptController.Instance.forgeScripts.isEnabled())
             return;
-        IWorld e = NpcAPI.Instance().getIWorld((WorldServer) event.getWorld());
+        IWorld e = NpcAPI.instance().getIWorld((WorldServer) event.getWorld());
         onForgeEvent(new ForgeEvent.WorldEvent(event, e), event);
     }
 
@@ -486,19 +486,19 @@ public class EventHooks {
     }
 
     public static boolean onScriptItemTossed(ItemScriptedWrapper handler, EntityPlayer player, EntityItem entity) {
-        ItemEvent.TossedEvent event = new ItemEvent.TossedEvent(handler, PlayerData.get(player).scriptData.getPlayer(), (IEntityItem) NpcAPI.Instance().getIEntity(entity));
+        ItemEvent.TossedEvent event = new ItemEvent.TossedEvent(handler, PlayerData.get(player).scriptData.getPlayer(), (IEntityItem) NpcAPI.instance().getIEntity(entity));
         handler.runScript(EnumScriptType.TOSSED, event);
         return WrapperNpcAPI.EVENT_BUS.post(event);
     }
 
     public static boolean onScriptItemPickedUp(ItemScriptedWrapper handler, EntityPlayer player, EntityItem entity) {
-        ItemEvent.PickedUpEvent event = new ItemEvent.PickedUpEvent(handler, PlayerData.get(player).scriptData.getPlayer(), (IEntityItem) NpcAPI.Instance().getIEntity(entity));
+        ItemEvent.PickedUpEvent event = new ItemEvent.PickedUpEvent(handler, PlayerData.get(player).scriptData.getPlayer(), (IEntityItem) NpcAPI.instance().getIEntity(entity));
         handler.runScript(EnumScriptType.PICKEDUP, event);
         return WrapperNpcAPI.EVENT_BUS.post(event);
     }
 
     public static boolean onScriptItemSpawn(ItemScriptedWrapper handler, EntityItem entity) {
-        ItemEvent.SpawnEvent event = new ItemEvent.SpawnEvent(handler, (IEntityItem) NpcAPI.Instance().getIEntity(entity));
+        ItemEvent.SpawnEvent event = new ItemEvent.SpawnEvent(handler, (IEntityItem) NpcAPI.instance().getIEntity(entity));
         handler.runScript(EnumScriptType.SPAWN, event);
         return WrapperNpcAPI.EVENT_BUS.post(event);
     }
@@ -514,7 +514,7 @@ public class EventHooks {
     }
 
     public static void onProjectileTick(EntityProjectile projectile) {
-        ProjectileEvent.UpdateEvent event = new ProjectileEvent.UpdateEvent((IEntityProjectile) NpcAPI.Instance().getIEntity(projectile));
+        ProjectileEvent.UpdateEvent event = new ProjectileEvent.UpdateEvent((IEntityProjectile) NpcAPI.instance().getIEntity(projectile));
         for (ScriptContainer script : projectile.scripts) {
             if (script.isValid()) {
                 script.run(EnumScriptType.PROJECTILE_TICK, event);

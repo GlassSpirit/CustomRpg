@@ -6,7 +6,7 @@ import noppes.npcs.ModelEyeData;
 import noppes.npcs.ModelPartData;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumParts;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.Arrays;

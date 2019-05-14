@@ -10,8 +10,8 @@ import net.minecraft.nbt.NBTTagByte;
 import net.minecraft.nbt.NBTTagCompound;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.controllers.PixelmonHelper;
-import noppes.npcs.entity.EntityFakeLiving;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityFakeLiving;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.lang.reflect.Method;
 import java.util.*;

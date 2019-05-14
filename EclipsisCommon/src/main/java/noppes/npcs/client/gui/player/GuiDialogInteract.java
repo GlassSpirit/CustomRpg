@@ -7,7 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.ITextComponent;
-import noppes.npcs.NoppesStringUtils;
+import noppes.npcs.util.NoppesStringUtils;
 import noppes.npcs.NoppesUtilPlayer;
 import noppes.npcs.api.constants.OptionType;
 import noppes.npcs.client.ClientProxy;
@@ -19,7 +19,7 @@ import noppes.npcs.client.gui.util.IGuiClose;
 import noppes.npcs.constants.EnumPlayerPacket;
 import noppes.npcs.controllers.data.Dialog;
 import noppes.npcs.controllers.data.DialogOption;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 

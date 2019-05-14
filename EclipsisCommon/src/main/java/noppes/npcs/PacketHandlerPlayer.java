@@ -13,6 +13,10 @@ import noppes.npcs.api.event.ItemEvent;
 import noppes.npcs.api.event.PlayerEvent;
 import noppes.npcs.api.event.RoleEvent;
 import noppes.npcs.api.wrapper.ItemScriptedWrapper;
+import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.common.CustomNpcsConfig;
+import noppes.npcs.common.objects.NpcObjects;
+import noppes.npcs.common.objects.items.ItemScripted;
 import noppes.npcs.constants.EnumCompanionTalent;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.constants.EnumPacketClient;
@@ -22,9 +26,7 @@ import noppes.npcs.controllers.PlayerDataController;
 import noppes.npcs.controllers.PlayerQuestController;
 import noppes.npcs.controllers.ScriptController;
 import noppes.npcs.controllers.data.*;
-import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.objects.NpcObjects;
-import noppes.npcs.objects.items.ItemScripted;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleCompanion;
 import noppes.npcs.roles.RoleTransporter;
 
@@ -70,7 +72,7 @@ public class PacketHandlerPlayer {
             EventHooks.onPlayerAttack(handler, ev);
 
             if (item.getItem() == NpcObjects.scriptedItem) {
-                ItemScriptedWrapper isw = ItemScripted.GetWrapper(item);
+                ItemScriptedWrapper isw = ItemScripted.Companion.getWrapper(item);
                 ItemEvent.AttackEvent eve = new ItemEvent.AttackEvent(isw, handler.getPlayer(), 0, null);
                 EventHooks.onScriptItemAttack(isw, eve);
             }

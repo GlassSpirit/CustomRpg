@@ -18,8 +18,8 @@ import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.client.layer.*;
 import noppes.npcs.client.model.ModelBipedAlt;
 import noppes.npcs.controllers.PixelmonHelper;
-import noppes.npcs.entity.EntityCustomNpc;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import org.lwjgl.opengl.GL11;
 
 import java.util.List;

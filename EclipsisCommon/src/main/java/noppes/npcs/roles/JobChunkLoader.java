@@ -7,7 +7,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.ForgeChunkManager.Ticket;
 import noppes.npcs.controllers.ChunkController;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.List;

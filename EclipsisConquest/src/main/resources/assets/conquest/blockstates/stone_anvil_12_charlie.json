@@ -1,0 +1,21 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:capitalionian_sandstone_wall_post"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "x": {
+        "model": "conquest:capitalionian_sandstone_wall_post_side",
+        "y": 90
+      },
+      "z": {
+        "model": "conquest:capitalionian_sandstone_wall_post_side"
+      }
+    }
+  }
+}

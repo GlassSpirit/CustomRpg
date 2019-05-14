@@ -131,7 +131,7 @@ public class NBTWrapper implements INbt {
 
         for (int i = 0; i < list.tagCount(); i++) {
             if (list.getTagType() == 10)
-                nbts[i] = NpcAPI.Instance().getINbt(list.getCompoundTagAt(i));
+                nbts[i] = NpcAPI.instance().getINbt(list.getCompoundTagAt(i));
             else if (list.getTagType() == 8)
                 nbts[i] = list.getStringTagAt(i);
             else if (list.getTagType() == 6)
@@ -178,7 +178,7 @@ public class NBTWrapper implements INbt {
 
     @Override
     public INbt getCompound(String key) {
-        return NpcAPI.Instance().getINbt(compound.getCompoundTag(key));
+        return NpcAPI.instance().getINbt(compound.getCompoundTag(key));
     }
 
     @Override

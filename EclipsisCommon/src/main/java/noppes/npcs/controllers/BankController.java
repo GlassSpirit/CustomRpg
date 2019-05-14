@@ -3,7 +3,7 @@ package noppes.npcs.controllers;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.controllers.data.Bank;
 
 import java.io.File;
@@ -13,10 +13,9 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class BankController {
+    private static BankController instance;
     public HashMap<Integer, Bank> banks;
     private String filePath = "";
-
-    private static BankController instance;
 
     public BankController() {
         instance = this;

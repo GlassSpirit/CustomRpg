@@ -20,8 +20,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import ru.glassspirit.eclipsis.client.ClientProxy;
 import ru.glassspirit.eclipsis.client.gui.Texture;
-import ru.glassspirit.eclipsis.proxy.ClientProxy;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.locks.Lock;
@@ -33,20 +33,29 @@ import static org.lwjgl.opengl.GL11.*;
 public abstract class MixinSplashProgress {
 
     @Shadow(remap = false)
+    @Final
+    static Semaphore mutex;
+    @Shadow(remap = false)
+    static boolean isDisplayVSyncForced;
+    @Shadow(remap = false)
     private static volatile boolean done;
-
     @Shadow(remap = false)
     private static Thread thread;
-
     @Shadow(remap = false)
     @Final
     private static Lock lock;
-
     @Shadow(remap = false)
     private static boolean enabled;
-
     @Shadow(remap = false)
     private static Drawable d;
+    @Shadow(remap = false)
+    @Final
+    private static int TIMING_FRAME_COUNT;
+    @Shadow(remap = false)
+    private static volatile boolean pause;
+    @Shadow(remap = false)
+    @Final
+    private static int TIMING_FRAME_THRESHOLD;
 
     @Shadow(remap = false)
     private static boolean disableSplash(Exception e) {
@@ -57,47 +66,9 @@ public abstract class MixinSplashProgress {
     private static void checkThreadState() {
     }
 
-    @Shadow(remap = false)
-    @Final
-    static Semaphore mutex;
-
-    @Shadow(remap = false)
-    @Final
-    private static int TIMING_FRAME_COUNT;
-
-    @Shadow(remap = false)
-    private static volatile boolean pause;
-
-    @Shadow(remap = false)
-    static boolean isDisplayVSyncForced;
-
-    @Shadow(remap = false)
-    @Final
-    private static int TIMING_FRAME_THRESHOLD;
-
     @Inject(method = "start", at = @At(value = "INVOKE", target = "Ljava/lang/Thread;setUncaughtExceptionHandler(Ljava/lang/Thread$UncaughtExceptionHandler;)V"), remap = false)
     private static void setNewThread(CallbackInfo ci) {
         thread = new Thread(MixinSplashProgress::drawSplashScreenEclipsis);
-    }
-
-    /**
-     * @reason Removes textures deletion from method
-     * @author GlassSpirit
-     */
-    @Overwrite(remap = false)
-    public static void finish() {
-        if (!enabled) return;
-        try {
-            checkThreadState();
-            done = true;
-            thread.join();
-            glFlush();        // process any remaining GL calls before releaseContext (prevents missing textures on mac)
-            //d.releaseContext();
-            //Display.getDrawable().makeCurrent();
-        } catch (Exception e) {
-            FMLLog.log.error("Error finishing SplashProgress:", e);
-            disableSplash(e);
-        }
     }
 
     private static void drawSplashScreenEclipsis() {
@@ -274,6 +245,11 @@ public abstract class MixinSplashProgress {
     }
 
     private static void clearGL() {
+        Minecraft mc = Minecraft.getMinecraft();
+        mc.displayWidth = Display.getWidth();
+        mc.displayHeight = Display.getHeight();
+        mc.resize(mc.displayWidth, mc.displayHeight);
+
         GlStateManager.clearColor(0.1843F, 0.1686F, 0.1647F, 1.0F);
         glEnable(GL_DEPTH_TEST);
         glDepthFunc(GL_LEQUAL);
@@ -286,6 +262,26 @@ public abstract class MixinSplashProgress {
             throw new RuntimeException(e);
         } finally {
             lock.unlock();
+        }
+    }
+
+    /**
+     * @reason Removes textures deletion from method
+     * @author GlassSpirit
+     */
+    @Overwrite(remap = false)
+    public static void finish() {
+        if (!enabled) return;
+        try {
+            checkThreadState();
+            done = true;
+            thread.join();
+            glFlush();        // process any remaining GL calls before releaseContext (prevents missing textures on mac)
+            d.releaseContext();
+            Display.getDrawable().makeCurrent();
+        } catch (Exception e) {
+            FMLLog.log.error("Error finishing SplashProgress:", e);
+            disableSplash(e);
         }
     }
 

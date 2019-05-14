@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleFollower;
 
 public class ContainerNPCFollowerSetup extends Container {

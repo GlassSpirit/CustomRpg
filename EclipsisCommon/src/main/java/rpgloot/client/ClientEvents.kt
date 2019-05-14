@@ -7,7 +7,7 @@ import net.minecraftforge.fml.client.FMLClientHandler
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import net.minecraftforge.fml.common.gameevent.TickEvent.RenderTickEvent
 import org.lwjgl.opengl.GL11
-import rpgloot.entities.EntCorpse
+import rpgloot.entities.EntityCorpse
 
 class ClientEvents {
 
@@ -20,8 +20,8 @@ class ClientEvents {
             val world = mc.world
             if (!event.isCancelable && player != null && world != null) {
                 val target = mc.objectMouseOver
-                if (target != null && target.entityHit is EntCorpse) {
-                    val corpse = target.entityHit as EntCorpse
+                if (target != null && target.entityHit is EntityCorpse) {
+                    val corpse = target.entityHit as EntityCorpse
                     val scale = ScaledResolution(mc)
                     val width = scale.scaledWidth
                     val height = scale.scaledHeight

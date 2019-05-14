@@ -1,0 +1,20 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "cube_column",
+    "textures": {
+      "end": "conquest:blocks/stonebrick6",
+      "side": "conquest:blocks/v_engraved"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "facing": {
+      "north": {
+        "y": 270
+      }
+    }
+  }
+}

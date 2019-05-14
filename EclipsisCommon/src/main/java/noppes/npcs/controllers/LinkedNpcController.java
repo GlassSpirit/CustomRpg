@@ -1,13 +1,13 @@
 package noppes.npcs.controllers;
 
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
-import noppes.npcs.NBTTags;
-import noppes.npcs.entity.EntityCustomNpc;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.util.NBTJsonUtil;
 import noppes.npcs.util.NBTJsonUtil.JsonException;
+import noppes.npcs.util.NBTTags;
 
 import java.io.File;
 import java.io.IOException;
@@ -87,28 +87,6 @@ public class LinkedNpcController {
         }
     }
 
-    public static class LinkedData {
-        public String name = "LinkedNpc";
-        public long time = 0;
-        public NBTTagCompound data = new NBTTagCompound();
-
-        public LinkedData() {
-            time = System.currentTimeMillis();
-        }
-
-        public void setNBT(NBTTagCompound compound) {
-            name = compound.getString("LinkedName");
-            data = compound.getCompoundTag("NPCData");
-        }
-
-        public NBTTagCompound getNBT() {
-            NBTTagCompound compound = new NBTTagCompound();
-            compound.setString("LinkedName", name);
-            compound.setTag("NPCData", data);
-            return compound;
-        }
-    }
-
     public void loadNpcData(EntityNPCInterface npc) {
         if (npc.linkedName.isEmpty())
             return;
@@ -126,7 +104,7 @@ public class LinkedNpcController {
 
             NBTTagCompound compound = NBTTags.NBTMerge(readNpcData(npc), data.data);
 
-            npc.display.readToNBT(compound);
+            npc.display.readFromNBT(compound);
             npc.stats.readToNBT(compound);
             npc.advanced.readToNBT(compound);
             npc.inventory.readEntityFromNBT(compound);
@@ -194,5 +172,27 @@ public class LinkedNpcController {
         data.name = name;
         list.add(data);
         save();
+    }
+
+    public static class LinkedData {
+        public String name = "LinkedNpc";
+        public long time = 0;
+        public NBTTagCompound data = new NBTTagCompound();
+
+        public LinkedData() {
+            time = System.currentTimeMillis();
+        }
+
+        public NBTTagCompound getNBT() {
+            NBTTagCompound compound = new NBTTagCompound();
+            compound.setString("LinkedName", name);
+            compound.setTag("NPCData", data);
+            return compound;
+        }
+
+        public void setNBT(NBTTagCompound compound) {
+            name = compound.getString("LinkedName");
+            data = compound.getCompoundTag("NPCData");
+        }
     }
 }

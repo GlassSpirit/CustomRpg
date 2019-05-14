@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.controllers.data.Quest;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.quests.QuestKill;
 
 import java.lang.reflect.Modifier;

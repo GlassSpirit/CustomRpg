@@ -10,7 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import noppes.npcs.ModelData;
 import noppes.npcs.ModelPartData;
 import noppes.npcs.client.ClientProxy;
-import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.common.entity.EntityCustomNpc;
 
 public abstract class LayerInterface implements LayerRenderer {
     protected RenderLiving render;

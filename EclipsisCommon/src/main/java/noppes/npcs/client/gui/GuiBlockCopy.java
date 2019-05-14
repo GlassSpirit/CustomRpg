@@ -6,7 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.objects.blocks.tiles.TileCopy;
+import noppes.npcs.common.objects.tiles.TileCopy;
 
 public class GuiBlockCopy extends GuiNPCInterface implements IGuiData, ITextfieldListener {
     private int x, y, z;

@@ -5,7 +5,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
-import noppes.npcs.NoppesStringUtils;
+import noppes.npcs.util.NoppesStringUtils;
 import noppes.npcs.TextBlock;
 
 public class TextBlockClient extends TextBlock {

@@ -14,10 +14,10 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import noppes.npcs.client.gui.util.GuiCustomScroll;
 import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.client.gui.util.ICustomScrollListener;
-import noppes.npcs.entity.EntityNPC64x32;
-import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.entity.EntityNpcAlex;
-import noppes.npcs.entity.EntityNpcClassicPlayer;
+import noppes.npcs.common.entity.EntityNPC64x32;
+import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNpcAlex;
+import noppes.npcs.common.entity.EntityNpcClassicPlayer;
 
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;

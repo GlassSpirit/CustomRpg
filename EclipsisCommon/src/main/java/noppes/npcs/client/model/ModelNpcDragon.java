@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.MathHelper;
-import noppes.npcs.entity.EntityNpcDragon;
+import noppes.npcs.common.entity.EntityNpcDragon;
 
 public class ModelNpcDragon extends ModelBase {
 

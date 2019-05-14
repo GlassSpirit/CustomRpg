@@ -9,7 +9,7 @@ import noppes.npcs.client.CustomNpcResourceListener;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.containers.ContainerNPCTraderSetup;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleTrader;
 
 public class GuiNpcTraderSetup extends GuiContainerNPCInterface2 implements ITextfieldListener {

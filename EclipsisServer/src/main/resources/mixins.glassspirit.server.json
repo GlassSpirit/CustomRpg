@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "ru.glassspirit.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.glassspirit.server.refmap.json",
+  "target": "@env(DEFAULT)",
+  "server": [
+  ],
+  "minVersion": "0.7.4",
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

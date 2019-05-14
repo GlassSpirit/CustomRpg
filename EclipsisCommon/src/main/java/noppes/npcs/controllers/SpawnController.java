@@ -4,8 +4,8 @@ import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.WeightedRandom;
-import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
+import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.controllers.data.SpawnData;
 
 import java.io.*;

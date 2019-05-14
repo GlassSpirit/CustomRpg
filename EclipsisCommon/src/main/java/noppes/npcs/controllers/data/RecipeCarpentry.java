@@ -9,7 +9,7 @@ import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
-import noppes.npcs.NBTTags;
+import noppes.npcs.util.NBTTags;
 import noppes.npcs.NoppesUtilPlayer;
 import noppes.npcs.api.handler.data.IRecipe;
 import noppes.npcs.controllers.RecipeController;

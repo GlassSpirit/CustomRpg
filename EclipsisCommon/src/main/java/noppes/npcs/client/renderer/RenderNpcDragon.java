@@ -2,7 +2,7 @@ package noppes.npcs.client.renderer;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 public class RenderNpcDragon<T extends EntityNPCInterface> extends RenderNPCInterface<T> {
 

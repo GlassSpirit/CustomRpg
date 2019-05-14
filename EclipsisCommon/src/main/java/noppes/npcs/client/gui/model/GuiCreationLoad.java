@@ -6,7 +6,7 @@ import noppes.npcs.client.controllers.PresetController;
 import noppes.npcs.client.gui.util.GuiCustomScroll;
 import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.client.gui.util.ICustomScrollListener;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.List;

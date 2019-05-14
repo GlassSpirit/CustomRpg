@@ -5,10 +5,10 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import noppes.npcs.CustomNpcs;
-import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.LogWriter;
 import noppes.npcs.api.wrapper.WorldWrapper;
+import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.common.CustomNpcsConfig;
 import noppes.npcs.controllers.data.ForgeScriptData;
 import noppes.npcs.controllers.data.PlayerScriptData;
 import noppes.npcs.util.NBTJsonUtil;
@@ -48,7 +48,7 @@ public class ScriptController {
     public ScriptController() {
         loaded = false;
         Instance = this;
-        System.setProperty("nashorn.args", CustomNpcsConfig.NashorArguments);
+        System.setProperty("nashorn.args", CustomNpcsConfig.NashornArguments);
         manager = new ScriptEngineManager();
         try {
             Class c = Class.forName("org.jetbrains.kotlin.script.jsr223.KotlinJsr223JvmLocalScriptEngineFactory");

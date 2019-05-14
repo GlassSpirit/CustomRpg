@@ -6,22 +6,23 @@ import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import noppes.npcs.NBTTags;
 import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.NpcMiscInventory;
 import noppes.npcs.Server;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.containers.ContainerNPCBankInterface;
 import noppes.npcs.controllers.BankController;
-import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.util.CustomNpcsScheduler;
+import noppes.npcs.util.NBTTags;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class BankData {
-    public HashMap<Integer, NpcMiscInventory> itemSlots;
-    public HashMap<Integer, Boolean> upgradedSlots;
+    public Map<Integer, NpcMiscInventory> itemSlots;
+    public Map<Integer, Boolean> upgradedSlots;
     public int unlockedSlots = 0;
     public int bankId = -1;
 
@@ -42,8 +43,8 @@ public class BankData {
         upgradedSlots = NBTTags.getBooleanList(nbttagcompound.getTagList("UpdatedSlots", 10));
     }
 
-    private HashMap<Integer, NpcMiscInventory> getItemSlots(NBTTagList tagList) {
-        HashMap<Integer, NpcMiscInventory> list = new HashMap<>();
+    private Map<Integer, NpcMiscInventory> getItemSlots(NBTTagList tagList) {
+        Map<Integer, NpcMiscInventory> list = new HashMap<>();
         for (int i = 0; i < tagList.tagCount(); i++) {
             NBTTagCompound nbttagcompound = tagList.getCompoundTagAt(i);
             int slot = nbttagcompound.getInteger("Slot");
@@ -61,7 +62,7 @@ public class BankData {
         nbttagcompound.setTag("BankInv", nbtItemSlots(itemSlots));
     }
 
-    private NBTTagList nbtItemSlots(HashMap<Integer, NpcMiscInventory> items) {
+    private NBTTagList nbtItemSlots(Map<Integer, NpcMiscInventory> items) {
         NBTTagList list = new NBTTagList();
         for (int slot : items.keySet()) {
             NBTTagCompound nbttagcompound = new NBTTagCompound();

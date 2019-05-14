@@ -1,0 +1,20 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:well_support"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "x": {
+        "y": 90
+      },
+      "z": {
+        "y": 180
+      }
+    }
+  }
+}

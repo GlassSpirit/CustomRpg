@@ -2,7 +2,7 @@ package noppes.npcs.controllers;
 
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.common.CustomNpcs;
 
 import java.io.File;
 import java.io.FileInputStream;

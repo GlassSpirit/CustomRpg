@@ -59,12 +59,12 @@ public class EntityLivingBaseWrapper<T extends EntityLivingBase> extends EntityW
 
     @Override
     public IEntityLivingBase getAttackTarget() {
-        return (IEntityLivingBase) NpcAPI.Instance().getIEntity(entity.getRevengeTarget());
+        return (IEntityLivingBase) NpcAPI.instance().getIEntity(entity.getRevengeTarget());
     }
 
     @Override
     public IEntityLivingBase getLastAttacked() {
-        return (IEntityLivingBase) NpcAPI.Instance().getIEntity(entity.getLastAttackedEntity());
+        return (IEntityLivingBase) NpcAPI.instance().getIEntity(entity.getLastAttackedEntity());
     }
 
     @Override
@@ -127,7 +127,7 @@ public class EntityLivingBaseWrapper<T extends EntityLivingBase> extends EntityW
 
     @Override
     public IItemStack getMainhandItem() {
-        return NpcAPI.Instance().getIItemStack(entity.getHeldItemMainhand());
+        return NpcAPI.instance().getIItemStack(entity.getHeldItemMainhand());
     }
 
     @Override
@@ -137,7 +137,7 @@ public class EntityLivingBaseWrapper<T extends EntityLivingBase> extends EntityW
 
     @Override
     public IItemStack getOffhandItem() {
-        return NpcAPI.Instance().getIItemStack(entity.getHeldItemOffhand());
+        return NpcAPI.instance().getIItemStack(entity.getHeldItemOffhand());
     }
 
     @Override
@@ -149,7 +149,7 @@ public class EntityLivingBaseWrapper<T extends EntityLivingBase> extends EntityW
     public IItemStack getArmor(int slot) {
         if (slot < 0 || slot > 3)
             throw new CustomNPCsException("Wrong slot id:" + slot);
-        return NpcAPI.Instance().getIItemStack(entity.getItemStackFromSlot(getSlot(slot)));
+        return NpcAPI.instance().getIItemStack(entity.getItemStackFromSlot(getSlot(slot)));
     }
 
     @Override

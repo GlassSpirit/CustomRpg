@@ -9,7 +9,7 @@ import noppes.npcs.client.gui.SubGuiNpcBiomes;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.data.SpawnData;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.HashMap;
 import java.util.Vector;

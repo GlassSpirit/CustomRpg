@@ -6,13 +6,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import noppes.npcs.EventHooks;
-import noppes.npcs.NBTTags;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.entity.IPlayer;
 import noppes.npcs.constants.EnumScriptType;
 import noppes.npcs.controllers.IScriptHandler;
 import noppes.npcs.controllers.ScriptContainer;
 import noppes.npcs.controllers.ScriptController;
+import noppes.npcs.util.NBTTags;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class PlayerScriptData implements IScriptHandler {
-    private List<ScriptContainer> scripts = new ArrayList<ScriptContainer>();
+    private List<ScriptContainer> scripts = new ArrayList<>();
 
     private String scriptLanguage = "ECMAScript";
     private EntityPlayer player;
@@ -32,8 +32,8 @@ public class PlayerScriptData implements IScriptHandler {
     public boolean hadInteract = true;
     private boolean enabled = false;
 
-    private static Map<Long, String> console = new TreeMap<Long, String>();
-    private static List<Integer> errored = new ArrayList<Integer>();
+    private static Map<Long, String> console = new TreeMap<>();
+    private static List<Integer> errored = new ArrayList<>();
 
 
     public PlayerScriptData(EntityPlayer player) {
@@ -41,9 +41,9 @@ public class PlayerScriptData implements IScriptHandler {
     }
 
     public void clear() {
-        console = new TreeMap<Long, String>();
-        errored = new ArrayList<Integer>();
-        scripts = new ArrayList<ScriptContainer>();
+        console = new TreeMap<>();
+        errored = new ArrayList<>();
+        scripts = new ArrayList<>();
     }
 
     public void readFromNBT(NBTTagCompound compound) {
@@ -136,7 +136,7 @@ public class PlayerScriptData implements IScriptHandler {
 
     public IPlayer getPlayer() {
         if (playerAPI == null)
-            playerAPI = (IPlayer) NpcAPI.Instance().getIEntity(player);
+            playerAPI = (IPlayer) NpcAPI.instance().getIEntity(player);
         return playerAPI;
     }
 

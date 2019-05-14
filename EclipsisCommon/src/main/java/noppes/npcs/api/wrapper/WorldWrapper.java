@@ -32,14 +32,14 @@ import noppes.npcs.api.entity.IEntity;
 import noppes.npcs.api.entity.IPlayer;
 import noppes.npcs.api.entity.data.IData;
 import noppes.npcs.api.item.IItemStack;
+import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityProjectile;
 import noppes.npcs.controllers.ScriptController;
-import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.entity.EntityProjectile;
 
 import java.util.*;
 
 public class WorldWrapper implements IWorld {
-    public static Map<String, Object> tempData = new HashMap<String, Object>();
+    public static Map<String, Object> tempData = new HashMap<>();
 
     public WorldServer world;
 
@@ -131,6 +131,11 @@ public class WorldWrapper implements IWorld {
         this.dimension = new DimensionWrapper(world.provider.getDimension(), world.provider.getDimensionType());
     }
 
+    @Deprecated
+    public static WorldWrapper createNew(WorldServer world) {
+        return new WorldWrapper(world);
+    }
+
     @Override
     public WorldServer getMCWorld() {
         return world;
@@ -145,9 +150,9 @@ public class WorldWrapper implements IWorld {
     public IEntity[] getNearbyEntities(IPos pos, int range, int type) {
         AxisAlignedBB bb = new AxisAlignedBB(0, 0, 0, 1, 1, 1).offset(pos.getMCBlockPos()).grow(range, range, range);
         List<Entity> entities = world.getEntitiesWithinAABB(getClassForType(type), bb);
-        List<IEntity> list = new ArrayList<IEntity>();
+        List<IEntity> list = new ArrayList<>();
         for (Entity living : entities) {
-            list.add(NpcAPI.Instance().getIEntity(living));
+            list.add(NpcAPI.instance().getIEntity(living));
         }
         return list.toArray(new IEntity[list.size()]);
     }
@@ -155,9 +160,9 @@ public class WorldWrapper implements IWorld {
     @Override
     public IEntity[] getAllEntities(int type) {
         List<Entity> entities = world.getEntities(getClassForType(type), EntitySelectors.NOT_SPECTATING);
-        List<IEntity> list = new ArrayList<IEntity>();
+        List<IEntity> list = new ArrayList<>();
         for (Entity living : entities) {
-            list.add(NpcAPI.Instance().getIEntity(living));
+            list.add(NpcAPI.instance().getIEntity(living));
         }
         return list.toArray(new IEntity[list.size()]);
     }
@@ -183,7 +188,7 @@ public class WorldWrapper implements IWorld {
                 entity = e;
             }
         }
-        return NpcAPI.Instance().getIEntity(entity);
+        return NpcAPI.instance().getIEntity(entity);
     }
 
     @Override
@@ -195,7 +200,7 @@ public class WorldWrapper implements IWorld {
                 e = world.getPlayerEntityByUUID(id);
             if (e == null)
                 return null;
-            return NpcAPI.Instance().getIEntity(e);
+            return NpcAPI.instance().getIEntity(e);
         } catch (Exception e) {
             throw new CustomNPCsException("Given uuid was invalid " + uuid);
         }
@@ -206,7 +211,7 @@ public class WorldWrapper implements IWorld {
         Entity entity = EntityList.createEntityFromNBT(nbt.getMCNBT(), world);
         if (entity == null)
             throw new CustomNPCsException("Failed to create an entity from given NBT");
-        return NpcAPI.Instance().getIEntity(entity);
+        return NpcAPI.instance().getIEntity(entity);
     }
 
     @Override
@@ -215,7 +220,7 @@ public class WorldWrapper implements IWorld {
         Entity entity = EntityList.createEntityByIDFromName(resource, world);
         if (entity == null)
             throw new CustomNPCsException("Failed to create an entity from given id: " + id);
-        return NpcAPI.Instance().getIEntity(entity);
+        return NpcAPI.instance().getIEntity(entity);
     }
 
     @Override
@@ -223,9 +228,8 @@ public class WorldWrapper implements IWorld {
         EntityPlayer player = world.getPlayerEntityByName(name);
         if (player == null)
             return null;
-        return (IPlayer) NpcAPI.Instance().getIEntity(player);
+        return (IPlayer) NpcAPI.instance().getIEntity(player);
     }
-
 
     private Class getClassForType(int type) {
         if (type == EntityType.ANY)
@@ -268,7 +272,7 @@ public class WorldWrapper implements IWorld {
 
     @Override
     public IBlock getBlock(int x, int y, int z) {
-        return NpcAPI.Instance().getIBlock(world, new BlockPos(x, y, z));
+        return NpcAPI.instance().getIBlock(world, new BlockPos(x, y, z));
     }
 
     public boolean isChunkLoaded(int x, int z) {
@@ -300,7 +304,7 @@ public class WorldWrapper implements IWorld {
         BlockPos pos = world.getSpawnCoordinate();
         if (pos == null)
             pos = world.getSpawnPoint();
-        return NpcAPI.Instance().getIBlock(world, pos);
+        return NpcAPI.instance().getIBlock(world, pos);
     }
 
     @Override
@@ -361,7 +365,7 @@ public class WorldWrapper implements IWorld {
         Item item = Item.REGISTRY.getObject(new ResourceLocation(name));
         if (item == null)
             throw new CustomNPCsException("Unknown item id: " + name);
-        return NpcAPI.Instance().getIItemStack(new ItemStack(item, size, damage));
+        return NpcAPI.instance().getIItemStack(new ItemStack(item, size, damage));
     }
 
     @Override
@@ -369,7 +373,7 @@ public class WorldWrapper implements IWorld {
         ItemStack item = new ItemStack(nbt.getMCNBT());
         if (item.isEmpty())
             throw new CustomNPCsException("Failed to create an item from given NBT");
-        return NpcAPI.Instance().getIItemStack(item);
+        return NpcAPI.instance().getIItemStack(item);
     }
 
     @Override
@@ -382,7 +386,7 @@ public class WorldWrapper implements IWorld {
         List<EntityPlayerMP> list = world.getMinecraftServer().getPlayerList().getPlayers();
         IPlayer[] arr = new IPlayer[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            arr[i] = (IPlayer) NpcAPI.Instance().getIEntity(list.get(i));
+            arr[i] = (IPlayer) NpcAPI.instance().getIEntity(list.get(i));
         }
 
         return arr;
@@ -395,7 +399,7 @@ public class WorldWrapper implements IWorld {
 
     @Override
     public IEntity spawnClone(double x, double y, double z, int tab, String name) {
-        return NpcAPI.Instance().getClones().spawn(x, y, z, tab, name, this);
+        return NpcAPI.instance().getClones().spawn(x, y, z, tab, name, this);
     }
 
     @Override
@@ -409,7 +413,7 @@ public class WorldWrapper implements IWorld {
 
     @Override
     public IEntity getClone(int tab, String name) {
-        return NpcAPI.Instance().getClones().get(tab, name, this);
+        return NpcAPI.instance().getClones().get(tab, name, this);
     }
 
     @Override
@@ -425,11 +429,6 @@ public class WorldWrapper implements IWorld {
     @Override
     public int getRedstonePower(int x, int y, int z) {
         return world.getStrongPower(new BlockPos(x, y, z));
-    }
-
-    @Deprecated
-    public static WorldWrapper createNew(WorldServer world) {
-        return new WorldWrapper(world);
     }
 
     @Override

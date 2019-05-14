@@ -2,7 +2,7 @@ package noppes.npcs.controllers.data;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.WeightedRandom;
-import noppes.npcs.NBTTags;
+import noppes.npcs.util.NBTTags;
 
 import java.util.ArrayList;
 import java.util.List;

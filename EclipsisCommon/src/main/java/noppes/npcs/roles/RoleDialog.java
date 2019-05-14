@@ -2,19 +2,20 @@ package noppes.npcs.roles;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.NBTTags;
 import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.constants.OptionType;
 import noppes.npcs.api.entity.data.role.IRoleDialog;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.controllers.PlayerQuestController;
 import noppes.npcs.controllers.QuestController;
 import noppes.npcs.controllers.data.Dialog;
 import noppes.npcs.controllers.data.DialogOption;
 import noppes.npcs.controllers.data.Quest;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.util.NBTTags;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 public class RoleDialog extends RoleInterface implements IRoleDialog {
@@ -22,8 +23,8 @@ public class RoleDialog extends RoleInterface implements IRoleDialog {
     public String dialog = "";
     public int questId = -1;
 
-    public HashMap<Integer, String> options = new HashMap<Integer, String>();
-    public HashMap<Integer, String> optionsTexts = new HashMap<Integer, String>();
+    public Map<Integer, String> options = new HashMap<>();
+    public Map<Integer, String> optionsTexts = new HashMap<>();
 
     public RoleDialog(EntityNPCInterface npc) {
         super(npc);

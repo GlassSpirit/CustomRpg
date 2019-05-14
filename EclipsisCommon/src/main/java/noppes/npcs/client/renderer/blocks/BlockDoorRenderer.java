@@ -12,9 +12,9 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
-import noppes.npcs.objects.NpcObjects;
-import noppes.npcs.objects.blocks.BlockNpcDoorInterface;
-import noppes.npcs.objects.blocks.tiles.TileDoor;
+import noppes.npcs.common.objects.NpcObjects;
+import noppes.npcs.common.objects.blocks.BlockNpcDoorInterface;
+import noppes.npcs.common.objects.tiles.TileDoor;
 
 import java.util.Random;
 

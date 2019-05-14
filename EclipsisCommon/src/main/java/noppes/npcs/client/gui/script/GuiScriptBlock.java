@@ -2,7 +2,7 @@ package noppes.npcs.client.gui.script;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
-import noppes.npcs.objects.blocks.tiles.TileScripted;
+import noppes.npcs.common.objects.tiles.TileScripted;
 import noppes.npcs.client.Client;
 import noppes.npcs.constants.EnumPacketServer;
 

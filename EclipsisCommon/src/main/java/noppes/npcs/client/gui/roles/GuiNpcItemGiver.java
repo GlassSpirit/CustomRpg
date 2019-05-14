@@ -10,7 +10,7 @@ import noppes.npcs.client.gui.util.GuiNpcLabel;
 import noppes.npcs.client.gui.util.GuiNpcTextField;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.containers.ContainerNpcItemGiver;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.roles.JobItemGiver;
 
 import java.util.ArrayList;

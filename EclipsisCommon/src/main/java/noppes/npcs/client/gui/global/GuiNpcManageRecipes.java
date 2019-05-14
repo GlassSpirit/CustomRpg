@@ -12,7 +12,7 @@ import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.containers.ContainerManageRecipes;
 import noppes.npcs.controllers.data.RecipeCarpentry;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.HashMap;
 import java.util.Vector;

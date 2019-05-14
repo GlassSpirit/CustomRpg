@@ -7,8 +7,8 @@ import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.*;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.entity.data.DataStats;
+import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.data.DataStats;
 
 public class GuiNpcStats extends GuiNPCInterface2 implements ITextfieldListener, IGuiData {
     private DataStats stats;

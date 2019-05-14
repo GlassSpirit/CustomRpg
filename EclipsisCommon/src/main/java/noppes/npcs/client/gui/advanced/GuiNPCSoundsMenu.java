@@ -6,7 +6,7 @@ import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.select.GuiSoundSelection;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 public class GuiNPCSoundsMenu extends GuiNPCInterface2 implements ITextfieldListener, ISubGuiListener {
     private GuiSoundSelection gui;

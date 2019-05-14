@@ -21,7 +21,6 @@ import net.minecraftforge.common.capabilities.CapabilityInject;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.ICapabilitySerializable;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import noppes.npcs.ItemStackEmptyWrapper;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.INbt;
 import noppes.npcs.api.NpcAPI;
@@ -29,8 +28,8 @@ import noppes.npcs.api.constants.ItemType;
 import noppes.npcs.api.entity.IEntityLiving;
 import noppes.npcs.api.entity.data.IData;
 import noppes.npcs.api.item.IItemStack;
-import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.objects.items.ItemScripted;
+import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.common.objects.items.ItemScripted;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -315,7 +314,7 @@ public class ItemStackWrapper implements IItemStack, ICapabilityProvider, ICapab
         NBTTagCompound compound = item.getTagCompound();
         if (compound == null)
             item.setTagCompound(compound = new NBTTagCompound());
-        return NpcAPI.Instance().getINbt(compound);
+        return NpcAPI.instance().getINbt(compound);
     }
 
     @Override
@@ -372,7 +371,7 @@ public class ItemStackWrapper implements IItemStack, ICapabilityProvider, ICapab
     public INbt getItemNbt() {
         NBTTagCompound compound = new NBTTagCompound();
         item.writeToNBT(compound);
-        return NpcAPI.Instance().getINbt(compound);
+        return NpcAPI.instance().getINbt(compound);
     }
 
     @Override

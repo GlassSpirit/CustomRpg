@@ -3,8 +3,8 @@ package noppes.npcs.client.gui;
 import net.minecraft.client.gui.GuiButton;
 import noppes.npcs.client.gui.select.GuiSoundSelection;
 import noppes.npcs.client.gui.util.*;
-import noppes.npcs.entity.data.DataRanged;
-import noppes.npcs.entity.data.DataStats;
+import noppes.npcs.common.entity.data.DataRanged;
+import noppes.npcs.common.entity.data.DataStats;
 
 public class SubGuiNpcRangeProperties extends SubGuiInterface implements ITextfieldListener, ISubGuiListener {
     private DataRanged ranged;

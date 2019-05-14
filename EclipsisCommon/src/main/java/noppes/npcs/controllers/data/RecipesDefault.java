@@ -5,7 +5,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import noppes.npcs.controllers.RecipeController;
-import noppes.npcs.objects.NpcObjects;
+import noppes.npcs.common.objects.NpcObjects;
 
 import java.io.IOException;
 

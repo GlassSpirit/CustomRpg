@@ -1,31 +1,24 @@
 package ru.glassspirit.eclipsis.objects.block.miscellanous
 
-import com.teamwizardry.librarianlib.features.base.block.BlockMod
-import net.minecraft.block.SoundType
 import net.minecraft.block.material.Material
 import net.minecraft.block.state.IBlockState
 import net.minecraft.util.EnumBlockRenderType
 import net.minecraft.util.EnumFacing
 import net.minecraft.util.math.BlockPos
 import net.minecraft.world.IBlockAccess
+import ru.glassspirit.eclipsis.objects.block.BlockDecor
 
-class BlockBorderLight(name: String) : BlockMod(name, Material.ROCK) {
+class BlockBorderLight(name: String) : BlockDecor(name, Material.ROCK, cutout = true) {
     init {
-        soundType = SoundType.STONE
         setBlockUnbreakable()
         setLightLevel(1.0f)
-        setLightOpacity(0)
     }
 
-    override fun isOpaqueCube(state: IBlockState?): Boolean {
+    override fun isFullCube(state: IBlockState): Boolean {
         return false
     }
 
-    override fun isFullCube(state: IBlockState?): Boolean {
-        return false
-    }
-
-    override fun getRenderType(state: IBlockState?): EnumBlockRenderType {
+    override fun getRenderType(state: IBlockState): EnumBlockRenderType {
         return EnumBlockRenderType.INVISIBLE
     }
 

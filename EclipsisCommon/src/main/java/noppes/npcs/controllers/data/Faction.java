@@ -2,21 +2,22 @@ package noppes.npcs.controllers.data;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.NBTTags;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.entity.ICustomNpc;
 import noppes.npcs.api.entity.IPlayer;
 import noppes.npcs.api.handler.data.IFaction;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.controllers.FactionController;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.util.NBTTags;
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class Faction implements IFaction {
     public String name = "";
     public int color = Integer.parseInt("FF00", 16);
 
-    public HashSet<Integer> attackFactions;
+    public Set<Integer> attackFactions;
     public int id = -1;
 
     public int neutralPoints = 500;
@@ -28,7 +29,7 @@ public class Faction implements IFaction {
     public boolean getsAttacked = false;
 
     public Faction() {
-        attackFactions = new HashSet<Integer>();
+        attackFactions = new HashSet<>();
     }
 
     public Faction(int id, String name, int color, int defaultPoints) {
@@ -36,7 +37,7 @@ public class Faction implements IFaction {
         this.color = color;
         this.defaultPoints = defaultPoints;
         this.id = id;
-        attackFactions = new HashSet<Integer>();
+        attackFactions = new HashSet<>();
     }
 
     public static String formatName(String name) {

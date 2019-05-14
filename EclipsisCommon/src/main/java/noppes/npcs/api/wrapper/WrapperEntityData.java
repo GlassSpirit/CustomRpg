@@ -17,7 +17,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import noppes.npcs.LogWriter;
 import noppes.npcs.api.entity.IEntity;
 import noppes.npcs.controllers.PixelmonHelper;
-import noppes.npcs.entity.EntityProjectile;
+import noppes.npcs.common.entity.EntityProjectile;
 
 public class WrapperEntityData implements ICapabilityProvider {
 

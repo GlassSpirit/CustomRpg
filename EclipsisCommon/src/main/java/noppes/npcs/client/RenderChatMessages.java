@@ -7,9 +7,9 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.text.ITextComponent;
-import noppes.npcs.CustomNpcsConfig;
+import noppes.npcs.common.CustomNpcsConfig;
 import noppes.npcs.IChatMessages;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import org.lwjgl.opengl.GL11;
 
 import java.util.Map;

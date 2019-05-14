@@ -9,9 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import noppes.npcs.objects.NpcObjects;
-import noppes.npcs.objects.blocks.tiles.TileCopy;
-import noppes.npcs.schematics.Schematic;
+import noppes.npcs.common.schematics.Schematic;
+import noppes.npcs.common.objects.NpcObjects;
+import noppes.npcs.common.objects.tiles.TileCopy;
 
 public class BlockCopyRenderer extends BlockRendererInterface {
     private final static ItemStack item = new ItemStack(NpcObjects.copyBlock);

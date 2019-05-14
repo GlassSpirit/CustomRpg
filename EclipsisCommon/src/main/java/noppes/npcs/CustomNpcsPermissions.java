@@ -3,6 +3,8 @@ package noppes.npcs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.server.permission.DefaultPermissionLevel;
 import net.minecraftforge.server.permission.PermissionAPI;
+import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.common.CustomNpcsConfig;
 import org.apache.logging.log4j.LogManager;
 
 import java.util.ArrayList;

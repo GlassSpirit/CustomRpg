@@ -17,7 +17,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import noppes.npcs.entity.EntityProjectile;
+import noppes.npcs.common.entity.EntityProjectile;
 
 @SideOnly(Side.CLIENT)
 public class RenderProjectile extends Render {

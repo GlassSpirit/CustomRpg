@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
+import noppes.npcs.util.NBTTags;
 
 public class NpcMiscInventory implements IInventory {
     public final NonNullList<ItemStack> items;

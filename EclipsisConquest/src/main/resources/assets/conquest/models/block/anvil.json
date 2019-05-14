@@ -1,0 +1,265 @@
+{
+  "__comment": "Fair warning, this format is highly likely to change even more in the future!",
+  "parent": "block/block",
+  "ambientocclusion": true,
+  "textures": {
+    "particle": "blocks/anvil_base",
+    "down": "blocks/anvil_base",
+    "up": "blocks/anvil_top_damaged_0",
+    "south": "blocks/anvil_base",
+    "west": "blocks/anvil_base",
+    "east": "blocks/anvil_base",
+    "north": "blocks/anvil_base"
+  },
+  "elements": [
+    {
+      "__comment": "Anvil top",
+      "from": [
+        3,
+        10,
+        0
+      ],
+      "to": [
+        13,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            3,
+            0,
+            13,
+            16
+          ],
+          "texture": "#up"
+        },
+        "up": {
+          "uv": [
+            3,
+            0,
+            13,
+            16
+          ],
+          "texture": "#up"
+        },
+        "north": {
+          "uv": [
+            3,
+            0,
+            13,
+            6
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            3,
+            0,
+            13,
+            6
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            16,
+            6
+          ],
+          "texture": "#down"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            16,
+            6
+          ],
+          "texture": "#down"
+        }
+      }
+    },
+    {
+      "__comment": "Wider section beneath top portion",
+      "from": [
+        6,
+        5,
+        4
+      ],
+      "to": [
+        10,
+        10,
+        12
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            6,
+            10,
+            11
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            6,
+            6,
+            10,
+            11
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            4,
+            6,
+            12,
+            11
+          ],
+          "texture": "#down"
+        },
+        "east": {
+          "uv": [
+            4,
+            6,
+            12,
+            11
+          ],
+          "texture": "#down"
+        }
+      }
+    },
+    {
+      "__comment": "Lower narrow portion",
+      "from": [
+        4,
+        4,
+        3
+      ],
+      "to": [
+        12,
+        5,
+        13
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            4,
+            3,
+            12,
+            13
+          ],
+          "texture": "#down"
+        },
+        "north": {
+          "uv": [
+            12,
+            11,
+            4,
+            12
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            4,
+            11,
+            12,
+            12
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            3,
+            11,
+            13,
+            12
+          ],
+          "texture": "#down"
+        },
+        "east": {
+          "uv": [
+            13,
+            11,
+            3,
+            12
+          ],
+          "texture": "#down"
+        }
+      }
+    },
+    {
+      "__comment": "Anvil base",
+      "from": [
+        2,
+        0,
+        2
+      ],
+      "to": [
+        14,
+        4,
+        14
+      ],
+      "faces": {
+        "down": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#down"
+        },
+        "up": {
+          "uv": [
+            2,
+            2,
+            14,
+            14
+          ],
+          "texture": "#down"
+        },
+        "north": {
+          "uv": [
+            2,
+            12,
+            14,
+            16
+          ],
+          "texture": "#down"
+        },
+        "south": {
+          "uv": [
+            2,
+            12,
+            14,
+            16
+          ],
+          "texture": "#down"
+        },
+        "west": {
+          "uv": [
+            2,
+            12,
+            14,
+            16
+          ],
+          "texture": "#down"
+        },
+        "east": {
+          "uv": [
+            2,
+            12,
+            14,
+            16
+          ],
+          "texture": "#down"
+        }
+      }
+    }
+  ]
+}

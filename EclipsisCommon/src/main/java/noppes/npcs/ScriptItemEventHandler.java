@@ -6,8 +6,8 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import noppes.npcs.objects.NpcObjects;
-import noppes.npcs.objects.items.ItemScripted;
+import noppes.npcs.common.objects.NpcObjects;
+import noppes.npcs.common.objects.items.ItemScripted;
 
 public class ScriptItemEventHandler {
 
@@ -19,7 +19,7 @@ public class ScriptItemEventHandler {
         EntityItem entity = (EntityItem) event.getEntity();
         ItemStack stack = entity.getItem();
         if (!stack.isEmpty() && stack.getItem() == NpcObjects.scriptedItem) {
-            if (EventHooks.onScriptItemSpawn(ItemScripted.GetWrapper(stack), entity)) {
+            if (EventHooks.onScriptItemSpawn(ItemScripted.Companion.getWrapper(stack), entity)) {
                 event.setCanceled(true);
             }
         }
@@ -33,7 +33,7 @@ public class ScriptItemEventHandler {
         EntityItem entity = event.getEntityItem();
         ItemStack stack = entity.getItem();
         if (!stack.isEmpty() && stack.getItem() == NpcObjects.scriptedItem) {
-            if (EventHooks.onScriptItemTossed(ItemScripted.GetWrapper(stack), event.getPlayer(), entity)) {
+            if (EventHooks.onScriptItemTossed(ItemScripted.Companion.getWrapper(stack), event.getPlayer(), entity)) {
                 event.setCanceled(true);
             }
         }
@@ -46,7 +46,7 @@ public class ScriptItemEventHandler {
         EntityItem entity = event.getItem();
         ItemStack stack = entity.getItem();
         if (!stack.isEmpty() && stack.getItem() == NpcObjects.scriptedItem) {
-            EventHooks.onScriptItemPickedUp(ItemScripted.GetWrapper(stack), event.getEntityPlayer(), entity);
+            EventHooks.onScriptItemPickedUp(ItemScripted.Companion.getWrapper(stack), event.getEntityPlayer(), entity);
         }
     }
 }

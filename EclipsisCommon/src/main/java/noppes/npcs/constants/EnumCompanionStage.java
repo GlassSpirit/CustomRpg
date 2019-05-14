@@ -9,13 +9,25 @@ public enum EnumCompanionStage {
     ADULT(324000, AnimationType.NORMAL, "companion.adult"),
     FULLGROWN(450000, AnimationType.NORMAL, "companion.fullgrown");
 
-    public int matureAge;
-    public int animation;
-    public String name;
+    private int matureAge;
+    private int animation;
+    private String name;
 
     EnumCompanionStage(int age, int animation, String name) {
         this.matureAge = age;
         this.animation = animation;
         this.name = name;
+    }
+
+    public int getMatureAge() {
+        return matureAge;
+    }
+
+    public int getAnimation() {
+        return animation;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -3,7 +3,7 @@ package noppes.npcs.controllers;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import noppes.npcs.controllers.data.BlockData;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

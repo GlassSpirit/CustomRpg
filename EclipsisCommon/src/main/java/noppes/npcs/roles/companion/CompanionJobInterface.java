@@ -1,7 +1,7 @@
 package noppes.npcs.roles.companion;
 
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 public abstract class CompanionJobInterface {
     public EntityNPCInterface npc;

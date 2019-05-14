@@ -8,11 +8,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.registries.IForgeRegistry;
-import noppes.npcs.CustomNpcs;
 import noppes.npcs.EventHooks;
 import noppes.npcs.Server;
 import noppes.npcs.api.handler.IRecipeHandler;
 import noppes.npcs.api.handler.data.IRecipe;
+import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.SyncType;
 import noppes.npcs.controllers.data.RecipeCarpentry;
@@ -68,7 +68,7 @@ public class RecipeController implements IRecipeHandler {
 //			if(recipe.isValid()){
 //				if(recipe.getRegistryName() == null)
 //					recipe.setRegistryName(new ResourceLocation("customnpcs", recipe.id + ""));
-//				reg.register(recipe);
+//				reg.init(recipe);
 //			}
 //		}
 //		reg.freeze();

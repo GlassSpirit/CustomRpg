@@ -7,7 +7,6 @@ import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.text.TextComponentString;
-import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
 import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.api.CustomNPCsException;
@@ -15,6 +14,7 @@ import noppes.npcs.api.IWorld;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.entity.IEntity;
 import noppes.npcs.api.handler.ICloneHandler;
+import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.util.NBTJsonUtil;
 
 import java.io.File;
@@ -210,7 +210,7 @@ public class ServerCloneController implements ICloneHandler {
         Entity entity = NoppesUtilServer.spawnClone(compound, x, y, z, world.getMCWorld());
         if (entity == null)
             return null;
-        return NpcAPI.Instance().getIEntity(entity);
+        return NpcAPI.instance().getIEntity(entity);
     }
 
     @Override
@@ -222,7 +222,7 @@ public class ServerCloneController implements ICloneHandler {
         Entity entity = EntityList.createEntityFromNBT(compound, world.getMCWorld());
         if (entity == null)
             return null;
-        return NpcAPI.Instance().getIEntity(entity);
+        return NpcAPI.instance().getIEntity(entity);
     }
 
     @Override

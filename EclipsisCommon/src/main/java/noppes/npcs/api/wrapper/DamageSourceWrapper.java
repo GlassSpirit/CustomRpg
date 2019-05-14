@@ -34,12 +34,12 @@ public class DamageSourceWrapper implements IDamageSource {
 
     @Override
     public IEntity getTrueSource() {
-        return NpcAPI.Instance().getIEntity(source.getTrueSource());
+        return NpcAPI.instance().getIEntity(source.getTrueSource());
     }
 
     @Override
     public IEntity getImmediateSource() {
-        return NpcAPI.Instance().getIEntity(source.getImmediateSource());
+        return NpcAPI.instance().getIEntity(source.getImmediateSource());
     }
 
 }

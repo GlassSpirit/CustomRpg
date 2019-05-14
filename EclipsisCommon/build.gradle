@@ -18,7 +18,6 @@ repositories {
     maven {
         url 'http://maven.bluexin.be/repository/snapshots/'
     }
-    mavenCentral()
 }
 
 dependencies {
@@ -27,10 +26,6 @@ dependencies {
     }
     compile 'net.shadowfacts:Forgelin:1.8.2'
     compile 'com.teamwizardry.librarianlib:librarianlib-1.12.2:4.17-SNAPSHOT'
-
-    //Needed for MixinAvailabilityServer character level redirect
-    compileOnly 'org.spongepowered:spongeapi:7.1.0'
-    compileOnly 'com.github.Sponge-RPG-dev.NT-RPG:NT-RPG:2.0.0-SNAPSHOT-9'
 }
 
 sourceSets {

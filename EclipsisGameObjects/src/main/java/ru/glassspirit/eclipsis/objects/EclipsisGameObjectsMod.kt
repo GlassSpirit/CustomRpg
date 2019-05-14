@@ -13,7 +13,7 @@ object EclipsisGameObjectsMod {
     const val MODID = "eclipsis_objects"
     const val MODNAME = "EclipsisObjects"
     const val VERSION = "GlassSpirit <3"
-    const val DEPENDENCIES = "required-after:eclipsis;"
+    const val DEPENDENCIES = "required-after:eclipsis"
     const val ADAPTER = "net.shadowfacts.forgelin.KotlinAdapter"
     private const val CLIENT = "ru.glassspirit.eclipsis.objects.ObjectsClientProxy"
     private const val SERVER = "ru.glassspirit.eclipsis.objects.ObjectsCommonProxy"

@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:plinth_sandstone_base"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "x": {
+        "model": "conquest:plinth_sandstone_anvil",
+        "y": 90
+      },
+      "z": {
+        "model": "conquest:plinth_sandstone_anvil",
+        "y": 180
+      }
+    }
+  }
+}

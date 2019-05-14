@@ -9,13 +9,13 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTUtil;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
-import noppes.npcs.objects.blocks.tiles.TileBuilder;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.util.*;
+import noppes.npcs.common.schematics.ISchematic;
+import noppes.npcs.common.schematics.SchematicWrapper;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.schematics.ISchematic;
-import noppes.npcs.schematics.SchematicWrapper;
+import noppes.npcs.common.objects.tiles.TileBuilder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -135,7 +135,7 @@ public class GuiBlockBuilder extends GuiNPCInterface implements IGuiData, ICusto
     @Override
     public void setGuiData(NBTTagCompound compound) {
         if (compound.hasKey("Width")) {
-            List<IBlockState> states = new ArrayList<IBlockState>();
+            List<IBlockState> states = new ArrayList<>();
             NBTTagList list = compound.getTagList("Data", 10);
             for (int i = 0; i < list.tagCount(); i++) {
                 states.add(NBTUtil.readBlockState(list.getCompoundTagAt(i)));

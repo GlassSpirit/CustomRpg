@@ -5,10 +5,10 @@ import net.minecraft.nbt.NBTTagCompound;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.player.companion.GuiNpcCompanionTalents.GuiTalent;
 import noppes.npcs.client.gui.util.*;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.constants.EnumCompanionStage;
 import noppes.npcs.constants.EnumCompanionTalent;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleCompanion;
 
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ import java.util.List;
 
 public class GuiNpcCompanion extends GuiNPCInterface2 implements ITextfieldListener, ISliderListener {
     private RoleCompanion role;
-    private List<GuiTalent> talents = new ArrayList<GuiTalent>();
+    private List<GuiTalent> talents = new ArrayList<>();
 
     public GuiNpcCompanion(EntityNPCInterface npc) {
         super(npc);
@@ -26,10 +26,11 @@ public class GuiNpcCompanion extends GuiNPCInterface2 implements ITextfieldListe
     @Override
     public void initGui() {
         super.initGui();
-        talents = new ArrayList<GuiTalent>();
+        talents = new ArrayList<>();
         int y = guiTop + 4;
 
-        addButton(new GuiNpcButton(0, guiLeft + 70, y, 90, 20, new String[]{EnumCompanionStage.BABY.name, EnumCompanionStage.CHILD.name, EnumCompanionStage.TEEN.name, EnumCompanionStage.ADULT.name, EnumCompanionStage.FULLGROWN.name}, role.stage.ordinal()));
+        addButton(new GuiNpcButton(0, guiLeft + 70, y, 90, 20, new String[]{EnumCompanionStage.BABY.getName(), EnumCompanionStage.CHILD.getName(),
+                EnumCompanionStage.TEEN.getName(), EnumCompanionStage.ADULT.getName(), EnumCompanionStage.FULLGROWN.getName()}, role.stage.ordinal()));
         addLabel(new GuiNpcLabel(0, "companion.stage", guiLeft + 4, y + 5));
         addButton(new GuiNpcButton(1, guiLeft + 162, y, 90, 20, "gui.update"));
 
@@ -64,7 +65,7 @@ public class GuiNpcCompanion extends GuiNPCInterface2 implements ITextfieldListe
             GuiNpcButton button = (GuiNpcButton) guibutton;
             role.matureTo(EnumCompanionStage.values()[button.getValue()]);
             if (role.canAge)
-                role.ticksActive = role.stage.matureAge;
+                role.ticksActive = role.stage.getMatureAge();
             initGui();
         }
         if (guibutton.id == 1) {
@@ -87,7 +88,7 @@ public class GuiNpcCompanion extends GuiNPCInterface2 implements ITextfieldListe
     @Override
     public void drawScreen(int i, int j, float f) {
         super.drawScreen(i, j, f);
-        for (GuiTalent talent : new ArrayList<GuiTalent>(talents)) {
+        for (GuiTalent talent : new ArrayList<>(talents)) {
             talent.drawScreen(i, j, f);
         }
     }

@@ -59,7 +59,7 @@ public class EntityLivingWrapper<T extends EntityLiving> extends EntityLivingBas
 
     @Override
     public IEntityLivingBase getAttackTarget() {
-        IEntityLivingBase base = (IEntityLivingBase) NpcAPI.Instance().getIEntity(entity.getAttackTarget());
+        IEntityLivingBase base = (IEntityLivingBase) NpcAPI.instance().getIEntity(entity.getAttackTarget());
         return (base != null) ? base : super.getAttackTarget();
     }
 

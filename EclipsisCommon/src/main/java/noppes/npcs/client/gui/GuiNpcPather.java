@@ -2,15 +2,15 @@ package noppes.npcs.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.NBTTags;
+import noppes.npcs.util.NBTTags;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.util.GuiCustomScroll;
 import noppes.npcs.client.gui.util.GuiNPCInterface;
 import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.client.gui.util.IGuiData;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.entity.data.DataAI;
+import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.data.DataAI;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,23 +1,24 @@
 package noppes.npcs.controllers.data;
 
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.NBTTags;
 import noppes.npcs.NpcMiscInventory;
+import noppes.npcs.util.NBTTags;
 
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class Bank {
     public int id = -1;
     public String name = "";
-    public HashMap<Integer, Integer> slotTypes;
+    public Map<Integer, Integer> slotTypes;
     public int startSlots = 1;
     public int maxSlots = 6;
     public NpcMiscInventory currencyInventory;
     public NpcMiscInventory upgradeInventory;
 
     public Bank() {
-        slotTypes = new HashMap<Integer, Integer>();
+        slotTypes = new HashMap<>();
         currencyInventory = new NpcMiscInventory(6);
         upgradeInventory = new NpcMiscInventory(6);
         for (int i = 0; i < 6; i++)

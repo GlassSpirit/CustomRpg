@@ -7,10 +7,10 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
-import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
 import noppes.npcs.NoppesUtilServer;
-import noppes.npcs.schematics.*;
+import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.common.schematics.*;
 
 import java.io.*;
 import java.util.ArrayList;

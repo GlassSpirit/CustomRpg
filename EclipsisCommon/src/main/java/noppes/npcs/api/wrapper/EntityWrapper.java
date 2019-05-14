@@ -121,7 +121,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
 
     public EntityWrapper(T entity) {
         this.entity = entity;
-        this.worldWrapper = NpcAPI.Instance().getIWorld((WorldServer) entity.world);
+        this.worldWrapper = NpcAPI.instance().getIWorld((WorldServer) entity.world);
     }
 
     @Override
@@ -197,7 +197,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
     @Override
     public IWorld getWorld() {
         if (entity.world != worldWrapper.getMCWorld())
-            this.worldWrapper = NpcAPI.Instance().getIWorld((WorldServer) entity.world);
+            this.worldWrapper = NpcAPI.instance().getIWorld((WorldServer) entity.world);
         return worldWrapper;
     }
 
@@ -289,7 +289,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
         List<Entity> list = entity.getPassengers();
         IEntity[] riders = new IEntity[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            riders[i] = NpcAPI.Instance().getIEntity(list.get(i));
+            riders[i] = NpcAPI.instance().getIEntity(list.get(i));
         }
         return riders;
     }
@@ -302,7 +302,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
         RayTraceResult result = entity.world.rayTraceBlocks(vec3d, vec3d2, stopOnLiquid, ignoreBlockWithoutBoundingBox, true);
         if (result == null)
             return null;
-        return new RayTraceWrapper(NpcAPI.Instance().getIBlock(entity.world, result.getBlockPos()), result.sideHit.getIndex());
+        return new RayTraceWrapper(NpcAPI.instance().getIBlock(entity.world, result.getBlockPos()), result.sideHit.getIndex());
     }
 
     @Override
@@ -328,7 +328,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
                 RayTraceResult raytraceresult1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 
                 if (raytraceresult1 != null) {
-                    result.add(NpcAPI.Instance().getIEntity(entity1));
+                    result.add(NpcAPI.instance().getIEntity(entity1));
                 }
 
             }
@@ -348,7 +348,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
         List<Entity> list = new ArrayList<>(entity.getRecursivePassengers());
         IEntity[] riders = new IEntity[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            riders[i] = NpcAPI.Instance().getIEntity(list.get(i));
+            riders[i] = NpcAPI.instance().getIEntity(list.get(i));
         }
         return riders;
     }
@@ -367,7 +367,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
 
     @Override
     public IEntity getMount() {
-        return NpcAPI.Instance().getIEntity(entity.getRidingEntity());
+        return NpcAPI.instance().getIEntity(entity.getRidingEntity());
     }
 
     @Override
@@ -447,7 +447,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
 
     @Override
     public INbt getNbt() {
-        return NpcAPI.Instance().getINbt(entity.getEntityData());
+        return NpcAPI.instance().getINbt(entity.getEntityData());
     }
 
     @Override
@@ -469,7 +469,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
         if (resourcelocation != null) {
             compound.setString("id", resourcelocation.toString());
         }
-        return NpcAPI.Instance().getINbt(compound);
+        return NpcAPI.instance().getINbt(compound);
     }
 
     @Override

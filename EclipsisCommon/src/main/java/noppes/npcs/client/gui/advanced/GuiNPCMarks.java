@@ -9,7 +9,7 @@ import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.data.MarkData;
 import noppes.npcs.controllers.data.MarkData.Mark;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 public class GuiNPCMarks extends GuiNPCInterface2 implements ISubGuiListener {
     private final String[] marks = new String[]{"gui.none", "mark.question", "mark.exclamation", "mark.pointer", "mark.skull", "mark.cross", "mark.star"};

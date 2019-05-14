@@ -3,7 +3,7 @@ package noppes.npcs.client;
 import io.netty.buffer.Unpooled;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.LogWriter;
 import noppes.npcs.Server;
 import noppes.npcs.constants.EnumPacketServer;

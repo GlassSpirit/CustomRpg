@@ -8,7 +8,8 @@ import noppes.npcs.constants.EnumScriptType;
 import noppes.npcs.controllers.ScriptContainer;
 import noppes.npcs.controllers.data.Line;
 import noppes.npcs.controllers.data.Lines;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.util.NBTTags;
 
 import java.util.Collection;
 import java.util.List;

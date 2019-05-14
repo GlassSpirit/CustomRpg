@@ -14,7 +14,7 @@ import noppes.npcs.controllers.TransportController;
 import noppes.npcs.controllers.data.PlayerData;
 import noppes.npcs.controllers.data.PlayerTransportData;
 import noppes.npcs.controllers.data.TransportLocation;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.List;
 

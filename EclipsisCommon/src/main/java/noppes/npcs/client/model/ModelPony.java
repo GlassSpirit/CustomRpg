@@ -8,8 +8,8 @@ import net.minecraft.client.resources.IResource;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 import noppes.npcs.api.constants.AnimationType;
-import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.entity.EntityNpcPony;
+import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNpcPony;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

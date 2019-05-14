@@ -16,10 +16,10 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import noppes.npcs.LogWriter;
 import noppes.npcs.api.constants.MarkType;
 import noppes.npcs.client.renderer.MarkRenderer;
+import noppes.npcs.common.schematics.SchematicWrapper;
 import noppes.npcs.controllers.data.MarkData;
 import noppes.npcs.controllers.data.MarkData.Mark;
-import noppes.npcs.objects.blocks.tiles.TileBuilder;
-import noppes.npcs.schematics.SchematicWrapper;
+import noppes.npcs.common.objects.tiles.TileBuilder;
 import org.lwjgl.opengl.GL11;
 
 public class ClientEventHandler {

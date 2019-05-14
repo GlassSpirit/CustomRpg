@@ -1,0 +1,22 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:baseplain_marble_base"
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {},
+      "x": {
+        "model": "conquest:baseplain_marble_anvil",
+        "y": 90
+      },
+      "z": {
+        "model": "conquest:baseplain_marble_anvil",
+        "y": 180
+      }
+    }
+  }
+}

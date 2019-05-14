@@ -12,6 +12,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
+import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.util.CustomNpcsScheduler;
 

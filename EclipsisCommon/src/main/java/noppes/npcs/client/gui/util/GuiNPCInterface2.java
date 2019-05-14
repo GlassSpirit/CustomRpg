@@ -2,7 +2,7 @@ package noppes.npcs.client.gui.util;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 public abstract class GuiNPCInterface2 extends GuiNPCInterface {
     private ResourceLocation background = new ResourceLocation("customnpcs:textures/gui/menubg.png");

@@ -2,7 +2,7 @@ package noppes.npcs.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
 import noppes.npcs.client.gui.util.*;
-import noppes.npcs.entity.data.DataStats;
+import noppes.npcs.common.entity.data.DataStats;
 
 public class SubGuiNpcRespawn extends SubGuiInterface implements ITextfieldListener {
     private DataStats stats;

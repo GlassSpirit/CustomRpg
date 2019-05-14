@@ -10,8 +10,12 @@ import net.minecraft.entity.player.EntityPlayerMP
 import net.minecraft.nbt.NBTTagCompound
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext
 
-open class NBTPacket : PacketBase() {
+open class NBTPacket() : PacketBase() {
     protected val data: NBTTagCompound = NBTTagCompound()
+
+    constructor(data: NBTTagCompound) : this() {
+        this.data.merge(data)
+    }
 
     override fun handle(ctx: MessageContext) {
         if (ctx.side.isServer) {

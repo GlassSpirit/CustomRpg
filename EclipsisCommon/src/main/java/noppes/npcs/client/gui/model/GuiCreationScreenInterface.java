@@ -13,8 +13,8 @@ import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.mainmenu.GuiNpcDisplay;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.entity.EntityCustomNpc;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import org.lwjgl.input.Keyboard;
 
 public abstract class GuiCreationScreenInterface extends GuiNPCInterface implements ISubGuiListener, ISliderListener {

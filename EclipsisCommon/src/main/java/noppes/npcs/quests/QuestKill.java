@@ -3,17 +3,17 @@ package noppes.npcs.quests;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.NBTTags;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.constants.QuestType;
 import noppes.npcs.api.handler.data.IQuestObjective;
 import noppes.npcs.controllers.data.PlayerData;
 import noppes.npcs.controllers.data.PlayerQuestData;
 import noppes.npcs.controllers.data.QuestData;
+import noppes.npcs.util.NBTTags;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
@@ -36,7 +36,7 @@ public class QuestKill extends QuestInterface {
         QuestData data = playerdata.activeQuests.get(questId);
         if (data == null)
             return false;
-        HashMap<String, Integer> killed = getKilled(data);
+        Map<String, Integer> killed = getKilled(data);
         if (killed.size() != targets.size())
             return false;
         for (String entity : killed.keySet()) {
@@ -51,11 +51,11 @@ public class QuestKill extends QuestInterface {
     public void handleComplete(EntityPlayer player) {
     }
 
-    public HashMap<String, Integer> getKilled(QuestData data) {
+    public Map<String, Integer> getKilled(QuestData data) {
         return NBTTags.getStringIntegerMap(data.extraData.getTagList("Killed", 10));
     }
 
-    public void setKilled(QuestData data, HashMap<String, Integer> killed) {
+    public void setKilled(QuestData data, Map<String, Integer> killed) {
         data.extraData.setTag("Killed", NBTTags.nbtStringIntegerMap(killed));
     }
 
@@ -84,7 +84,7 @@ public class QuestKill extends QuestInterface {
             PlayerData data = PlayerData.get(player);
             PlayerQuestData playerdata = data.questData;
             QuestData questdata = playerdata.activeQuests.get(questId);
-            HashMap<String, Integer> killed = getKilled(questdata);
+            Map<String, Integer> killed = getKilled(questdata);
             if (!killed.containsKey(entity))
                 return 0;
             return killed.get(entity);
@@ -98,7 +98,7 @@ public class QuestKill extends QuestInterface {
             PlayerData data = PlayerData.get(player);
             PlayerQuestData playerdata = data.questData;
             QuestData questdata = playerdata.activeQuests.get(questId);
-            HashMap<String, Integer> killed = getKilled(questdata);
+            Map<String, Integer> killed = getKilled(questdata);
 
             if (killed.containsKey(entity) && killed.get(entity) == progress) {
                 return;

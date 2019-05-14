@@ -14,9 +14,9 @@ import noppes.npcs.controllers.MassBlockController;
 import noppes.npcs.controllers.SchematicController;
 import noppes.npcs.controllers.SyncController;
 import noppes.npcs.controllers.data.PlayerData;
-import noppes.npcs.entity.data.DataScenes;
-import noppes.npcs.entity.data.DataScenes.SceneContainer;
-import noppes.npcs.entity.data.DataScenes.SceneState;
+import noppes.npcs.common.entity.data.DataScenes;
+import noppes.npcs.common.entity.data.DataScenes.SceneContainer;
+import noppes.npcs.common.entity.data.DataScenes.SceneState;
 
 import java.util.ArrayList;
 

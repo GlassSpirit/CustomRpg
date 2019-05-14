@@ -9,7 +9,7 @@ import noppes.npcs.client.gui.SubGuiNpcFactionPoints;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.data.Faction;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -9,7 +9,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import noppes.npcs.ModelPartData;
 import noppes.npcs.client.ClientProxy;
-import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.common.entity.EntityCustomNpc;
 
 public class EntityEnderFX extends ParticlePortal {
 

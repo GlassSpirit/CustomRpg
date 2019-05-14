@@ -1,7 +1,7 @@
 package noppes.npcs.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
-import noppes.npcs.NoppesStringUtils;
+import noppes.npcs.util.NoppesStringUtils;
 import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.client.gui.util.GuiTextArea;
 import noppes.npcs.client.gui.util.ITextChangeListener;

@@ -8,10 +8,10 @@ import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.ForgeChunkManager.LoadingCallback;
 import net.minecraftforge.common.ForgeChunkManager.Ticket;
 import net.minecraftforge.common.ForgeChunkManager.Type;
-import noppes.npcs.CustomNpcs;
-import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.api.constants.JobType;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.common.CustomNpcsConfig;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.HashMap;
 import java.util.Iterator;

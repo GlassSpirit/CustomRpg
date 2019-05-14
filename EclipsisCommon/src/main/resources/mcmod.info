@@ -9,8 +9,7 @@
       "GlassSpirit"
     ],
     "dependencies": [
-      "librarianlib",
-      "customnpcs"
+      "librarianlib"
     ]
   },
   {
@@ -28,6 +27,7 @@
     ],
     "parent": "",
     "screenshots": [],
-    "dependencies": []
+    "dependencies": [
+    ]
   }
 ]

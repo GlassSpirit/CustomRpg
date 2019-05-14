@@ -6,7 +6,7 @@ import net.minecraft.client.gui.GuiYesNo;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import noppes.npcs.NoppesStringUtils;
+import noppes.npcs.util.NoppesStringUtils;
 import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.controllers.IScriptHandler;

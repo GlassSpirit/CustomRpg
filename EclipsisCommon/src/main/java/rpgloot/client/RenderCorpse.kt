@@ -11,28 +11,27 @@ import net.minecraft.entity.passive.EntityAnimal
 import net.minecraft.util.ResourceLocation
 import net.minecraft.world.World
 import org.lwjgl.opengl.GL11
-import rpgloot.entities.EntCorpse
+import rpgloot.entities.EntityCorpse
 import java.util.*
 
-class RenderCorpse constructor(manager: RenderManager) : Render<EntCorpse>(manager) {
+class RenderCorpse constructor(manager: RenderManager) : Render<EntityCorpse>(manager) {
 
-    override fun doRender(entity: EntCorpse, xPosition: Double, yPosition: Double, z: Double, whoknows: Float, partialTicks: Float) {
+    override fun doRender(entity: EntityCorpse, xPosition: Double, yPosition: Double, z: Double, whoknows: Float, partialTicks: Float) {
         try {
             val entClass = entity.entityClass
-            if (!entClass.isEmpty()) {
+            if (entClass.isNotEmpty()) {
                 GL11.glPushMatrix()
                 GL11.glTranslatef(xPosition.toFloat(), yPosition.toFloat(), z.toFloat())
                 val entInstance: Any
                 if (entClass.contains("EntityPlayerMP")) {
-                    val entClazz = UUID(entity.oldEntityData!!.getLong("UUIDMost"),
-                            entity.oldEntityData!!.getLong("UUIDLeast"))
+                    val entClazz = UUID(entity.oldEntityData.getLong("UUIDMost"), entity.oldEntityData.getLong("UUIDLeast"))
                     entInstance = EntityOtherPlayerMP(entity.world, GameProfile(entClazz, ""))
                     (entInstance as Entity).isSneaking = true
                 } else {
                     val entClazz1 = Class.forName(entClass)
                     entInstance = entClazz1.getConstructor(World::class.java).newInstance(entity.world)
-                    if (entity.oldEntityData != null) {
-                        (entInstance as Entity).readFromNBT(entity.oldEntityData!!)
+                    if (!entity.oldEntityData.isEmpty) {
+                        (entInstance as Entity).readFromNBT(entity.oldEntityData)
                     }
                 }
 
@@ -68,7 +67,7 @@ class RenderCorpse constructor(manager: RenderManager) : Render<EntCorpse>(manag
     override fun doRenderShadowAndFire(entityIn: Entity, x: Double, y: Double, z: Double, yaw: Float, partialTicks: Float) {
     }
 
-    override fun getEntityTexture(entity: EntCorpse): ResourceLocation? {
+    override fun getEntityTexture(entity: EntityCorpse): ResourceLocation? {
         return null
     }
 }

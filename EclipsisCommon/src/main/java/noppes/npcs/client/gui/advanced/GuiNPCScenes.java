@@ -8,9 +8,9 @@ import noppes.npcs.client.ClientProxy;
 import noppes.npcs.client.gui.SubGuiNpcTextArea;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.entity.data.DataScenes;
-import noppes.npcs.entity.data.DataScenes.SceneContainer;
+import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.data.DataScenes;
+import noppes.npcs.common.entity.data.DataScenes.SceneContainer;
 
 public class GuiNPCScenes extends GuiNPCInterface2 {
     private DataScenes scenes;

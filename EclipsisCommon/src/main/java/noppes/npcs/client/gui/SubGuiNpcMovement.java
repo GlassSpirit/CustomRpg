@@ -1,10 +1,10 @@
 package noppes.npcs.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
-import noppes.npcs.ai.EntityAIAnimation;
+import noppes.npcs.common.entity.ai.EntityAIAnimation;
 import noppes.npcs.api.constants.AnimationType;
 import noppes.npcs.client.gui.util.*;
-import noppes.npcs.entity.data.DataAI;
+import noppes.npcs.common.entity.data.DataAI;
 
 public class SubGuiNpcMovement extends SubGuiInterface implements ITextfieldListener {
     private DataAI ai;

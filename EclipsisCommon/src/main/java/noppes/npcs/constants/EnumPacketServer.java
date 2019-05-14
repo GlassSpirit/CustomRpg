@@ -1,7 +1,7 @@
 package noppes.npcs.constants;
 
-import noppes.npcs.CustomNpcsConfig;
 import noppes.npcs.CustomNpcsPermissions;
+import noppes.npcs.common.CustomNpcsConfig;
 
 public enum EnumPacketServer {
     Delete(CustomNpcsPermissions.NPC_DELETE, true),

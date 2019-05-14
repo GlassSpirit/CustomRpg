@@ -21,30 +21,32 @@ import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ServerCustomPacketEvent;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.constants.JobType;
 import noppes.npcs.api.constants.RoleType;
 import noppes.npcs.api.wrapper.ItemScriptedWrapper;
+import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.common.CustomNpcsConfig;
+import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.data.DataScenes;
+import noppes.npcs.common.objects.tiles.TileBuilder;
+import noppes.npcs.common.objects.tiles.TileCopy;
+import noppes.npcs.common.objects.tiles.TileScripted;
+import noppes.npcs.common.objects.tiles.TileScriptedDoor;
+import noppes.npcs.common.schematics.SchematicWrapper;
 import noppes.npcs.constants.*;
 import noppes.npcs.containers.ContainerMail;
 import noppes.npcs.controllers.*;
 import noppes.npcs.controllers.LinkedNpcController.LinkedData;
 import noppes.npcs.controllers.data.*;
-import noppes.npcs.entity.EntityCustomNpc;
-import noppes.npcs.entity.EntityNPCInterface;
-import noppes.npcs.entity.data.DataScenes;
-import noppes.npcs.objects.blocks.tiles.TileBuilder;
-import noppes.npcs.objects.blocks.tiles.TileCopy;
-import noppes.npcs.objects.blocks.tiles.TileScripted;
-import noppes.npcs.objects.blocks.tiles.TileScriptedDoor;
 import noppes.npcs.roles.JobSpawner;
 import noppes.npcs.roles.RoleCompanion;
 import noppes.npcs.roles.RoleTrader;
 import noppes.npcs.roles.RoleTransporter;
-import noppes.npcs.schematics.SchematicWrapper;
 import noppes.npcs.util.IPermission;
+import noppes.npcs.util.NBTTags;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,7 +55,7 @@ import java.util.Set;
 
 public class PacketHandlerServer {
 
-    @SubscribeEvent
+    //@SubscribeEvent
     public void onServerPacket(ServerCustomPacketEvent event) {
         final EntityPlayerMP player = ((NetHandlerPlayServer) event.getHandler()).player;
         if (CustomNpcsConfig.OpsOnly && !NoppesUtilServer.isOp(player)) {
@@ -355,7 +357,7 @@ public class PacketHandlerServer {
         } else if (type == EnumPacketServer.MainmenuDisplayGet) {
             Server.sendData(player, EnumPacketClient.GUI_DATA, npc.display.writeToNBT(new NBTTagCompound()));
         } else if (type == EnumPacketServer.MainmenuDisplaySave) {
-            npc.display.readToNBT(Server.readNBT(buffer));
+            npc.display.readFromNBT(Server.readNBT(buffer));
             npc.updateClient = true;
         } else if (type == EnumPacketServer.MainmenuStatsGet) {
             Server.sendData(player, EnumPacketClient.GUI_DATA, npc.stats.writeToNBT(new NBTTagCompound()));
@@ -580,7 +582,7 @@ public class PacketHandlerServer {
             compound.setTag("Languages", ScriptController.Instance.nbtLanguages());
             Server.sendData(player, EnumPacketClient.GUI_DATA, compound);
         } else if (type == EnumPacketServer.ScriptItemDataGet) {
-            ItemScriptedWrapper iw = (ItemScriptedWrapper) NpcAPI.Instance().getIItemStack(player.getHeldItemMainhand());
+            ItemScriptedWrapper iw = (ItemScriptedWrapper) NpcAPI.instance().getIItemStack(player.getHeldItemMainhand());
             NBTTagCompound compound = iw.getMCNbt();
             compound.setTag("Languages", ScriptController.Instance.nbtLanguages());
             Server.sendData(player, EnumPacketClient.GUI_DATA, compound);
@@ -589,7 +591,7 @@ public class PacketHandlerServer {
                 return;
             NBTTagCompound compound = Server.readNBT(buffer);
             ItemStack item = player.getHeldItemMainhand();
-            ItemScriptedWrapper wrapper = (ItemScriptedWrapper) NpcAPI.Instance().getIItemStack(player.getHeldItemMainhand());
+            ItemScriptedWrapper wrapper = (ItemScriptedWrapper) NpcAPI.instance().getIItemStack(player.getHeldItemMainhand());
             wrapper.setMCNbt(compound);
             wrapper.lastInited = -1;
             wrapper.saveScriptData();

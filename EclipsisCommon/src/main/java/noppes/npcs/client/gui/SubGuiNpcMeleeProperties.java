@@ -3,7 +3,7 @@ package noppes.npcs.client.gui;
 import net.minecraft.client.gui.GuiButton;
 import noppes.npcs.api.constants.PotionEffectType;
 import noppes.npcs.client.gui.util.*;
-import noppes.npcs.entity.data.DataMelee;
+import noppes.npcs.common.entity.data.DataMelee;
 
 public class SubGuiNpcMeleeProperties extends SubGuiInterface implements ITextfieldListener {
     private DataMelee stats;

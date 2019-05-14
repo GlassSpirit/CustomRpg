@@ -6,7 +6,7 @@ import net.minecraft.client.resources.I18n;
 import noppes.npcs.client.AssetsBrowser;
 import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.util.*;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.util.NaturalOrderComparator;
 
 import java.io.IOException;

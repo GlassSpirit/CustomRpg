@@ -4,16 +4,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import noppes.npcs.EventHooks;
-import noppes.npcs.NBTTags;
+import noppes.npcs.util.NBTTags;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.constants.ItemType;
 import noppes.npcs.api.item.IItemScripted;
+import noppes.npcs.common.objects.items.ItemScripted;
 import noppes.npcs.constants.EnumScriptType;
 import noppes.npcs.controllers.IScriptHandler;
 import noppes.npcs.controllers.ScriptContainer;
 import noppes.npcs.controllers.ScriptController;
 import noppes.npcs.controllers.SyncController;
-import noppes.npcs.objects.items.ItemScripted;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +22,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class ItemScriptedWrapper extends ItemStackWrapper implements IItemScripted, IScriptHandler {
-    public List<ScriptContainer> scripts = new ArrayList<ScriptContainer>();
+    public List<ScriptContainer> scripts = new ArrayList<>();
 
     public String scriptLanguage = "ECMAScript";
     public boolean enabled = false;
@@ -46,12 +46,12 @@ public class ItemScriptedWrapper extends ItemStackWrapper implements IItemScript
 
     @Override
     public boolean hasTexture(int damage) {
-        return ItemScripted.Resources.containsKey(damage);
+        return ItemScripted.Companion.getResources().containsKey(damage);
     }
 
     @Override
     public String getTexture(int damage) {
-        return ItemScripted.Resources.get(damage);
+        return ItemScripted.Companion.getResources().get(damage);
     }
 
     @Override
@@ -59,11 +59,11 @@ public class ItemScriptedWrapper extends ItemStackWrapper implements IItemScript
         if (damage == 0) {
             throw new CustomNPCsException("Can't set texture for 0");
         }
-        String old = ItemScripted.Resources.get(damage);
+        String old = ItemScripted.Companion.getResources().get(damage);
         if (old == texture || old != null && texture != null && old.equals(texture)) {
             return;
         }
-        ItemScripted.Resources.put(damage, texture);
+        ItemScripted.Companion.getResources().put(damage, texture);
         SyncController.syncScriptItemsEverybody();
     }
 
@@ -180,7 +180,7 @@ public class ItemScriptedWrapper extends ItemStackWrapper implements IItemScript
 
     @Override
     public Map<Long, String> getConsoleText() {
-        Map<Long, String> map = new TreeMap<Long, String>();
+        Map<Long, String> map = new TreeMap<>();
         int tab = 0;
         for (ScriptContainer script : getScripts()) {
             tab++;

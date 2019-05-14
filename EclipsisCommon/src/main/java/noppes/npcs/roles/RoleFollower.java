@@ -4,23 +4,28 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
-import noppes.npcs.*;
+import noppes.npcs.EventHooks;
+import noppes.npcs.NoppesUtilServer;
+import noppes.npcs.NpcMiscInventory;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.constants.JobType;
 import noppes.npcs.api.entity.IPlayer;
 import noppes.npcs.api.entity.data.role.IRoleFollower;
 import noppes.npcs.api.event.RoleEvent;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.constants.EnumGuiType;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.util.NBTTags;
+import noppes.npcs.util.NoppesStringUtils;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 
 public class RoleFollower extends RoleInterface implements IRoleFollower {
 
     public boolean isFollowing = true;
-    public HashMap<Integer, Integer> rates;
+    public Map<Integer, Integer> rates;
     public NpcMiscInventory inventory;
     public String dialogHire = I18n.format("follower.hireText") + " {days} " + I18n.format("follower.days");
     public String dialogFarewell = I18n.format("follower.farewellText") + " {player}";
@@ -197,7 +202,7 @@ public class RoleFollower extends RoleInterface implements IRoleFollower {
     public IPlayer getFollowing() {
         EntityPlayer owner = getOwner();
         if (owner != null)
-            return (IPlayer) NpcAPI.Instance().getIEntity(owner);
+            return (IPlayer) NpcAPI.instance().getIEntity(owner);
         return null;
     }
 

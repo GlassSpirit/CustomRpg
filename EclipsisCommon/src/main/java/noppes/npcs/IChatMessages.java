@@ -1,6 +1,6 @@
 package noppes.npcs;
 
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 public interface IChatMessages {
 

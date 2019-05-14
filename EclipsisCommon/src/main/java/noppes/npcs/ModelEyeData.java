@@ -2,7 +2,7 @@ package noppes.npcs;
 
 import net.minecraft.nbt.NBTTagCompound;
 import noppes.npcs.constants.EnumPacketClient;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.Random;
 

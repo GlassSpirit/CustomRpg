@@ -7,7 +7,7 @@ import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.NoppesUtilPlayer;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPlayerPacket;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.HashMap;
 import java.util.Vector;

@@ -27,7 +27,10 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent
-import noppes.npcs.*
+import noppes.npcs.LogWriter
+import noppes.npcs.ModelData
+import noppes.npcs.ModelPartData
+import noppes.npcs.PacketHandlerPlayer
 import noppes.npcs.client.controllers.MusicController
 import noppes.npcs.client.controllers.PresetController
 import noppes.npcs.client.fx.EntityEnderFX
@@ -43,12 +46,15 @@ import noppes.npcs.client.gui.roles.*
 import noppes.npcs.client.gui.script.*
 import noppes.npcs.client.model.*
 import noppes.npcs.client.renderer.*
-import noppes.npcs.config.TrueTypeFont
+import noppes.npcs.common.CommonProxy
+import noppes.npcs.common.CustomNpcs
+import noppes.npcs.common.CustomNpcsConfig
+import noppes.npcs.common.config.TrueTypeFont
 import noppes.npcs.constants.EnumGuiType
 import noppes.npcs.containers.*
 import noppes.npcs.controllers.PixelmonHelper
 import noppes.npcs.controllers.data.PlayerData
-import noppes.npcs.entity.*
+import noppes.npcs.common.entity.*
 import org.lwjgl.input.Keyboard
 import java.awt.Font
 import java.io.BufferedWriter
@@ -116,7 +122,7 @@ class ClientProxy : CommonProxy() {
         /*Minecraft.getMinecraft().itemColors.registerItemColorHandler(IItemColor { stack, tintIndex -> 0x8B4513 }, NpcObjects.mounter, NpcObjects.mobCloner, NpcObjects.pather, NpcObjects.scripter, NpcObjects.wand, NpcObjects.teleporter)
 
         Minecraft.getMinecraft().itemColors.registerItemColorHandler(IItemColor { stack, tintIndex ->
-            val item = NpcAPI.Instance()!!.getIItemStack(stack)
+            val item = NpcAPI.instance()!!.getIItemStack(stack)
             if (stack.item === NpcObjects.scriptedItem) {
                 (item as IItemScripted).color
             } else -1

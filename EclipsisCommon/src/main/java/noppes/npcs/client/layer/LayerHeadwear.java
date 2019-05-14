@@ -2,10 +2,10 @@ package noppes.npcs.client.layer;
 
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.RenderLiving;
-import noppes.npcs.CustomNpcsConfig;
+import noppes.npcs.common.CustomNpcsConfig;
 import noppes.npcs.client.ClientProxy;
 import noppes.npcs.client.model.part.head.ModelHeadwear;
-import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.common.entity.EntityCustomNpc;
 
 public class LayerHeadwear extends LayerInterface implements LayerPreRender {
     private ModelHeadwear headwear;

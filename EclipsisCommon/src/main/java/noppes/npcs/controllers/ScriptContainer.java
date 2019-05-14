@@ -4,9 +4,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.eventhandler.Event;
-import noppes.npcs.*;
+import noppes.npcs.LogWriter;
+import noppes.npcs.util.NBTTags;
+import noppes.npcs.util.NoppesStringUtils;
+import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.api.constants.*;
 import noppes.npcs.api.wrapper.BlockPosWrapper;
+import noppes.npcs.common.CustomNpcsConfig;
 import noppes.npcs.constants.EnumScriptType;
 
 import javax.script.Invocable;

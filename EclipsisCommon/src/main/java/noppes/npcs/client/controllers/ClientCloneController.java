@@ -1,6 +1,6 @@
 package noppes.npcs.client.controllers;
 
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.controllers.ServerCloneController;
 
 import java.io.File;

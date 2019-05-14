@@ -2,7 +2,7 @@ package noppes.npcs.client.gui.mainmenu;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.NoppesStringUtils;
+import noppes.npcs.util.NoppesStringUtils;
 import noppes.npcs.api.constants.JobType;
 import noppes.npcs.api.constants.RoleType;
 import noppes.npcs.client.Client;
@@ -15,8 +15,8 @@ import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.client.gui.util.IGuiData;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.entity.EntityCustomNpc;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 public class GuiNpcAdvanced extends GuiNPCInterface2 implements IGuiData {
     private boolean hasChanges = false;

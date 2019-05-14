@@ -3,11 +3,11 @@ package noppes.npcs.roles;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
-import noppes.npcs.CustomNpcs;
 import noppes.npcs.NpcMiscInventory;
+import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.controllers.data.PlayerData;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.List;

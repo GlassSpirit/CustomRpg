@@ -1,10 +1,10 @@
 package noppes.npcs.roles;
 
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.CustomNpcsConfig;
+import noppes.npcs.common.CustomNpcsConfig;
 import noppes.npcs.api.entity.ICustomNpc;
 import noppes.npcs.api.entity.data.role.IJobFollower;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 import java.util.List;
 

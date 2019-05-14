@@ -11,11 +11,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import ru.glassspirit.eclipsis.proxy.ClientProxy;
+import ru.glassspirit.eclipsis.client.ClientProxy;
 
 @SideOnly(Side.CLIENT)
 @Mixin(Minecraft.class)
 public abstract class MixinMinecraft {
+
+    private static void checkFullscreen() {
+        System.setProperty("org.lwjgl.opengl.Window.undecorated", String.valueOf(Minecraft.getMinecraft().gameSettings.fullScreen));
+    }
 
     @Shadow
     protected abstract void updateDisplayMode() throws LWJGLException;
@@ -65,10 +69,6 @@ public abstract class MixinMinecraft {
     @Inject(method = "toggleFullscreen", at = @At(value = "FIELD", target = "Lnet/minecraft/client/Minecraft;fullscreen:Z", ordinal = 3))
     private void toggleFullscreen(CallbackInfo ci) {
         checkFullscreen();
-    }
-
-    private static void checkFullscreen() {
-        System.setProperty("org.lwjgl.opengl.Window.undecorated", String.valueOf(Minecraft.getMinecraft().gameSettings.fullScreen));
     }
 
 }

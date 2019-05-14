@@ -11,7 +11,7 @@ import noppes.npcs.client.gui.util.IGuiData;
 import noppes.npcs.client.gui.util.SubGuiInterface;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.data.Quest;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.quests.QuestDialog;
 
 import java.util.HashMap;

@@ -9,7 +9,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.Util;
 import net.minecraft.world.World;
-import noppes.npcs.CustomNpcs;
+import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.Server;
 import noppes.npcs.client.gui.player.GuiDialogInteract;
 import noppes.npcs.client.gui.util.GuiContainerNPCInterface;
@@ -18,7 +18,7 @@ import noppes.npcs.client.gui.util.IScrollData;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.data.Dialog;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 import org.lwjgl.Sys;
 
 import java.io.File;

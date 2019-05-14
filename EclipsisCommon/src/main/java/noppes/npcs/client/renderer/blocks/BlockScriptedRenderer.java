@@ -16,9 +16,9 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import noppes.npcs.client.TextBlockClient;
-import noppes.npcs.objects.NpcObjects;
-import noppes.npcs.objects.blocks.tiles.TileScripted;
-import noppes.npcs.objects.blocks.tiles.TileScripted.TextPlane;
+import noppes.npcs.common.objects.NpcObjects;
+import noppes.npcs.common.objects.tiles.TileScripted;
+import noppes.npcs.common.objects.tiles.TileScripted.TextPlane;
 
 import java.util.Random;
 

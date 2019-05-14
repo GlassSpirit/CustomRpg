@@ -1,34 +1,17 @@
 package rpgloot.client
 
-import net.minecraft.client.Minecraft
-import net.minecraft.client.renderer.entity.Render
-import net.minecraft.entity.Entity
+import com.teamwizardry.librarianlib.features.kotlin.Minecraft
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.client.registry.RenderingRegistry
+import net.minecraftforge.fml.common.event.FMLInitializationEvent
 import rpgloot.CommonProxy
-import rpgloot.entities.EntCorpse
-import rpgloot.packets.CorpseSyncPacket
+import rpgloot.entities.EntityCorpse
 
 class ClientProxy : CommonProxy() {
 
-    private fun registerEntityRenderer(entityClass: Class<out Entity>, render: Render<*>) {
-        RenderingRegistry.registerEntityRenderingHandler(entityClass, render)
-    }
-
-    override fun register() {
-        super.register()
-        registerEntityRenderer(EntCorpse::class.java, RenderCorpse(Minecraft.getMinecraft().renderManager))
+    override fun init(event: FMLInitializationEvent) {
+        super.init(event)
+        RenderingRegistry.registerEntityRenderingHandler(EntityCorpse::class.java, RenderCorpse(Minecraft().renderManager))
         MinecraftForge.EVENT_BUS.register(ClientEvents())
     }
-
-    override fun handleCorpseSyncPacket(message: CorpseSyncPacket) {
-        val world = Minecraft.getMinecraft().world
-        val entity = world.getEntityByID(message.corpseID)
-        if (entity != null && entity is EntCorpse) {
-            entity.readFromNBT(message.corpseTag!!)
-        }
-
-    }
-
-    fun playSound(sound: String) {}
 }

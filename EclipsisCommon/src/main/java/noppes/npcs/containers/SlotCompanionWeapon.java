@@ -25,6 +25,6 @@ class SlotCompanionWeapon extends Slot {
     public boolean isItemValid(ItemStack itemstack) {
         if (NoppesUtilServer.IsItemStackNull(itemstack))
             return false;
-        return role.canWearSword(NpcAPI.Instance().getIItemStack(itemstack));
+        return role.canWearSword(NpcAPI.instance().getIItemStack(itemstack));
     }
 }

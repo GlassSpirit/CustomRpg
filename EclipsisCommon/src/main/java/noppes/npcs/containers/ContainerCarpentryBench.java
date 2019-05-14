@@ -10,7 +10,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import noppes.npcs.controllers.RecipeController;
 import noppes.npcs.controllers.data.RecipeCarpentry;
-import noppes.npcs.objects.NpcObjects;
+import noppes.npcs.common.objects.NpcObjects;
 
 public class ContainerCarpentryBench extends Container {
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 4, 4);

@@ -6,7 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import noppes.npcs.api.wrapper.ItemScriptedWrapper;
 import noppes.npcs.client.Client;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.objects.NpcObjects;
+import noppes.npcs.common.objects.NpcObjects;
 
 public class GuiScriptItem extends GuiScriptInterface {
 

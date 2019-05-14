@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.math.MathHelper;
 import noppes.npcs.api.constants.AnimationType;
-import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.common.entity.EntityNPCInterface;
 
 public class ModelNPCGolem extends ModelBipedAlt {
 

@@ -161,9 +161,9 @@ public class PlayerEvent extends CustomNPCsEvent {
 
         public DamagedEntityEvent(IPlayer player, Entity target, float damage, DamageSource damagesource) {
             super(player);
-            this.target = NpcAPI.Instance().getIEntity(target);
+            this.target = NpcAPI.instance().getIEntity(target);
             this.damage = damage;
-            this.damageSource = NpcAPI.Instance().getIDamageSource(damagesource);
+            this.damageSource = NpcAPI.instance().getIDamageSource(damagesource);
         }
     }
 
@@ -190,9 +190,9 @@ public class PlayerEvent extends CustomNPCsEvent {
 
         public DiedEvent(IPlayer player, DamageSource damagesource, Entity entity) {
             super(player);
-            this.damageSource = NpcAPI.Instance().getIDamageSource(damagesource);
+            this.damageSource = NpcAPI.instance().getIDamageSource(damagesource);
             type = damagesource.damageType;
-            this.source = NpcAPI.Instance().getIEntity(entity);
+            this.source = NpcAPI.instance().getIEntity(entity);
         }
     }
 
@@ -204,7 +204,7 @@ public class PlayerEvent extends CustomNPCsEvent {
 
         public KilledEntityEvent(IPlayer player, EntityLivingBase entity) {
             super(player);
-            this.entity = (IEntityLivingBase) NpcAPI.Instance().getIEntity(entity);
+            this.entity = (IEntityLivingBase) NpcAPI.instance().getIEntity(entity);
         }
     }
 
@@ -220,9 +220,9 @@ public class PlayerEvent extends CustomNPCsEvent {
 
         public DamagedEvent(IPlayer player, Entity source, float damage, DamageSource damagesource) {
             super(player);
-            this.source = NpcAPI.Instance().getIEntity(source);
+            this.source = NpcAPI.instance().getIEntity(source);
             this.damage = damage;
-            this.damageSource = NpcAPI.Instance().getIDamageSource(damagesource);
+            this.damageSource = NpcAPI.instance().getIDamageSource(damagesource);
         }
     }
 

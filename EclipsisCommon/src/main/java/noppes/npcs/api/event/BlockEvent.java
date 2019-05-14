@@ -27,7 +27,7 @@ public class BlockEvent extends CustomNPCsEvent {
         public EntityFallenUponEvent(IBlock block, Entity entity, float distance) {
             super(block);
             this.distanceFallen = distance;
-            this.entity = NpcAPI.Instance().getIEntity(entity);
+            this.entity = NpcAPI.instance().getIEntity(entity);
         }
     }
 
@@ -47,7 +47,7 @@ public class BlockEvent extends CustomNPCsEvent {
 
         public InteractEvent(IBlock block, EntityPlayer player, int side, float hitX, float hitY, float hitZ) {
             super(block);
-            this.player = (IPlayer) NpcAPI.Instance().getIEntity(player);
+            this.player = (IPlayer) NpcAPI.instance().getIEntity(player);
 
             this.hitX = hitX;
             this.hitY = hitY;
@@ -143,7 +143,7 @@ public class BlockEvent extends CustomNPCsEvent {
 
         public ClickedEvent(IBlock block, EntityPlayer player) {
             super(block);
-            this.player = (IPlayer) NpcAPI.Instance().getIEntity(player);
+            this.player = (IPlayer) NpcAPI.instance().getIEntity(player);
         }
     }
 
@@ -156,7 +156,7 @@ public class BlockEvent extends CustomNPCsEvent {
 
         public HarvestedEvent(IBlock block, EntityPlayer player) {
             super(block);
-            this.player = (IPlayer) NpcAPI.Instance().getIEntity(player);
+            this.player = (IPlayer) NpcAPI.instance().getIEntity(player);
         }
     }
 
@@ -168,7 +168,7 @@ public class BlockEvent extends CustomNPCsEvent {
 
         public CollidedEvent(IBlock block, Entity entity) {
             super(block);
-            this.entity = NpcAPI.Instance().getIEntity(entity);
+            this.entity = NpcAPI.instance().getIEntity(entity);
         }
     }
 

@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import noppes.npcs.client.model.ModelPony;
 import noppes.npcs.client.model.ModelPonyArmor;
-import noppes.npcs.entity.EntityNpcPony;
+import noppes.npcs.common.entity.EntityNpcPony;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

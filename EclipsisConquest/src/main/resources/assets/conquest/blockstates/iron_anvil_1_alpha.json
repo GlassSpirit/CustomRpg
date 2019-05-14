@@ -1,0 +1,27 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "conquest:anvil",
+    "textures": {
+      "particle": "blocks/anvil_base",
+      "body": "blocks/anvil_base",
+      "top": "blocks/anvil_base"
+    }
+  },
+  "variants": {
+    "inventory": [
+      {}
+    ],
+    "axis": {
+      "y": {
+        "model": "conquest:anvil_base"
+      },
+      "x": {
+        "y": 90
+      },
+      "z": {
+        "y": 180
+      }
+    }
+  }
+}
