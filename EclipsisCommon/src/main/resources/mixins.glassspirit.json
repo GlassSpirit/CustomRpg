@@ -13,7 +13,9 @@
   "client": [
     "client.MixinLoadController",
     "client.MixinMinecraft",
-    "client.MixinSplashProgress"
+    "client.MixinSplashProgress",
+    "client.MixinFakeHeldItemMouse",
+    "client.MixinFakeHeldItemKeyboard"
   ],
   "minVersion": "0.7.4",
   "injectors": {
