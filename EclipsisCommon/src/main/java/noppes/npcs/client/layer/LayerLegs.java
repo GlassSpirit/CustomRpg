@@ -10,7 +10,7 @@ import noppes.npcs.api.constants.AnimationType;
 import noppes.npcs.client.model.part.legs.*;
 import noppes.npcs.client.model.part.tails.*;
 import noppes.npcs.constants.EnumParts;
-import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityCustomNpc;
 
 public class LayerLegs extends LayerInterface implements LayerPreRender {
     private ModelSpiderLegs spiderLegs;

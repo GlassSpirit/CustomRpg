@@ -14,6 +14,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.WorldServer;
 import noppes.npcs.api.*;
 import noppes.npcs.api.constants.EntityType;
@@ -26,6 +27,45 @@ import java.util.*;
 
 public class EntityWrapper<T extends Entity> implements IEntity {
     protected T entity;
+    private Map<String, Object> tempData = new HashMap<>();
+    private IWorld worldWrapper;
+
+
+    private final IData tempdata = new IData() {
+
+        @Override
+        public void put(String key, Object value) {
+            tempData.put(key, value);
+        }
+
+        @Override
+        public Object get(String key) {
+            return tempData.get(key);
+        }
+
+        @Override
+        public void remove(String key) {
+            tempData.remove(key);
+        }
+
+        @Override
+        public boolean has(String key) {
+            return tempData.containsKey(key);
+        }
+
+        @Override
+        public void clear() {
+            tempData.clear();
+        }
+
+        @Override
+        public String[] getKeys() {
+            return tempData.keySet().toArray(new String[tempData.size()]);
+        }
+
+    };
+
+
     private final IData storeddata = new IData() {
 
         @Override
@@ -83,45 +123,10 @@ public class EntityWrapper<T extends Entity> implements IEntity {
             return compound.getKeySet().toArray(new String[compound.getKeySet().size()]);
         }
     };
-    private Map<String, Object> tempData = new HashMap<>();
-    private final IData tempdata = new IData() {
-
-        @Override
-        public void put(String key, Object value) {
-            tempData.put(key, value);
-        }
-
-        @Override
-        public Object get(String key) {
-            return tempData.get(key);
-        }
-
-        @Override
-        public void remove(String key) {
-            tempData.remove(key);
-        }
-
-        @Override
-        public boolean has(String key) {
-            return tempData.containsKey(key);
-        }
-
-        @Override
-        public void clear() {
-            tempData.clear();
-        }
-
-        @Override
-        public String[] getKeys() {
-            return tempData.keySet().toArray(new String[tempData.size()]);
-        }
-
-    };
-    private IWorld worldWrapper;
 
     public EntityWrapper(T entity) {
         this.entity = entity;
-        this.worldWrapper = NpcAPI.instance().getIWorld((WorldServer) entity.world);
+        this.worldWrapper = NpcAPI.Instance().getIWorld((WorldServer) entity.world);
     }
 
     @Override
@@ -171,7 +176,11 @@ public class EntityWrapper<T extends Entity> implements IEntity {
 
     @Override
     public String getEntityName() {
-        return entity.getName();
+        String s = EntityList.getEntityString(entity);
+        if (s == null) {
+            s = "generic";
+        }
+        return I18n.translateToLocal("entity." + s + ".name");
     }
 
     @Override
@@ -197,7 +206,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
     @Override
     public IWorld getWorld() {
         if (entity.world != worldWrapper.getMCWorld())
-            this.worldWrapper = NpcAPI.instance().getIWorld((WorldServer) entity.world);
+            this.worldWrapper = NpcAPI.Instance().getIWorld((WorldServer) entity.world);
         return worldWrapper;
     }
 
@@ -289,7 +298,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
         List<Entity> list = entity.getPassengers();
         IEntity[] riders = new IEntity[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            riders[i] = NpcAPI.instance().getIEntity(list.get(i));
+            riders[i] = NpcAPI.Instance().getIEntity(list.get(i));
         }
         return riders;
     }
@@ -302,7 +311,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
         RayTraceResult result = entity.world.rayTraceBlocks(vec3d, vec3d2, stopOnLiquid, ignoreBlockWithoutBoundingBox, true);
         if (result == null)
             return null;
-        return new RayTraceWrapper(NpcAPI.instance().getIBlock(entity.world, result.getBlockPos()), result.sideHit.getIndex());
+        return new RayTraceWrapper(NpcAPI.Instance().getIBlock(entity.world, result.getBlockPos()), result.sideHit.getIndex());
     }
 
     @Override
@@ -328,7 +337,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
                 RayTraceResult raytraceresult1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
 
                 if (raytraceresult1 != null) {
-                    result.add(NpcAPI.instance().getIEntity(entity1));
+                    result.add(NpcAPI.Instance().getIEntity(entity1));
                 }
 
             }
@@ -348,7 +357,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
         List<Entity> list = new ArrayList<>(entity.getRecursivePassengers());
         IEntity[] riders = new IEntity[list.size()];
         for (int i = 0; i < list.size(); i++) {
-            riders[i] = NpcAPI.instance().getIEntity(list.get(i));
+            riders[i] = NpcAPI.Instance().getIEntity(list.get(i));
         }
         return riders;
     }
@@ -367,7 +376,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
 
     @Override
     public IEntity getMount() {
-        return NpcAPI.instance().getIEntity(entity.getRidingEntity());
+        return NpcAPI.Instance().getIEntity(entity.getRidingEntity());
     }
 
     @Override
@@ -380,23 +389,23 @@ public class EntityWrapper<T extends Entity> implements IEntity {
     }
 
     @Override
-    public float getRotation() {
-        return entity.rotationYaw;
-    }
-
-    @Override
     public void setRotation(float rotation) {
         entity.rotationYaw = rotation;
     }
 
     @Override
-    public float getPitch() {
-        return entity.rotationPitch;
+    public float getRotation() {
+        return entity.rotationYaw;
     }
 
     @Override
     public void setPitch(float rotation) {
         entity.rotationPitch = rotation;
+    }
+
+    @Override
+    public float getPitch() {
+        return entity.rotationPitch;
     }
 
     @Override
@@ -447,7 +456,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
 
     @Override
     public INbt getNbt() {
-        return NpcAPI.instance().getINbt(entity.getEntityData());
+        return NpcAPI.Instance().getINbt(entity.getEntityData());
     }
 
     @Override
@@ -469,7 +478,7 @@ public class EntityWrapper<T extends Entity> implements IEntity {
         if (resourcelocation != null) {
             compound.setString("id", resourcelocation.toString());
         }
-        return NpcAPI.instance().getINbt(compound);
+        return NpcAPI.Instance().getINbt(compound);
     }
 
     @Override
@@ -533,6 +542,16 @@ public class EntityWrapper<T extends Entity> implements IEntity {
     }
 
     @Override
+    public double getMotionY() {
+        return entity.motionY;
+    }
+
+    @Override
+    public double getMotionZ() {
+        return entity.motionZ;
+    }
+
+    @Override
     public void setMotionX(double motion) {
         if (entity.motionX == motion)
             return;
@@ -541,21 +560,11 @@ public class EntityWrapper<T extends Entity> implements IEntity {
     }
 
     @Override
-    public double getMotionY() {
-        return entity.motionY;
-    }
-
-    @Override
     public void setMotionY(double motion) {
         if (entity.motionY == motion)
             return;
         entity.motionY = motion;
         entity.velocityChanged = true;
-    }
-
-    @Override
-    public double getMotionZ() {
-        return entity.motionZ;
     }
 
     @Override

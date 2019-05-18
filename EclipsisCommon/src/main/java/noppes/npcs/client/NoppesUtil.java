@@ -9,7 +9,7 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.Util;
 import net.minecraft.world.World;
-import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.Server;
 import noppes.npcs.client.gui.player.GuiDialogInteract;
 import noppes.npcs.client.gui.util.GuiContainerNPCInterface;
@@ -18,7 +18,7 @@ import noppes.npcs.client.gui.util.IScrollData;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.data.Dialog;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import org.lwjgl.Sys;
 
 import java.io.File;
@@ -117,7 +117,7 @@ public class NoppesUtil {
             gui = ((GuiNPCInterface) gui).getSubGui();
         if (gui == null || !(gui instanceof IScrollData))
             return;
-        Vector<String> data = new Vector<>();
+        Vector<String> data = new Vector<String>();
         String line;
 
         try {
@@ -132,7 +132,7 @@ public class NoppesUtil {
         ((IScrollData) gui).setData(data, null);
     }
 
-    private static HashMap<String, Integer> data = new HashMap<>();
+    private static HashMap<String, Integer> data = new HashMap<String, Integer>();
 
     public static void addScrollData(ByteBuf buffer) {
         try {
@@ -166,8 +166,8 @@ public class NoppesUtil {
             gui = ((GuiContainerNPCInterface) gui).getSubGui();
         }
         if (gui instanceof IScrollData)
-            ((IScrollData) gui).setData(new Vector<>(data.keySet()), data);
-        data = new HashMap<>();
+            ((IScrollData) gui).setData(new Vector<String>(data.keySet()), data);
+        data = new HashMap<String, Integer>();
     }
 
     public static void openDialog(Dialog dialog, EntityNPCInterface npc, EntityPlayer player) {

@@ -12,10 +12,10 @@ import noppes.npcs.controllers.FactionController;
 import java.util.HashMap;
 
 public class PlayerFactionData {
-    public HashMap<Integer, Integer> factionData = new HashMap<>();
+    public HashMap<Integer, Integer> factionData = new HashMap<Integer, Integer>();
 
     public void loadNBTData(NBTTagCompound compound) {
-        HashMap<Integer, Integer> factionData = new HashMap<>();
+        HashMap<Integer, Integer> factionData = new HashMap<Integer, Integer>();
         if (compound == null)
             return;
         NBTTagList list = compound.getTagList("FactionData", 10);
@@ -50,7 +50,7 @@ public class PlayerFactionData {
             if (player.world.isRemote)
                 return faction.defaultPoints;
             PlayerScriptData handler = PlayerData.get(player).scriptData;
-            PlayerWrapper wrapper = (PlayerWrapper) NpcAPI.instance().getIEntity(player);
+            PlayerWrapper wrapper = (PlayerWrapper) NpcAPI.Instance().getIEntity(player);
 
             PlayerEvent.FactionUpdateEvent event = new PlayerEvent.FactionUpdateEvent(wrapper, faction, faction.defaultPoints, true);
             EventHooks.OnPlayerFactionChange(handler, event);
@@ -65,7 +65,7 @@ public class PlayerFactionData {
             return;
 
         PlayerScriptData handler = PlayerData.get(player).scriptData;
-        PlayerWrapper wrapper = (PlayerWrapper) NpcAPI.instance().getIEntity(player);
+        PlayerWrapper wrapper = (PlayerWrapper) NpcAPI.Instance().getIEntity(player);
         if (!factionData.containsKey(factionId)) {
             PlayerEvent.FactionUpdateEvent event = new PlayerEvent.FactionUpdateEvent(wrapper, faction, faction.defaultPoints, true);
             EventHooks.OnPlayerFactionChange(handler, event);

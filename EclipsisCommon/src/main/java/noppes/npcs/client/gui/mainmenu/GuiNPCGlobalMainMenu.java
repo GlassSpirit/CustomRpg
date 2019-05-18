@@ -1,14 +1,14 @@
 package noppes.npcs.client.gui.mainmenu;
 
 import net.minecraft.client.gui.GuiButton;
-import noppes.npcs.util.NoppesStringUtils;
+import noppes.npcs.NoppesStringUtils;
 import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.global.GuiNpcManagePlayerData;
 import noppes.npcs.client.gui.global.GuiNpcNaturalSpawns;
 import noppes.npcs.client.gui.util.GuiNPCInterface2;
 import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.constants.EnumGuiType;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class GuiNPCGlobalMainMenu extends GuiNPCInterface2 {
     public GuiNPCGlobalMainMenu(EntityNPCInterface npc) {

@@ -21,8 +21,6 @@ import noppes.npcs.api.constants.RoleType;
 import noppes.npcs.api.event.QuestEvent;
 import noppes.npcs.api.event.RoleEvent;
 import noppes.npcs.api.item.IItemStack;
-import noppes.npcs.common.CustomNpcs;
-import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.EnumPlayerPacket;
 import noppes.npcs.containers.ContainerNPCBankInterface;
@@ -33,10 +31,10 @@ import noppes.npcs.controllers.DialogController;
 import noppes.npcs.controllers.PlayerDataController;
 import noppes.npcs.controllers.PlayerQuestController;
 import noppes.npcs.controllers.data.*;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleCompanion;
 import noppes.npcs.roles.RoleDialog;
 import noppes.npcs.roles.RoleFollower;
-import noppes.npcs.util.NoppesStringUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -106,7 +104,7 @@ public class NoppesUtilPlayer {
         ItemStack currency = currencyInv.getStackInSlot(0);
         if (currency == null || currency.isEmpty())
             return;
-        HashMap<ItemStack, Integer> cd = new HashMap<>();
+        HashMap<ItemStack, Integer> cd = new HashMap<ItemStack, Integer>();
         for (int slot = 0; slot < role.inventory.items.size(); slot++) {
             ItemStack is = role.inventory.items.get(slot);
             if (is.isEmpty() || is.getItem() != currency.getItem() || is.getHasSubtypes() && is.getItemDamage() != currency.getItemDamage())
@@ -241,7 +239,7 @@ public class NoppesUtilPlayer {
         try {
             if (!Server.fillBuffer(buffer, enu, obs))
                 return;
-            CustomNpcs.INSTANCE.getChannelPlayer().sendToServer(new FMLProxyPacket(buffer, "CustomNPCsPlayer"));
+            CustomNpcs.ChannelPlayer.sendToServer(new FMLProxyPacket(buffer, "CustomNPCsPlayer"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -322,10 +320,10 @@ public class NoppesUtilPlayer {
         QuestEvent.QuestTurnedInEvent event = new QuestEvent.QuestTurnedInEvent(data.scriptData.getPlayer(), quest);
         event.expReward = quest.rewardExp;
 
-        List<IItemStack> list = new ArrayList<>();
+        List<IItemStack> list = new ArrayList<IItemStack>();
         for (ItemStack item : quest.rewardItems.items) {
             if (!item.isEmpty())
-                list.add(NpcAPI.instance().getIItemStack(item));
+                list.add(NpcAPI.Instance().getIItemStack(item));
         }
 
         if (!quest.randomReward) {
@@ -430,7 +428,7 @@ public class NoppesUtilPlayer {
     }
 
     public static List<ItemStack> countStacks(IInventory inv, boolean ignoreDamage, boolean ignoreNBT) {
-        List<ItemStack> list = new ArrayList<>();
+        List<ItemStack> list = new ArrayList<ItemStack>();
         for (int i = 0; i < inv.getSizeInventory(); i++) {
             ItemStack item = inv.getStackInSlot(i);
             if (NoppesUtilServer.IsItemStackNull(item))

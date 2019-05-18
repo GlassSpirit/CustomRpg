@@ -5,7 +5,7 @@ import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.ModelPartConfig;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumParts;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.List;

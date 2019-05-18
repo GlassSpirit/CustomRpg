@@ -2,9 +2,9 @@ package noppes.npcs.controllers.data;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.eventhandler.Event;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.EventHooks;
-import noppes.npcs.util.NBTTags;
-import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.NBTTags;
 import noppes.npcs.constants.EnumScriptType;
 import noppes.npcs.controllers.IScriptHandler;
 import noppes.npcs.controllers.ScriptContainer;
@@ -18,7 +18,7 @@ import java.util.TreeMap;
 
 public class ForgeScriptData implements IScriptHandler {
 
-    private List<ScriptContainer> scripts = new ArrayList<>();
+    private List<ScriptContainer> scripts = new ArrayList<ScriptContainer>();
 
     private String scriptLanguage = "ECMAScript";
 
@@ -28,7 +28,7 @@ public class ForgeScriptData implements IScriptHandler {
 
 
     public void clear() {
-        scripts = new ArrayList<>();
+        scripts = new ArrayList<ScriptContainer>();
     }
 
     public void readFromNBT(NBTTagCompound compound) {
@@ -44,7 +44,6 @@ public class ForgeScriptData implements IScriptHandler {
         return compound;
     }
 
-    @Override
     public void runScript(EnumScriptType type, Event event) {
         //not used
     }
@@ -52,7 +51,7 @@ public class ForgeScriptData implements IScriptHandler {
     public void runScript(String type, Event event) {
         if (!isEnabled())
             return;
-        CustomNpcs.INSTANCE.getServer().addScheduledTask(() -> {
+        CustomNpcs.Server.addScheduledTask(() -> {
             if (ScriptController.Instance.lastLoaded > lastInited) {
                 lastInited = ScriptController.Instance.lastLoaded;
                 if (!type.equals("init"))
@@ -105,7 +104,7 @@ public class ForgeScriptData implements IScriptHandler {
 
     @Override
     public Map<Long, String> getConsoleText() {
-        Map<Long, String> map = new TreeMap<>();
+        Map<Long, String> map = new TreeMap<Long, String>();
         int tab = 0;
         for (ScriptContainer script : getScripts()) {
             tab++;

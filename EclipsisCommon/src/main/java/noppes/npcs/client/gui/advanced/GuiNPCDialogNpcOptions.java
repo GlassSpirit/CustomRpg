@@ -8,7 +8,7 @@ import noppes.npcs.client.gui.select.GuiDialogSelection;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.data.DialogOption;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.HashMap;
 

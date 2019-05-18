@@ -2,22 +2,21 @@ package noppes.npcs.quests;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import noppes.npcs.NBTTags;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.constants.QuestType;
 import noppes.npcs.api.handler.data.IQuestObjective;
 import noppes.npcs.controllers.DialogController;
 import noppes.npcs.controllers.data.Dialog;
 import noppes.npcs.controllers.data.PlayerData;
-import noppes.npcs.util.NBTTags;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class QuestDialog extends QuestInterface {
 
-    public Map<Integer, Integer> dialogs = new HashMap<>();
+    public HashMap<Integer, Integer> dialogs = new HashMap<Integer, Integer>();
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
@@ -44,7 +43,7 @@ public class QuestDialog extends QuestInterface {
 
     @Override
     public IQuestObjective[] getObjectives(EntityPlayer player) {
-        List<IQuestObjective> list = new ArrayList<>();
+        List<IQuestObjective> list = new ArrayList<IQuestObjective>();
         for (int i = 0; i < 3; i++) {
             if (dialogs.containsKey(i)) {
                 Dialog dialog = DialogController.instance.dialogs.get(dialogs.get(i));

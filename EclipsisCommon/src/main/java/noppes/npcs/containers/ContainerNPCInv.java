@@ -5,7 +5,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class ContainerNPCInv extends Container {
     public ContainerNPCInv(EntityNPCInterface npc, EntityPlayer player) {

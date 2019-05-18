@@ -24,7 +24,7 @@ public class GuiAchievement implements IToast {
         this.type = type;
     }
 
-    public Visibility draw(GuiToast toastGui, long delta) {
+    public IToast.Visibility draw(GuiToast toastGui, long delta) {
         if (this.newDisplay) {
             this.firstDrawTime = delta;
             this.newDisplay = false;
@@ -45,7 +45,7 @@ public class GuiAchievement implements IToast {
         toastGui.getMinecraft().fontRenderer.drawString(this.title, 18, 7, color1);
         toastGui.getMinecraft().fontRenderer.drawString(this.subtitle, 18, 18, color2);
 
-        return delta - this.firstDrawTime < 5000L ? Visibility.SHOW : Visibility.HIDE;
+        return delta - this.firstDrawTime < 5000L ? IToast.Visibility.SHOW : IToast.Visibility.HIDE;
     }
 
     public void setDisplayedText(ITextComponent titleComponent, @Nullable ITextComponent subtitleComponent) {

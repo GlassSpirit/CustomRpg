@@ -15,10 +15,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
+import noppes.npcs.CustomItems;
+import noppes.npcs.blocks.tiles.TileScripted;
+import noppes.npcs.blocks.tiles.TileScripted.TextPlane;
 import noppes.npcs.client.TextBlockClient;
-import noppes.npcs.common.objects.NpcObjects;
-import noppes.npcs.common.objects.tiles.TileScripted;
-import noppes.npcs.common.objects.tiles.TileScripted.TextPlane;
 
 import java.util.Random;
 
@@ -36,7 +36,7 @@ public class BlockScriptedRenderer extends BlockRendererInterface {
         GlStateManager.translate(x + 0.5, y, z + 0.5);
         if (overrideModel()) {
             GlStateManager.translate(0, 0.5, 0);
-            renderItem(new ItemStack(NpcObjects.scriptedBlock));
+            renderItem(new ItemStack(CustomItems.scripted));
         } else {
             GlStateManager.rotate(tile.rotationY, 0, 1, 0);
             GlStateManager.rotate(tile.rotationX, 1, 0, 0);
@@ -46,7 +46,7 @@ public class BlockScriptedRenderer extends BlockRendererInterface {
             if (b == null || b == Blocks.AIR) {
                 GlStateManager.translate(0, 0.5, 0);
                 renderItem(tile.itemModel);
-            } else if (b == NpcObjects.scriptedBlock) {
+            } else if (b == CustomItems.scripted) {
                 GlStateManager.translate(0, 0.5, 0);
                 renderItem(tile.itemModel);
             } else {
@@ -161,6 +161,6 @@ public class BlockScriptedRenderer extends BlockRendererInterface {
         if (held == null)
             return false;
 
-        return held.getItem() == NpcObjects.wand || held.getItem() == NpcObjects.scripter;
+        return held.getItem() == CustomItems.wand || held.getItem() == CustomItems.scripter;
     }
 }

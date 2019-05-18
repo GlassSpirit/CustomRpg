@@ -2,7 +2,7 @@ package noppes.npcs.client.gui.mainmenu;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.util.NoppesStringUtils;
+import noppes.npcs.NoppesStringUtils;
 import noppes.npcs.api.constants.JobType;
 import noppes.npcs.api.constants.RoleType;
 import noppes.npcs.client.Client;
@@ -15,8 +15,8 @@ import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.client.gui.util.IGuiData;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityCustomNpc;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class GuiNpcAdvanced extends GuiNPCInterface2 implements IGuiData {
     private boolean hasChanges = false;
@@ -35,7 +35,7 @@ public class GuiNpcAdvanced extends GuiNPCInterface2 implements IGuiData {
         getButton(3).setEnabled(npc.advanced.role != RoleType.NONE && npc.advanced.role != RoleType.MAILMAN);
 
         this.addButton(new GuiNpcButton(4, guiLeft + 85 + 160, y += 22, 52, 20, "selectServer.edit"));
-        this.addButton(new GuiButtonBiDirectional(5, guiLeft + 85, y, 155, 20, new String[]{"job.none", "job.bard", "job.healer", "job.guard", "job.itemgiver", "role.follower", "job.spawner", "job.conversation", "job.chunkloader", "job.puppet", "job.builderBlock", "job.farmer"}, npc.advanced.job));
+        this.addButton(new GuiButtonBiDirectional(5, guiLeft + 85, y, 155, 20, new String[]{"job.none", "job.bard", "job.healer", "job.guard", "job.itemgiver", "role.follower", "job.spawner", "job.conversation", "job.chunkloader", "job.puppet", "job.builder", "job.farmer"}, npc.advanced.job));
 
         getButton(4).setEnabled(npc.advanced.job != JobType.NONE && npc.advanced.job != JobType.CHUNKLOADER && npc.advanced.job != JobType.BUILDER);
 

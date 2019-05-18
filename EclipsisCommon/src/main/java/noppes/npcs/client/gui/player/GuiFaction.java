@@ -1,5 +1,7 @@
 package noppes.npcs.client.gui.player;
 
+import micdoodle8.mods.galacticraft.api.client.tabs.InventoryTabFactions;
+import micdoodle8.mods.galacticraft.api.client.tabs.TabRegistry;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.nbt.NBTTagCompound;
@@ -48,6 +50,9 @@ public class GuiFaction extends GuiNPCInterface implements IGuiData {
         super.initGui();
         guiLeft = (width - xSize) / 2;
         guiTop = (height - ySize) / 2 + 12;
+
+        TabRegistry.updateTabValues(guiLeft, guiTop + 8, InventoryTabFactions.class);
+        TabRegistry.addTabsToList(buttonList);
 
         this.buttonList.add(buttonNextPage = new GuiButtonNextPage(1, guiLeft + xSize - 43, guiTop + 180, true));
         this.buttonList.add(buttonPreviousPage = new GuiButtonNextPage(2, guiLeft + 20, guiTop + 180, false));

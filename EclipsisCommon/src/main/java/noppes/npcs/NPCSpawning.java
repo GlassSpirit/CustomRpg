@@ -23,8 +23,8 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import noppes.npcs.controllers.SpawnController;
 import noppes.npcs.controllers.data.SpawnData;
-import noppes.npcs.common.entity.EntityCustomNpc;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.*;
 

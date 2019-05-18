@@ -9,7 +9,7 @@ import net.minecraft.client.resources.IResourceManagerReloadListener;
 import net.minecraft.client.resources.SimpleReloadableResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.translation.I18n;
-import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.CustomNpcs;
 
 public class CustomNpcResourceListener implements IResourceManagerReloadListener {
 
@@ -22,7 +22,7 @@ public class CustomNpcResourceListener implements IResourceManagerReloadListener
 
             SimpleReloadableResourceManager simplemanager = (SimpleReloadableResourceManager) var1;
 
-            FolderResourcePack pack = new FolderResourcePack(CustomNpcs.INSTANCE.getDir());
+            FolderResourcePack pack = new FolderResourcePack(CustomNpcs.Dir);
             simplemanager.reloadResourcePack(pack);
 
             try {

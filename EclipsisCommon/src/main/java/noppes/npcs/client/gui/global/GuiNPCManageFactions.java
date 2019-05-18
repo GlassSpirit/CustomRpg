@@ -1,15 +1,15 @@
 package noppes.npcs.client.gui.global;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.SubGuiColorSelector;
 import noppes.npcs.client.gui.SubGuiNpcFactionPoints;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.data.Faction;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -94,7 +94,7 @@ public class GuiNPCManageFactions extends GuiNPCInterface2 implements IScrollDat
         GuiNpcButton button = (GuiNpcButton) guibutton;
         if (button.id == 0) {
             save();
-            String name = I18n.format("gui.new");
+            String name = I18n.translateToLocal("gui.new");
             while (data.containsKey(name))
                 name += "_";
             Faction faction = new Faction(-1, name, 0x00FF00, 1000);

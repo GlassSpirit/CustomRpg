@@ -8,9 +8,9 @@ import noppes.npcs.client.ClientProxy;
 import noppes.npcs.client.gui.SubGuiNpcTextArea;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityNPCInterface;
-import noppes.npcs.common.entity.data.DataScenes;
-import noppes.npcs.common.entity.data.DataScenes.SceneContainer;
+import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.entity.data.DataScenes;
+import noppes.npcs.entity.data.DataScenes.SceneContainer;
 
 public class GuiNPCScenes extends GuiNPCInterface2 {
     private DataScenes scenes;
@@ -32,7 +32,7 @@ public class GuiNPCScenes extends GuiNPCInterface2 {
             this.addButton(new GuiNpcButton(1 + i * 10, guiLeft + 120, y, 60, 20, new String[]{"gui.disabled", "gui.enabled"}, scene.enabled ? 1 : 0));
             this.addButton(new GuiNpcButton(2 + i * 10, guiLeft + 181, y, 50, 20, "selectServer.edit"));
             this.addButton(new GuiNpcButton(3 + i * 10, guiLeft + 293, y, 50, 20, "X"));
-            this.addButton(new GuiNpcButton(4 + i * 10, guiLeft + 232, y, 60, 20, new String[]{"gui.none", GameSettings.getKeyDisplayString(ClientProxy.Companion.getScene1().getKeyCode()), GameSettings.getKeyDisplayString(ClientProxy.Companion.getScene2().getKeyCode()), GameSettings.getKeyDisplayString(ClientProxy.Companion.getScene3().getKeyCode())}, scene.btn));
+            this.addButton(new GuiNpcButton(4 + i * 10, guiLeft + 232, y, 60, 20, new String[]{"gui.none", GameSettings.getKeyDisplayString(ClientProxy.Scene1.getKeyCode()), GameSettings.getKeyDisplayString(ClientProxy.Scene2.getKeyCode()), GameSettings.getKeyDisplayString(ClientProxy.Scene3.getKeyCode())}, scene.btn));
             y += 22;
         }
         if (scenes.scenes.size() < 6) {

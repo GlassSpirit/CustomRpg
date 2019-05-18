@@ -6,8 +6,7 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.player.EntityItemPickupEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import noppes.npcs.common.objects.NpcObjects;
-import noppes.npcs.common.objects.items.ItemScripted;
+import noppes.npcs.items.ItemScripted;
 
 public class ScriptItemEventHandler {
 
@@ -18,8 +17,8 @@ public class ScriptItemEventHandler {
 
         EntityItem entity = (EntityItem) event.getEntity();
         ItemStack stack = entity.getItem();
-        if (!stack.isEmpty() && stack.getItem() == NpcObjects.scriptedItem) {
-            if (EventHooks.onScriptItemSpawn(ItemScripted.Companion.getWrapper(stack), entity)) {
+        if (!stack.isEmpty() && stack.getItem() == CustomItems.scripted_item) {
+            if (EventHooks.onScriptItemSpawn(ItemScripted.GetWrapper(stack), entity)) {
                 event.setCanceled(true);
             }
         }
@@ -32,8 +31,8 @@ public class ScriptItemEventHandler {
 
         EntityItem entity = event.getEntityItem();
         ItemStack stack = entity.getItem();
-        if (!stack.isEmpty() && stack.getItem() == NpcObjects.scriptedItem) {
-            if (EventHooks.onScriptItemTossed(ItemScripted.Companion.getWrapper(stack), event.getPlayer(), entity)) {
+        if (!stack.isEmpty() && stack.getItem() == CustomItems.scripted_item) {
+            if (EventHooks.onScriptItemTossed(ItemScripted.GetWrapper(stack), event.getPlayer(), entity)) {
                 event.setCanceled(true);
             }
         }
@@ -45,8 +44,8 @@ public class ScriptItemEventHandler {
             return;
         EntityItem entity = event.getItem();
         ItemStack stack = entity.getItem();
-        if (!stack.isEmpty() && stack.getItem() == NpcObjects.scriptedItem) {
-            EventHooks.onScriptItemPickedUp(ItemScripted.Companion.getWrapper(stack), event.getEntityPlayer(), entity);
+        if (!stack.isEmpty() && stack.getItem() == CustomItems.scripted_item) {
+            EventHooks.onScriptItemPickedUp(ItemScripted.GetWrapper(stack), event.getEntityPlayer(), entity);
         }
     }
 }

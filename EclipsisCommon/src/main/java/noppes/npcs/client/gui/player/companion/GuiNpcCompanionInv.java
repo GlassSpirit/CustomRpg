@@ -3,12 +3,12 @@ package noppes.npcs.client.gui.player.companion;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.client.gui.util.GuiContainerNPCInterface;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumCompanionTalent;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.containers.ContainerNPCCompanion;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleCompanion;
 
 public class GuiNpcCompanionInv extends GuiContainerNPCInterface {

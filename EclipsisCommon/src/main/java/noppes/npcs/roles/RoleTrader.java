@@ -3,17 +3,13 @@ package noppes.npcs.roles;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.LogWriter;
-import noppes.npcs.NoppesUtilPlayer;
-import noppes.npcs.NoppesUtilServer;
-import noppes.npcs.NpcMiscInventory;
+import noppes.npcs.*;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.entity.data.role.IRoleTrader;
 import noppes.npcs.api.item.IItemStack;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumGuiType;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.util.NBTJsonUtil;
 
 import java.io.File;
@@ -61,7 +57,7 @@ public class RoleTrader extends RoleInterface implements IRoleTrader {
         marketName = nbttagcompound.getString("TraderMarket");
         readNBT(nbttagcompound);
         try {
-            //Market.init(this, marketName);
+            //Market.load(this, marketName);
         } catch (Exception ex) {
             LogWriter.except(ex);
 
@@ -99,17 +95,17 @@ public class RoleTrader extends RoleInterface implements IRoleTrader {
 
     @Override
     public IItemStack getSold(int slot) {
-        return NpcAPI.instance().getIItemStack(inventorySold.getStackInSlot(slot));
+        return NpcAPI.Instance().getIItemStack(inventorySold.getStackInSlot(slot));
     }
 
     @Override
     public IItemStack getCurrency1(int slot) {
-        return NpcAPI.instance().getIItemStack(inventoryCurrency.getStackInSlot(slot));
+        return NpcAPI.Instance().getIItemStack(inventoryCurrency.getStackInSlot(slot));
     }
 
     @Override
     public IItemStack getCurrency2(int slot) {
-        return NpcAPI.instance().getIItemStack(inventoryCurrency.getStackInSlot(slot + 18));
+        return NpcAPI.Instance().getIItemStack(inventoryCurrency.getStackInSlot(slot + 18));
     }
 
     @Override
@@ -196,7 +192,7 @@ public class RoleTrader extends RoleInterface implements IRoleTrader {
     }
 
     private static File getFile(String name) {
-        File dir = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "markets");
+        File dir = new File(CustomNpcs.getWorldSaveDirectory(), "markets");
         if (!dir.exists())
             dir.mkdir();
         return new File(dir, name.toLowerCase() + ".json");

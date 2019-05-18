@@ -3,22 +3,22 @@ package noppes.npcs.quests;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.translation.I18n;
+import noppes.npcs.NBTTags;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.constants.QuestType;
 import noppes.npcs.api.handler.data.IQuestObjective;
 import noppes.npcs.controllers.data.PlayerData;
 import noppes.npcs.controllers.data.PlayerQuestData;
 import noppes.npcs.controllers.data.QuestData;
-import noppes.npcs.util.NBTTags;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class QuestManual extends QuestInterface {
-    public TreeMap<String, Integer> manuals = new TreeMap<>();
+    public TreeMap<String, Integer> manuals = new TreeMap<String, Integer>();
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
@@ -36,7 +36,7 @@ public class QuestManual extends QuestInterface {
         QuestData data = playerdata.activeQuests.get(questId);
         if (data == null)
             return false;
-        Map<String, Integer> manual = getManual(data);
+        HashMap<String, Integer> manual = getManual(data);
         if (manual.size() != manuals.size())
             return false;
         for (String entity : manual.keySet()) {
@@ -51,17 +51,17 @@ public class QuestManual extends QuestInterface {
     public void handleComplete(EntityPlayer player) {
     }
 
-    public Map<String, Integer> getManual(QuestData data) {
+    public HashMap<String, Integer> getManual(QuestData data) {
         return NBTTags.getStringIntegerMap(data.extraData.getTagList("Manual", 10));
     }
 
-    public void setManual(QuestData data, Map<String, Integer> manual) {
+    public void setManual(QuestData data, HashMap<String, Integer> manual) {
         data.extraData.setTag("Manual", NBTTags.nbtStringIntegerMap(manual));
     }
 
     @Override
     public IQuestObjective[] getObjectives(EntityPlayer player) {
-        List<IQuestObjective> list = new ArrayList<>();
+        List<IQuestObjective> list = new ArrayList<IQuestObjective>();
         for (Entry<String, Integer> entry : manuals.entrySet()) {
             list.add(new QuestManualObjective(player, entry.getKey(), entry.getValue()));
         }
@@ -84,7 +84,7 @@ public class QuestManual extends QuestInterface {
             PlayerData data = PlayerData.get(player);
             PlayerQuestData playerdata = data.questData;
             QuestData questdata = playerdata.activeQuests.get(questId);
-            Map<String, Integer> manual = getManual(questdata);
+            HashMap<String, Integer> manual = getManual(questdata);
             if (!manual.containsKey(entity))
                 return 0;
             return manual.get(entity);
@@ -98,7 +98,7 @@ public class QuestManual extends QuestInterface {
             PlayerData data = PlayerData.get(player);
             PlayerQuestData playerdata = data.questData;
             QuestData questdata = playerdata.activeQuests.get(questId);
-            Map<String, Integer> manual = getManual(questdata);
+            HashMap<String, Integer> manual = getManual(questdata);
 
             if (manual.containsKey(entity) && manual.get(entity) == progress) {
                 return;

@@ -9,7 +9,7 @@ import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.client.gui.util.GuiNpcLabel;
 import noppes.npcs.client.gui.util.GuiNpcTextField;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class GuiNPCTransportCategoryEdit extends GuiNPCInterface {
     private GuiScreen parent;

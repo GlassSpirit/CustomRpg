@@ -15,7 +15,7 @@ import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.client.gui.util.IGuiData;
 import noppes.npcs.constants.EnumPlayerPacket;
 import noppes.npcs.containers.ContainerNPCBankInterface;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class GuiNPCBankChest extends GuiContainerNPCInterface implements IGuiData {
     private final ResourceLocation resource = new ResourceLocation("customnpcs", "textures/gui/bankchest.png");

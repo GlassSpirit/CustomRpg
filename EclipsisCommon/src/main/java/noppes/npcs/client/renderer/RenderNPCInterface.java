@@ -14,8 +14,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import noppes.npcs.api.constants.AnimationType;
 import noppes.npcs.client.ImageDownloadAlt;
-import noppes.npcs.common.entity.EntityCustomNpc;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityNPCInterface;
 import org.lwjgl.opengl.GL11;
 
 import java.io.File;

@@ -1,7 +1,7 @@
 package noppes.npcs.client.gui;
 
 import net.minecraft.client.gui.GuiScreen;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class GuiNPCTextures extends GuiNpcSelectionInterface {
     public GuiNPCTextures(EntityNPCInterface npc, GuiScreen parent) {

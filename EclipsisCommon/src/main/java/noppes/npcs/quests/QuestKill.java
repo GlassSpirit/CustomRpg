@@ -1,24 +1,24 @@
 package noppes.npcs.quests;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.translation.I18n;
+import noppes.npcs.NBTTags;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.constants.QuestType;
 import noppes.npcs.api.handler.data.IQuestObjective;
 import noppes.npcs.controllers.data.PlayerData;
 import noppes.npcs.controllers.data.PlayerQuestData;
 import noppes.npcs.controllers.data.QuestData;
-import noppes.npcs.util.NBTTags;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class QuestKill extends QuestInterface {
-    public TreeMap<String, Integer> targets = new TreeMap<>();
+    public TreeMap<String, Integer> targets = new TreeMap<String, Integer>();
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
@@ -36,7 +36,7 @@ public class QuestKill extends QuestInterface {
         QuestData data = playerdata.activeQuests.get(questId);
         if (data == null)
             return false;
-        Map<String, Integer> killed = getKilled(data);
+        HashMap<String, Integer> killed = getKilled(data);
         if (killed.size() != targets.size())
             return false;
         for (String entity : killed.keySet()) {
@@ -51,17 +51,17 @@ public class QuestKill extends QuestInterface {
     public void handleComplete(EntityPlayer player) {
     }
 
-    public Map<String, Integer> getKilled(QuestData data) {
+    public HashMap<String, Integer> getKilled(QuestData data) {
         return NBTTags.getStringIntegerMap(data.extraData.getTagList("Killed", 10));
     }
 
-    public void setKilled(QuestData data, Map<String, Integer> killed) {
+    public void setKilled(QuestData data, HashMap<String, Integer> killed) {
         data.extraData.setTag("Killed", NBTTags.nbtStringIntegerMap(killed));
     }
 
     @Override
     public IQuestObjective[] getObjectives(EntityPlayer player) {
-        List<IQuestObjective> list = new ArrayList<>();
+        List<IQuestObjective> list = new ArrayList<IQuestObjective>();
         for (Entry<String, Integer> entry : targets.entrySet()) {
             list.add(new QuestKillObjective(player, entry.getKey(), entry.getValue()));
         }
@@ -84,7 +84,7 @@ public class QuestKill extends QuestInterface {
             PlayerData data = PlayerData.get(player);
             PlayerQuestData playerdata = data.questData;
             QuestData questdata = playerdata.activeQuests.get(questId);
-            Map<String, Integer> killed = getKilled(questdata);
+            HashMap<String, Integer> killed = getKilled(questdata);
             if (!killed.containsKey(entity))
                 return 0;
             return killed.get(entity);
@@ -98,7 +98,7 @@ public class QuestKill extends QuestInterface {
             PlayerData data = PlayerData.get(player);
             PlayerQuestData playerdata = data.questData;
             QuestData questdata = playerdata.activeQuests.get(questId);
-            Map<String, Integer> killed = getKilled(questdata);
+            HashMap<String, Integer> killed = getKilled(questdata);
 
             if (killed.containsKey(entity) && killed.get(entity) == progress) {
                 return;
@@ -123,7 +123,7 @@ public class QuestKill extends QuestInterface {
         @Override
         public String getText() {
             String name = "entity." + entity + ".name";
-            String transName = I18n.format(name);
+            String transName = I18n.translateToLocal(name);
             if (name.equals(transName)) {
                 transName = entity;
             }

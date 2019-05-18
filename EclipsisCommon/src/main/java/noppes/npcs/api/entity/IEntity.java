@@ -160,7 +160,7 @@ public interface IEntity<T extends Entity> {
     void extinguish();
 
     /**
-     * @return Returns the {@link IWorld}
+     * @return Returns the {@link noppes.npcs.api.IWorld}
      */
     IWorld getWorld();
 

@@ -9,7 +9,7 @@ import noppes.npcs.client.gui.global.GuiNPCManageQuest;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.containers.ContainerNpcQuestTypeItem;
 import noppes.npcs.controllers.data.Quest;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.quests.QuestItem;
 
 public class GuiNpcQuestTypeItem extends GuiContainerNPCInterface implements ITextfieldListener {
@@ -72,7 +72,7 @@ public class GuiNpcQuestTypeItem extends GuiContainerNPCInterface implements ITe
 //    	for(int i= 0;i < container.invMatrix.getSizeInventory();i++){
 //    		ItemStack item = container.invMatrix.getStackInSlot(i);
 //    		if(item != null)
-//    			map.put(i, item.copyBlock());
+//    			map.put(i, item.copy());
 //        }
 //    	((QuestItem)quest.questInterface).items = map;
 //    	QuestController.saveQuest(quest);

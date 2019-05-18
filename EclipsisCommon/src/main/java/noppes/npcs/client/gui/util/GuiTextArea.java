@@ -4,10 +4,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.ChatAllowedCharacters;
-import noppes.npcs.common.CustomNpcsConfig;
-import noppes.npcs.util.NoppesStringUtils;
+import noppes.npcs.CustomNpcs;
+import noppes.npcs.NoppesStringUtils;
 import noppes.npcs.client.gui.util.TextContainer.LineData;
-import noppes.npcs.common.config.TrueTypeFont;
+import noppes.npcs.config.TrueTypeFont;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
@@ -23,7 +23,7 @@ public class GuiTextArea extends Gui implements IGui, IKeyListener, IMouseListen
 
     private ITextChangeListener listener;
 
-    private static TrueTypeFont font = new TrueTypeFont(new Font("Arial Unicode MS", Font.PLAIN, CustomNpcsConfig.FontSize), 1);
+    private static TrueTypeFont font = new TrueTypeFont(new Font("Arial Unicode MS", Font.PLAIN, CustomNpcs.FontSize), 1);
 
     public String text = null;
 
@@ -38,8 +38,8 @@ public class GuiTextArea extends Gui implements IGui, IKeyListener, IMouseListen
     private boolean enableCodeHighlighting = false;
     private static final char colorChar = '\uFFFF';
 
-    public List<UndoData> undoList = new ArrayList<>();
-    public List<UndoData> redoList = new ArrayList<>();
+    public List<UndoData> undoList = new ArrayList<UndoData>();
+    public List<UndoData> redoList = new ArrayList<UndoData>();
     public boolean undoing = false;
 
     private long lastClicked = 0;
@@ -108,7 +108,7 @@ public class GuiTextArea extends Gui implements IGui, IKeyListener, IMouseListen
             }
         }
 
-        List<LineData> list = new ArrayList<>(container.lines);
+        List<LineData> list = new ArrayList<LineData>(container.lines);
 
         String wordHightLight = null;
         if (startSelection != endSelection) {
@@ -214,7 +214,7 @@ public class GuiTextArea extends Gui implements IGui, IKeyListener, IMouseListen
         xMouse -= x + 1;
         yMouse -= y + 1;
 
-        List<LineData> list = new ArrayList<>(container.lines);
+        List<LineData> list = new ArrayList<LineData>(container.lines);
         for (int i = 0; i < list.size(); i++) {
             LineData data = list.get(i);
             if (i >= scrolledLine && i < scrolledLine + container.visibleLines) {

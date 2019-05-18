@@ -3,7 +3,7 @@ package noppes.npcs.client.gui;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
-import noppes.npcs.common.objects.tiles.TileBorder;
+import noppes.npcs.blocks.tiles.TileBorder;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;

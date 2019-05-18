@@ -91,7 +91,7 @@ public interface IItemStack {
     boolean isBook();
 
     /**
-     * @return A copyBlock of the ItemStack
+     * @return A copy of the ItemStack
      */
     IItemStack copy();
 

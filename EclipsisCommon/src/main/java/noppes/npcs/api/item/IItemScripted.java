@@ -11,7 +11,7 @@ public interface IItemScripted extends IItemStack {
     String getTexture(int damage);
 
     /**
-     * All scriptedBlock items with the same damage value have the same texture.
+     * All scripted items with the same damage value have the same texture.
      * To change the actual texture of the item call setItemDamage afterwards with the same damage value
      *
      * @param damage  The damage value

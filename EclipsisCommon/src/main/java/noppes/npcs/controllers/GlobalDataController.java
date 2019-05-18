@@ -2,7 +2,7 @@ package noppes.npcs.controllers;
 
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
-import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.CustomNpcs;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,7 +19,7 @@ public class GlobalDataController {
     }
 
     private void load() {
-        File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+        File saveDir = CustomNpcs.getWorldSaveDirectory();
         try {
             File file = new File(saveDir, "global.dat");
             if (file.exists()) {
@@ -45,7 +45,7 @@ public class GlobalDataController {
 
     public void saveData() {
         try {
-            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.getWorldSaveDirectory();
 
             NBTTagCompound nbttagcompound = new NBTTagCompound();
             nbttagcompound.setInteger("itemGiverId", itemGiverId);

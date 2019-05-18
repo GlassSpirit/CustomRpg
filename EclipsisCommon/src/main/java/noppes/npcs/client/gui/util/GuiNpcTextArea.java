@@ -36,8 +36,8 @@ public class GuiNpcTextArea extends GuiNpcTextField {
         posY = j;
         width = k;
         listHeight = height = l;
-        this.font = ClientProxy.Companion.getFont().copy();
-        font.setUseCustomFont(true);
+        this.font = ClientProxy.Font.copy();
+        font.useCustomFont = true;
         setMaxStringLength(Integer.MAX_VALUE);
         this.setText(s.replace("\r\n", "\n"));
     }
@@ -123,7 +123,7 @@ public class GuiNpcTextArea extends GuiNpcTextField {
     }
 
     private List<String> getLines() {
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<String>();
         String line = "";
         for (char c : getText().toCharArray()) {
             if (c == '\r' || c == '\n') {
@@ -220,7 +220,6 @@ public class GuiNpcTextArea extends GuiNpcTextField {
         drawVerticalScrollBar();
     }
 
-    @Override
     public void drawString(FontRenderer fontRendererIn, String text, int x, int y, int color) {
         GlStateManager.color(1, 1, 1, 1);
         font.drawString(text, x, y, color);

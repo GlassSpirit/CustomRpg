@@ -1,13 +1,13 @@
 package noppes.npcs.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
+import noppes.npcs.Resistances;
 import noppes.npcs.client.gui.util.*;
-import noppes.npcs.common.entity.data.DataResistances;
 
 public class SubGuiNpcResistanceProperties extends SubGuiInterface implements ISliderListener {
-    private DataResistances resistances;
+    private Resistances resistances;
 
-    public SubGuiNpcResistanceProperties(DataResistances resistances) {
+    public SubGuiNpcResistanceProperties(Resistances resistances) {
         this.resistances = resistances;
         setBackground("menubg.png");
         xSize = 256;
@@ -15,7 +15,6 @@ public class SubGuiNpcResistanceProperties extends SubGuiInterface implements IS
         closeOnEsc = true;
     }
 
-    @Override
     public void initGui() {
         super.initGui();
         addLabel(new GuiNpcLabel(0, "enchantment.knockback", guiLeft + 4, guiTop + 15));
@@ -33,7 +32,6 @@ public class SubGuiNpcResistanceProperties extends SubGuiInterface implements IS
         addButton(new GuiNpcButton(66, guiLeft + 190, guiTop + 190, 60, 20, "gui.done"));
     }
 
-    @Override
     protected void actionPerformed(GuiButton guibutton) {
         int id = guibutton.id;
         if (id == 66) {

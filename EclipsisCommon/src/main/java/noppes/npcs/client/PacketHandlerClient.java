@@ -27,13 +27,6 @@ import noppes.npcs.client.gui.GuiAchievement;
 import noppes.npcs.client.gui.GuiNpcMobSpawnerAdd;
 import noppes.npcs.client.gui.player.GuiQuestCompletion;
 import noppes.npcs.client.gui.util.*;
-import noppes.npcs.common.CustomNpcs;
-import noppes.npcs.common.CustomNpcsConfig;
-import noppes.npcs.common.entity.EntityCustomNpc;
-import noppes.npcs.common.entity.EntityDialogNpc;
-import noppes.npcs.common.entity.EntityNPCInterface;
-import noppes.npcs.common.objects.NpcObjects;
-import noppes.npcs.common.objects.items.ItemScripted;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.EnumPlayerPacket;
@@ -43,8 +36,10 @@ import noppes.npcs.controllers.QuestController;
 import noppes.npcs.controllers.SyncController;
 import noppes.npcs.controllers.data.Dialog;
 import noppes.npcs.controllers.data.MarkData;
-import noppes.npcs.util.NBTTags;
-import noppes.npcs.util.NoppesStringUtils;
+import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityDialogNpc;
+import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.items.ItemScripted;
 
 import java.util.Map.Entry;
 
@@ -107,7 +102,7 @@ public class PacketHandlerClient extends PacketHandlerServer {
             NBTTagCompound compound = Server.readNBT(buffer);
             ItemStack stack = player.inventory.getStackInSlot(id);
             if (!stack.isEmpty()) {
-                ((ItemStackWrapper) NpcAPI.instance().getIItemStack(stack)).setMCNbt(compound);
+                ((ItemStackWrapper) NpcAPI.Instance().getIItemStack(stack)).setMCNbt(compound);
             }
         } else if (type == EnumPacketClient.SYNC_ADD || type == EnumPacketClient.SYNC_END) {
             int synctype = buffer.readInt();
@@ -116,15 +111,15 @@ public class PacketHandlerClient extends PacketHandlerServer {
             SyncController.clientSync(synctype, compound, type == EnumPacketClient.SYNC_END);
 
             if (synctype == SyncType.PLAYER_DATA) {
-                ClientProxy.Companion.getPlayerData().setNBT(compound);
+                ClientProxy.playerData.setNBT(compound);
             } else if (synctype == SyncType.SCRIPTED_ITEM_RESOURCES) {
                 if (player.getServer() == null) {
-                    ItemScripted.Companion.setResources(NBTTags.getIntegerStringMap(compound.getTagList("List", 10)));
+                    ItemScripted.Resources = NBTTags.getIntegerStringMap(compound.getTagList("List", 10));
                 }
-                for (Entry<Integer, String> entry : ItemScripted.Companion.getResources().entrySet()) {
+                for (Entry<Integer, String> entry : ItemScripted.Resources.entrySet()) {
                     ModelResourceLocation mrl = new ModelResourceLocation(entry.getValue(), "inventory");
-                    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(NpcObjects.scriptedItem, entry.getKey(), mrl);
-                    ModelLoader.setCustomModelResourceLocation(NpcObjects.scriptedItem, entry.getKey(), mrl);
+                    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(CustomItems.scripted_item, entry.getKey(), mrl);
+                    ModelLoader.setCustomModelResourceLocation(CustomItems.scripted_item, entry.getKey(), mrl);
                 }
             }
         } else if (type == EnumPacketClient.SYNC_UPDATE) {
@@ -138,14 +133,14 @@ public class PacketHandlerClient extends PacketHandlerServer {
             SyncController.clientSyncRemove(synctype, id);
         } else if (type == EnumPacketClient.MARK_DATA) {
             Entity entity = Minecraft.getMinecraft().world.getEntityByID(buffer.readInt());
-            if (!(entity instanceof EntityLivingBase))
+            if (entity == null || !(entity instanceof EntityLivingBase))
                 return;
             MarkData data = MarkData.get((EntityLivingBase) entity);
             data.setNBT(Server.readNBT(buffer));
         } else if (type == EnumPacketClient.DIALOG) {
             Entity entity = Minecraft.getMinecraft().world.getEntityByID(buffer.readInt());
 
-            if (!(entity instanceof EntityNPCInterface))
+            if (entity == null || !(entity instanceof EntityNPCInterface))
                 return;
             Dialog dialog = DialogController.instance.dialogs.get(buffer.readInt());
             NoppesUtil.openDialog(dialog, (EntityNPCInterface) entity, player);
@@ -263,14 +258,14 @@ public class PacketHandlerClient extends PacketHandlerServer {
                 final int size = buffer.readInt();
                 Runnable run = () -> {
                     if (!font.isEmpty()) {
-                        CustomNpcsConfig.FontType = font;
-                        CustomNpcsConfig.FontSize = size;
-                        ClientProxy.Companion.getFont().clear();
-                        ClientProxy.Companion.setFont(new FontContainer(CustomNpcsConfig.FontType, CustomNpcsConfig.FontSize));
-                        CustomNpcsConfig.INSTANCE.updateConfig();
-                        player.sendMessage(new TextComponentTranslation("Font set to %s", ClientProxy.Companion.getFont().getName()));
+                        CustomNpcs.FontType = font;
+                        CustomNpcs.FontSize = size;
+                        ClientProxy.Font.clear();
+                        ClientProxy.Font = new FontContainer(CustomNpcs.FontType, CustomNpcs.FontSize);
+                        CustomNpcs.Config.updateConfig();
+                        player.sendMessage(new TextComponentTranslation("Font set to %s", ClientProxy.Font.getName()));
                     } else
-                        player.sendMessage(new TextComponentTranslation("Current font is %s", ClientProxy.Companion.getFont().getName()));
+                        player.sendMessage(new TextComponentTranslation("Current font is %s", ClientProxy.Font.getName()));
                 };
                 Minecraft.getMinecraft().addScheduledTask(run);
             }

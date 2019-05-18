@@ -5,7 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import noppes.npcs.util.NBTTags;
+import noppes.npcs.NBTTags;
 import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.NpcMiscInventory;
 import noppes.npcs.controllers.GlobalDataController;
@@ -13,7 +13,7 @@ import noppes.npcs.controllers.data.Availability;
 import noppes.npcs.controllers.data.Line;
 import noppes.npcs.controllers.data.PlayerData;
 import noppes.npcs.controllers.data.PlayerItemGiverData;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;

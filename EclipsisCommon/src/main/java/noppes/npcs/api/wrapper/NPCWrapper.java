@@ -15,11 +15,11 @@ import noppes.npcs.api.entity.data.*;
 import noppes.npcs.api.handler.data.IDialog;
 import noppes.npcs.api.handler.data.IFaction;
 import noppes.npcs.api.item.IItemStack;
-import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.controllers.FactionController;
 import noppes.npcs.controllers.data.DialogOption;
 import noppes.npcs.controllers.data.Faction;
 import noppes.npcs.controllers.data.Line;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.util.ValueUtil;
 
 public class NPCWrapper<T extends EntityNPCInterface> extends EntityLivingWrapper<T> implements ICustomNpc {
@@ -161,7 +161,7 @@ public class NPCWrapper<T extends EntityNPCInterface> extends EntityLivingWrappe
             throw new CustomNPCsException("No target was given");
 
         accuracy = ValueUtil.CorrectInt(accuracy, 1, 100);
-        return (IEntityProjectile) NpcAPI.instance().getIEntity(entity.shoot(target.getMCEntity(), accuracy, item.getMCItemStack(), false));
+        return (IEntityProjectile) NpcAPI.Instance().getIEntity(entity.shoot(target.getMCEntity(), accuracy, item.getMCItemStack(), false));
     }
 
     @Override
@@ -170,7 +170,7 @@ public class NPCWrapper<T extends EntityNPCInterface> extends EntityLivingWrappe
             throw new CustomNPCsException("No item was given");
 
         accuracy = ValueUtil.CorrectInt(accuracy, 1, 100);
-        return (IEntityProjectile) NpcAPI.instance().getIEntity(entity.shoot(x, y, z, accuracy, item.getMCItemStack(), false));
+        return (IEntityProjectile) NpcAPI.Instance().getIEntity(entity.shoot(x, y, z, accuracy, item.getMCItemStack(), false));
     }
 
     @Override
@@ -248,7 +248,7 @@ public class NPCWrapper<T extends EntityNPCInterface> extends EntityLivingWrappe
     public IEntityLivingBase getOwner() {
         EntityLivingBase owner = entity.getOwner();
         if (owner != null)
-            return (IEntityLivingBase) NpcAPI.instance().getIEntity(owner);
+            return (IEntityLivingBase) NpcAPI.Instance().getIEntity(owner);
         return null;
     }
 }

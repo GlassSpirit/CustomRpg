@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import noppes.npcs.api.ITimers;
 import noppes.npcs.api.block.IBlockScriptedDoor;
-import noppes.npcs.common.objects.tiles.TileScriptedDoor;
+import noppes.npcs.blocks.tiles.TileScriptedDoor;
 
 public class BlockScriptedDoorWrapper extends BlockWrapper implements IBlockScriptedDoor {
     private TileScriptedDoor tile;

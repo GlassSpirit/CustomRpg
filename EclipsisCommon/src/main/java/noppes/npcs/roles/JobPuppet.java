@@ -4,7 +4,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.entity.data.role.IJobPuppet;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.util.ValueUtil;
 
 public class JobPuppet extends JobInterface implements IJobPuppet {

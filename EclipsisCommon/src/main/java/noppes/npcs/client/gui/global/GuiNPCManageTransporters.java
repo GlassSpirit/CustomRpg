@@ -10,7 +10,7 @@ import noppes.npcs.client.gui.util.GuiNPCStringSlot;
 import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.client.gui.util.IScrollData;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -27,13 +27,13 @@ public class GuiNPCManageTransporters extends GuiNPCInterface implements IScroll
         Client.sendData(EnumPacketServer.TransportCategoriesGet);
         drawDefaultBackground = false;
         title = "";
-        data = new HashMap<String, Integer>();
+        data = new HashMap<>();
     }
 
     @Override
     public void initGui() {
         super.initGui();
-        Vector<String> list = new Vector<String>();
+        Vector<String> list = new Vector<>();
         slot = new GuiNPCStringSlot(list, this, false, 18);
         slot.registerScrollButtons(4, 5);
 
@@ -106,6 +106,7 @@ public class GuiNPCManageTransporters extends GuiNPCInterface implements IScroll
         }
     }
 
+    @Override
     public void doubleClicked() {
         if (slot.selected == null || slot.selected.isEmpty())
             return;
@@ -118,6 +119,7 @@ public class GuiNPCManageTransporters extends GuiNPCInterface implements IScroll
 
     }
 
+    @Override
     public void save() {
     }
 

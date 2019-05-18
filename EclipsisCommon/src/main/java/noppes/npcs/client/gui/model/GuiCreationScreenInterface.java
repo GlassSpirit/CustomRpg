@@ -13,8 +13,8 @@ import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.mainmenu.GuiNpcDisplay;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityCustomNpc;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityNPCInterface;
 import org.lwjgl.input.Keyboard;
 
 public abstract class GuiCreationScreenInterface extends GuiNPCInterface implements ISubGuiListener, ISliderListener {
@@ -68,7 +68,7 @@ public abstract class GuiCreationScreenInterface extends GuiNPCInterface impleme
             addButton(new GuiNpcButton(3, guiLeft + 62, guiTop + 23, 60, 20, "gui.scale"));
         if (hasSaving) {
             addButton(new GuiNpcButton(4, guiLeft, guiTop + ySize - 24, 60, 20, "gui.save"));
-            addButton(new GuiNpcButton(5, guiLeft + 62, guiTop + ySize - 24, 60, 20, "gui.init"));
+            addButton(new GuiNpcButton(5, guiLeft + 62, guiTop + ySize - 24, 60, 20, "gui.load"));
         }
         if (getButton(active) == null) {
             openGui(new GuiCreationEntities(npc));
@@ -146,7 +146,6 @@ public abstract class GuiCreationScreenInterface extends GuiNPCInterface impleme
         mc.displayGuiScreen(gui);
     }
 
-    @Override
     public void subGuiClosed(SubGuiInterface subgui) {
         initGui();
     }

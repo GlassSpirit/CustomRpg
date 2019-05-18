@@ -4,7 +4,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.controllers.data.Quest;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.quests.QuestLocation;
 
 public class GuiNpcQuestTypeLocation extends SubGuiInterface implements ITextfieldListener {

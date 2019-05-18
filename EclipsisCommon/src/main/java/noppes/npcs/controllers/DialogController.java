@@ -3,14 +3,14 @@ package noppes.npcs.controllers;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
-import noppes.npcs.util.NoppesStringUtils;
+import noppes.npcs.NoppesStringUtils;
 import noppes.npcs.Server;
 import noppes.npcs.api.constants.OptionType;
 import noppes.npcs.api.handler.IDialogHandler;
 import noppes.npcs.api.handler.data.IDialog;
 import noppes.npcs.api.handler.data.IDialogCategory;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.SyncType;
 import noppes.npcs.controllers.data.Dialog;
@@ -20,16 +20,13 @@ import noppes.npcs.util.NBTJsonUtil;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.Map.Entry;
 
 public class DialogController implements IDialogHandler {
-    public HashMap<Integer, DialogCategory> categoriesSync = new HashMap<>();
-    public HashMap<Integer, DialogCategory> categories = new HashMap<>();
-    public HashMap<Integer, Dialog> dialogs = new HashMap<>();
+    public HashMap<Integer, DialogCategory> categoriesSync = new HashMap<Integer, DialogCategory>();
+    public HashMap<Integer, DialogCategory> categories = new HashMap<Integer, DialogCategory>();
+    public HashMap<Integer, Dialog> dialogs = new HashMap<Integer, Dialog>();
     public static DialogController instance = new DialogController();
 
     private int lastUsedDialogID = 0;
@@ -53,11 +50,11 @@ public class DialogController implements IDialogHandler {
         lastUsedDialogID = 0;
 
         try {
-            File file = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "dialog.dat");
+            File file = new File(CustomNpcs.getWorldSaveDirectory(), "dialog.dat");
             if (file.exists()) {
                 loadCategoriesOld(file);
                 file.delete();
-                file = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "dialog.dat_old");
+                file = new File(CustomNpcs.getWorldSaveDirectory(), "dialog.dat_old");
                 if (file.exists())
                     file.delete();
                 return;
@@ -124,9 +121,9 @@ public class DialogController implements IDialogHandler {
             DialogCategory category = new DialogCategory();
             category.readNBT(list.getCompoundTagAt(i));
             saveCategory(category);
-            Iterator<Entry<Integer, Dialog>> ita = category.dialogs.entrySet().iterator();
+            Iterator<Map.Entry<Integer, Dialog>> ita = category.dialogs.entrySet().iterator();
             while (ita.hasNext()) {
-                Entry<Integer, Dialog> entry = ita.next();
+                Map.Entry<Integer, Dialog> entry = ita.next();
                 Dialog dialog = entry.getValue();
                 dialog.id = entry.getKey();
                 if (dialogs.containsKey(dialog.id))
@@ -286,7 +283,7 @@ public class DialogController implements IDialogHandler {
             if (file2.exists())
                 file2.delete();
             file.renameTo(file2);
-            Server.sendToAll(CustomNpcs.INSTANCE.getServer(), EnumPacketClient.SYNC_UPDATE, SyncType.DIALOG, compound, category.id);
+            Server.sendToAll(CustomNpcs.Server, EnumPacketClient.SYNC_UPDATE, SyncType.DIALOG, compound, category.id);
         } catch (Exception e) {
             LogWriter.except(e);
         }
@@ -300,11 +297,11 @@ public class DialogController implements IDialogHandler {
             return;
         category.dialogs.remove(dialog.id);
         dialogs.remove(dialog.id);
-        Server.sendToAll(CustomNpcs.INSTANCE.getServer(), EnumPacketClient.SYNC_REMOVE, SyncType.DIALOG, dialog.id);
+        Server.sendToAll(CustomNpcs.Server, EnumPacketClient.SYNC_REMOVE, SyncType.DIALOG, dialog.id);
     }
 
     private File getDir() {
-        return new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "dialogs");
+        return new File(CustomNpcs.getWorldSaveDirectory(), "dialogs");
     }
 
     public boolean hasDialog(int dialogId) {

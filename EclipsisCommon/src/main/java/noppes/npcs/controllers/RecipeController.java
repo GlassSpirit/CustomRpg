@@ -8,11 +8,11 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.registries.IForgeRegistry;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.EventHooks;
 import noppes.npcs.Server;
 import noppes.npcs.api.handler.IRecipeHandler;
 import noppes.npcs.api.handler.data.IRecipe;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.SyncType;
 import noppes.npcs.controllers.data.RecipeCarpentry;
@@ -27,14 +27,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class RecipeController implements IRecipeHandler {
-    public HashMap<Integer, RecipeCarpentry> globalRecipes = new HashMap<>();
-    public HashMap<Integer, RecipeCarpentry> anvilRecipes = new HashMap<>();
+    public HashMap<Integer, RecipeCarpentry> globalRecipes = new HashMap<Integer, RecipeCarpentry>();
+    public HashMap<Integer, RecipeCarpentry> anvilRecipes = new HashMap<Integer, RecipeCarpentry>();
     public static RecipeController instance;
 
     public static final int version = 1;
     public int nextId = 1;
 
-    public static HashMap<Integer, RecipeCarpentry> syncRecipes = new HashMap<>();
+    public static HashMap<Integer, RecipeCarpentry> syncRecipes = new HashMap<Integer, RecipeCarpentry>();
     public static IForgeRegistry<net.minecraft.item.crafting.IRecipe> Registry;
 
     public RecipeController() {
@@ -68,14 +68,14 @@ public class RecipeController implements IRecipeHandler {
 //			if(recipe.isValid()){
 //				if(recipe.getRegistryName() == null)
 //					recipe.setRegistryName(new ResourceLocation("customnpcs", recipe.id + ""));
-//				reg.init(recipe);
+//				reg.register(recipe);
 //			}
 //		}
 //		reg.freeze();
     }
 
     private void loadCategories() {
-        File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+        File saveDir = CustomNpcs.getWorldSaveDirectory();
         try {
             File file = new File(saveDir, "recipes.dat");
             if (file.exists()) {
@@ -109,8 +109,8 @@ public class RecipeController implements IRecipeHandler {
         NBTTagCompound nbttagcompound1 = CompressedStreamTools.readCompressed(new FileInputStream(file));
         nextId = nbttagcompound1.getInteger("LastId");
         NBTTagList list = nbttagcompound1.getTagList("Data", 10);
-        HashMap<Integer, RecipeCarpentry> globalRecipes = new HashMap<>();
-        HashMap<Integer, RecipeCarpentry> anvilRecipes = new HashMap<>();
+        HashMap<Integer, RecipeCarpentry> globalRecipes = new HashMap<Integer, RecipeCarpentry>();
+        HashMap<Integer, RecipeCarpentry> anvilRecipes = new HashMap<Integer, RecipeCarpentry>();
         if (list != null) {
             for (int i = 0; i < list.tagCount(); i++) {
                 RecipeCarpentry recipe = RecipeCarpentry.read(list.getCompoundTagAt(i));
@@ -129,7 +129,7 @@ public class RecipeController implements IRecipeHandler {
 
     private void saveCategories() {
         try {
-            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.getWorldSaveDirectory();
             NBTTagList list = new NBTTagList();
             for (RecipeCarpentry recipe : globalRecipes.values()) {
                 if (recipe.savesRecipe)
@@ -194,11 +194,11 @@ public class RecipeController implements IRecipeHandler {
         if (recipe.isGlobal) {
             anvilRecipes.remove(recipe.id);
             globalRecipes.put(recipe.id, recipe);
-            Server.sendToAll(CustomNpcs.INSTANCE.getServer(), EnumPacketClient.SYNC_UPDATE, SyncType.RECIPE_NORMAL, recipe.writeNBT());
+            Server.sendToAll(CustomNpcs.Server, EnumPacketClient.SYNC_UPDATE, SyncType.RECIPE_NORMAL, recipe.writeNBT());
         } else {
             globalRecipes.remove(recipe.id);
             anvilRecipes.put(recipe.id, recipe);
-            Server.sendToAll(CustomNpcs.INSTANCE.getServer(), EnumPacketClient.SYNC_UPDATE, SyncType.RECIPE_CARPENTRY, recipe.writeNBT());
+            Server.sendToAll(CustomNpcs.Server, EnumPacketClient.SYNC_UPDATE, SyncType.RECIPE_CARPENTRY, recipe.writeNBT());
         }
         saveCategories();
         reloadGlobalRecipes();
@@ -224,7 +224,6 @@ public class RecipeController implements IRecipeHandler {
         return false;
     }
 
-    @Override
     public RecipeCarpentry delete(int id) {
         RecipeCarpentry recipe = getRecipe(id);
         if (recipe == null)
@@ -232,9 +231,9 @@ public class RecipeController implements IRecipeHandler {
         globalRecipes.remove(recipe.id);
         anvilRecipes.remove(recipe.id);
         if (recipe.isGlobal)
-            Server.sendToAll(CustomNpcs.INSTANCE.getServer(), EnumPacketClient.SYNC_REMOVE, SyncType.RECIPE_NORMAL, id);
+            Server.sendToAll(CustomNpcs.Server, EnumPacketClient.SYNC_REMOVE, SyncType.RECIPE_NORMAL, id);
         else
-            Server.sendToAll(CustomNpcs.INSTANCE.getServer(), EnumPacketClient.SYNC_REMOVE, SyncType.RECIPE_CARPENTRY, id);
+            Server.sendToAll(CustomNpcs.Server, EnumPacketClient.SYNC_REMOVE, SyncType.RECIPE_CARPENTRY, id);
         saveCategories();
         reloadGlobalRecipes();
         recipe.id = -1;
@@ -243,12 +242,12 @@ public class RecipeController implements IRecipeHandler {
 
     @Override
     public List<IRecipe> getGlobalList() {
-        return new ArrayList<>(globalRecipes.values());
+        return new ArrayList<IRecipe>(globalRecipes.values());
     }
 
     @Override
     public List<IRecipe> getCarpentryList() {
-        return new ArrayList<>(anvilRecipes.values());
+        return new ArrayList<IRecipe>(anvilRecipes.values());
     }
 
     @Override

@@ -1,12 +1,12 @@
 package noppes.npcs.controllers.data;
 
 import net.minecraft.nbt.NBTTagCompound;
+import noppes.npcs.NBTTags;
 import noppes.npcs.api.constants.AnimationType;
 import noppes.npcs.api.constants.JobType;
 import noppes.npcs.api.constants.RoleType;
-import noppes.npcs.common.entity.EntityCustomNpc;
-import noppes.npcs.common.entity.EntityNPCInterface;
-import noppes.npcs.util.NBTTags;
+import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.Set;
 
@@ -191,7 +191,7 @@ public class DataTransform {
             return;
         if (hasDisplay) {
             NBTTagCompound compound = getDisplay();
-            npc.display.readFromNBT(NBTTags.NBTMerge(compound, display));
+            npc.display.readToNBT(NBTTags.NBTMerge(compound, display));
             if (npc instanceof EntityCustomNpc) {
                 ((EntityCustomNpc) npc).modelData.readFromNBT(NBTTags.NBTMerge(compound.getCompoundTag("ModelData"), display.getCompoundTag("ModelData")));
             }

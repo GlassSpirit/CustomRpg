@@ -8,8 +8,8 @@ import noppes.npcs.api.constants.EntityType;
 import noppes.npcs.api.entity.IEntity;
 import noppes.npcs.api.entity.IEntityProjectile;
 import noppes.npcs.api.item.IItemStack;
-import noppes.npcs.common.entity.EntityProjectile;
 import noppes.npcs.controllers.ScriptContainer;
+import noppes.npcs.entity.EntityProjectile;
 
 public class EntityProjectileWrapper<T extends EntityProjectile> extends EntityWrapper<T> implements IEntityProjectile {
 
@@ -19,7 +19,7 @@ public class EntityProjectileWrapper<T extends EntityProjectile> extends EntityW
 
     @Override
     public IItemStack getItem() {
-        return NpcAPI.instance().getIItemStack(entity.getItemDisplay());
+        return NpcAPI.Instance().getIItemStack(entity.getItemDisplay());
     }
 
     @Override

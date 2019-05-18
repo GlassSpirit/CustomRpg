@@ -1,7 +1,7 @@
 package noppes.npcs.client.gui;
 
 import net.minecraft.client.gui.GuiButton;
-import noppes.npcs.util.NoppesStringUtils;
+import noppes.npcs.NoppesStringUtils;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumAvailabilityScoreboard;
 import noppes.npcs.controllers.data.Availability;

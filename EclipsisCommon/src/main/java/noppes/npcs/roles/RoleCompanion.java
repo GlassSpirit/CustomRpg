@@ -26,8 +26,8 @@ import noppes.npcs.api.constants.AnimationType;
 import noppes.npcs.api.item.IItemStack;
 import noppes.npcs.constants.*;
 import noppes.npcs.controllers.data.PlayerData;
-import noppes.npcs.common.entity.EntityCustomNpc;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.companion.*;
 
 import java.util.*;
@@ -119,13 +119,13 @@ public class RoleCompanion extends RoleInterface {
 
         ticksActive++;
         if (canAge && stage != EnumCompanionStage.FULLGROWN) {
-            if (stage == EnumCompanionStage.BABY && ticksActive > EnumCompanionStage.CHILD.getMatureAge()) {
+            if (stage == EnumCompanionStage.BABY && ticksActive > EnumCompanionStage.CHILD.matureAge) {
                 matureTo(EnumCompanionStage.CHILD);
-            } else if (stage == EnumCompanionStage.CHILD && ticksActive > EnumCompanionStage.TEEN.getMatureAge()) {
+            } else if (stage == EnumCompanionStage.CHILD && ticksActive > EnumCompanionStage.TEEN.matureAge) {
                 matureTo(EnumCompanionStage.TEEN);
-            } else if (stage == EnumCompanionStage.TEEN && ticksActive > EnumCompanionStage.ADULT.getMatureAge()) {
+            } else if (stage == EnumCompanionStage.TEEN && ticksActive > EnumCompanionStage.ADULT.matureAge) {
                 matureTo(EnumCompanionStage.ADULT);
-            } else if (stage == EnumCompanionStage.ADULT && ticksActive > EnumCompanionStage.FULLGROWN.getMatureAge()) {
+            } else if (stage == EnumCompanionStage.ADULT && ticksActive > EnumCompanionStage.FULLGROWN.matureAge) {
                 matureTo(EnumCompanionStage.FULLGROWN);
             }
         }
@@ -189,7 +189,7 @@ public class RoleCompanion extends RoleInterface {
     public void matureTo(EnumCompanionStage stage) {
         this.stage = stage;
         EntityCustomNpc npc = (EntityCustomNpc) this.npc;
-        npc.ais.animationType = stage.getAnimation();
+        npc.ais.animationType = stage.animation;
         if (stage == EnumCompanionStage.BABY) {
             npc.modelData.getPartConfig(EnumParts.ARM_LEFT).setScale(0.5f, 0.5f, 0.5f);
             npc.modelData.getPartConfig(EnumParts.LEG_LEFT).setScale(0.5f, 0.5f, 0.5f);
@@ -516,7 +516,7 @@ public class RoleCompanion extends RoleInterface {
                 npc.inventory.setProjectile(weapon);
             }
             if (ranged > 0 && item instanceof ItemBow) {
-                npc.inventory.setProjectile(NpcAPI.instance().getIItemStack(new ItemStack(Items.ARROW)));
+                npc.inventory.setProjectile(NpcAPI.Instance().getIItemStack(new ItemStack(Items.ARROW)));
             }
         }
 
@@ -545,7 +545,7 @@ public class RoleCompanion extends RoleInterface {
             npc.getNavigator().clearPath();
             npc.setPositionAndUpdate(npc.getStartXPos(), npc.posY, npc.getStartZPos());
         } else {
-            npc.ais.animationType = stage.getAnimation();
+            npc.ais.animationType = stage.animation;
             npc.ais.onAttack = 0;
         }
         npc.updateAI = true;
@@ -637,7 +637,7 @@ public class RoleCompanion extends RoleInterface {
         }
         for (ItemStack is : food) {
             if (is.getItem().getDamage(is) == i)
-                return NpcAPI.instance().getIItemStack(is);
+                return NpcAPI.Instance().getIItemStack(is);
         }
         return null;
     }

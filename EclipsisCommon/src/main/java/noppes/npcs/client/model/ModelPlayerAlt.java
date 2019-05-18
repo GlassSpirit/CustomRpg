@@ -1,6 +1,7 @@
 package noppes.npcs.client.model;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBox;
 import net.minecraft.client.model.ModelPlayer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -16,7 +17,7 @@ import noppes.npcs.api.constants.AnimationType;
 import noppes.npcs.api.constants.JobType;
 import noppes.npcs.client.model.animation.*;
 import noppes.npcs.constants.EnumParts;
-import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityCustomNpc;
 import noppes.npcs.roles.JobPuppet;
 
 import java.util.*;
@@ -24,7 +25,7 @@ import java.util.*;
 public class ModelPlayerAlt extends ModelPlayer {
     private ModelRenderer body, head;
 
-    private Map<EnumParts, List<ModelScaleRenderer>> map = new HashMap<>();
+    private Map<EnumParts, List<ModelScaleRenderer>> map = new HashMap<EnumParts, List<ModelScaleRenderer>>();
 
 
     public ModelPlayerAlt(float scale, boolean arms) {
@@ -35,10 +36,8 @@ public class ModelPlayerAlt extends ModelPlayer {
         this.body.setTextureSize(64, 32);
         this.body.addBox(-5.0F, 0.0F, -1.0F, 10, 16, 1, scale);
 
-        //ModelPlayer.bipedCape
-        ObfuscationReflectionHelper.setPrivateValue(ModelPlayer.class, this, body, "field_178729_w");
-        //ModelPlayer.bipedDeadmau5Head
-        ObfuscationReflectionHelper.setPrivateValue(ModelPlayer.class, this, head, "field_178736_x");
+        ObfuscationReflectionHelper.setPrivateValue(ModelPlayer.class, this, head, 6);
+        ObfuscationReflectionHelper.setPrivateValue(ModelPlayer.class, this, body, 5);
 
         this.bipedLeftArm = createScale(bipedLeftArm, EnumParts.ARM_LEFT);
         this.bipedRightArm = createScale(bipedRightArm, EnumParts.ARM_RIGHT);
@@ -58,22 +57,19 @@ public class ModelPlayerAlt extends ModelPlayer {
     }
 
     private ModelScaleRenderer createScale(ModelRenderer renderer, EnumParts part) {
-        //ModelRenderer.textureOffsetX
-        int textureX = ObfuscationReflectionHelper.getPrivateValue(ModelRenderer.class, renderer, "field_78803_o");
-        //ModelRenderer.textureOffsetY
-        int textureY = ObfuscationReflectionHelper.getPrivateValue(ModelRenderer.class, renderer, "field_78813_p");
-
+        int textureX = ObfuscationReflectionHelper.getPrivateValue(ModelRenderer.class, renderer, 2);
+        int textureY = ObfuscationReflectionHelper.getPrivateValue(ModelRenderer.class, renderer, 3);
         ModelScaleRenderer model = new ModelScaleRenderer(this, textureX, textureY, part);
         model.textureHeight = renderer.textureHeight;
         model.textureWidth = renderer.textureWidth;
         if (renderer.childModels != null)
-            model.childModels = new ArrayList<>(renderer.childModels);
-        model.cubeList = new ArrayList<>(renderer.cubeList);
+            model.childModels = new ArrayList<ModelRenderer>(renderer.childModels);
+        model.cubeList = new ArrayList<ModelBox>(renderer.cubeList);
         copyModelAngles(renderer, model);
 
         List<ModelScaleRenderer> list = map.get(part);
         if (list == null)
-            map.put(part, list = new ArrayList<>());
+            map.put(part, list = new ArrayList<ModelScaleRenderer>());
         list.add(model);
         return model;
     }

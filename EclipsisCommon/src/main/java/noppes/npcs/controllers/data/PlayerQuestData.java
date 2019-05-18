@@ -9,7 +9,7 @@ import noppes.npcs.Server;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.EnumQuestCompletion;
 import noppes.npcs.controllers.QuestController;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.quests.QuestInterface;
 
 import java.util.HashMap;

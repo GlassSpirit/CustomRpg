@@ -9,11 +9,11 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.containers.ContainerEmpty;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
@@ -206,7 +206,7 @@ public abstract class GuiContainerNPCInterface extends GuiContainer {
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float f, int i, int j) {
-        drawCenteredString(fontRenderer, I18n.format(title), width / 2, guiTop - 8, 0xffffff);
+        drawCenteredString(fontRenderer, I18n.translateToLocal(title), width / 2, guiTop - 8, 0xffffff);
         for (GuiNpcLabel label : new ArrayList<>(labels.values()))
             label.drawLabel(this, fontRenderer);
         for (GuiNpcTextField tf : new ArrayList<>(textfields.values()))

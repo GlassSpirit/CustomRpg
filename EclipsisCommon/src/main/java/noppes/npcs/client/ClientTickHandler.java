@@ -10,11 +10,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.Phase;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.NoppesUtilPlayer;
 import noppes.npcs.client.controllers.MusicController;
 import noppes.npcs.client.gui.player.GuiQuestLog;
 import noppes.npcs.client.renderer.RenderNPCInterface;
-import noppes.npcs.common.CustomNpcsConfig;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.constants.EnumPlayerPacket;
 import org.lwjgl.input.Keyboard;
@@ -37,6 +37,7 @@ public class ClientTickHandler {
             }
         } else
             otherContainer = true;
+        CustomNpcs.ticks++;
         RenderNPCInterface.LastTextureTick++;
         if (prevWorld != mc.world) {
             prevWorld = mc.world;
@@ -49,22 +50,22 @@ public class ClientTickHandler {
 
     @SubscribeEvent
     public void onKey(InputEvent.KeyInputEvent event) {
-        if (CustomNpcsConfig.SceneButtonsEnabled) {
-            if (ClientProxy.Companion.getScene1().isPressed()) {
+        if (CustomNpcs.SceneButtonsEnabled) {
+            if (ClientProxy.Scene1.isPressed()) {
                 Client.sendData(EnumPacketServer.SceneStart, 1);
             }
-            if (ClientProxy.Companion.getScene2().isPressed()) {
+            if (ClientProxy.Scene2.isPressed()) {
                 Client.sendData(EnumPacketServer.SceneStart, 2);
             }
-            if (ClientProxy.Companion.getScene3().isPressed()) {
+            if (ClientProxy.Scene3.isPressed()) {
                 Client.sendData(EnumPacketServer.SceneStart, 3);
             }
-            if (ClientProxy.Companion.getSceneReset().isPressed()) {
+            if (ClientProxy.SceneReset.isPressed()) {
                 Client.sendData(EnumPacketServer.SceneReset);
             }
         }
         Minecraft mc = Minecraft.getMinecraft();
-        if (ClientProxy.Companion.getQuestLog().isPressed()) {
+        if (ClientProxy.QuestLog.isPressed()) {
             if (mc.currentScreen == null)
                 NoppesUtil.openGUI(mc.player, new GuiQuestLog(mc.player));
             else if (mc.currentScreen instanceof GuiQuestLog)

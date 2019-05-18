@@ -3,10 +3,10 @@ package noppes.npcs.roles;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.api.entity.data.role.IJobBard;
 import noppes.npcs.client.controllers.MusicController;
-import noppes.npcs.common.CustomNpcs;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.List;
 

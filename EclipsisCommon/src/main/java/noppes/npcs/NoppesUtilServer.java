@@ -32,8 +32,6 @@ import net.minecraft.world.World;
 import noppes.npcs.api.constants.OptionType;
 import noppes.npcs.api.constants.QuestType;
 import noppes.npcs.api.constants.RoleType;
-import noppes.npcs.common.CustomNpcs;
-import noppes.npcs.common.CustomNpcsConfig;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.EnumPlayerData;
@@ -41,11 +39,10 @@ import noppes.npcs.containers.ContainerManageBanks;
 import noppes.npcs.containers.ContainerManageRecipes;
 import noppes.npcs.controllers.*;
 import noppes.npcs.controllers.data.*;
-import noppes.npcs.common.entity.EntityDialogNpc;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityDialogNpc;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleTransporter;
-import noppes.npcs.util.CustomNpcsScheduler;
-import noppes.npcs.util.NBTTags;
+import noppes.npcs.util.CustomNPCsScheduler;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -179,7 +176,7 @@ public class NoppesUtilServer {
 
             @Override
             public boolean canUseCommand(int permLevel, String commandName) {
-                if (CustomNpcsConfig.NpcUseOpCommands)
+                if (CustomNpcs.NpcUseOpCommands)
                     return true;
                 return permLevel <= 2;
             }
@@ -247,9 +244,9 @@ public class NoppesUtilServer {
         setEditingNpc(player, npc);
         sendExtraData(player, npc, gui, i, j, k);
 
-        CustomNpcsScheduler.runTack(() -> {
+        CustomNPCsScheduler.runTack(() -> {
             if (CustomNpcs.proxy.getServerGuiElement(gui.ordinal(), player, player.world, i, j, k) != null) {
-                player.openGui(CustomNpcs.INSTANCE, gui.ordinal(), player.world, i, j, k);
+                player.openGui(CustomNpcs.instance, gui.ordinal(), player.world, i, j, k);
                 return;
             } else {
                 Server.sendDataChecked((EntityPlayerMP) player, EnumPacketClient.GUI, gui.ordinal(), i, j, k);
@@ -407,7 +404,7 @@ public class NoppesUtilServer {
             playerdata = PlayerData.get(pl);
 
         if (type == EnumPlayerData.Players) {
-            File file = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory("playerdata"), playerdata.uuid + ".json");
+            File file = new File(CustomNpcs.getWorldSaveDirectory("playerdata"), playerdata.uuid + ".json");
             if (file.exists())
                 file.delete();
             if (pl != null) {
@@ -652,17 +649,20 @@ public class NoppesUtilServer {
     public static void NotifyOPs(String message, Object... obs) {
         TextComponentTranslation chatcomponenttranslation = new TextComponentTranslation(message, obs);
         chatcomponenttranslation.getStyle().setColor(TextFormatting.GRAY);
-        chatcomponenttranslation.getStyle().setItalic(true);
+        chatcomponenttranslation.getStyle().setItalic(Boolean.valueOf(true));
 
-        for (EntityPlayerMP entityPlayerMP : CustomNpcs.INSTANCE.getServer().getPlayerList().getPlayers()) {
+        Iterator iterator = CustomNpcs.Server.getPlayerList().getPlayers().iterator();
 
-            if (entityPlayerMP.sendCommandFeedback() && isOp(entityPlayerMP)) {
-                entityPlayerMP.sendMessage(chatcomponenttranslation);
+        while (iterator.hasNext()) {
+            EntityPlayer entityplayer = (EntityPlayer) iterator.next();
+
+            if (entityplayer.sendCommandFeedback() && isOp(entityplayer)) {
+                entityplayer.sendMessage(chatcomponenttranslation);
             }
         }
 
 
-        if (CustomNpcs.INSTANCE.getServer().worlds[0].getGameRules().getBoolean("logAdminCommands")) {
+        if (CustomNpcs.Server.worlds[0].getGameRules().getBoolean("logAdminCommands")) {
             LogWriter.info(chatcomponenttranslation.getUnformattedText());
         }
     }

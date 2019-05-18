@@ -5,13 +5,13 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.server.MinecraftServer;
-import noppes.npcs.util.NBTTags;
+import noppes.npcs.CustomNpcs;
+import noppes.npcs.NBTTags;
 import noppes.npcs.Server;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.SyncType;
 import noppes.npcs.controllers.data.*;
-import noppes.npcs.common.objects.items.ItemScripted;
+import noppes.npcs.items.ItemScripted;
 
 import java.util.HashMap;
 
@@ -94,14 +94,14 @@ public class SyncController {
 
     public static void syncScriptItems(EntityPlayerMP player) {
         NBTTagCompound comp = new NBTTagCompound();
-        comp.setTag("List", NBTTags.nbtIntegerStringMap(ItemScripted.Companion.getResources()));
+        comp.setTag("List", NBTTags.nbtIntegerStringMap(ItemScripted.Resources));
         Server.sendData(player, EnumPacketClient.SYNC_END, SyncType.SCRIPTED_ITEM_RESOURCES, comp);
     }
 
     public static void syncScriptItemsEverybody() {
         NBTTagCompound comp = new NBTTagCompound();
-        comp.setTag("List", NBTTags.nbtIntegerStringMap(ItemScripted.Companion.getResources()));
-        for (EntityPlayerMP player : CustomNpcs.INSTANCE.getServer().getPlayerList().getPlayers()) {
+        comp.setTag("List", NBTTags.nbtIntegerStringMap(ItemScripted.Resources));
+        for (EntityPlayerMP player : CustomNpcs.Server.getPlayerList().getPlayers()) {
             Server.sendData(player, EnumPacketClient.SYNC_END, SyncType.SCRIPTED_ITEM_RESOURCES, comp);
         }
     }

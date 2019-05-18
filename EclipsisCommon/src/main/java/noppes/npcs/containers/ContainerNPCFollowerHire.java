@@ -5,7 +5,7 @@ import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import noppes.npcs.NoppesUtilServer;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleFollower;
 
 public class ContainerNPCFollowerHire extends ContainerNpcInterface {

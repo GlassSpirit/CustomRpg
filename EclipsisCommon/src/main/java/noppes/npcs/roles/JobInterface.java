@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import noppes.npcs.api.entity.data.INPCJob;
 import noppes.npcs.api.item.IItemStack;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public abstract class JobInterface implements INPCJob {
     public EntityNPCInterface npc;

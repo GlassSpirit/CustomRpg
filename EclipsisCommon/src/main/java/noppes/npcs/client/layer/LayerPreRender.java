@@ -1,6 +1,6 @@
 package noppes.npcs.client.layer;
 
-import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityCustomNpc;
 
 public interface LayerPreRender {
 

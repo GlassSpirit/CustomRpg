@@ -1,7 +1,7 @@
 package noppes.npcs.constants;
 
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.CustomNpcsPermissions;
-import noppes.npcs.common.CustomNpcsConfig;
 
 public enum EnumPacketServer {
     Delete(CustomNpcsPermissions.NPC_DELETE, true),
@@ -121,6 +121,6 @@ public enum EnumPacketServer {
     }
 
     public boolean isExempt() {
-        return CustomNpcsConfig.OpsOnly || exempt;
+        return CustomNpcs.OpsOnly || exempt;
     }
 }

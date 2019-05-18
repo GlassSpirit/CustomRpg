@@ -8,7 +8,7 @@ import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.entity.IEntityLivingBase;
 import noppes.npcs.api.entity.data.role.IJobSpawner;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.*;
@@ -397,7 +397,7 @@ public class JobSpawner extends JobInterface implements IJobSpawner {
         if (base == null)
             return null;
 
-        return (IEntityLivingBase) NpcAPI.instance().getIEntity(base);
+        return (IEntityLivingBase) NpcAPI.Instance().getIEntity(base);
     }
 
     @Override

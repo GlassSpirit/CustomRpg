@@ -10,7 +10,7 @@ import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.client.CustomNpcResourceListener;
 import noppes.npcs.client.gui.util.GuiContainerNPCInterface;
 import noppes.npcs.containers.ContainerNPCTrader;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleTrader;
 
 public class GuiNPCTrader extends GuiContainerNPCInterface {

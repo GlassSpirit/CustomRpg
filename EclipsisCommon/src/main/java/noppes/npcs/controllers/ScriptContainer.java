@@ -4,13 +4,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.common.eventhandler.Event;
-import noppes.npcs.LogWriter;
-import noppes.npcs.util.NBTTags;
-import noppes.npcs.util.NoppesStringUtils;
-import noppes.npcs.NoppesUtilServer;
+import noppes.npcs.*;
 import noppes.npcs.api.constants.*;
 import noppes.npcs.api.wrapper.BlockPosWrapper;
-import noppes.npcs.common.CustomNpcsConfig;
 import noppes.npcs.constants.EnumScriptType;
 
 import javax.script.Invocable;
@@ -29,7 +25,7 @@ public class ScriptContainer {
     public static ScriptContainer Current;
     private static String CurrentType;
 
-    private final static HashMap<String, Object> Data = new HashMap<>();
+    private final static HashMap<String, Object> Data = new HashMap<String, Object>();
 
     static {
         FillMap(AnimationType.class);
@@ -61,11 +57,11 @@ public class ScriptContainer {
 
     public String fullscript = "";
     public String script = "";
-    public TreeMap<Long, String> console = new TreeMap<>();
+    public TreeMap<Long, String> console = new TreeMap<Long, String>();
     public boolean errored = false;
-    public List<String> scripts = new ArrayList<>();
+    public List<String> scripts = new ArrayList<String>();
 
-    private HashSet<String> unknownFunctions = new HashSet<>();
+    private HashSet<String> unknownFunctions = new HashSet<String>();
 
     public long lastCreated = 0;
 
@@ -106,7 +102,7 @@ public class ScriptContainer {
                 if (code != null && !code.isEmpty())
                     fullscript += code + "\n";
             }
-            unknownFunctions = new HashSet<>();
+            unknownFunctions = new HashSet<String>();
         }
         return fullscript;
     }
@@ -116,7 +112,7 @@ public class ScriptContainer {
     }
 
     public void run(String type, Event event) {
-        if (errored || !hasCode() || unknownFunctions.contains(type) || !CustomNpcsConfig.EnableScripting)
+        if (errored || !hasCode() || unknownFunctions.contains(type) || !CustomNpcs.EnableScripting)
             return;
 
         setEngine(handler.getLanguage());

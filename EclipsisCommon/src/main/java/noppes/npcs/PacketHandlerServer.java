@@ -21,32 +21,30 @@ import net.minecraft.village.MerchantRecipeList;
 import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent.ServerCustomPacketEvent;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.constants.JobType;
 import noppes.npcs.api.constants.RoleType;
 import noppes.npcs.api.wrapper.ItemScriptedWrapper;
-import noppes.npcs.common.CustomNpcs;
-import noppes.npcs.common.CustomNpcsConfig;
-import noppes.npcs.common.entity.EntityCustomNpc;
-import noppes.npcs.common.entity.EntityNPCInterface;
-import noppes.npcs.common.entity.data.DataScenes;
-import noppes.npcs.common.objects.tiles.TileBuilder;
-import noppes.npcs.common.objects.tiles.TileCopy;
-import noppes.npcs.common.objects.tiles.TileScripted;
-import noppes.npcs.common.objects.tiles.TileScriptedDoor;
-import noppes.npcs.common.schematics.SchematicWrapper;
+import noppes.npcs.blocks.tiles.TileBuilder;
+import noppes.npcs.blocks.tiles.TileCopy;
+import noppes.npcs.blocks.tiles.TileScripted;
+import noppes.npcs.blocks.tiles.TileScriptedDoor;
 import noppes.npcs.constants.*;
 import noppes.npcs.containers.ContainerMail;
 import noppes.npcs.controllers.*;
 import noppes.npcs.controllers.LinkedNpcController.LinkedData;
 import noppes.npcs.controllers.data.*;
+import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.entity.data.DataScenes;
 import noppes.npcs.roles.JobSpawner;
 import noppes.npcs.roles.RoleCompanion;
 import noppes.npcs.roles.RoleTrader;
 import noppes.npcs.roles.RoleTransporter;
+import noppes.npcs.schematics.SchematicWrapper;
 import noppes.npcs.util.IPermission;
-import noppes.npcs.util.NBTTags;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,10 +53,10 @@ import java.util.Set;
 
 public class PacketHandlerServer {
 
-    //@SubscribeEvent
+    @SubscribeEvent
     public void onServerPacket(ServerCustomPacketEvent event) {
         final EntityPlayerMP player = ((NetHandlerPlayServer) event.getHandler()).player;
-        if (CustomNpcsConfig.OpsOnly && !NoppesUtilServer.isOp(player)) {
+        if (CustomNpcs.OpsOnly && !NoppesUtilServer.isOp(player)) {
             warn(player, "tried to use custom npcs without being an op");
             return;
         }
@@ -113,19 +111,19 @@ public class PacketHandlerServer {
         } else if (type == EnumPacketServer.LinkedAdd) {
             LinkedNpcController.Instance.addData(Server.readString(buffer));
 
-            List<String> list = new ArrayList<>();
+            List<String> list = new ArrayList<String>();
             for (LinkedData data : LinkedNpcController.Instance.list)
                 list.add(data.name);
             Server.sendData(player, EnumPacketClient.SCROLL_LIST, list);
         } else if (type == EnumPacketServer.LinkedRemove) {
             LinkedNpcController.Instance.removeData(Server.readString(buffer));
 
-            List<String> list = new ArrayList<>();
+            List<String> list = new ArrayList<String>();
             for (LinkedData data : LinkedNpcController.Instance.list)
                 list.add(data.name);
             Server.sendData(player, EnumPacketClient.SCROLL_LIST, list);
         } else if (type == EnumPacketServer.LinkedGetAll) {
-            List<String> list = new ArrayList<>();
+            List<String> list = new ArrayList<String>();
             for (LinkedData data : LinkedNpcController.Instance.list)
                 list.add(data.name);
             Server.sendData(player, EnumPacketClient.SCROLL_LIST, list);
@@ -175,13 +173,13 @@ public class PacketHandlerServer {
             Server.sendData(player, EnumPacketClient.SCROLL_SELECTED, CustomNpcs.FreezeNPCs ? "Unfreeze Npcs" : "Freeze Npcs");
         } else if (type == EnumPacketServer.RemoteReset) {
             Entity entity = player.world.getEntityByID(buffer.readInt());
-            if (!(entity instanceof EntityNPCInterface))
+            if (entity == null || !(entity instanceof EntityNPCInterface))
                 return;
             npc = (EntityNPCInterface) entity;
             npc.reset();
         } else if (type == EnumPacketServer.RemoteTpToNpc) {
             Entity entity = player.world.getEntityByID(buffer.readInt());
-            if (!(entity instanceof EntityNPCInterface))
+            if (entity == null || !(entity instanceof EntityNPCInterface))
                 return;
             npc = (EntityNPCInterface) entity;
             player.connection.setPlayerLocation(npc.posX, npc.posY, npc.posZ, 0, 0);
@@ -248,7 +246,7 @@ public class PacketHandlerServer {
             int gui = buffer.readInt();
             quest.readNBT(Server.readNBT(buffer));
             NoppesUtilServer.setEditingQuest(player, quest);
-            player.openGui(CustomNpcs.INSTANCE, gui, player.world, 0, 0, 0);
+            player.openGui(CustomNpcs.instance, gui, player.world, 0, 0, 0);
         } else if (type == EnumPacketServer.DialogNpcGet) {
             NoppesUtilServer.sendNpcDialogs(player);
         } else if (type == EnumPacketServer.DialogNpcSet) {
@@ -357,7 +355,7 @@ public class PacketHandlerServer {
         } else if (type == EnumPacketServer.MainmenuDisplayGet) {
             Server.sendData(player, EnumPacketClient.GUI_DATA, npc.display.writeToNBT(new NBTTagCompound()));
         } else if (type == EnumPacketServer.MainmenuDisplaySave) {
-            npc.display.readFromNBT(Server.readNBT(buffer));
+            npc.display.readToNBT(Server.readNBT(buffer));
             npc.updateClient = true;
         } else if (type == EnumPacketServer.MainmenuStatsGet) {
             Server.sendData(player, EnumPacketClient.GUI_DATA, npc.stats.writeToNBT(new NBTTagCompound()));
@@ -451,7 +449,7 @@ public class PacketHandlerServer {
             PlayerMail mail = new PlayerMail();
             mail.readNBT(Server.readNBT(buffer));
             ContainerMail.staticmail = mail;
-            player.openGui(CustomNpcs.INSTANCE, EnumGuiType.PlayerMailman.ordinal(), player.world, 1, 0, 0);
+            player.openGui(CustomNpcs.instance, EnumGuiType.PlayerMailman.ordinal(), player.world, 1, 0, 0);
         } else if (type == EnumPacketServer.TransformSave) {
             boolean isValid = npc.transform.isValid();
             npc.transform.readOptions(Server.readNBT(buffer));
@@ -551,7 +549,7 @@ public class PacketHandlerServer {
             compound.setTag("Languages", ScriptController.Instance.nbtLanguages());
             Server.sendData(player, EnumPacketClient.GUI_DATA, compound);
         } else if (type == EnumPacketServer.DimensionsGet) {
-            HashMap<String, Integer> map = new HashMap<>();
+            HashMap<String, Integer> map = new HashMap<String, Integer>();
             for (int id : DimensionManager.getStaticDimensionIDs()) {
                 WorldProvider provider = DimensionManager.createProviderFor(id);
                 map.put(provider.getDimensionType().getName(), id);
@@ -582,7 +580,7 @@ public class PacketHandlerServer {
             compound.setTag("Languages", ScriptController.Instance.nbtLanguages());
             Server.sendData(player, EnumPacketClient.GUI_DATA, compound);
         } else if (type == EnumPacketServer.ScriptItemDataGet) {
-            ItemScriptedWrapper iw = (ItemScriptedWrapper) NpcAPI.instance().getIItemStack(player.getHeldItemMainhand());
+            ItemScriptedWrapper iw = (ItemScriptedWrapper) NpcAPI.Instance().getIItemStack(player.getHeldItemMainhand());
             NBTTagCompound compound = iw.getMCNbt();
             compound.setTag("Languages", ScriptController.Instance.nbtLanguages());
             Server.sendData(player, EnumPacketClient.GUI_DATA, compound);
@@ -591,7 +589,7 @@ public class PacketHandlerServer {
                 return;
             NBTTagCompound compound = Server.readNBT(buffer);
             ItemStack item = player.getHeldItemMainhand();
-            ItemScriptedWrapper wrapper = (ItemScriptedWrapper) NpcAPI.instance().getIItemStack(player.getHeldItemMainhand());
+            ItemScriptedWrapper wrapper = (ItemScriptedWrapper) NpcAPI.Instance().getIItemStack(player.getHeldItemMainhand());
             wrapper.setMCNbt(compound);
             wrapper.lastInited = -1;
             wrapper.saveScriptData();

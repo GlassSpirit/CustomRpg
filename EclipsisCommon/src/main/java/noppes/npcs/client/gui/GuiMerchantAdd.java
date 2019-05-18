@@ -28,7 +28,7 @@ public class GuiMerchantAdd extends GuiContainer {
     private static final ResourceLocation merchantGuiTextures = new ResourceLocation("textures/gui/container/villager.png");
 
     /**
-     * instance of IMerchant interface.
+     * Instance of IMerchant interface.
      */
     private IMerchant theIMerchant;
     private MerchantButton nextRecipeButtonIndex;
@@ -46,7 +46,6 @@ public class GuiMerchantAdd extends GuiContainer {
     /**
      * Adds the buttons (and other controls) to the screen in question.
      */
-    @Override
     public void initGui() {
         super.initGui();
 
@@ -63,7 +62,6 @@ public class GuiMerchantAdd extends GuiContainer {
     /**
      * Draw the foreground layer for the GuiContainer (everything in front of the items)
      */
-    @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
         this.fontRenderer.drawString(this.field_94082_v, this.xSize / 2 - this.fontRenderer.getStringWidth(this.field_94082_v) / 2, 6, CustomNpcResourceListener.DefaultTextColor);
         this.fontRenderer.drawString(I18n.format("container.inventory"), 8, this.ySize - 96 + 2, CustomNpcResourceListener.DefaultTextColor);
@@ -72,7 +70,6 @@ public class GuiMerchantAdd extends GuiContainer {
     /**
      * Called from the main game loop to update the screen.
      */
-    @Override
     public void updateScreen() {
         super.updateScreen();
         Minecraft mc = Minecraft.getMinecraft();
@@ -87,7 +84,6 @@ public class GuiMerchantAdd extends GuiContainer {
     /**
      * Fired when a control is clicked. This is the equivalent of ActionListener.actionPerformed(ActionEvent e).
      */
-    @Override
     protected void actionPerformed(GuiButton par1GuiButton) {
         boolean flag = false;
         Minecraft mc = Minecraft.getMinecraft();
@@ -221,7 +217,7 @@ public class GuiMerchantAdd extends GuiContainer {
     }
 
     /**
-     * Gets the instance of IMerchant interface.
+     * Gets the Instance of IMerchant interface.
      */
     public IMerchant getIMerchant() {
         return this.theIMerchant;

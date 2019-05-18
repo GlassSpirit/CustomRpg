@@ -5,7 +5,7 @@ import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.constants.EnumPlayerData;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +16,7 @@ public class GuiNpcManagePlayerData extends GuiNPCInterface2 implements IScrollD
     private GuiCustomScroll scroll;
     private String selectedPlayer = null;
     private String selected = null;
-    private HashMap<String, Integer> data = new HashMap<String, Integer>();
+    private HashMap<String, Integer> data = new HashMap<>();
     private EnumPlayerData selection = EnumPlayerData.Players;
     private String search = "";
 
@@ -93,8 +93,8 @@ public class GuiNpcManagePlayerData extends GuiNPCInterface2 implements IScrollD
 
     private List<String> getSearchList() {
         if (search.isEmpty() || selection != EnumPlayerData.Players)
-            return new ArrayList<String>(this.data.keySet());
-        List<String> list = new ArrayList<String>();
+            return new ArrayList<>(this.data.keySet());
+        List<String> list = new ArrayList<>();
         for (String name : data.keySet()) {
             if (name.toLowerCase().contains(search))
                 list.add(name);

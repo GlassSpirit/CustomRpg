@@ -6,7 +6,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityCustomNpc;
 import noppes.npcs.roles.JobPuppet;
 import noppes.npcs.roles.JobPuppet.PartConfig;
 

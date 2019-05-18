@@ -16,9 +16,9 @@ import net.minecraftforge.fluids.BlockFluidBase;
 import noppes.npcs.api.*;
 import noppes.npcs.api.block.IBlock;
 import noppes.npcs.api.entity.data.IData;
-import noppes.npcs.common.objects.blocks.BlockScripted;
-import noppes.npcs.common.objects.blocks.BlockScriptedDoor;
-import noppes.npcs.common.objects.tiles.TileNpcEntity;
+import noppes.npcs.blocks.BlockScripted;
+import noppes.npcs.blocks.BlockScriptedDoor;
+import noppes.npcs.blocks.tiles.TileNpcEntity;
 import noppes.npcs.util.LRUHashMap;
 
 import java.util.Map;
@@ -144,7 +144,7 @@ public class BlockWrapper implements IBlock {
     };
 
     protected BlockWrapper(World world, Block block, BlockPos pos) {
-        this.world = NpcAPI.instance().getIWorld((WorldServer) world);
+        this.world = NpcAPI.Instance().getIWorld((WorldServer) world);
         this.block = block;
         this.pos = pos;
         this.bPos = new BlockPosWrapper(pos);
@@ -225,7 +225,7 @@ public class BlockWrapper implements IBlock {
     public IContainer getContainer() {
         if (!isContainer())
             throw new CustomNPCsException("This block is not a container");
-        return NpcAPI.instance().getIContainer((IInventory) tile);
+        return NpcAPI.Instance().getIContainer((IInventory) tile);
     }
 
     @Override
@@ -302,7 +302,7 @@ public class BlockWrapper implements IBlock {
     public INbt getTileEntityNBT() {
         NBTTagCompound compound = new NBTTagCompound();
         tile.writeToNBT(compound);
-        return NpcAPI.instance().getINbt(compound);
+        return NpcAPI.Instance().getINbt(compound);
     }
 
     @Override

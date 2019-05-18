@@ -6,12 +6,12 @@ import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ServerScoreboard;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldServer;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.ICompatibilty;
 import noppes.npcs.VersionCompatibility;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.entity.IPlayer;
 import noppes.npcs.api.handler.data.IAvailability;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.*;
 import noppes.npcs.controllers.FactionController;
 import noppes.npcs.controllers.PlayerQuestController;
@@ -19,7 +19,7 @@ import noppes.npcs.controllers.PlayerQuestController;
 import java.util.HashSet;
 
 public class Availability implements ICompatibilty, IAvailability {
-    public static HashSet<String> scoreboardValues = new HashSet<>();
+    public static HashSet<String> scoreboardValues = new HashSet<String>();
 
     public int version = VersionCompatibility.ModRev;
 
@@ -118,9 +118,9 @@ public class Availability implements ICompatibilty, IAvailability {
             return;
         scoreboardValues.add(objective);
 
-        if (CustomNpcs.INSTANCE.getServer() == null)
+        if (CustomNpcs.Server == null)
             return;
-        for (WorldServer world : CustomNpcs.INSTANCE.getServer().worlds) {
+        for (WorldServer world : CustomNpcs.Server.worlds) {
             ServerScoreboard board = (ServerScoreboard) world.worldScoreboard;
             ScoreObjective so = board.getObjective(objective);
             if (so != null) {
@@ -129,7 +129,6 @@ public class Availability implements ICompatibilty, IAvailability {
         }
     }
 
-    @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setInteger("ModRev", version);
 

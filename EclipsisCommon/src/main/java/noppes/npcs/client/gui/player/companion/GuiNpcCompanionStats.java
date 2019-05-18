@@ -7,16 +7,16 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.MathHelper;
+import noppes.npcs.CustomNpcs;
+import noppes.npcs.NoppesStringUtils;
 import noppes.npcs.NoppesUtilPlayer;
 import noppes.npcs.client.gui.util.*;
-import noppes.npcs.common.CustomNpcs;
-import noppes.npcs.common.entity.EntityNPCInterface;
 import noppes.npcs.constants.EnumCompanionJobs;
 import noppes.npcs.constants.EnumCompanionTalent;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.constants.EnumPlayerPacket;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleCompanion;
-import noppes.npcs.util.NoppesStringUtils;
 
 public class GuiNpcCompanionStats extends GuiNPCInterface implements IGuiData {
     private RoleCompanion role;
@@ -38,7 +38,7 @@ public class GuiNpcCompanionStats extends GuiNPCInterface implements IGuiData {
         int y = guiTop + 10;
         addLabel(new GuiNpcLabel(0, NoppesStringUtils.translate("gui.name", ": ", npc.display.getName()), guiLeft + 4, y));
         addLabel(new GuiNpcLabel(1, NoppesStringUtils.translate("companion.owner", ": ", role.ownerName), guiLeft + 4, y += 12));
-        addLabel(new GuiNpcLabel(2, NoppesStringUtils.translate("companion.age", ": ", role.ticksActive / 18000 + " (", role.stage.getName(), ")"), guiLeft + 4, y += 12));
+        addLabel(new GuiNpcLabel(2, NoppesStringUtils.translate("companion.age", ": ", role.ticksActive / 18000 + " (", role.stage.name, ")"), guiLeft + 4, y += 12));
         addLabel(new GuiNpcLabel(3, NoppesStringUtils.translate("companion.strength", ": ", npc.stats.melee.getStrength()), guiLeft + 4, y += 12));
         addLabel(new GuiNpcLabel(4, NoppesStringUtils.translate("companion.level", ": ", role.getTotalLevel()), guiLeft + 4, y += 12));
         addLabel(new GuiNpcLabel(5, NoppesStringUtils.translate("job.name", ": ", "gui.none"), guiLeft + 4, y += 12));

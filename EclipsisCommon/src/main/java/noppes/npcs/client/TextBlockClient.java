@@ -5,7 +5,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentString;
-import noppes.npcs.util.NoppesStringUtils;
+import noppes.npcs.NoppesStringUtils;
 import noppes.npcs.TextBlock;
 
 public class TextBlockClient extends TextBlock {
@@ -59,7 +59,7 @@ public class TextBlockClient extends TextBlock {
             else
                 newLine = line + " " + word;
 
-            if ((mcFont ? font.getStringWidth(newLine) : ClientProxy.Companion.getFont().width(newLine)) > lineWidth) {
+            if ((mcFont ? font.getStringWidth(newLine) : ClientProxy.Font.width(newLine)) > lineWidth) {
                 addLine(line);
                 line = word.trim();
             } else {

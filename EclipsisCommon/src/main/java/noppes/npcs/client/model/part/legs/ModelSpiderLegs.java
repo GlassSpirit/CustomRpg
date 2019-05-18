@@ -7,7 +7,7 @@ import net.minecraft.util.math.MathHelper;
 import noppes.npcs.ModelData;
 import noppes.npcs.api.constants.AnimationType;
 import noppes.npcs.constants.EnumParts;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class ModelSpiderLegs extends ModelRenderer {
     private ModelRenderer spiderLeg1;

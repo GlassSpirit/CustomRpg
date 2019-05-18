@@ -7,8 +7,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.controllers.data.Bank;
 import noppes.npcs.controllers.data.PlayerBankData;
 import noppes.npcs.controllers.data.PlayerData;
@@ -27,8 +27,8 @@ public class PlayerDataController {
 
     public PlayerDataController() {
         instance = this;
-        File dir = CustomNpcs.INSTANCE.getWorldSaveDirectory("playerdata");
-        Map<String, String> map = new HashMap<>();
+        File dir = CustomNpcs.getWorldSaveDirectory("playerdata");
+        Map<String, String> map = new HashMap<String, String>();
         for (File file : dir.listFiles()) {
             if (file.isDirectory() || !file.getName().endsWith(".json"))
                 continue;
@@ -88,7 +88,7 @@ public class PlayerDataController {
     }
 
     public List<PlayerData> getPlayersData(ICommandSender sender, String username) throws CommandException {
-        ArrayList<PlayerData> list = new ArrayList<>();
+        ArrayList<PlayerData> list = new ArrayList<PlayerData>();
         List<EntityPlayerMP> players = EntitySelector.matchEntities(sender, username, EntityPlayerMP.class);
         if (players.isEmpty()) {
             PlayerData data = getDataFromUsername(sender.getServer(), username);

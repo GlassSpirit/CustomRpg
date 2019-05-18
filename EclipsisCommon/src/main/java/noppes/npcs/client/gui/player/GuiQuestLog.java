@@ -1,5 +1,7 @@
 package noppes.npcs.client.gui.player;
 
+import micdoodle8.mods.galacticraft.api.client.tabs.InventoryTabQuests;
+import micdoodle8.mods.galacticraft.api.client.tabs.TabRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -24,18 +26,22 @@ import java.util.List;
 public class GuiQuestLog extends GuiNPCInterface implements ITopButtonListener, ICustomScrollListener {
 
     private final ResourceLocation resource = new ResourceLocation("customnpcs", "textures/gui/standardbg.png");
-    private final int maxLines = 10;
+
     public HashMap<String, List<Quest>> activeQuests = new HashMap<>();
+    private HashMap<String, Quest> categoryQuests = new HashMap<>();
     public Quest selectedQuest = null;
     public String selectedCategory = "";
-    TextBlockClient textblock = null;
-    private HashMap<String, Quest> categoryQuests = new HashMap<>();
     private EntityPlayer player;
     private GuiCustomScroll scroll;
     private HashMap<Integer, GuiMenuSideButton> sideButtons = new HashMap<>();
     private boolean noQuests = false;
+
+    private final int maxLines = 10;
     private int currentPage = 0;
     private int maxPages = 1;
+
+    TextBlockClient textblock = null;
+
     private Minecraft mc = Minecraft.getMinecraft();
 
     public GuiQuestLog(EntityPlayer player) {
@@ -59,6 +65,9 @@ public class GuiQuestLog extends GuiNPCInterface implements ITopButtonListener, 
 
         sideButtons.clear();
         guiTop += 10;
+
+        TabRegistry.updateTabValues(guiLeft, guiTop, InventoryTabQuests.class);
+        TabRegistry.addTabsToList(buttonList);
 
         noQuests = false;
 

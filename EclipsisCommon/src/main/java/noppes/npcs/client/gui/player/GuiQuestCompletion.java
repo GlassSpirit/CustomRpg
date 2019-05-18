@@ -2,8 +2,8 @@ package noppes.npcs.client.gui.player;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.NoppesUtilPlayer;
 import noppes.npcs.api.handler.data.IQuest;
 import noppes.npcs.client.CustomNpcResourceListener;
@@ -16,8 +16,8 @@ import noppes.npcs.constants.EnumPlayerPacket;
 
 public class GuiQuestCompletion extends GuiNPCInterface implements ITopButtonListener {
 
-    private final ResourceLocation resource = new ResourceLocation("customnpcs", "textures/gui/smallbg.png");
     private IQuest quest;
+    private final ResourceLocation resource = new ResourceLocation("customnpcs", "textures/gui/smallbg.png");
 
     public GuiQuestCompletion(IQuest quest) {
         super();
@@ -32,11 +32,11 @@ public class GuiQuestCompletion extends GuiNPCInterface implements ITopButtonLis
     public void initGui() {
         super.initGui();
 
-        String questTitle = I18n.format(quest.getName());
+        String questTitle = I18n.translateToLocal(quest.getName());
         int left = (xSize - this.fontRenderer.getStringWidth(questTitle)) / 2;
         this.addLabel(new GuiNpcLabel(0, questTitle, guiLeft + left, guiTop + 4));
 
-        this.addButton(new GuiNpcButton(0, guiLeft + 38, guiTop + ySize - 24, 100, 20, I18n.format("quest.complete")));
+        this.addButton(new GuiNpcButton(0, guiLeft + 38, guiTop + ySize - 24, 100, 20, I18n.translateToLocal("quest.complete")));
     }
 
     @Override

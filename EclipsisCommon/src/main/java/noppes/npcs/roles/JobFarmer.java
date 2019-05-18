@@ -20,7 +20,7 @@ import noppes.npcs.constants.AiMutex;
 import noppes.npcs.controllers.MassBlockController;
 import noppes.npcs.controllers.MassBlockController.IMassBlock;
 import noppes.npcs.controllers.data.BlockData;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -55,7 +55,7 @@ public class JobFarmer extends JobInterface implements IMassBlock, IJobFarmer {
         if (item.isEmpty())
             return npc.inventory.weapons.get(0);
 
-        return NpcAPI.instance().getIItemStack(item);
+        return NpcAPI.Instance().getIItemStack(item);
     }
 
     @Override

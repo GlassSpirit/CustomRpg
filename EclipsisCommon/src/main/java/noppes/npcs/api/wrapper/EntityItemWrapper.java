@@ -61,7 +61,7 @@ public class EntityItemWrapper<T extends EntityItem> extends EntityWrapper<T> im
 
     @Override
     public IItemStack getItem() {
-        return NpcAPI.instance().getIItemStack(this.entity.getItem());
+        return NpcAPI.Instance().getIItemStack(this.entity.getItem());
     }
 
     @Override

@@ -1,6 +1,6 @@
 package noppes.npcs.client.gui.util;
 
-import noppes.npcs.common.config.TrueTypeFont;
+import noppes.npcs.config.TrueTypeFont;
 
 import java.util.ArrayList;
 import java.util.Comparator;

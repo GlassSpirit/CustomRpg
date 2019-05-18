@@ -33,8 +33,8 @@ public class ContainerWrapper implements IContainer {
         if (slot < 0 || slot >= getSize())
             throw new CustomNPCsException("Slot is out of range " + slot);
         if (inventory != null)
-            return NpcAPI.instance().getIItemStack(inventory.getStackInSlot(slot));
-        return NpcAPI.instance().getIItemStack(container.getSlot(slot).getStack());
+            return NpcAPI.Instance().getIItemStack(inventory.getStackInSlot(slot));
+        return NpcAPI.Instance().getIItemStack(container.getSlot(slot).getStack());
     }
 
     @Override

@@ -9,7 +9,7 @@ import noppes.npcs.client.gui.util.ICustomScrollListener;
 import noppes.npcs.client.gui.util.IScrollData;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.data.Bank;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleBank;
 
 import java.util.HashMap;

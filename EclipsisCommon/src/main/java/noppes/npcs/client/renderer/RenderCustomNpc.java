@@ -18,8 +18,8 @@ import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.client.layer.*;
 import noppes.npcs.client.model.ModelBipedAlt;
 import noppes.npcs.controllers.PixelmonHelper;
-import noppes.npcs.common.entity.EntityCustomNpc;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityNPCInterface;
 import org.lwjgl.opengl.GL11;
 
 import java.util.List;
@@ -46,9 +46,9 @@ public class RenderCustomNpc<T extends EntityCustomNpc> extends RenderNPCInterfa
 
         LayerBipedArmor armor = new LayerBipedArmor(this);
         addLayer(armor);
+        ObfuscationReflectionHelper.setPrivateValue(LayerArmorBase.class, armor, new ModelBipedAlt(0.5f), 1);
+        ObfuscationReflectionHelper.setPrivateValue(LayerArmorBase.class, armor, new ModelBipedAlt(1), 2);
 
-        ObfuscationReflectionHelper.setPrivateValue(LayerArmorBase.class, armor, new ModelBipedAlt(0.5f), "field_177189_c");
-        ObfuscationReflectionHelper.setPrivateValue(LayerArmorBase.class, armor, new ModelBipedAlt(1), "field_177186_d");
     }
 
     @Override
@@ -86,9 +86,9 @@ public class RenderCustomNpc<T extends EntityCustomNpc> extends RenderNPCInterfa
             EnumAction enumaction = item.getItemUseAction();
 
             if (enumaction == EnumAction.BLOCK) {
-                return ArmPose.BLOCK;
+                return ModelBiped.ArmPose.BLOCK;
             } else if (enumaction == EnumAction.BOW) {
-                return ArmPose.BOW_AND_ARROW;
+                return ModelBiped.ArmPose.BOW_AND_ARROW;
             }
         }
         return ArmPose.ITEM;
@@ -127,6 +127,7 @@ public class RenderCustomNpc<T extends EntityCustomNpc> extends RenderNPCInterfa
             model.isChild = entity.isChild();
 
             NPCRendererHelper.renderModel(entity, par2, par3, par4, par5, par6, par7, renderEntity, model, getEntityTexture(npc));
+
 
             if (!npc.display.getOverlayTexture().isEmpty()) {
                 GlStateManager.depthFunc(GL11.GL_LEQUAL);

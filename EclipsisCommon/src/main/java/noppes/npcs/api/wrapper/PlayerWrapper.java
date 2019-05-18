@@ -11,10 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.WorldSettings;
-import noppes.npcs.CustomNpcsPermissions;
-import noppes.npcs.NoppesUtilPlayer;
-import noppes.npcs.NoppesUtilServer;
-import noppes.npcs.Server;
+import noppes.npcs.*;
 import noppes.npcs.api.*;
 import noppes.npcs.api.block.IBlock;
 import noppes.npcs.api.constants.EntityType;
@@ -24,14 +21,13 @@ import noppes.npcs.api.entity.data.IPixelmonPlayerData;
 import noppes.npcs.api.handler.data.IQuest;
 import noppes.npcs.api.item.IItemStack;
 import noppes.npcs.client.EntityUtil;
-import noppes.npcs.common.entity.EntityDialogNpc;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.controllers.DialogController;
 import noppes.npcs.controllers.FactionController;
 import noppes.npcs.controllers.PixelmonHelper;
 import noppes.npcs.controllers.QuestController;
 import noppes.npcs.controllers.data.*;
-import noppes.npcs.util.NoppesStringUtils;
+import noppes.npcs.entity.EntityDialogNpc;
 import noppes.npcs.util.ValueUtil;
 
 import java.util.ArrayList;
@@ -85,7 +81,7 @@ public class PlayerWrapper<T extends EntityPlayerMP> extends EntityLivingBaseWra
     @Override
     public IQuest[] getActiveQuests() {
         PlayerQuestData data = this.getData().questData;
-        List<IQuest> quests = new ArrayList<>();
+        List<IQuest> quests = new ArrayList<IQuest>();
         for (int id : data.activeQuests.keySet()) {
             IQuest quest = QuestController.instance.quests.get(id);
             if (quest != null) {
@@ -98,7 +94,7 @@ public class PlayerWrapper<T extends EntityPlayerMP> extends EntityLivingBaseWra
     @Override
     public IQuest[] getFinishedQuests() {
         PlayerQuestData data = this.getData().questData;
-        List<IQuest> quests = new ArrayList<>();
+        List<IQuest> quests = new ArrayList<IQuest>();
         for (int id : data.finishedQuests.keySet()) {
             IQuest quest = QuestController.instance.quests.get(id);
             if (quest != null) {
@@ -254,7 +250,7 @@ public class PlayerWrapper<T extends EntityPlayerMP> extends EntityLivingBaseWra
         Item item = Item.REGISTRY.getObject(new ResourceLocation(id));
         if (item == null)
             throw new CustomNPCsException("Unknown item id: " + id);
-        return inventoryItemCount(NpcAPI.instance().getIItemStack(new ItemStack(item, 1, damage)));
+        return inventoryItemCount(NpcAPI.Instance().getIItemStack(new ItemStack(item, 1, damage)));
     }
 
     @Override
@@ -294,7 +290,7 @@ public class PlayerWrapper<T extends EntityPlayerMP> extends EntityLivingBaseWra
         Item item = Item.REGISTRY.getObject(new ResourceLocation(id));
         if (item == null)
             throw new CustomNPCsException("Unknown item id: " + id);
-        return removeItem(NpcAPI.instance().getIItemStack(new ItemStack(item, 1, damage)), amount);
+        return removeItem(NpcAPI.Instance().getIItemStack(new ItemStack(item, 1, damage)), amount);
     }
 
     @Override
@@ -317,7 +313,7 @@ public class PlayerWrapper<T extends EntityPlayerMP> extends EntityLivingBaseWra
         if (item == null)
             return false;
         ItemStack mcStack = new ItemStack(item);
-        IItemStack itemStack = NpcAPI.instance().getIItemStack(mcStack);
+        IItemStack itemStack = NpcAPI.Instance().getIItemStack(mcStack);
         itemStack.setStackSize(amount);
         itemStack.setItemDamage(damage);
 
@@ -336,7 +332,7 @@ public class PlayerWrapper<T extends EntityPlayerMP> extends EntityLivingBaseWra
         BlockPos pos = entity.getBedLocation();
         if (pos == null)
             return getWorld().getSpawnPoint();
-        return NpcAPI.instance().getIBlock(entity.world, pos);
+        return NpcAPI.Instance().getIBlock(entity.world, pos);
     }
 
     @Override
@@ -491,15 +487,4 @@ public class PlayerWrapper<T extends EntityPlayerMP> extends EntityLivingBaseWra
         data.setNBT(new NBTTagCompound());
         data.save(true);
     }
-
-	/*@Override
-	public IContainer showChestGui(int rows) {
-		entity.openGui(CustomNpcs.instance, EnumGuiType.CustomChest.ordinal(), entity.world, rows, 0, 0);
-		return NpcAPI.instance().getIContainer(entity.openContainer);
-	}
-
-	@Override
-	public IContainer getOpenContainer() {
-		return NpcAPI.instance().getIContainer(entity.openContainer);
-	}*/
 }

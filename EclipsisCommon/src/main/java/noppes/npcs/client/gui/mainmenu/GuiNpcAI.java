@@ -7,8 +7,8 @@ import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.SubGuiNpcMovement;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityNPCInterface;
-import noppes.npcs.common.entity.data.DataAI;
+import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.entity.data.DataAI;
 
 public class GuiNpcAI extends GuiNPCInterface2 implements ITextfieldListener, IGuiData {
     private String[] tacts = {"aitactics.rush", "aitactics.stagger", "aitactics.orbit", "aitactics.hitandrun", "aitactics.ambush", "aitactics.stalk", "gui.none"};

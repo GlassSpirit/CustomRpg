@@ -6,14 +6,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
-import noppes.npcs.common.entity.EntityNPCInterface;
-import noppes.npcs.util.NBTTags;
+import noppes.npcs.NBTTags;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.util.ValueUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class JobHealer extends JobInterface {
     private int healTicks = 0;
@@ -21,7 +20,7 @@ public class JobHealer extends JobInterface {
     public byte type = 2; //0:friendly, 1:enemy, 2:all
     public int speed = 20;
 
-    public Map<Integer, Integer> effects = new HashMap<>();
+    public HashMap<Integer, Integer> effects = new HashMap<Integer, Integer>();
 
     public JobHealer(EntityNPCInterface npc) {
         super(npc);
@@ -44,10 +43,9 @@ public class JobHealer extends JobInterface {
         speed = ValueUtil.CorrectInt(nbttagcompound.getInteger("HealerSpeed"), 10, Integer.MAX_VALUE);
     }
 
-    private List<EntityLivingBase> affected = new ArrayList<>();
+    private List<EntityLivingBase> affected = new ArrayList<EntityLivingBase>();
 
     //TODO heal food, heal potion effects, heal more types of entities besides just the player and npcs
-    @Override
     public boolean aiShouldExecute() {
         healTicks++;
         if (healTicks < speed)
@@ -62,7 +60,6 @@ public class JobHealer extends JobInterface {
         return false;
     }
 
-    @Override
     public void aiStartExecuting() {
         for (EntityLivingBase entity : affected) {
             boolean isEnemy = false;

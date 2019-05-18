@@ -2,8 +2,8 @@ package noppes.npcs.client.gui.player;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.client.CustomNpcResourceListener;
 import noppes.npcs.client.gui.util.GuiContainerNPCInterface;
 import noppes.npcs.client.gui.util.GuiNpcButton;
@@ -42,11 +42,11 @@ public class GuiNpcCarpentryBench extends GuiContainerNPCInterface {
         mc.renderEngine.bindTexture(resource);
         int l = (width - xSize) / 2;
         int i1 = (height - ySize) / 2;
-        String title = I18n.format("tile.npccarpentybench.name");
+        String title = I18n.translateToLocal("tile.npccarpentybench.name");
         drawTexturedModalRect(l, i1, 0, 0, xSize, ySize);
         super.drawGuiContainerBackgroundLayer(f, i, j);
         fontRenderer.drawString(title, guiLeft + 4, guiTop + 4, CustomNpcResourceListener.DefaultTextColor);
-        fontRenderer.drawString(I18n.format("container.inventory"), guiLeft + 4, guiTop + 87, CustomNpcResourceListener.DefaultTextColor);
+        fontRenderer.drawString(I18n.translateToLocal("container.inventory"), guiLeft + 4, guiTop + 87, CustomNpcResourceListener.DefaultTextColor);
     }
 
     @Override

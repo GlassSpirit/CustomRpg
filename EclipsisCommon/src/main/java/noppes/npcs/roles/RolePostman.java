@@ -3,11 +3,11 @@ package noppes.npcs.roles;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.text.TextComponentTranslation;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.NpcMiscInventory;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.controllers.data.PlayerData;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +15,13 @@ import java.util.List;
 public class RolePostman extends RoleInterface {
 
     public NpcMiscInventory inventory = new NpcMiscInventory(1);
-    private List<EntityPlayer> recentlyChecked = new ArrayList<>();
+    private List<EntityPlayer> recentlyChecked = new ArrayList<EntityPlayer>();
     private List<EntityPlayer> toCheck;
 
     public RolePostman(EntityNPCInterface npc) {
         super(npc);
     }
 
-    @Override
     public boolean aiShouldExecute() {
         if (npc.ticksExisted % 20 != 0)
             return false;
@@ -60,7 +59,7 @@ public class RolePostman extends RoleInterface {
 
     @Override
     public void interact(EntityPlayer player) {
-        player.openGui(CustomNpcs.INSTANCE, EnumGuiType.PlayerMailman.ordinal(), player.world, 1, 1, 0);
+        player.openGui(CustomNpcs.instance, EnumGuiType.PlayerMailman.ordinal(), player.world, 1, 1, 0);
     }
 
 }

@@ -4,8 +4,8 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import noppes.npcs.CustomItems;
 import noppes.npcs.controllers.RecipeController;
-import noppes.npcs.common.objects.NpcObjects;
 
 import java.io.IOException;
 
@@ -31,8 +31,8 @@ public class RecipesDefault {
 
     public static void loadDefaultRecipes(int i) {
         if (i < 0) {
-            addRecipe("Npc Wand", NpcObjects.wand, true, "XX", " Y", " Y", 'X', Items.BREAD, 'Y', Items.STICK);
-            addRecipe("Mob Cloner", NpcObjects.mobCloner, true, "XX", "XY", " Y", 'X', Items.BREAD, 'Y', Items.STICK);
+            addRecipe("Npc Wand", CustomItems.wand, true, "XX", " Y", " Y", 'X', Items.BREAD, 'Y', Items.STICK);
+            addRecipe("Mob Cloner", CustomItems.cloner, true, "XX", "XY", " Y", 'X', Items.BREAD, 'Y', Items.STICK);
 
         }
     }

@@ -15,7 +15,7 @@ import noppes.npcs.api.constants.AnimationType;
 import noppes.npcs.api.constants.JobType;
 import noppes.npcs.client.model.animation.*;
 import noppes.npcs.constants.EnumParts;
-import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityCustomNpc;
 import noppes.npcs.roles.JobPuppet;
 
 import java.util.*;

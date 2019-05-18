@@ -14,8 +14,8 @@ import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.block.IBlockScripted;
 import noppes.npcs.api.block.ITextPlane;
 import noppes.npcs.api.item.IItemStack;
-import noppes.npcs.common.entity.EntityNPCInterface;
-import noppes.npcs.common.objects.tiles.TileScripted;
+import noppes.npcs.blocks.tiles.TileScripted;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class BlockScriptedWrapper extends BlockWrapper implements IBlockScripted {
     private TileScripted tile;
@@ -46,7 +46,7 @@ public class BlockScriptedWrapper extends BlockWrapper implements IBlockScripted
 
     @Override
     public IItemStack getModel() {
-        return NpcAPI.instance().getIItemStack(tile.itemModel);
+        return NpcAPI.Instance().getIItemStack(tile.itemModel);
     }
 
     @Override

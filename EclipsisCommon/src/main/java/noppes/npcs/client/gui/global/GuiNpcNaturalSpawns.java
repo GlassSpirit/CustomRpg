@@ -9,7 +9,7 @@ import noppes.npcs.client.gui.SubGuiNpcBiomes;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.data.SpawnData;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.HashMap;
 import java.util.Vector;
@@ -17,7 +17,7 @@ import java.util.Vector;
 public class GuiNpcNaturalSpawns extends GuiNPCInterface2 implements IGuiData, IScrollData, ITextfieldListener, ICustomScrollListener, ISliderListener {
 
     private GuiCustomScroll scroll;
-    private HashMap<String, Integer> data = new HashMap<String, Integer>();
+    private HashMap<String, Integer> data = new HashMap<>();
 
     private SpawnData spawn = new SpawnData();
 
@@ -154,6 +154,7 @@ public class GuiNpcNaturalSpawns extends GuiNPCInterface2 implements IGuiData, I
 
     }
 
+    @Override
     public void closeSubGui(SubGuiInterface gui) {
         super.closeSubGui(gui);
         if (gui instanceof GuiNpcMobSpawnerSelector) {

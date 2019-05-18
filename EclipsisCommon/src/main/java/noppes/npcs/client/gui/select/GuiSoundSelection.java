@@ -44,7 +44,7 @@ public class GuiSoundSelection extends SubGuiInterface implements ICustomScrollL
             List<String> list = domains.get(location.getNamespace());
             if (list == null)
                 domains.put(location.getNamespace(), list = new ArrayList<>());
-            list.add(location.getNamespace());
+            list.add(location.getPath());
             domains.put(location.getNamespace(), list);
         }
         if (sound != null && !sound.isEmpty()) {

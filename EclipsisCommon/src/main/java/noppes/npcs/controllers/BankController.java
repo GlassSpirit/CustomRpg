@@ -3,7 +3,7 @@ package noppes.npcs.controllers;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import noppes.npcs.common.CustomNpcs;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.controllers.data.Bank;
 
 import java.io.File;
@@ -13,13 +13,14 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class BankController {
-    private static BankController instance;
     public HashMap<Integer, Bank> banks;
     private String filePath = "";
 
+    private static BankController instance;
+
     public BankController() {
         instance = this;
-        banks = new HashMap<>();
+        banks = new HashMap<Integer, Bank>();
         loadBanks();
 
         if (banks.isEmpty()) {
@@ -43,7 +44,7 @@ public class BankController {
     private static boolean newInstance() {
         if (instance == null)
             return true;
-        File file = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+        File file = CustomNpcs.getWorldSaveDirectory();
         if (file == null)
             return false;
         return !instance.filePath.equals(file.getAbsolutePath());
@@ -51,7 +52,7 @@ public class BankController {
     }
 
     private void loadBanks() {
-        File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+        File saveDir = CustomNpcs.getWorldSaveDirectory();
         if (saveDir == null)
             return;
 
@@ -79,7 +80,7 @@ public class BankController {
     }
 
     public void loadBanks(NBTTagCompound nbttagcompound1) throws IOException {
-        HashMap<Integer, Bank> banks = new HashMap<>();
+        HashMap<Integer, Bank> banks = new HashMap<Integer, Bank>();
         NBTTagList list = nbttagcompound1.getTagList("Data", 10);
         if (list != null) {
             for (int i = 0; i < list.tagCount(); i++) {
@@ -114,7 +115,7 @@ public class BankController {
 
     public void saveBanks() {
         try {
-            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.getWorldSaveDirectory();
             File file = new File(saveDir, "bank.dat_new");
             File file1 = new File(saveDir, "bank.dat_old");
             File file2 = new File(saveDir, "bank.dat");

@@ -7,10 +7,10 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
 import noppes.npcs.NoppesUtilServer;
-import noppes.npcs.common.CustomNpcs;
-import noppes.npcs.common.schematics.*;
+import noppes.npcs.schematics.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class SchematicController {
 
 
     public List<String> list() {
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<String>();
         list.addAll(included);
         for (File file : getDir().listFiles()) {
             String name = file.getName();
@@ -44,7 +44,7 @@ public class SchematicController {
     }
 
     public File getDir() {
-        File dir = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "schematics");
+        File dir = new File(CustomNpcs.getWorldSaveDirectory(), "schematics");
         if (!dir.exists())
             dir.mkdir();
 

@@ -10,7 +10,7 @@ import noppes.npcs.client.gui.util.GuiNpcButton;
 import noppes.npcs.client.gui.util.GuiNpcButtonYesNo;
 import noppes.npcs.client.gui.util.GuiNpcLabel;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class GuiNPCLinesMenu extends GuiNPCInterface2 {
     public GuiNPCLinesMenu(EntityNPCInterface npc) {

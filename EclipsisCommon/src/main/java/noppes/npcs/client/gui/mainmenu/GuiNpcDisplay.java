@@ -10,8 +10,8 @@ import noppes.npcs.client.gui.GuiNpcTextureOverlays;
 import noppes.npcs.client.gui.model.GuiCreationParts;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityNPCInterface;
-import noppes.npcs.common.entity.data.DataDisplay;
+import noppes.npcs.entity.EntityNPCInterface;
+import noppes.npcs.entity.data.DataDisplay;
 
 public class GuiNpcDisplay extends GuiNPCInterface2 implements ITextfieldListener, IGuiData {
 
@@ -170,7 +170,7 @@ public class GuiNpcDisplay extends GuiNPCInterface2 implements ITextfieldListene
 
     @Override
     public void setGuiData(NBTTagCompound compound) {
-        display.readFromNBT(compound);
+        display.readToNBT(compound);
         initGui();
     }
 

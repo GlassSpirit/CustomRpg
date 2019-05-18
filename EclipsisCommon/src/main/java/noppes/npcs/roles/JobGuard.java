@@ -9,8 +9,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.registry.EntityEntry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import noppes.npcs.util.NBTTags;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.NBTTags;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.List;

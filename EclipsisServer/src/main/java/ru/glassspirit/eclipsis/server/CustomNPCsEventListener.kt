@@ -17,8 +17,8 @@ object CustomNPCsEventListener {
     private lateinit var characterService: CharacterService
 
     init {
-        if (NpcAPI.isAvailable()) {
-            NpcAPI.instance().events().register(this)
+        if (NpcAPI.IsAvailable()) {
+            NpcAPI.Instance().events().register(this)
             characterService = NtRpgPlugin.GlobalScope.characterService
         }
     }

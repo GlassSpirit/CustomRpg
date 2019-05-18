@@ -6,7 +6,7 @@ import noppes.npcs.controllers.BankController;
 import noppes.npcs.controllers.PlayerDataController;
 import noppes.npcs.controllers.data.Bank;
 import noppes.npcs.controllers.data.BankData;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class RoleBank extends RoleInterface {
 

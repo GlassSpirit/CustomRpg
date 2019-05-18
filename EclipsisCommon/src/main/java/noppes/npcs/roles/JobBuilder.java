@@ -13,9 +13,9 @@ import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.entity.data.role.IJobBuilder;
 import noppes.npcs.api.item.IItemStack;
+import noppes.npcs.blocks.tiles.TileBuilder;
 import noppes.npcs.controllers.data.BlockData;
-import noppes.npcs.common.entity.EntityNPCInterface;
-import noppes.npcs.common.objects.tiles.TileBuilder;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.Stack;
 
@@ -76,7 +76,7 @@ public class JobBuilder extends JobInterface implements IJobBuilder {
         ItemStack item = stringToItem(name);
         if (item.isEmpty())
             return npc.inventory.weapons.get(0);
-        return NpcAPI.instance().getIItemStack(item);
+        return NpcAPI.Instance().getIItemStack(item);
     }
 
     @Override

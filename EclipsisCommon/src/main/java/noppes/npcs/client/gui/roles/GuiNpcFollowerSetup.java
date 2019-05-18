@@ -8,7 +8,7 @@ import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.containers.ContainerNPCFollowerSetup;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleFollower;
 
 import java.util.HashMap;

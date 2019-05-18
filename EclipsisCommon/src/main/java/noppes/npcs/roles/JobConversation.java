@@ -8,7 +8,7 @@ import noppes.npcs.controllers.QuestController;
 import noppes.npcs.controllers.data.Availability;
 import noppes.npcs.controllers.data.Line;
 import noppes.npcs.controllers.data.Quest;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -15,7 +15,7 @@ import noppes.npcs.constants.EnumPacketServer;
 import noppes.npcs.controllers.QuestController;
 import noppes.npcs.controllers.data.Quest;
 import noppes.npcs.controllers.data.QuestCategory;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.HashMap;
 

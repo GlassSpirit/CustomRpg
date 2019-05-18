@@ -7,6 +7,7 @@ import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.text.TextComponentString;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
 import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.api.CustomNPCsException;
@@ -14,7 +15,6 @@ import noppes.npcs.api.IWorld;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.entity.IEntity;
 import noppes.npcs.api.handler.ICloneHandler;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.util.NBTJsonUtil;
 
 import java.io.File;
@@ -55,14 +55,14 @@ public class ServerCloneController implements ICloneHandler {
     }
 
     public File getDir() {
-        File dir = new File(CustomNpcs.INSTANCE.getWorldSaveDirectory(), "clones");
+        File dir = new File(CustomNpcs.getWorldSaveDirectory(), "clones");
         if (!dir.exists())
             dir.mkdir();
         return dir;
     }
 
     private Map<Integer, Map<String, NBTTagCompound>> loadOldClones(File file) throws Exception {
-        Map<Integer, Map<String, NBTTagCompound>> clones = new HashMap<>();
+        Map<Integer, Map<String, NBTTagCompound>> clones = new HashMap<Integer, Map<String, NBTTagCompound>>();
         NBTTagCompound nbttagcompound1 = CompressedStreamTools.readCompressed(new FileInputStream(file));
         NBTTagList list = nbttagcompound1.getTagList("Data", 10);
         if (list == null) {
@@ -76,7 +76,7 @@ public class ServerCloneController implements ICloneHandler {
 
             Map<String, NBTTagCompound> tab = clones.get(compound.getInteger("ClonedTab"));
             if (tab == null)
-                clones.put(compound.getInteger("ClonedTab"), tab = new HashMap<>());
+                clones.put(compound.getInteger("ClonedTab"), tab = new HashMap<String, NBTTagCompound>());
 
             String name = compound.getString("ClonedName");
             int number = 1;
@@ -131,7 +131,7 @@ public class ServerCloneController implements ICloneHandler {
     }
 
     public List<String> getClones(int tab) {
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<String>();
         File dir = new File(getDir(), tab + "");
         if (!dir.exists() || !dir.isDirectory())
             return list;
@@ -210,7 +210,7 @@ public class ServerCloneController implements ICloneHandler {
         Entity entity = NoppesUtilServer.spawnClone(compound, x, y, z, world.getMCWorld());
         if (entity == null)
             return null;
-        return NpcAPI.instance().getIEntity(entity);
+        return NpcAPI.Instance().getIEntity(entity);
     }
 
     @Override
@@ -222,7 +222,7 @@ public class ServerCloneController implements ICloneHandler {
         Entity entity = EntityList.createEntityFromNBT(compound, world.getMCWorld());
         if (entity == null)
             return null;
-        return NpcAPI.instance().getIEntity(entity);
+        return NpcAPI.Instance().getIEntity(entity);
     }
 
     @Override

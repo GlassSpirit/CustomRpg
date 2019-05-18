@@ -27,7 +27,7 @@ public class GuiRecipes extends GuiNPCInterface {
     private boolean npcRecipes = true;
     private GuiNpcLabel label;
     private GuiNpcButton left, right;
-    private List<IRecipe> recipes = new ArrayList<IRecipe>();
+    private List<IRecipe> recipes = new ArrayList<>();
 
     public GuiRecipes() {
         this.ySize = 182;

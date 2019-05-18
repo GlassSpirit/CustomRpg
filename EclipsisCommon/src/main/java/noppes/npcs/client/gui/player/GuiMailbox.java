@@ -3,8 +3,8 @@ package noppes.npcs.client.gui.player;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiYesNo;
 import net.minecraft.client.gui.GuiYesNoCallback;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.NoppesUtilPlayer;
 import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.util.*;
@@ -40,15 +40,15 @@ public class GuiMailbox extends GuiNPCInterface implements IGuiData, ICustomScro
         scroll.guiTop = guiTop + 4;
         addScroll(scroll);
 
-        String title = I18n.format("mailbox.name");
+        String title = I18n.translateToLocal("mailbox.name");
         int x = (xSize - this.fontRenderer.getStringWidth(title)) / 2;
 
         this.addLabel(new GuiNpcLabel(0, title, guiLeft + x, guiTop - 8));
 
         if (selected != null) {
-            this.addLabel(new GuiNpcLabel(3, I18n.format("mailbox.sender") + ":", guiLeft + 170, guiTop + 6));
+            this.addLabel(new GuiNpcLabel(3, I18n.translateToLocal("mailbox.sender") + ":", guiLeft + 170, guiTop + 6));
             this.addLabel(new GuiNpcLabel(1, selected.sender, guiLeft + 174, guiTop + 18));
-            this.addLabel(new GuiNpcLabel(2, I18n.format("mailbox.timesend", getTimePast()), guiLeft + 174, guiTop + 30));
+            this.addLabel(new GuiNpcLabel(2, I18n.translateToLocalFormatted("mailbox.timesend", getTimePast()), guiLeft + 174, guiTop + 30));
         }
 
         this.addButton(new GuiNpcButton(0, guiLeft + 4, guiTop + 192, 82, 20, "mailbox.read"));
@@ -60,22 +60,22 @@ public class GuiMailbox extends GuiNPCInterface implements IGuiData, ICustomScro
         if (selected.timePast > 86400000) {
             int days = (int) (selected.timePast / 86400000);
             if (days == 1)
-                return days + " " + I18n.format("mailbox.day");
+                return days + " " + I18n.translateToLocal("mailbox.day");
             else
-                return days + " " + I18n.format("mailbox.days");
+                return days + " " + I18n.translateToLocal("mailbox.days");
         }
         if (selected.timePast > 3600000) {
             int hours = (int) (selected.timePast / 3600000);
             if (hours == 1)
-                return hours + " " + I18n.format("mailbox.hour");
+                return hours + " " + I18n.translateToLocal("mailbox.hour");
             else
-                return hours + " " + I18n.format("mailbox.hours");
+                return hours + " " + I18n.translateToLocal("mailbox.hours");
         }
         int minutes = (int) (selected.timePast / 60000);
         if (minutes == 1)
-            return minutes + " " + I18n.format("mailbox.minutes");
+            return minutes + " " + I18n.translateToLocal("mailbox.minutes");
         else
-            return minutes + " " + I18n.format("mailbox.minutes");
+            return minutes + " " + I18n.translateToLocal("mailbox.minutes");
     }
 
     @Override
@@ -100,7 +100,7 @@ public class GuiMailbox extends GuiNPCInterface implements IGuiData, ICustomScro
             scroll.selected = -1;
         }
         if (id == 1) {
-            GuiYesNo guiyesno = new GuiYesNo(this, "", I18n.format("gui.deleteMessage"), 0);
+            GuiYesNo guiyesno = new GuiYesNo(this, "", I18n.translateToLocal("gui.deleteMessage"), 0);
             displayGuiScreen(guiyesno);
         }
     }

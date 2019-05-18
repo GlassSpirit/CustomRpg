@@ -4,12 +4,12 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.LogWriter;
 import noppes.npcs.api.constants.RoleType;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.controllers.data.TransportCategory;
 import noppes.npcs.controllers.data.TransportLocation;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleTransporter;
 
 import java.io.File;
@@ -19,8 +19,8 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class TransportController {
-    private HashMap<Integer, TransportLocation> locations = new HashMap<>();
-    public HashMap<Integer, TransportCategory> categories = new HashMap<>();
+    private HashMap<Integer, TransportLocation> locations = new HashMap<Integer, TransportLocation>();
+    public HashMap<Integer, TransportCategory> categories = new HashMap<Integer, TransportCategory>();
 
     private int lastUsedID = 0;
 
@@ -38,7 +38,7 @@ public class TransportController {
     }
 
     private void loadCategories() {
-        File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+        File saveDir = CustomNpcs.getWorldSaveDirectory();
         if (saveDir == null)
             return;
         try {
@@ -61,8 +61,8 @@ public class TransportController {
     }
 
     public void loadCategories(File file) throws IOException {
-        HashMap<Integer, TransportLocation> locations = new HashMap<>();
-        HashMap<Integer, TransportCategory> categories = new HashMap<>();
+        HashMap<Integer, TransportLocation> locations = new HashMap<Integer, TransportLocation>();
+        HashMap<Integer, TransportCategory> categories = new HashMap<Integer, TransportCategory>();
         NBTTagCompound nbttagcompound1 = CompressedStreamTools.readCompressed(new FileInputStream(file));
         lastUsedID = nbttagcompound1.getInteger("lastID");
         NBTTagList list = nbttagcompound1.getTagList("NPCTransportCategories", 10);
@@ -98,7 +98,7 @@ public class TransportController {
 
     public void saveCategories() {
         try {
-            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.getWorldSaveDirectory();
             File file = new File(saveDir, "transport.dat_new");
             File file1 = new File(saveDir, "transport.dat_old");
             File file2 = new File(saveDir, "transport.dat");

@@ -12,9 +12,8 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.village.MerchantRecipeList;
 import net.minecraftforge.fml.common.network.internal.FMLProxyPacket;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumPacketClient;
-import noppes.npcs.util.CustomNpcsScheduler;
+import noppes.npcs.util.CustomNPCsScheduler;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -31,13 +30,13 @@ public class Server {
     }
 
     public static void sendDataDelayed(final EntityPlayerMP player, final EnumPacketClient type, int delay, final Object... obs) {
-        CustomNpcsScheduler.runTack(() -> {
+        CustomNPCsScheduler.runTack(() -> {
             PacketBuffer buffer = new PacketBuffer(Unpooled.buffer());
             try {
                 if (!fillBuffer(buffer, type, obs))
                     return;
                 LogWriter.debug("Send: " + type);
-                CustomNpcs.INSTANCE.getChannel().sendTo(new FMLProxyPacket(buffer, "CustomNPCs"), player);
+                CustomNpcs.Channel.sendTo(new FMLProxyPacket(buffer, "CustomNPCs"), player);
             } catch (IOException e) {
                 LogWriter.error(type + " Errored", e);
             }
@@ -50,7 +49,7 @@ public class Server {
             if (!fillBuffer(buffer, type, obs))
                 return false;
             LogWriter.debug("SendDataChecked: " + type);
-            CustomNpcs.INSTANCE.getChannel().sendTo(new FMLProxyPacket(buffer, "CustomNPCs"), player);
+            CustomNpcs.Channel.sendTo(new FMLProxyPacket(buffer, "CustomNPCs"), player);
         } catch (IOException e) {
             LogWriter.error(type + " Errored", e);
         }
@@ -61,14 +60,14 @@ public class Server {
         final List<EntityPlayerMP> list = entity.world.getEntitiesWithinAABB(EntityPlayerMP.class, entity.getEntityBoundingBox().grow(160, 160, 160));
         if (list.isEmpty())
             return;
-        CustomNpcsScheduler.runTack(() -> {
+        CustomNPCsScheduler.runTack(() -> {
             ByteBuf buffer = Unpooled.buffer();
             try {
                 if (!fillBuffer(buffer, type, obs))
                     return;
                 LogWriter.debug("SendAssociatedData: " + type);
                 for (EntityPlayerMP player : list) {
-                    CustomNpcs.INSTANCE.getChannel().sendTo(new FMLProxyPacket(new PacketBuffer(buffer.copy()), "CustomNPCs"), player);
+                    CustomNpcs.Channel.sendTo(new FMLProxyPacket(new PacketBuffer(buffer.copy()), "CustomNPCs"), player);
                 }
             } catch (IOException e) {
                 LogWriter.error(type + " Errored", e);
@@ -79,15 +78,15 @@ public class Server {
     }
 
     public static void sendToAll(MinecraftServer server, final EnumPacketClient type, final Object... obs) {
-        final List<EntityPlayerMP> list = new ArrayList<>(server.getPlayerList().getPlayers());
-        CustomNpcsScheduler.runTack(() -> {
+        final List<EntityPlayerMP> list = new ArrayList<EntityPlayerMP>(server.getPlayerList().getPlayers());
+        CustomNPCsScheduler.runTack(() -> {
             ByteBuf buffer = Unpooled.buffer();
             try {
                 if (!fillBuffer(buffer, type, obs))
                     return;
                 LogWriter.debug("SendToAll: " + type);
                 for (EntityPlayerMP player : list) {
-                    CustomNpcs.INSTANCE.getChannel().sendTo(new FMLProxyPacket(new PacketBuffer(buffer.copy()), "CustomNPCs"), player);
+                    CustomNpcs.Channel.sendTo(new FMLProxyPacket(new PacketBuffer(buffer.copy()), "CustomNPCs"), player);
                 }
             } catch (IOException e) {
                 LogWriter.error(type + " Errored", e);

@@ -3,12 +3,12 @@ package noppes.npcs.controllers;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.EventHooks;
 import noppes.npcs.LogWriter;
 import noppes.npcs.Server;
 import noppes.npcs.api.handler.IFactionHandler;
 import noppes.npcs.api.handler.data.IFaction;
-import noppes.npcs.common.CustomNpcs;
 import noppes.npcs.constants.EnumPacketClient;
 import noppes.npcs.constants.SyncType;
 import noppes.npcs.controllers.data.Faction;
@@ -21,9 +21,9 @@ import java.util.Map;
 import java.util.zip.GZIPInputStream;
 
 public class FactionController implements IFactionHandler {
-    public HashMap<Integer, Faction> factionsSync = new HashMap<>();
+    public HashMap<Integer, Faction> factionsSync = new HashMap<Integer, Faction>();
 
-    public HashMap<Integer, Faction> factions = new HashMap<>();
+    public HashMap<Integer, Faction> factions = new HashMap<Integer, Faction>();
 
     public static FactionController instance = new FactionController();
 
@@ -37,10 +37,10 @@ public class FactionController implements IFactionHandler {
     }
 
     public void load() {
-        factions = new HashMap<>();
+        factions = new HashMap<Integer, Faction>();
         lastUsedID = 0;
         try {
-            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.getWorldSaveDirectory();
             if (saveDir == null) {
                 return;
             }
@@ -76,7 +76,7 @@ public class FactionController implements IFactionHandler {
     }
 
     public void loadFactions(DataInputStream stream) throws IOException {
-        HashMap<Integer, Faction> factions = new HashMap<>();
+        HashMap<Integer, Faction> factions = new HashMap<Integer, Faction>();
         NBTTagCompound nbttagcompound1 = CompressedStreamTools.read(stream);
         lastUsedID = nbttagcompound1.getInteger("lastID");
         NBTTagList list = nbttagcompound1.getTagList("NPCFactions", 10);
@@ -108,7 +108,7 @@ public class FactionController implements IFactionHandler {
 
     public void saveFactions() {
         try {
-            File saveDir = CustomNpcs.INSTANCE.getWorldSaveDirectory();
+            File saveDir = CustomNpcs.getWorldSaveDirectory();
             File file = new File(saveDir, "factions.dat_new");
             File file1 = new File(saveDir, "factions.dat_old");
             File file2 = new File(saveDir, "factions.dat");
@@ -146,7 +146,7 @@ public class FactionController implements IFactionHandler {
         }
         factions.remove(faction.id);
         factions.put(faction.id, faction);
-        Server.sendToAll(CustomNpcs.INSTANCE.getServer(), EnumPacketClient.SYNC_UPDATE, SyncType.FACTION, faction.writeNBT(new NBTTagCompound()));
+        Server.sendToAll(CustomNpcs.Server, EnumPacketClient.SYNC_UPDATE, SyncType.FACTION, faction.writeNBT(new NBTTagCompound()));
         saveFactions();
     }
 
@@ -160,7 +160,6 @@ public class FactionController implements IFactionHandler {
         return lastUsedID;
     }
 
-    @Override
     public IFaction delete(int id) {
         if (id < 0 || factions.size() <= 1)
             return null;
@@ -169,7 +168,7 @@ public class FactionController implements IFactionHandler {
             return null;
         saveFactions();
         faction.id = -1;
-        Server.sendToAll(CustomNpcs.INSTANCE.getServer(), EnumPacketClient.SYNC_REMOVE, SyncType.FACTION, id);
+        Server.sendToAll(CustomNpcs.Server, EnumPacketClient.SYNC_REMOVE, SyncType.FACTION, id);
         return faction;
     }
 
@@ -211,7 +210,7 @@ public class FactionController implements IFactionHandler {
 
     @Override
     public List<IFaction> list() {
-        return new ArrayList<>(factions.values());
+        return new ArrayList<IFaction>(factions.values());
     }
 
     @Override

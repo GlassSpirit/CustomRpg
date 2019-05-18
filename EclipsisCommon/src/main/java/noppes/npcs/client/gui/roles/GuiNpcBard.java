@@ -7,7 +7,7 @@ import noppes.npcs.client.controllers.MusicController;
 import noppes.npcs.client.gui.select.GuiSoundSelection;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.JobBard;
 
 public class GuiNpcBard extends GuiNPCInterface2 implements ISubGuiListener {

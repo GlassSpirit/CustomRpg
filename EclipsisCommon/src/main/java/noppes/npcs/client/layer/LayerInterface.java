@@ -10,7 +10,7 @@ import net.minecraft.entity.EntityLivingBase;
 import noppes.npcs.ModelData;
 import noppes.npcs.ModelPartData;
 import noppes.npcs.client.ClientProxy;
-import noppes.npcs.common.entity.EntityCustomNpc;
+import noppes.npcs.entity.EntityCustomNpc;
 
 public abstract class LayerInterface implements LayerRenderer {
     protected RenderLiving render;
@@ -28,9 +28,9 @@ public abstract class LayerInterface implements LayerRenderer {
 
     public void preRender(ModelPartData data) {
         if (data.playerTexture)
-            ClientProxy.Companion.bindTexture(npc.textureLocation);
+            ClientProxy.bindTexture(npc.textureLocation);
         else
-            ClientProxy.Companion.bindTexture(data.getResource());
+            ClientProxy.bindTexture(data.getResource());
         if (npc.hurtTime > 0 || npc.deathTime > 0) {
             return;
         }

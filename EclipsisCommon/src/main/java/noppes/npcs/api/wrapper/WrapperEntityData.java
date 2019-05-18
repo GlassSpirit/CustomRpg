@@ -17,17 +17,29 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import noppes.npcs.LogWriter;
 import noppes.npcs.api.entity.IEntity;
 import noppes.npcs.controllers.PixelmonHelper;
-import noppes.npcs.common.entity.EntityProjectile;
+import noppes.npcs.entity.EntityProjectile;
 
 public class WrapperEntityData implements ICapabilityProvider {
 
-    private static final ResourceLocation key = new ResourceLocation("customnpcs", "entitydata");
     @CapabilityInject(WrapperEntityData.class)
     public static Capability<WrapperEntityData> ENTITYDATA_CAPABILITY = null;
+
     public IEntity base;
 
     public WrapperEntityData(IEntity base) {
         this.base = base;
+    }
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+        return capability == ENTITYDATA_CAPABILITY;
+    }
+
+    @Override
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+        if (hasCapability(capability, facing))
+            return (T) this;
+        return null;
     }
 
     public static IEntity get(Entity entity) {
@@ -40,6 +52,8 @@ public class WrapperEntityData implements ICapabilityProvider {
         }
         return data.base;
     }
+
+    private static final ResourceLocation key = new ResourceLocation("customnpcs", "entitydata");
 
     public static void register(net.minecraftforge.event.AttachCapabilitiesEvent<Entity> event) {
         event.addCapability(key, getData(event.getObject()));
@@ -69,17 +83,5 @@ public class WrapperEntityData implements ICapabilityProvider {
             return new WrapperEntityData(new EntityProjectileWrapper((EntityProjectile) entity));
         return new WrapperEntityData(new EntityWrapper(entity));
 
-    }
-
-    @Override
-    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-        return capability == ENTITYDATA_CAPABILITY;
-    }
-
-    @Override
-    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-        if (hasCapability(capability, facing))
-            return (T) this;
-        return null;
     }
 }

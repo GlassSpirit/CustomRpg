@@ -8,10 +8,9 @@ import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.ForgeChunkManager.LoadingCallback;
 import net.minecraftforge.common.ForgeChunkManager.Ticket;
 import net.minecraftforge.common.ForgeChunkManager.Type;
+import noppes.npcs.CustomNpcs;
 import noppes.npcs.api.constants.JobType;
-import noppes.npcs.common.CustomNpcs;
-import noppes.npcs.common.CustomNpcsConfig;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,23 +19,23 @@ import java.util.List;
 public class ChunkController implements LoadingCallback {
     public static ChunkController instance;
 
-    private HashMap<Entity, Ticket> tickets = new HashMap<>();
+    private HashMap<Entity, Ticket> tickets = new HashMap<Entity, Ticket>();
 
     public ChunkController() {
         instance = this;
     }
 
     public void clear() {
-        tickets = new HashMap<>();
+        tickets = new HashMap<Entity, Ticket>();
     }
 
     public Ticket getTicket(EntityNPCInterface npc) {
         Ticket ticket = tickets.get(npc);
         if (ticket != null)
             return ticket;
-        if (size() >= CustomNpcsConfig.ChuckLoaders)
+        if (size() >= CustomNpcs.ChuckLoaders)
             return null;
-        ticket = ForgeChunkManager.requestTicket(CustomNpcs.INSTANCE, npc.world, Type.ENTITY);
+        ticket = ForgeChunkManager.requestTicket(CustomNpcs.instance, npc.world, Type.ENTITY);
         if (ticket == null)
             return null;
         ticket.bindEntity(npc);

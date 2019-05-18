@@ -8,7 +8,7 @@ import noppes.npcs.client.NoppesUtil;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.containers.ContainerNpcQuestReward;
 import noppes.npcs.controllers.data.Quest;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 public class GuiNpcQuestReward extends GuiContainerNPCInterface implements ITextfieldListener {
     private Quest quest;

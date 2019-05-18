@@ -6,7 +6,7 @@ import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.SubGuiEditText;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
-import noppes.npcs.common.entity.EntityNPCInterface;
+import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.Vector;
 
 public class GuiNPCManageLinkedNpc extends GuiNPCInterface2 implements IScrollData, ISubGuiListener {
     private GuiCustomScroll scroll;
-    private List<String> data = new ArrayList<String>();
+    private List<String> data = new ArrayList<>();
 
     public static GuiScreen Instance;
 
@@ -64,7 +64,7 @@ public class GuiNPCManageLinkedNpc extends GuiNPCInterface2 implements IScrollDa
 
     @Override
     public void setData(Vector<String> list, HashMap<String, Integer> data) {
-        this.data = new ArrayList<String>(list);
+        this.data = new ArrayList<>(list);
         initGui();
     }
 
