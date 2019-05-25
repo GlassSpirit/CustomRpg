@@ -10,7 +10,7 @@ object ClientRpgData {
     const val INVENTORY_BUILD_MODE = 0
     const val INVENTORY_RPG_MODE = 1
 
-    var playerInventoryMode: Int = INVENTORY_RPG_MODE
+    var playerInventoryMode: Int = INVENTORY_BUILD_MODE
 
     var characterName: String = Minecraft().player.name
 
@@ -44,7 +44,7 @@ class RpgClass(val name: String) {
     var totalExperience: Int = 0
 }
 
-class RpgSkill(val name: String): RpgUsable {
+class RpgSkill(val name: String) : RpgUsable {
     override fun use() {
         Minecraft().player.sendChatMessage("/skill $name")
     }

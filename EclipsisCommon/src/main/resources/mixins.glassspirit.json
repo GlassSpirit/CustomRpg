@@ -8,14 +8,18 @@
     "blocks.MixinBlockFence",
     "blocks.MixinBlockLadder",
     "blocks.MixinBlockLeaves",
-    "blocks.MixinBlockRail"
+    "blocks.MixinBlockRail",
+    "common.MixinArmorDamageReduction",
+    "common.MixinFoodStats",
+    "common.MixinItemDurability"
   ],
   "client": [
+    "client.MixinDisableHurtRedEffect",
+    "client.MixinFakeAttackSpeedSwing",
+    "client.MixinFakeHeldItemKeybinds",
     "client.MixinLoadController",
     "client.MixinMinecraft",
-    "client.MixinSplashProgress",
-    "client.MixinFakeHeldItemMouse",
-    "client.MixinFakeHeldItemKeyboard"
+    "client.MixinSplashProgress"
   ],
   "minVersion": "0.7.4",
   "injectors": {

@@ -120,7 +120,7 @@ class EntityCorpse(worldIn: World) : Entity(worldIn), IInventory {
             return false
         if (!world.isRemote) {
             return if (!isUsableByPlayer(player)) {
-                player.sendMessage(TextComponentTranslation(I18n.format("RPGLoot.message.notOwner")))
+                player.sendMessage(TextComponentTranslation("RPGLoot.message.notOwner"))
                 false
             } else {
                 if (lootToPlayer(player))
@@ -157,7 +157,10 @@ class EntityCorpse(worldIn: World) : Entity(worldIn), IInventory {
             RPGLoot.networkChannel.send(TargetServer, CorpseSyncPacket(this))
         }
 
-        if (world.isRemote && RPGLoot.config.looting && Minecraft().player.uniqueID == owner && rand.nextBoolean() && drops.size > 0) {
+        if (world.isRemote && RPGLoot.config.looting
+                && drops.size > 0
+                && owner == null || Minecraft().player?.uniqueID == owner
+                && rand.nextBoolean()) {
             val xPosition = posX.toFloat() - 0.5f
             val yPosition = posY.toFloat() + 0.2f
             val z = posZ.toFloat() - 0.5f
@@ -166,11 +169,14 @@ class EntityCorpse(worldIn: World) : Entity(worldIn), IInventory {
             val var3 = rand.nextFloat() * 0.5f * 3.0f - rand.nextInt(2)
             world.spawnParticle(EnumParticleTypes.VILLAGER_HAPPY, xPosition.toDouble() + var1.toDouble(),
                     yPosition.toDouble() + var3.toDouble(), z.toDouble() + var2.toDouble(), 0.5, 0.5, 0.5)
-        } else {
-            val decayTime = RPGLoot.config.decayTime
-            if (decayTime > -1 && ticksExisted / 20 / 60 > decayTime || dispose) {
-                setDead()
-            }
+        }
+
+        //If corpse lays for 3 minutes remove owner
+        if (ticksExisted > 20 * 60 * 3) owner = null
+
+        val decayTime = RPGLoot.config.decayTime
+        if (decayTime > -1 && ticksExisted / 20 / 60 > decayTime || dispose) {
+            setDead()
         }
     }
 
