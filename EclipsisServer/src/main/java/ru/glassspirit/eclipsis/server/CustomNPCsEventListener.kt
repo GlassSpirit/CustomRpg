@@ -5,6 +5,7 @@ import cz.neumimto.rpg.NtRpgPlugin
 import cz.neumimto.rpg.configuration.DebugLevel
 import cz.neumimto.rpg.players.CharacterService
 import cz.neumimto.rpg.players.ExperienceSources
+import net.minecraft.entity.player.EntityPlayer
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import noppes.npcs.api.NpcAPI
 import noppes.npcs.api.constants.EntityType
@@ -59,5 +60,8 @@ object CustomNPCsEventListener {
         }
     }
 
-
+    @JvmStatic
+    fun getCharacterLevel(player: EntityPlayer): Int {
+        return characterService.getCharacter(player.uniqueID).level
+    }
 }

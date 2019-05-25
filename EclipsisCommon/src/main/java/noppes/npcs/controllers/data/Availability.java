@@ -6,6 +6,8 @@ import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ServerScoreboard;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.WorldServer;
+import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraftforge.fml.relauncher.Side;
 import noppes.npcs.CustomNpcs;
 import noppes.npcs.ICompatibilty;
 import noppes.npcs.VersionCompatibility;
@@ -16,13 +18,12 @@ import noppes.npcs.constants.*;
 import noppes.npcs.controllers.FactionController;
 import noppes.npcs.controllers.PlayerQuestController;
 
+import java.lang.reflect.Method;
 import java.util.HashSet;
 
 public class Availability implements ICompatibilty, IAvailability {
-    public static HashSet<String> scoreboardValues = new HashSet<String>();
-
+    public static HashSet<String> scoreboardValues = new HashSet<>();
     public int version = VersionCompatibility.ModRev;
-
     public EnumAvailabilityDialog dialogAvailable = EnumAvailabilityDialog.Always;
     public EnumAvailabilityDialog dialog2Available = EnumAvailabilityDialog.Always;
     public EnumAvailabilityDialog dialog3Available = EnumAvailabilityDialog.Always;
@@ -31,7 +32,6 @@ public class Availability implements ICompatibilty, IAvailability {
     public int dialog2Id = -1;
     public int dialog3Id = -1;
     public int dialog4Id = -1;
-
     public EnumAvailabilityQuest questAvailable = EnumAvailabilityQuest.Always;
     public EnumAvailabilityQuest quest2Available = EnumAvailabilityQuest.Always;
     public EnumAvailabilityQuest quest3Available = EnumAvailabilityQuest.Always;
@@ -40,28 +40,23 @@ public class Availability implements ICompatibilty, IAvailability {
     public int quest2Id = -1;
     public int quest3Id = -1;
     public int quest4Id = -1;
-
     public EnumDayTime daytime = EnumDayTime.Always;
-
     public int factionId = -1;
     public int faction2Id = -1;
-
     public EnumAvailabilityFactionType factionAvailable = EnumAvailabilityFactionType.Always;
     public EnumAvailabilityFactionType faction2Available = EnumAvailabilityFactionType.Always;
-
     public EnumAvailabilityFaction factionStance = EnumAvailabilityFaction.Friendly;
     public EnumAvailabilityFaction faction2Stance = EnumAvailabilityFaction.Friendly;
-
     public EnumAvailabilityScoreboard scoreboardType = EnumAvailabilityScoreboard.EQUAL;
     public EnumAvailabilityScoreboard scoreboard2Type = EnumAvailabilityScoreboard.EQUAL;
-
     public String scoreboardObjective = "";
     public String scoreboard2Objective = "";
-
     public int scoreboardValue = 1;
     public int scoreboard2Value = 1;
-
     public int minPlayerLevel = 0;
+
+    private static Method GetCharacterLevel;
+    private boolean rpgLoaded = true;
 
     public void readFromNBT(NBTTagCompound compound) {
         version = compound.getInteger("ModRev");
@@ -129,6 +124,7 @@ public class Availability implements ICompatibilty, IAvailability {
         }
     }
 
+    @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setInteger("ModRev", version);
 
@@ -231,7 +227,23 @@ public class Availability implements ICompatibilty, IAvailability {
         if (!scoreboardAvailable(player, scoreboard2Objective, scoreboard2Type, scoreboard2Value))
             return false;
 
-        return player.experienceLevel >= minPlayerLevel;
+        return getCharacterExperienceLevel(player) >= minPlayerLevel;
+    }
+
+    private int getCharacterExperienceLevel(EntityPlayer player) {
+        if (rpgLoaded && FMLCommonHandler.instance().getSide() == Side.SERVER) {
+            try {
+                if (GetCharacterLevel == null) {
+                    Class CharacterService = Class.forName("ru.glassspirit.eclipsis.server.CustomNPCsEventListener");
+                    GetCharacterLevel = CharacterService.getMethod("getCharacterLevel", EntityPlayer.class);
+                }
+                return (int) GetCharacterLevel.invoke(null, player);
+            } catch (Exception e) {
+                rpgLoaded = false;
+                return player.experienceLevel;
+            }
+        }
+        return player.experienceLevel;
     }
 
     private boolean scoreboardAvailable(EntityPlayer player, String objective, EnumAvailabilityScoreboard type, int value) {

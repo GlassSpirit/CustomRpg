@@ -2,6 +2,7 @@ package ru.glassspirit.mixin.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.math.RayTraceResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -38,7 +39,7 @@ public abstract class MixinFakeAttackSpeedSwing {
     @Inject(method = "sendClickBlockToController", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/multiplayer/PlayerControllerMP;resetBlockRemoving()V"))
     private void sendClickBlockToController(boolean leftClick, CallbackInfo ci) {
         if (leftClick && this.objectMouseOver != null && this.objectMouseOver.typeOfHit == RayTraceResult.Type.ENTITY) {
-            clickMouse();
+            if (this.objectMouseOver.entityHit instanceof EntityLivingBase) clickMouse();
         }
     }
 
