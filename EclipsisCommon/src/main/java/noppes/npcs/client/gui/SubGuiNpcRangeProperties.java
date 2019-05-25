@@ -13,7 +13,7 @@ public class SubGuiNpcRangeProperties extends SubGuiInterface implements ITextfi
     private GuiNpcTextField soundSelected = null;
 
     public SubGuiNpcRangeProperties(DataStats stats) {
-        this.ranged = stats.ranged;
+        this.ranged = stats.getRanged();
         this.stats = stats;
         setBackground("menubg.png");
         xSize = 256;
@@ -42,7 +42,7 @@ public class SubGuiNpcRangeProperties extends SubGuiInterface implements ITextfi
         addTextField(new GuiNpcTextField(9, this, fontRenderer, guiLeft + 200, y, 30, 20, ranged.getMeleeRange() + ""));
         addLabel(new GuiNpcLabel(16, "stats.meleerange", guiLeft + 135, y + 5));
         getTextField(9).numbersOnly = true;
-        getTextField(9).setMinMaxDefault(0, stats.aggroRange, 5);
+        getTextField(9).setMinMaxDefault(0, stats.getAggroRange(), 5);
 
         addTextField(new GuiNpcTextField(3, this, fontRenderer, guiLeft + 80, y += 22, 50, 18, ranged.getDelayMin() + ""));
         addLabel(new GuiNpcLabel(3, "stats.mindelay", guiLeft + 5, y + 5));

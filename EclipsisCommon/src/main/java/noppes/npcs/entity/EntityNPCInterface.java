@@ -193,10 +193,10 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
         this.getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
 
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(stats.maxHealth);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(stats.getMaxHealth());
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(CustomNpcs.NpcNavRange);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(this.getSpeed());
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(stats.melee.getStrength());
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(stats.getMelee().getStrength());
         this.getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(this.getSpeed() * 10);
     }
 
@@ -234,8 +234,8 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
     @Override
     public boolean attackEntityAsMob(Entity par1Entity) {
         //float f = (float)this.getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
-        float f = stats.melee.getStrength();
-        if (stats.melee.getDelay() < 10) {
+        float f = stats.getMelee().getStrength();
+        if (stats.getMelee().getDelay() < 10) {
             par1Entity.hurtResistantTime = 0;
         }
         if (par1Entity instanceof EntityLivingBase) {
@@ -250,8 +250,8 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
         if (var4) {
             if (getOwner() instanceof EntityPlayer)
                 EntityUtil.setRecentlyHit((EntityLivingBase) par1Entity);
-            if (stats.melee.getKnockback() > 0) {
-                par1Entity.addVelocity((-MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F) * stats.melee.getKnockback() * 0.5F), 0.1D, (MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F) * stats.melee.getKnockback() * 0.5F));
+            if (stats.getMelee().getKnockback() > 0) {
+                par1Entity.addVelocity((-MathHelper.sin(this.rotationYaw * (float) Math.PI / 180.0F) * stats.getMelee().getKnockback() * 0.5F), 0.1D, (MathHelper.cos(this.rotationYaw * (float) Math.PI / 180.0F) * stats.getMelee().getKnockback() * 0.5F));
                 this.motionX *= 0.6D;
                 this.motionZ *= 0.6D;
             }
@@ -260,11 +260,11 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
             }
         }
 
-        if (stats.melee.getEffectType() != PotionEffectType.NONE) {
-            if (stats.melee.getEffectType() != PotionEffectType.FIRE)
-                ((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(PotionEffectType.getMCType(stats.melee.getEffectType()), stats.melee.getEffectTime() * 20, stats.melee.getEffectStrength()));
+        if (stats.getMelee().getEffectType() != PotionEffectType.NONE) {
+            if (stats.getMelee().getEffectType() != PotionEffectType.FIRE)
+                ((EntityLivingBase) par1Entity).addPotionEffect(new PotionEffect(PotionEffectType.getMCType(stats.getMelee().getEffectType()), stats.getMelee().getEffectTime() * 20, stats.getMelee().getEffectStrength()));
             else
-                par1Entity.setFire(stats.melee.getEffectTime());
+                par1Entity.setFire(stats.getMelee().getEffectTime());
         }
         return var4;
     }
@@ -285,10 +285,10 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
             if (!isKilled() && this.ticksExisted % 20 == 0) {
                 advanced.scenes.update();
                 if (this.getHealth() < this.getMaxHealth()) {
-                    if (stats.healthRegen > 0 && !isAttacking())
-                        heal(stats.healthRegen);
-                    if (stats.combatRegen > 0 && isAttacking())
-                        heal(stats.combatRegen);
+                    if (stats.getHealthRegen() > 0 && !isAttacking())
+                        heal(stats.getHealthRegen());
+                    if (stats.getCombatRegen() > 0 && isAttacking())
+                        heal(stats.getCombatRegen());
                 }
                 if (faction.getsAttacked && !isAttacking()) {
                     List<EntityMob> list = this.world.getEntitiesWithinAABB(EntityMob.class, this.getEntityBoundingBox().grow(16, 16, 16));
@@ -329,7 +329,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 
         wasKilled = isKilled();
 
-        if (this.world.isDaytime() && !this.world.isRemote && this.stats.burnInSun) {
+        if (this.world.isDaytime() && !this.world.isRemote && stats.getBurnInSun()) {
             float f = this.getBrightness();
 
             if (f > 0.5F && this.rand.nextFloat() * 30.0F < (f - 0.4F) * 2.0F && this.world.canBlockSeeSky(new BlockPos(this))) {
@@ -454,7 +454,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
         if (damagesource.damageType.equals("outOfWorld") && isKilled()) {
             reset();
         }
-        i = stats.resistances.applyResistance(damagesource, i);
+        i = stats.getResistances().applyResistance(damagesource, i);
 
         if ((float) this.hurtResistantTime > (float) this.maxHurtResistantTime / 2.0F && i <= this.lastDamage)
             return false;
@@ -566,12 +566,12 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
             return;
         }
 
-        NpcEvent.RangedLaunchedEvent event = new NpcEvent.RangedLaunchedEvent(wrappedNPC, entity, stats.ranged.getStrength());
+        NpcEvent.RangedLaunchedEvent event = new NpcEvent.RangedLaunchedEvent(wrappedNPC, entity, stats.getRanged().getStrength());
         if (EventHooks.onNPCRangedLaunched(this, event))
             return;
 
-        for (int i = 0; i < this.stats.ranged.getShotCount(); i++) {
-            EntityProjectile projectile = shoot(entity, stats.ranged.getAccuracy(), proj, f == 1);
+        for (int i = 0; i < stats.getRanged().getShotCount(); i++) {
+            EntityProjectile projectile = shoot(entity, stats.getRanged().getAccuracy(), proj, f == 1);
             projectile.damage = event.damage;
             projectile.callback = (projectile1, pos, entity1) -> {
                 if (proj.getItem() == CustomItems.soulstoneFull) {
@@ -583,11 +583,11 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
                             ((EntityLivingBase) e).setRevengeTarget((EntityLivingBase) entity1);
                     }
                 }
-                projectile1.playSound(stats.ranged.getSoundEvent(entity1 != null ? 1 : 2), 1.0F, 1.2F / (getRNG().nextFloat() * 0.2F + 0.9F));
+                projectile1.playSound(stats.getRanged().getSoundEvent(entity1 != null ? 1 : 2), 1.0F, 1.2F / (getRNG().nextFloat() * 0.2F + 0.9F));
                 return false;
             };
         }
-        this.playSound(this.stats.ranged.getSoundEvent(0), 2.0F, 1.0f);
+        this.playSound(this.stats.getRanged().getSoundEvent(0), 2.0F, 1.0f);
 
     }
 
@@ -796,14 +796,14 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 
     @Override
     protected int decreaseAirSupply(int par1) {
-        if (!this.stats.canDrown)
+        if (!this.stats.getCanDrown())
             return par1;
         return super.decreaseAirSupply(par1);
     }
 
     @Override
     public EnumCreatureAttribute getCreatureAttribute() {
-        return this.stats == null ? null : this.stats.creatureType;
+        return this.stats == null ? null : EnumCreatureAttribute.values()[stats.getCreatureType()];
     }
 
     @Override
@@ -969,7 +969,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
         width = (width / 5f) * display.getSize();
         height = (height / 5f) * display.getSize();
 
-        if (!display.getHasHitbox() || isKilled() && stats.hideKilledBody) {
+        if (!display.getHasHitbox() || isKilled() && stats.getHideDeadBody()) {
             width = 0.0f;
         }
 
@@ -978,7 +978,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 
     @Override
     public void onDeathUpdate() {
-        if (stats.spawnCycle == 3 || stats.spawnCycle == 4) {
+        if (stats.getRespawnType() == 3 || stats.getRespawnType() == 4) {
             super.onDeathUpdate();
             return;
         }
@@ -990,7 +990,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
             setDead();
         }
         if (killedtime < System.currentTimeMillis()) {
-            if (stats.spawnCycle == 0 || (this.world.isDaytime() && stats.spawnCycle == 1) || (!this.world.isDaytime() && stats.spawnCycle == 2)) {
+            if (stats.getRespawnType() == 0 || (this.world.isDaytime() && stats.getRespawnType() == 1) || (!this.world.isDaytime() && stats.getRespawnType() == 2)) {
                 reset();
             }
         }
@@ -1106,7 +1106,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 
     @Override
     protected boolean canDespawn() {
-        return stats.spawnCycle == 4;
+        return stats.getRespawnType() == 4;
     }
 
     @Override
@@ -1220,7 +1220,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
         removePassengers();
         dismountRidingEntity();
 
-        if (world.isRemote || stats.spawnCycle == 3 || stats.spawnCycle == 4) {
+        if (world.isRemote || stats.getRespawnType() == 3 || stats.getRespawnType() == 4) {
             //this.spawnExplosionParticle();
             delete();
         } else {
@@ -1232,7 +1232,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
             updateHitbox();
 
             if (killedtime <= 0)
-                killedtime = stats.respawnTime * 1000 + System.currentTimeMillis();
+                killedtime = stats.getRespawnTime() * 1000 + System.currentTimeMillis();
 
             if (advanced.role != RoleType.NONE && roleInterface != null)
                 roleInterface.killed();
@@ -1378,7 +1378,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 
     @Override
     public void knockBack(Entity par1Entity, float strength, double ratioX, double ratioZ) {
-        super.knockBack(par1Entity, strength * (2 - stats.resistances.knockback), ratioX, ratioZ);
+        super.knockBack(par1Entity, strength * (2 - stats.getResistances().knockback), ratioX, ratioZ);
     }
 
     public Faction getFaction() {
@@ -1401,7 +1401,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 
     @Override
     public boolean isPotionApplicable(PotionEffect effect) {
-        if (stats.potionImmune)
+        if (stats.getPotionImmune())
             return false;
         if (getCreatureAttribute() == EnumCreatureAttribute.ARTHROPOD && effect.getPotion() == MobEffects.POISON)
             return false;
@@ -1428,11 +1428,11 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
     public NBTTagCompound writeSpawnData() {
         NBTTagCompound compound = new NBTTagCompound();
         display.writeToNBT(compound);
-        compound.setInteger("MaxHealth", stats.maxHealth);
+        compound.setInteger("MaxHealth", stats.getMaxHealth());
         compound.setTag("Armor", NBTTags.nbtIItemStackMap(inventory.armor));
         compound.setTag("Weapons", NBTTags.nbtIItemStackMap(inventory.weapons));
         compound.setInteger("Speed", ais.getWalkingSpeed());
-        compound.setBoolean("DeadBody", stats.hideKilledBody);
+        compound.setBoolean("DeadBody", stats.getHideDeadBody());
         compound.setInteger("StandingState", ais.getStandingType());
         compound.setInteger("MovingState", ais.getMovingType());
         compound.setInteger("Orientation", ais.orientation);
@@ -1471,7 +1471,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
     public void readSpawnData(NBTTagCompound compound) {
         stats.setMaxHealth(compound.getInteger("MaxHealth"));
         ais.setWalkingSpeed(compound.getInteger("Speed"));
-        stats.hideKilledBody = compound.getBoolean("DeadBody");
+        stats.setHideDeadBody(compound.getBoolean("DeadBody"));
         ais.setStandingType(compound.getInteger("StandingState"));
         ais.setMovingType(compound.getInteger("MovingState"));
         ais.orientation = compound.getInteger("Orientation");
@@ -1530,18 +1530,18 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
 
     public void setImmuneToFire(boolean immuneToFire) {
         this.isImmuneToFire = immuneToFire;
-        stats.immuneToFire = immuneToFire;
+        stats.setImmuneToFire(immuneToFire);
     }
 
     @Override
     public void fall(float distance, float modifier) {
-        if (!this.stats.noFallDamage)
+        if (!this.stats.getNoFallDamage())
             super.fall(distance, modifier);
     }
 
     @Override
     public void setInWeb() {
-        if (!stats.ignoreCobweb)
+        if (!stats.getIgnoreCobweb())
             super.setInWeb();
     }
 

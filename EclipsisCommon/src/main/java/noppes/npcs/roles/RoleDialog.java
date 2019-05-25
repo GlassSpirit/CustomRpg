@@ -15,6 +15,7 @@ import noppes.npcs.controllers.data.Quest;
 import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 public class RoleDialog extends RoleInterface implements IRoleDialog {
@@ -22,8 +23,8 @@ public class RoleDialog extends RoleInterface implements IRoleDialog {
     public String dialog = "";
     public int questId = -1;
 
-    public HashMap<Integer, String> options = new HashMap<Integer, String>();
-    public HashMap<Integer, String> optionsTexts = new HashMap<Integer, String>();
+    public Map<Integer, String> options = new HashMap<>();
+    public Map<Integer, String> optionsTexts = new HashMap<>();
 
     public RoleDialog(EntityNPCInterface npc) {
         super(npc);

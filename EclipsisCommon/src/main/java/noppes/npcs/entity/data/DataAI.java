@@ -49,7 +49,7 @@ public class DataAI implements INPCAi {
     public int walkingRange = 10;
     private int moveSpeed = 5;
 
-    private List<int[]> movingPath = new ArrayList<int[]>();
+    private List<int[]> movingPath = new ArrayList<>();
     private BlockPos startPos = null;
     public int movingPos = 0;
     public int movingPattern = 0; // 0:Looping 1:Backtracking
@@ -91,7 +91,7 @@ public class DataAI implements INPCAi {
         walkingRange = compound.getInteger("WalkingRange");
         setWalkingSpeed(compound.getInteger("MoveSpeed"));
 
-        setMovingPath(NBTTags.getIntegerArraySet(compound.getTagList("MovingPathNew", 10)));
+        setMovingPath(NBTTags.getIntegerArrayList(compound.getTagList("MovingPathNew", 10)));
         movingPos = compound.getInteger("MovingPos");
         movingPattern = compound.getInteger("MovingPatern");
 
@@ -134,7 +134,7 @@ public class DataAI implements INPCAi {
         compound.setInteger("WalkingRange", walkingRange);
         compound.setInteger("MoveSpeed", moveSpeed);
 
-        compound.setTag("MovingPathNew", NBTTags.nbtIntegerArraySet(movingPath));
+        compound.setTag("MovingPathNew", NBTTags.nbtIntegerArrayList(movingPath));
         compound.setInteger("MovingPos", movingPos);
         compound.setInteger("MovingPatern", movingPattern);
 

@@ -143,7 +143,7 @@ public class RenderNPCInterface<T extends EntityNPCInterface> extends RenderLivi
 
     @Override
     public void doRender(T npc, double d, double d1, double d2, float f, float f1) {
-        if (npc.isKilled() && npc.stats.hideKilledBody && npc.deathTime > 20) {
+        if (npc.isKilled() && npc.stats.getHideDeadBody() && npc.deathTime > 20) {
             return;
         }
         if ((npc.display.getBossbar() == 1 || npc.display.getBossbar() == 2 && npc.isAttacking()) && !npc.isKilled() && npc.deathTime <= 20 && npc.canSee(Minecraft.getMinecraft().player)) {

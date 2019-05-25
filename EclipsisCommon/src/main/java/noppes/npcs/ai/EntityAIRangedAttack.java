@@ -26,7 +26,7 @@ public class EntityAIRangedAttack extends EntityAIBase {
             throw new IllegalArgumentException("ArrowAttackGoal requires Mob implements RangedAttackMob");
         }
         this.npc = (EntityNPCInterface) par1IRangedAttackMob;
-        this.rangedAttackTime = this.npc.stats.ranged.getDelayMin() / 2;
+        this.rangedAttackTime = this.npc.stats.getRanged().getDelayMin() / 2;
         this.setMutexBits(this.navOverride ? AiMutex.PATHING : AiMutex.LOOK + AiMutex.PASSIVE);
     }
 
@@ -34,11 +34,11 @@ public class EntityAIRangedAttack extends EntityAIBase {
     public boolean shouldExecute() {
         attackTarget = this.npc.getAttackTarget();
 
-        if (attackTarget == null || !attackTarget.isEntityAlive() || !npc.isInRange(attackTarget, npc.stats.aggroRange) || this.npc.inventory.getProjectile() == null)
+        if (attackTarget == null || !attackTarget.isEntityAlive() || !npc.isInRange(attackTarget, npc.stats.getAggroRange()) || this.npc.inventory.getProjectile() == null)
             return false;
 
 
-        return this.npc.stats.ranged.getMeleeRange() < 1 || !npc.isInRange(attackTarget, this.npc.stats.ranged.getMeleeRange());
+        return this.npc.stats.getRanged().getMeleeRange() < 1 || !npc.isInRange(attackTarget, this.npc.stats.getRanged().getMeleeRange());
     }
 
     @Override
@@ -48,14 +48,14 @@ public class EntityAIRangedAttack extends EntityAIBase {
         this.npc.getNavigator().clearPath();
         this.moveTries = 0;
         this.hasFired = false;
-        this.rangedAttackTime = this.npc.stats.ranged.getDelayMin() / 2;
+        this.rangedAttackTime = this.npc.stats.getRanged().getDelayMin() / 2;
     }
 
     @Override
     public void updateTask() {
         this.npc.getLookHelper().setLookPositionWithEntity(this.attackTarget, 30.0F, 30.0F);
         double var1 = this.npc.getDistanceSq(this.attackTarget.posX, this.attackTarget.getEntityBoundingBox().minY, this.attackTarget.posZ);
-        float range = this.npc.stats.ranged.getRange() * this.npc.stats.ranged.getRange();
+        float range = this.npc.stats.getRanged().getRange() * this.npc.stats.getRanged().getRange();
 
         if (!navOverride && this.npc.ais.directLOS) {
             if (this.npc.getEntitySenses().canSee(this.attackTarget)) {
@@ -73,19 +73,19 @@ public class EntityAIRangedAttack extends EntityAIBase {
         }
 
         if (this.rangedAttackTime-- <= 0) {
-            if (var1 <= (double) range && (this.npc.getEntitySenses().canSee(this.attackTarget) || this.npc.stats.ranged.getFireType() == 2)) {
-                if (this.burstCount++ <= this.npc.stats.ranged.getBurst()) {
-                    this.rangedAttackTime = this.npc.stats.ranged.getBurstDelay();
+            if (var1 <= (double) range && (this.npc.getEntitySenses().canSee(this.attackTarget) || this.npc.stats.getRanged().getFireType() == 2)) {
+                if (this.burstCount++ <= this.npc.stats.getRanged().getBurst()) {
+                    this.rangedAttackTime = this.npc.stats.getRanged().getBurstDelay();
                 } else {
                     this.burstCount = 0;
                     this.hasFired = true;
-                    this.rangedAttackTime = this.npc.stats.ranged.getDelayRNG();
+                    this.rangedAttackTime = this.npc.stats.getRanged().getDelayRNG();
                 }
 
                 if (this.burstCount > 1) {
                     boolean indirect = false;
 
-                    switch (this.npc.stats.ranged.getFireType()) {
+                    switch (this.npc.stats.getRanged().getFireType()) {
                         case 1:
                             indirect = var1 > (double) range / 2;
                             break;

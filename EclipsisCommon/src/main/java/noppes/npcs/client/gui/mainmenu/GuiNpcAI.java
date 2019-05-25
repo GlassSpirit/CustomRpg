@@ -68,7 +68,7 @@ public class GuiNpcAI extends GuiNPCInterface2 implements ITextfieldListener, IG
             addLabel(new GuiNpcLabel(21, label, guiLeft + 300, guiTop + 140));
             addTextField(new GuiNpcTextField(3, this, fontRenderer, guiLeft + 380, guiTop + 135, 30, 20, ai.getTacticalRange() + ""));
             getTextField(3).numbersOnly = true;
-            getTextField(3).setMinMaxDefault(1, npc.stats.aggroRange, 5);
+            getTextField(3).setMinMaxDefault(1, npc.stats.getAggroRange(), 5);
         }
 
         getButton(17).setEnabled(this.ai.onAttack == 0);

@@ -696,7 +696,7 @@ public class NoppesUtilServer {
     }
 
     public static boolean IsItemStackNull(ItemStack is) {
-        return is == null || is.isEmpty() || is == ItemStack.EMPTY || is.getItem() == null;
+        return is == null || is.isEmpty() || is == ItemStack.EMPTY;
     }
 
     public static ItemStack ChangeItemStack(ItemStack is, Item item) {

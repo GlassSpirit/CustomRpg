@@ -46,7 +46,7 @@ public class EntityAIOrbitTarget extends EntityAIBase {
         if (decay)
             distance = npc.ais.getTacticalRange();
         else
-            distance = npc.stats.ranged.getRange();
+            distance = npc.stats.getRanged().getRange();
 
         return !npc.isInRange(targetEntity, distance / 2) && (this.npc.inventory.getProjectile() != null || npc.isInRange(targetEntity, distance));
     }

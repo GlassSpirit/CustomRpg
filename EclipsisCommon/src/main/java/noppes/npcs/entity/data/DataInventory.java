@@ -15,7 +15,6 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.ITextComponent;
 import noppes.npcs.NBTTags;
-import noppes.npcs.NoppesUtilServer;
 import noppes.npcs.api.CustomNPCsException;
 import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.entity.data.INPCInventory;
@@ -29,16 +28,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DataInventory implements IInventory, INPCInventory {
-    public Map<Integer, IItemStack> drops = new HashMap<Integer, IItemStack>();
-    public Map<Integer, Integer> dropchance = new HashMap<Integer, Integer>();
-    public Map<Integer, IItemStack> weapons = new HashMap<Integer, IItemStack>();
-    public Map<Integer, IItemStack> armor = new HashMap<Integer, IItemStack>();
-
+    public Map<Integer, IItemStack> weapons = new HashMap<>();
+    public Map<Integer, IItemStack> armor = new HashMap<>();
+    public Map<Integer, IItemStack> drops = new HashMap<>();
+    public Map<Integer, Float> dropChance = new HashMap<>();
+    public int lootMode = 0;
     private int minExp = 0;
     private int maxExp = 0;
-
-    public int lootMode = 0;
-
     private EntityNPCInterface npc;
 
     public DataInventory(EntityNPCInterface npc) {
@@ -51,7 +47,7 @@ public class DataInventory implements IInventory, INPCInventory {
         nbttagcompound.setTag("NpcInv", NBTTags.nbtIItemStackMap(drops));
         nbttagcompound.setTag("Armor", NBTTags.nbtIItemStackMap(armor));
         nbttagcompound.setTag("Weapons", NBTTags.nbtIItemStackMap(weapons));
-        nbttagcompound.setTag("DropChance", NBTTags.nbtIntegerIntegerMap(dropchance));
+        nbttagcompound.setTag("DropChance", NBTTags.nbtIntegerFloatMap(dropChance));
         nbttagcompound.setInteger("LootMode", lootMode);
         return nbttagcompound;
     }
@@ -62,7 +58,7 @@ public class DataInventory implements IInventory, INPCInventory {
         drops = NBTTags.getIItemStackMap(nbttagcompound.getTagList("NpcInv", 10));
         armor = NBTTags.getIItemStackMap(nbttagcompound.getTagList("Armor", 10));
         weapons = NBTTags.getIItemStackMap(nbttagcompound.getTagList("Weapons", 10));
-        dropchance = NBTTags.getIntegerIntegerMap(nbttagcompound.getTagList("DropChance", 10));
+        dropChance = NBTTags.getIntegerFloatMap(nbttagcompound.getTagList("DropChance", 10));
         lootMode = nbttagcompound.getInteger("LootMode");
     }
 
@@ -112,47 +108,42 @@ public class DataInventory implements IInventory, INPCInventory {
 
     @Override
     public IItemStack getDropItem(int slot) {
-        if (slot < 0 || slot > 8)
-            throw new CustomNPCsException("Bad slot number: " + slot);
+        if (slot < 0 || slot > 26) throw new CustomNPCsException("Bad slot number: " + slot);
 
         IItemStack item = npc.inventory.drops.get(slot);
-        if (item == null)
-            return null;
+        if (item == null) return null;
 
         return NpcAPI.Instance().getIItemStack(item.getMCItemStack());
     }
 
     @Override
-    public void setDropItem(int slot, IItemStack item, int chance) {
-        if (slot < 0 || slot > 8)
-            throw new CustomNPCsException("Bad slot number: " + slot);
-
-        chance = ValueUtil.CorrectInt(chance, 1, 100);
+    public void setDropItem(int slot, IItemStack item, float chance) {
+        if (slot < 0 || slot > 26) throw new CustomNPCsException("Bad slot number: " + slot);
+        chance = ValueUtil.correctFloat(chance, 0, 100);
 
         if (item == null || item.isEmpty()) {
-            dropchance.remove(slot);
+            dropChance.remove(slot);
             drops.remove(slot);
         } else {
-            dropchance.put(slot, chance);
+            dropChance.put(slot, chance);
             drops.put(slot, item);
         }
     }
 
 
     public void dropStuff(Entity entity, DamageSource damagesource) {
-        ArrayList<EntityItem> list = new ArrayList<EntityItem>();
+        ArrayList<EntityItem> list = new ArrayList<>();
         for (int i : drops.keySet()) {
             IItemStack item = drops.get(i);
             if (item == null)
                 continue;
-            int dchance = 100;
-            if (dropchance.containsKey(i))
-                dchance = dropchance.get(i);
-            int chance = npc.world.rand.nextInt(100) + dchance;
+            float dchance = 100;
+            if (dropChance.containsKey(i))
+                dchance = dropChance.get(i);
+            float chance = npc.world.rand.nextFloat() * 100 + dchance;
             if (chance >= 100) {
                 EntityItem e = getEntityItem(item.getMCItemStack().copy());
-                if (e != null)
-                    list.add(e);
+                if (e != null) list.add(e);
             }
         }
 
@@ -171,15 +162,15 @@ public class DataInventory implements IInventory, INPCInventory {
                     int i = stack.getCount();
 
                     if (player.inventory.addItemStackToInventory(stack)) {
-                        entity.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 0.2F, ((player.getRNG().nextFloat() - player.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                        entity.world.playSound(null, player.posX, player.posY, player.posZ, SoundEvents.ENTITY_ITEM_PICKUP,
+                                SoundCategory.PLAYERS, 0.2F, ((player.getRNG().nextFloat() - player.getRNG().nextFloat()) * 0.7F + 1.0F) * 2.0F);
                         player.onItemPickup(item, i);
 
                         if (stack.getCount() <= 0) {
                             item.setDead();
                         }
                     }
-                } else
-                    npc.world.spawnEntity(item);
+                } else npc.world.spawnEntity(item);
             }
         }
         int exp = getExpRNG();
@@ -201,7 +192,7 @@ public class DataInventory implements IInventory, INPCInventory {
             return null;
         }
         EntityItem entityitem = new EntityItem(npc.world, npc.posX,
-                (npc.posY - 0.30000001192092896D) + (double) npc.getEyeHeight(), npc.posZ,
+                (npc.posY - 0.3) + (double) npc.getEyeHeight(), npc.posZ,
                 itemstack);
         entityitem.setPickupDelay(40);
 
@@ -209,7 +200,7 @@ public class DataInventory implements IInventory, INPCInventory {
         float f4 = npc.getRNG().nextFloat() * 3.141593F * 2.0F;
         entityitem.motionX = -MathHelper.sin(f4) * f2;
         entityitem.motionZ = MathHelper.cos(f4) * f2;
-        entityitem.motionY = 0.20000000298023224D;
+        entityitem.motionY = 0.2;
 
         return entityitem;
     }
@@ -344,7 +335,6 @@ public class DataInventory implements IInventory, INPCInventory {
 
     @Override
     public void markDirty() {
-
     }
 
     @Override
@@ -359,13 +349,10 @@ public class DataInventory implements IInventory, INPCInventory {
 
     @Override
     public void openInventory(EntityPlayer player) {
-
     }
 
     @Override
     public void closeInventory(EntityPlayer player) {
-        // TODO Auto-generated method stub
-
     }
 
     @Override
@@ -384,7 +371,6 @@ public class DataInventory implements IInventory, INPCInventory {
 
     @Override
     public void clear() {
-
     }
 
     @Override
@@ -417,7 +403,7 @@ public class DataInventory implements IInventory, INPCInventory {
     public boolean isEmpty() {
         for (int slot = 0; slot < this.getSizeInventory(); slot++) {
             ItemStack item = getStackInSlot(slot);
-            if (!NoppesUtilServer.IsItemStackNull(item) && !item.isEmpty()) {
+            if (!item.isEmpty()) {
                 return false;
             }
         }

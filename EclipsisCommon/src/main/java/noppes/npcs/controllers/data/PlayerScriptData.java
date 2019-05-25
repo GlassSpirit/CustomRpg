@@ -21,7 +21,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class PlayerScriptData implements IScriptHandler {
-    private List<ScriptContainer> scripts = new ArrayList<ScriptContainer>();
+    private List<ScriptContainer> scripts = new ArrayList<>();
 
     private String scriptLanguage = "ECMAScript";
     private EntityPlayer player;
@@ -32,8 +32,8 @@ public class PlayerScriptData implements IScriptHandler {
     public boolean hadInteract = true;
     private boolean enabled = false;
 
-    private static Map<Long, String> console = new TreeMap<Long, String>();
-    private static List<Integer> errored = new ArrayList<Integer>();
+    private static Map<Long, String> console = new TreeMap<>();
+    private static List<Integer> errored = new ArrayList<>();
 
 
     public PlayerScriptData(EntityPlayer player) {
@@ -41,23 +41,23 @@ public class PlayerScriptData implements IScriptHandler {
     }
 
     public void clear() {
-        console = new TreeMap<Long, String>();
-        errored = new ArrayList<Integer>();
-        scripts = new ArrayList<ScriptContainer>();
+        console = new TreeMap<>();
+        errored = new ArrayList<>();
+        scripts = new ArrayList<>();
     }
 
     public void readFromNBT(NBTTagCompound compound) {
         scripts = NBTTags.GetScript(compound.getTagList("Scripts", 10), this);
         scriptLanguage = compound.getString("ScriptLanguage");
         enabled = compound.getBoolean("ScriptEnabled");
-        console = NBTTags.GetLongStringMap(compound.getTagList("ScriptConsole", 10));
+        console = NBTTags.getLongStringMap(compound.getTagList("ScriptConsole", 10));
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setTag("Scripts", NBTTags.NBTScript(scripts));
         compound.setString("ScriptLanguage", scriptLanguage);
         compound.setBoolean("ScriptEnabled", enabled);
-        compound.setTag("ScriptConsole", NBTTags.NBTLongStringMap(console));
+        compound.setTag("ScriptConsole", NBTTags.nbtLongStringMap(console));
         return compound;
     }
 

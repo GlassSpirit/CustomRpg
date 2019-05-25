@@ -29,7 +29,7 @@ public class EntityAIAvoidTarget extends EntityAIBase {
 
     public EntityAIAvoidTarget(EntityNPCInterface par1EntityNPC) {
         this.npc = par1EntityNPC;
-        this.distanceFromEntity = this.npc.stats.aggroRange;
+        this.distanceFromEntity = this.npc.stats.getAggroRange();
         this.health = this.npc.getHealth();
         this.entityPathNavigate = par1EntityNPC.getNavigator();
         this.setMutexBits(AiMutex.PASSIVE + AiMutex.LOOK);

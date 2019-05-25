@@ -13,10 +13,11 @@ import noppes.npcs.controllers.data.PlayerData;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class QuestDialog extends QuestInterface {
 
-    public HashMap<Integer, Integer> dialogs = new HashMap<Integer, Integer>();
+    public Map<Integer, Integer> dialogs = new HashMap<>();
 
     @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
@@ -43,7 +44,7 @@ public class QuestDialog extends QuestInterface {
 
     @Override
     public IQuestObjective[] getObjectives(EntityPlayer player) {
-        List<IQuestObjective> list = new ArrayList<IQuestObjective>();
+        List<IQuestObjective> list = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             if (dialogs.containsKey(i)) {
                 Dialog dialog = DialogController.instance.dialogs.get(dialogs.get(i));

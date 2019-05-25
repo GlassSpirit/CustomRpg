@@ -33,9 +33,9 @@ public interface INPCInventory {
     /**
      * @param slot   0-8
      * @param item
-     * @param chance 1-100
+     * @param chance 0-100
      */
-    void setDropItem(int slot, IItemStack item, int chance);
+    void setDropItem(int slot, IItemStack item, float chance);
 
     /**
      * @param slot 0-8

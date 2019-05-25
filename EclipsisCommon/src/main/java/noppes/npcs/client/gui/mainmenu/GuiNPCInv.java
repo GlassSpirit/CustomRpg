@@ -5,7 +5,6 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.Slot;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.translation.I18n;
 import noppes.npcs.client.Client;
 import noppes.npcs.client.gui.util.*;
 import noppes.npcs.constants.EnumPacketServer;
@@ -13,9 +12,10 @@ import noppes.npcs.containers.ContainerNPCInv;
 import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.HashMap;
+import java.util.Map;
 
-public class GuiNPCInv extends GuiContainerNPCInterface2 implements ISliderListener, IGuiData {
-    private HashMap<Integer, Integer> chances = new HashMap<>();
+public class GuiNPCInv extends GuiContainerNPCInterface2 implements ITextfieldListener, IGuiData {
+    private Map<Integer, Float> chances = new HashMap<>();
     private ContainerNPCInv container;
     private ResourceLocation slot;
 
@@ -46,16 +46,17 @@ public class GuiNPCInv extends GuiContainerNPCInterface2 implements ISliderListe
         addLabel(new GuiNpcLabel(2, "inv.npcInventory", guiLeft + 191, guiTop + 5));
         addLabel(new GuiNpcLabel(3, "inv.inventory", guiLeft + 8, guiTop + 101));
 
-        for (int i = 0; i < 9; i++) {
-            int chance = 100;
-            if (npc.inventory.dropchance.containsKey(i)) {
-                chance = npc.inventory.dropchance.get(i);
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 9; j++) {
+                float chance = 0;
+                if (npc.inventory.dropChance.containsKey(i * 9 + j)) {
+                    chance = npc.inventory.dropChance.get(i * 9 + j);
+                }
+                if (chance < 0 || chance > 100) chance = 0;
+                chances.put(i * 9 + j, chance);
+                GuiNpcTextField field = new GuiNpcTextField(50 + i * 9 + j, this, guiLeft + 211 + i * 75, guiTop + 14 + j * 21, 50, 20, chance + "");
+                addTextField(field);
             }
-            if (chance <= 0 || chance > 100)
-                chance = 100;
-            chances.put(i, chance);
-            GuiNpcSlider slider = new GuiNpcSlider(this, i, guiLeft + 211, guiTop + 14 + i * 21, ((float) chance) / 100);
-            addSlider(slider);
         }
     }
 
@@ -91,7 +92,7 @@ public class GuiNPCInv extends GuiContainerNPCInterface2 implements ISliderListe
 
     @Override
     public void save() {
-        npc.inventory.dropchance = chances;
+        npc.inventory.dropChance = chances;
         npc.inventory.setExp(getTextField(0).getInteger(), getTextField(1).getInteger());
         Client.sendData(EnumPacketServer.MainmenuInvSave, npc.inventory.writeEntityToNBT(new NBTTagCompound()));
     }
@@ -103,16 +104,18 @@ public class GuiNPCInv extends GuiContainerNPCInterface2 implements ISliderListe
     }
 
     @Override
-    public void mouseDragged(GuiNpcSlider guiNpcSlider) {
-        guiNpcSlider.displayString = I18n.translateToLocal("inv.dropChance") + ": " + (int) (guiNpcSlider.sliderValue * 100) + "%";
-    }
-
-    @Override
-    public void mousePressed(GuiNpcSlider guiNpcSlider) {
-    }
-
-    @Override
-    public void mouseReleased(GuiNpcSlider guiNpcSlider) {
-        chances.put(guiNpcSlider.id, (int) (guiNpcSlider.sliderValue * 100));
+    public void unFocused(GuiNpcTextField textfield) {
+        if (textfield.id >= 50) {
+            int slot = textfield.id - 50;
+            float chance = 0;
+            try {
+                chance = Float.parseFloat(textfield.getText());
+                if (chance < 0) chance = 0;
+                if (chance > 100) chance = 100;
+            } catch (Exception ignored) {
+            }
+            textfield.setText(chance + "");
+            chances.put(slot, chance);
+        }
     }
 }

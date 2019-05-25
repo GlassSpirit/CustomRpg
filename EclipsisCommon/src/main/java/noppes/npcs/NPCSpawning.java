@@ -158,8 +158,8 @@ public class NPCSpawning {
 
             if (entity instanceof EntityCustomNpc) {
                 EntityCustomNpc npc = (EntityCustomNpc) entity;
-                npc.stats.spawnCycle = 4;
-                npc.stats.respawnTime = 0;
+                npc.stats.setRespawnType(4);
+                npc.stats.setRespawnTime(0);
                 npc.ais.returnToStart = false;
                 npc.ais.setStartPos(pos);
             }

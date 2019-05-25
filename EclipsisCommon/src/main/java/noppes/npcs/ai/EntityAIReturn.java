@@ -102,7 +102,7 @@ public class EntityAIReturn extends EntityAIBase {
     }
 
     private boolean isTooFar() {
-        int allowedDistance = npc.stats.aggroRange * 2;
+        int allowedDistance = npc.stats.getAggroRange() * 2;
         if (npc.ais.getMovingType() == 1)
             allowedDistance += npc.ais.walkingRange;
 

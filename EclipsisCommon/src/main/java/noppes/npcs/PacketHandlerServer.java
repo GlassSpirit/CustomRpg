@@ -111,19 +111,19 @@ public class PacketHandlerServer {
         } else if (type == EnumPacketServer.LinkedAdd) {
             LinkedNpcController.Instance.addData(Server.readString(buffer));
 
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             for (LinkedData data : LinkedNpcController.Instance.list)
                 list.add(data.name);
             Server.sendData(player, EnumPacketClient.SCROLL_LIST, list);
         } else if (type == EnumPacketServer.LinkedRemove) {
             LinkedNpcController.Instance.removeData(Server.readString(buffer));
 
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             for (LinkedData data : LinkedNpcController.Instance.list)
                 list.add(data.name);
             Server.sendData(player, EnumPacketClient.SCROLL_LIST, list);
         } else if (type == EnumPacketServer.LinkedGetAll) {
-            List<String> list = new ArrayList<String>();
+            List<String> list = new ArrayList<>();
             for (LinkedData data : LinkedNpcController.Instance.list)
                 list.add(data.name);
             Server.sendData(player, EnumPacketClient.SCROLL_LIST, list);
@@ -473,7 +473,7 @@ public class PacketHandlerServer {
         } else if (type == EnumPacketServer.MovingPathGet) {
             Server.sendData(player, EnumPacketClient.GUI_DATA, npc.ais.writeToNBT(new NBTTagCompound()));
         } else if (type == EnumPacketServer.MovingPathSave) {
-            npc.ais.setMovingPath(NBTTags.getIntegerArraySet(Server.readNBT(buffer).getTagList("MovingPathNew", 10)));
+            npc.ais.setMovingPath(NBTTags.getIntegerArrayList(Server.readNBT(buffer).getTagList("MovingPathNew", 10)));
         } else if (type == EnumPacketServer.SpawnRider) {
             Entity entity = EntityList.createEntityFromNBT(Server.readNBT(buffer), player.world);
             player.world.spawnEntity(entity);
@@ -549,7 +549,7 @@ public class PacketHandlerServer {
             compound.setTag("Languages", ScriptController.Instance.nbtLanguages());
             Server.sendData(player, EnumPacketClient.GUI_DATA, compound);
         } else if (type == EnumPacketServer.DimensionsGet) {
-            HashMap<String, Integer> map = new HashMap<String, Integer>();
+            HashMap<String, Integer> map = new HashMap<>();
             for (int id : DimensionManager.getStaticDimensionIDs()) {
                 WorldProvider provider = DimensionManager.createProviderFor(id);
                 map.put(provider.getDimensionType().getName(), id);

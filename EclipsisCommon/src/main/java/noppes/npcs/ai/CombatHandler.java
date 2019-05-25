@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class CombatHandler {
 
-    private Map<EntityLivingBase, Float> aggressors = new HashMap<EntityLivingBase, Float>();
+    private Map<EntityLivingBase, Float> aggressors = new HashMap<>();
 
     private EntityNPCInterface npc;
 
@@ -106,7 +106,7 @@ public class CombatHandler {
         if (target instanceof EntityPlayer && ((EntityPlayer) target).capabilities.disableDamage)
             return false;
 
-        return npc.isInRange(target, npc.stats.aggroRange);
+        return npc.isInRange(target, npc.stats.getAggroRange());
     }
 
 }

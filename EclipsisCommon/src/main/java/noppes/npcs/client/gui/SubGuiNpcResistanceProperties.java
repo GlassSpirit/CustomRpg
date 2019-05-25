@@ -23,7 +23,7 @@ public class SubGuiNpcResistanceProperties extends SubGuiInterface implements IS
         addLabel(new GuiNpcLabel(1, "item.arrow.name", guiLeft + 4, guiTop + 37));
         addSlider(new GuiNpcSlider(this, 1, guiLeft + 94, guiTop + 32, (int) (resistances.arrow * 100 - 100) + "%", resistances.arrow / 2));
 
-        addLabel(new GuiNpcLabel(2, "stats.melee", guiLeft + 4, guiTop + 59));
+        addLabel(new GuiNpcLabel(2, "stats.getMelee()", guiLeft + 4, guiTop + 59));
         addSlider(new GuiNpcSlider(this, 2, guiLeft + 94, guiTop + 54, (int) (resistances.melee * 100 - 100) + "%", resistances.melee / 2));
 
         addLabel(new GuiNpcLabel(3, "stats.explosion", guiLeft + 4, guiTop + 81));

@@ -38,8 +38,8 @@ import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.items.ItemSoulstoneEmpty;
 import noppes.npcs.quests.QuestKill;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Executors;
 
 public class ServerEventsHandler {
@@ -169,7 +169,7 @@ public class ServerEventsHandler {
                 name = entity.getName();
             else if (!quest.targets.containsKey(name))
                 continue;
-            HashMap<String, Integer> killed = quest.getKilled(data);
+            Map<String, Integer> killed = quest.getKilled(data);
             if (killed.containsKey(name) && killed.get(name) >= quest.targets.get(name))
                 continue;
             int amount = 0;

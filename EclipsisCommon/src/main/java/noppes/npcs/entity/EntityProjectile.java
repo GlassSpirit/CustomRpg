@@ -94,7 +94,7 @@ public class EntityProjectile extends EntityThrowable {
 
     public IProjectileCallback callback;
 
-    public List<ScriptContainer> scripts = new ArrayList<ScriptContainer>();
+    public List<ScriptContainer> scripts = new ArrayList<>();
 
     public EntityProjectile(World par1World) {
         super(par1World);
@@ -145,7 +145,7 @@ public class EntityProjectile extends EntityThrowable {
 
         if (isNPC) {
             this.npc = (EntityNPCInterface) this.thrower;
-            this.getStatProperties(this.npc.stats.ranged);
+            this.getStatProperties(this.npc.stats.getRanged());
         }
     }
 
@@ -554,6 +554,7 @@ public class EntityProjectile extends EntityThrowable {
 
     }
 
+    @Override
     public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound) {
         par1NBTTagCompound.setShort("xTile", (short) this.tilePos.getX());
         par1NBTTagCompound.setShort("yTile", (short) this.tilePos.getY());
@@ -593,6 +594,7 @@ public class EntityProjectile extends EntityThrowable {
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
+    @Override
     public void readEntityFromNBT(NBTTagCompound compound) {
         this.tilePos = new BlockPos(compound.getShort("xTile"), compound.getShort("yTile"), compound.getShort("zTile"));
         this.inTile = Block.getBlockById(compound.getByte("inTile") & 255);

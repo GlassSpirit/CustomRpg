@@ -14,6 +14,7 @@ import noppes.npcs.constants.EnumGuiType;
 import noppes.npcs.entity.EntityNPCInterface;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -21,7 +22,7 @@ public class RoleFollower extends RoleInterface implements IRoleFollower {
 
     private String ownerUUID;
     public boolean isFollowing = true;
-    public HashMap<Integer, Integer> rates;
+    public Map<Integer, Integer> rates;
     public NpcMiscInventory inventory;
     public String dialogHire = I18n.translateToLocal("follower.hireText") + " {days} " + I18n.translateToLocal("follower.days");
     public String dialogFarewell = I18n.translateToLocal("follower.farewellText") + " {player}";
@@ -36,7 +37,7 @@ public class RoleFollower extends RoleInterface implements IRoleFollower {
     public RoleFollower(EntityNPCInterface npc) {
         super(npc);
         inventory = new NpcMiscInventory(3);
-        rates = new HashMap<Integer, Integer>();
+        rates = new HashMap<>();
     }
 
     @Override

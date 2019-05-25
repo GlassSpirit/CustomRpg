@@ -5,10 +5,11 @@ import noppes.npcs.NBTTags;
 import noppes.npcs.roles.JobItemGiver;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class PlayerItemGiverData {
-    private HashMap<Integer, Long> itemgivers = new HashMap<Integer, Long>();
-    private HashMap<Integer, Integer> chained = new HashMap<Integer, Integer>();
+    private Map<Integer, Long> itemgivers = new HashMap<>();
+    private Map<Integer, Integer> chained = new HashMap<>();
 
     public void loadNBTData(NBTTagCompound compound) {
         chained = NBTTags.getIntegerIntegerMap(compound.getTagList("ItemGiverChained", 10));

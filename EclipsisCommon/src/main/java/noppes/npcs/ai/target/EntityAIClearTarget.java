@@ -18,7 +18,7 @@ public class EntityAIClearTarget extends EntityAIBase {
         if (target == null)
             return false;
 
-        if (npc.getOwner() != null && !npc.isInRange(npc.getOwner(), npc.stats.aggroRange * 2)) {
+        if (npc.getOwner() != null && !npc.isInRange(npc.getOwner(), npc.stats.getAggroRange() * 2)) {
             return true;
         }
 

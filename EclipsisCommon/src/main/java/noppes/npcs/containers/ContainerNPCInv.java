@@ -18,19 +18,19 @@ public class ContainerNPCInv extends Container {
         addSlotToContainer(new Slot(npc.inventory, 5, 81, 40));
         addSlotToContainer(new Slot(npc.inventory, 6, 81, 58));
 
-        for (int l = 0; l < 9; l++) {
-            addSlotToContainer(new Slot(npc.inventory, l + 7, 191, 16 + l * 21));
-        }
-
-        for (int i1 = 0; i1 < 3; i1++) {
-            for (int l1 = 0; l1 < 9; l1++) {
-                addSlotToContainer(new Slot(player.inventory, l1 + i1 * 9 + 9, l1 * 18 + 8, 113 + i1 * 18));
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 9; j++) {
+                addSlotToContainer(new Slot(npc.inventory, 7 + i * 9 + j, 191 + i * 75, 16 + j * 21));
             }
-
         }
 
-        for (int j1 = 0; j1 < 9; j1++) {
-            addSlotToContainer(new Slot(player.inventory, j1, j1 * 18 + 8, 171));
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 9; j++) {
+                addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, j * 18 + 8, 113 + i * 18));
+            }
+        }
+        for (int i = 0; i < 9; i++) {
+            addSlotToContainer(new Slot(player.inventory, i, i * 18 + 8, 171));
         }
     }
 

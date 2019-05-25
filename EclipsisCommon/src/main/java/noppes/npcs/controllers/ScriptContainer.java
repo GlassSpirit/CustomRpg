@@ -23,9 +23,8 @@ import java.util.function.Function;
 public class ScriptContainer {
     private static final String lock = "lock";
     public static ScriptContainer Current;
-    private static String CurrentType;
 
-    private final static HashMap<String, Object> Data = new HashMap<String, Object>();
+    private final static Map<String, Object> Data = new HashMap<>();
 
     static {
         FillMap(AnimationType.class);
@@ -57,17 +56,17 @@ public class ScriptContainer {
 
     public String fullscript = "";
     public String script = "";
-    public TreeMap<Long, String> console = new TreeMap<Long, String>();
+    public TreeMap<Long, String> console = new TreeMap<>();
     public boolean errored = false;
-    public List<String> scripts = new ArrayList<String>();
+    public List<String> scripts = new ArrayList<>();
 
-    private HashSet<String> unknownFunctions = new HashSet<String>();
+    private HashSet<String> unknownFunctions = new HashSet<>();
 
     public long lastCreated = 0;
 
     private String currentScriptLanguage = null;
     private ScriptEngine engine = null;
-    private IScriptHandler handler = null;
+    private IScriptHandler handler;
 
     private boolean init = false;
 
@@ -80,14 +79,14 @@ public class ScriptContainer {
 
     public void readFromNBT(NBTTagCompound compound) {
         script = compound.getString("Script");
-        console = NBTTags.GetLongStringMap(compound.getTagList("Console", 10));
+        console = NBTTags.getLongStringMap(compound.getTagList("Console", 10));
         scripts = NBTTags.getStringList(compound.getTagList("ScriptList", 10));
         lastCreated = 0;
     }
 
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setString("Script", script);
-        compound.setTag("Console", NBTTags.NBTLongStringMap(console));
+        compound.setTag("Console", NBTTags.nbtLongStringMap(console));
         compound.setTag("ScriptList", NBTTags.nbtStringList(scripts));
         return compound;
     }
@@ -102,7 +101,7 @@ public class ScriptContainer {
                 if (code != null && !code.isEmpty())
                     fullscript += code + "\n";
             }
-            unknownFunctions = new HashSet<String>();
+            unknownFunctions = new HashSet<>();
         }
         return fullscript;
     }
@@ -124,7 +123,6 @@ public class ScriptContainer {
         }
         synchronized (lock) {
             Current = this;
-            CurrentType = type;
 
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);

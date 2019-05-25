@@ -20,7 +20,7 @@ public class NPCAttackSelector implements Predicate<EntityLivingBase> {
     }
 
     public boolean isEntityApplicable(EntityLivingBase entity) {
-        if (!entity.isEntityAlive() || entity == npc || !npc.isInRange(entity, npc.stats.aggroRange) || entity.getHealth() < 1)
+        if (!entity.isEntityAlive() || entity == npc || !npc.isInRange(entity, npc.stats.getAggroRange()) || entity.getHealth() < 1)
             return false;
         if (this.npc.ais.directLOS && !this.npc.getEntitySenses().canSee(entity))
             return false;
@@ -30,7 +30,7 @@ public class NPCAttackSelector implements Predicate<EntityLivingBase> {
 
         //prevent the npc from going on an endless killing spree
         if (!npc.isFollower() && npc.ais.shouldReturnHome()) {
-            int allowedDistance = npc.stats.aggroRange * 2;
+            int allowedDistance = npc.stats.getAggroRange() * 2;
             if (npc.ais.getMovingType() == 1)
                 allowedDistance += npc.ais.walkingRange;
             double distance = entity.getDistanceSq(npc.getStartXPos(), npc.getStartYPos(), npc.getStartZPos());

@@ -87,8 +87,8 @@ public class RoleCompanion extends RoleInterface {
         if (owner != null && (jobInterface == null || !jobInterface.isSelfSufficient()))
             foodstats.onUpdate(npc);
         if (foodstats.getFoodLevel() >= 18) {
-            npc.stats.healthRegen = 0;
-            npc.stats.combatRegen = 0;
+            npc.stats.setHealthRegen(0);
+            npc.stats.setCombatRegen(0);
         }
         if (foodstats.needFood() && isSitting()) {
             if (eatingDelay > 0) {
@@ -506,9 +506,9 @@ public class RoleCompanion extends RoleInterface {
 
     public void setStats() {
         IItemStack weapon = npc.inventory.getRightHand();
-        npc.stats.melee.setStrength((int) (1 + getSwordDamage(weapon)));
-        npc.stats.healthRegen = 0;
-        npc.stats.combatRegen = 0;
+        npc.stats.getMelee().setStrength((int) (1 + getSwordDamage(weapon)));
+        npc.stats.setHealthRegen(0);
+        npc.stats.setCombatRegen(0);
         int ranged = getTalentLevel(EnumCompanionTalent.RANGED);
         if (ranged > 0 && weapon != null) {
             Item item = weapon.getMCItemStack().getItem();

@@ -35,7 +35,7 @@ public class EntityAIAttackTarget extends EntityAIBase {
             return false;
         }
 
-        int melee = this.npc.stats.ranged.getMeleeRange();
+        int melee = this.npc.stats.getRanged().getMeleeRange();
         if (this.npc.inventory.getProjectile() != null && (melee <= 0 || !this.npc.isInRange(entitylivingbase, melee))) {
             return false;
         }
@@ -54,9 +54,9 @@ public class EntityAIAttackTarget extends EntityAIBase {
 
         if (entityTarget == null || !entityTarget.isEntityAlive())
             return false;
-        if (!npc.isInRange(entityTarget, npc.stats.aggroRange))
+        if (!npc.isInRange(entityTarget, npc.stats.getAggroRange()))
             return false;
-        int melee = this.npc.stats.ranged.getMeleeRange();
+        int melee = this.npc.stats.getRanged().getMeleeRange();
         if (melee > 0 && !npc.isInRange(entityTarget, melee))
             return false;
 
@@ -100,14 +100,14 @@ public class EntityAIAttackTarget extends EntityAIBase {
         if (this.entityTarget.getEntityBoundingBox() != null)
             y = this.entityTarget.getEntityBoundingBox().minY;
         double distance = this.npc.getDistanceSq(this.entityTarget.posX, y, this.entityTarget.posZ);
-        double range = npc.stats.melee.getRange() * npc.stats.melee.getRange() + entityTarget.width;
+        double range = npc.stats.getMelee().getRange() * npc.stats.getMelee().getRange() + entityTarget.width;
         double minRange = this.npc.width * 2.0F * this.npc.width * 2.0F + entityTarget.width;
         if (minRange > range)
             range = minRange;
 
         if (distance <= range && (npc.canSee(this.entityTarget) || distance < minRange)) {
             if (this.attackTick <= 0) {
-                this.attackTick = this.npc.stats.melee.getDelay();
+                this.attackTick = this.npc.stats.getMelee().getDelay();
                 npc.swingArm(EnumHand.MAIN_HAND);
                 this.npc.attackEntityAsMob(this.entityTarget);
             }

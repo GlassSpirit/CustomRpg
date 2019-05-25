@@ -18,16 +18,17 @@ import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.util.CustomNPCsScheduler;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class BankData {
-    public HashMap<Integer, NpcMiscInventory> itemSlots;
-    public HashMap<Integer, Boolean> upgradedSlots;
+    public Map<Integer, NpcMiscInventory> itemSlots;
+    public Map<Integer, Boolean> upgradedSlots;
     public int unlockedSlots = 0;
     public int bankId = -1;
 
     public BankData() {
-        itemSlots = new HashMap<Integer, NpcMiscInventory>();
-        upgradedSlots = new HashMap<Integer, Boolean>();
+        itemSlots = new HashMap<>();
+        upgradedSlots = new HashMap<>();
 
         for (int i = 0; i < 6; i++) {
             itemSlots.put(i, new NpcMiscInventory(54));
@@ -39,11 +40,11 @@ public class BankData {
         bankId = nbttagcompound.getInteger("DataBankId");
         unlockedSlots = nbttagcompound.getInteger("UnlockedSlots");
         itemSlots = getItemSlots(nbttagcompound.getTagList("BankInv", 10));
-        upgradedSlots = NBTTags.getBooleanList(nbttagcompound.getTagList("UpdatedSlots", 10));
+        upgradedSlots = NBTTags.getIntegerBooleanMap(nbttagcompound.getTagList("UpdatedSlots", 10));
     }
 
     private HashMap<Integer, NpcMiscInventory> getItemSlots(NBTTagList tagList) {
-        HashMap<Integer, NpcMiscInventory> list = new HashMap<Integer, NpcMiscInventory>();
+        HashMap<Integer, NpcMiscInventory> list = new HashMap<>();
         for (int i = 0; i < tagList.tagCount(); i++) {
             NBTTagCompound nbttagcompound = tagList.getCompoundTagAt(i);
             int slot = nbttagcompound.getInteger("Slot");
@@ -57,11 +58,11 @@ public class BankData {
     public void writeNBT(NBTTagCompound nbttagcompound) {
         nbttagcompound.setInteger("DataBankId", bankId);
         nbttagcompound.setInteger("UnlockedSlots", unlockedSlots);
-        nbttagcompound.setTag("UpdatedSlots", NBTTags.nbtBooleanList(upgradedSlots));
+        nbttagcompound.setTag("UpdatedSlots", NBTTags.nbtBooleanMap(upgradedSlots));
         nbttagcompound.setTag("BankInv", nbtItemSlots(itemSlots));
     }
 
-    private NBTTagList nbtItemSlots(HashMap<Integer, NpcMiscInventory> items) {
+    private NBTTagList nbtItemSlots(Map<Integer, NpcMiscInventory> items) {
         NBTTagList list = new NBTTagList();
         for (int slot : items.keySet()) {
             NBTTagCompound nbttagcompound = new NBTTagCompound();

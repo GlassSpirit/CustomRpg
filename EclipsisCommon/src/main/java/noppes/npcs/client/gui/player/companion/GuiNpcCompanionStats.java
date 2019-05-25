@@ -39,7 +39,7 @@ public class GuiNpcCompanionStats extends GuiNPCInterface implements IGuiData {
         addLabel(new GuiNpcLabel(0, NoppesStringUtils.translate("gui.name", ": ", npc.display.getName()), guiLeft + 4, y));
         addLabel(new GuiNpcLabel(1, NoppesStringUtils.translate("companion.owner", ": ", role.ownerName), guiLeft + 4, y += 12));
         addLabel(new GuiNpcLabel(2, NoppesStringUtils.translate("companion.age", ": ", role.ticksActive / 18000 + " (", role.stage.name, ")"), guiLeft + 4, y += 12));
-        addLabel(new GuiNpcLabel(3, NoppesStringUtils.translate("companion.strength", ": ", npc.stats.melee.getStrength()), guiLeft + 4, y += 12));
+        addLabel(new GuiNpcLabel(3, NoppesStringUtils.translate("companion.strength", ": ", npc.stats.getMelee().getStrength()), guiLeft + 4, y += 12));
         addLabel(new GuiNpcLabel(4, NoppesStringUtils.translate("companion.level", ": ", role.getTotalLevel()), guiLeft + 4, y += 12));
         addLabel(new GuiNpcLabel(5, NoppesStringUtils.translate("job.name", ": ", "gui.none"), guiLeft + 4, y += 12));
 

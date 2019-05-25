@@ -30,10 +30,10 @@ public class NPCWrapper<T extends EntityNPCInterface> extends EntityLivingWrappe
 
     @Override
     public void setMaxHealth(float health) {
-        if ((int) health == entity.stats.maxHealth)
+        if ((int) health == entity.stats.getMaxHealth())
             return;
         super.setMaxHealth(health);
-        entity.stats.maxHealth = (int) health;
+        entity.stats.setMaxHealth((int) health);
         entity.updateClient = true;
     }
 

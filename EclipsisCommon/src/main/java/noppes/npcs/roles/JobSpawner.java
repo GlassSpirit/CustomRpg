@@ -30,9 +30,9 @@ public class JobSpawner extends JobInterface implements IJobSpawner {
 
     private int number = 0;
 
-    public List<EntityLivingBase> spawned = new ArrayList<EntityLivingBase>();
+    public List<EntityLivingBase> spawned = new ArrayList<>();
 
-    private Map<String, Long> cooldown = new HashMap<String, Long>();
+    private Map<String, Long> cooldown = new HashMap<>();
 
     private String id = RandomStringUtils.random(8, true, true);
     public boolean doesntDie = false;
@@ -161,7 +161,7 @@ public class JobSpawner extends JobInterface implements IJobSpawner {
                 }
             }
             if (spawnType == 2) {
-                ArrayList<NBTTagCompound> list = new ArrayList<NBTTagCompound>();
+                ArrayList<NBTTagCompound> list = new ArrayList<>();
                 if (compound1 != null && compound1.hasKey("id"))
                     list.add(compound1);
                 if (compound2 != null && compound2.hasKey("id"))
@@ -328,8 +328,8 @@ public class JobSpawner extends JobInterface implements IJobSpawner {
         living.setPosition(x, y, z);
         if (living instanceof EntityNPCInterface) {
             EntityNPCInterface snpc = (EntityNPCInterface) living;
-            snpc.stats.spawnCycle = 4;
-            snpc.stats.respawnTime = 0;
+            snpc.stats.setRespawnType(4);
+            snpc.stats.setRespawnTime(0);
             snpc.ais.returnToStart = false;
         }
         spawned.add(living);
@@ -366,7 +366,7 @@ public class JobSpawner extends JobInterface implements IJobSpawner {
 
 
     private List<EntityLivingBase> getNearbySpawned() {
-        List<EntityLivingBase> spawnList = new ArrayList<EntityLivingBase>();
+        List<EntityLivingBase> spawnList = new ArrayList<>();
         List<EntityLivingBase> list = npc.world.getEntitiesWithinAABB(EntityLivingBase.class, npc.getEntityBoundingBox().grow(40, 40, 40));
         for (EntityLivingBase entity : list) {
             if (entity.getEntityData().getString("NpcSpawnerId").equals(id) && !entity.isDead)
@@ -405,6 +405,6 @@ public class JobSpawner extends JobInterface implements IJobSpawner {
         for (EntityLivingBase entity : spawned) {
             entity.isDead = true;
         }
-        spawned = new ArrayList<EntityLivingBase>();
+        spawned = new ArrayList<>();
     }
 }

@@ -24,7 +24,7 @@ public class EntityAIAnimation extends EntityAIBase {
         isDead = !npc.isEntityAlive();
         if (isDead)
             return npc.currentAnimation != AnimationType.SLEEP;
-        if (npc.stats.ranged.getHasAimAnimation() && npc.isAttacking())
+        if (npc.stats.getRanged().getHasAimAnimation() && npc.isAttacking())
             return npc.currentAnimation != AnimationType.AIM;
 
         hasPath = !npc.getNavigator().noPath();
@@ -46,7 +46,7 @@ public class EntityAIAnimation extends EntityAIBase {
 
     @Override
     public void updateTask() {
-        if (npc.stats.ranged.getHasAimAnimation() && npc.isAttacking()) {
+        if (npc.stats.getRanged().getHasAimAnimation() && npc.isAttacking()) {
             setAnimation(AnimationType.AIM);
             return;
         }

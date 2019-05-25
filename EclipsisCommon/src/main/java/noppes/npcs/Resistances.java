@@ -19,7 +19,7 @@ public class Resistances {
         return compound;
     }
 
-    public void readToNBT(NBTTagCompound compound) {
+    public void readFromNBT(NBTTagCompound compound) {
         knockback = compound.getFloat("Knockback");
         arrow = compound.getFloat("Arrow");
         melee = compound.getFloat("Melee");
