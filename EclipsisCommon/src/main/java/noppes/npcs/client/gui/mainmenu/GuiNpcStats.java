@@ -59,21 +59,21 @@ public class GuiNpcStats extends GuiNPCInterface2 implements ITextfieldListener,
         y += 34;
         addLabel(new GuiNpcLabel(10, "stats.fireimmune", guiLeft + 5, y + 5));
         addButton(new GuiNpcButton(4, guiLeft + 82, y, 56, 20, new String[]{"gui.no", "gui.yes"}, npc.isImmuneToFire() ? 1 : 0));
-        addLabel(new GuiNpcLabel(11, "stats.getCanDrown()", guiLeft + 140, y + 5));
+        addLabel(new GuiNpcLabel(11, "stats.candrown", guiLeft + 140, y + 5));
         addButton(new GuiNpcButton(5, guiLeft + 217, y, 56, 20, new String[]{"gui.no", "gui.yes"}, stats.getCanDrown() ? 1 : 0));
         addLabel(new GuiNpcLabel(14, "stats.regenhealth", guiLeft + 275, y + 5));
         addTextField(new GuiNpcTextField(14, this, guiLeft + 355, y, 56, 20, stats.getHealthRegen() + "").setNumbersOnly());
 
         y += 22;
-        addLabel(new GuiNpcLabel(16, "stats.getCombatRegen()", guiLeft + 275, y + 5));
+        addLabel(new GuiNpcLabel(16, "stats.combatregen", guiLeft + 275, y + 5));
         addTextField(new GuiNpcTextField(16, this, guiLeft + 355, y, 56, 20, stats.getCombatRegen() + "").setNumbersOnly());
-        addLabel(new GuiNpcLabel(12, "stats.getBurnInSun()", guiLeft + 5, y + 5));
+        addLabel(new GuiNpcLabel(12, "stats.burninsun", guiLeft + 5, y + 5));
         addButton(new GuiNpcButton(6, guiLeft + 82, y, 56, 20, new String[]{"gui.no", "gui.yes"}, stats.getBurnInSun() ? 1 : 0));
-        addLabel(new GuiNpcLabel(13, "stats.getNoFallDamage()", guiLeft + 140, y + 5));
+        addLabel(new GuiNpcLabel(13, "stats.nofalldamage", guiLeft + 140, y + 5));
         addButton(new GuiNpcButton(7, guiLeft + 217, y, 56, 20, new String[]{"gui.no", "gui.yes"}, stats.getNoFallDamage() ? 1 : 0));
 
         y += 22;
-        addLabel(new GuiNpcLabel(17, "stats.getPotionImmune()", guiLeft + 5, y + 5));
+        addLabel(new GuiNpcLabel(17, "stats.potionimmune", guiLeft + 5, y + 5));
         addButton(new GuiNpcButtonYesNo(17, guiLeft + 82, y, 56, 20, stats.getPotionImmune()));
         addLabel(new GuiNpcLabel(22, "ai.cobwebAffected", guiLeft + 140, y + 5));
         addButton(new GuiNpcButton(22, guiLeft + 217, y, 56, 20, new String[]{"gui.no", "gui.yes"}, stats.getIgnoreCobweb() ? 0 : 1));
