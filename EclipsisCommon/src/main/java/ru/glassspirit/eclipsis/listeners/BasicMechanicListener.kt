@@ -25,7 +25,7 @@ object BasicMechanicListener {
     @JvmStatic
     @SubscribeEvent
     fun onPlayerAttackEntity(event: AttackEntityEvent) {
-        if (event.entityPlayer.ticksSinceLastSwing / event.entityPlayer.cooldownPeriod < 1) {
+        if (event.entityPlayer.ticksSinceLastSwing / event.entityPlayer.cooldownPeriod < 0.99991) {
             event.isCanceled = true
         }
     }
