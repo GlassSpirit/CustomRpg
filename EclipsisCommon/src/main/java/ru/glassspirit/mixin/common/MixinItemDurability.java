@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(Item.class)
 public abstract class MixinItemDurability {
 
-    @Inject(method = "getMaxDamage(Lnet/minecraft/item/ItemStack;)I", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "getMaxDamage(Lnet/minecraft/item/ItemStack;)I", at = @At("HEAD"), cancellable = true, remap = false)
     private void getMaxDamage(ItemStack stack, CallbackInfoReturnable<Integer> ci) {
         if (stack.hasTagCompound() && stack.getTagCompound().hasKey("eclipsis_damage")) {
             ci.setReturnValue(stack.getTagCompound().getInteger("eclipsis_damage"));

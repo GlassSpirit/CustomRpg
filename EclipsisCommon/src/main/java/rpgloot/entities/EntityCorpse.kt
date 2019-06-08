@@ -1,7 +1,6 @@
 package rpgloot.entities
 
 import com.teamwizardry.librarianlib.features.helpers.vec
-import com.teamwizardry.librarianlib.features.kotlin.Minecraft
 import com.teamwizardry.librarianlib.features.network.TargetRadius
 import com.teamwizardry.librarianlib.features.network.TargetServer
 import net.minecraft.client.resources.I18n
@@ -159,7 +158,7 @@ class EntityCorpse(worldIn: World) : Entity(worldIn), IInventory {
 
         if (world.isRemote && RPGLoot.config.looting
                 && drops.size > 0
-                && owner == null || Minecraft().player?.uniqueID == owner
+                && owner == null || RPGLoot.proxy.getClientPlayer()?.uniqueID == owner
                 && rand.nextBoolean()) {
             val xPosition = posX.toFloat() - 0.5f
             val yPosition = posY.toFloat() + 0.2f

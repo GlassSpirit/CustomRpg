@@ -1,5 +1,6 @@
 package rpgloot
 
+import net.minecraft.entity.player.EntityPlayer
 import net.minecraft.util.ResourceLocation
 import net.minecraftforge.common.MinecraftForge
 import net.minecraftforge.fml.common.event.FMLInitializationEvent
@@ -13,5 +14,9 @@ open class CommonProxy {
         EntityRegistry.registerModEntity(ResourceLocation("rpgloot:corpse"),
                 EntityCorpse::class.java, "rpgloot_corpse", 0,
                 RPGLoot, 64, 20, false)
+    }
+
+    open fun getClientPlayer(): EntityPlayer? {
+        return null
     }
 }
