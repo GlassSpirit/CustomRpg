@@ -11,15 +11,14 @@
     "blocks.MixinBlockRail",
     "common.MixinArmorDamageReduction",
     "common.MixinFoodStats",
-    "common.MixinItemDurability"
+    "common.MixinItemDurability",
+    "common.MixinPoisonDamage"
   ],
   "client": [
     "client.MixinDisableHurtRedEffect",
     "client.MixinFakeAttackSpeedSwing",
     "client.MixinFakeHeldItemKeybinds",
-    "client.MixinLoadController",
-    "client.MixinMinecraft",
-    "client.MixinSplashProgress"
+    "client.MixinMinecraft"
   ],
   "minVersion": "0.7.4",
   "injectors": {
