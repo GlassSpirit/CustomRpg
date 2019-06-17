@@ -78,8 +78,8 @@ object ConquestFurniture {
         BlockDecorPlate("wood_daylightdetector_1_hotel", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
         BlockDecorPlate("wood_daylightdetector_1_india", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
 
-        BlockDecorDirectional("wood_hopperdirectional_10_alpha", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
-        BlockDecorDirectional("wood_hopperdirectional_8_alpha", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
+        BlockDecorDirectional("wood_hopperdirectional_8_alpha", Material.WOOD, cutout = true).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
+        BlockDecorDirectional("wood_hopperdirectional_10_alpha", Material.WOOD, cutout = true).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
         BlockDecorDirectionalFullNoCollision("wood_hopperdirectional_8_bravo", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
         BlockDecorDirectionalFullNoCollision("wood_hopperdirectional_8_charlie", Material.WOOD).setModCreativeTab(ConquestTabs.ConquestFurnitureTab)
 

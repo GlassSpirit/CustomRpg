@@ -1,7 +1,7 @@
 package ru.glassspirit.eclipsis.server
 
-import cz.neumimto.rpg.Log
 import cz.neumimto.rpg.NtRpgPlugin
+import cz.neumimto.rpg.api.logging.Log
 import cz.neumimto.rpg.configuration.DebugLevel
 import cz.neumimto.rpg.players.CharacterService
 import cz.neumimto.rpg.players.ExperienceSources

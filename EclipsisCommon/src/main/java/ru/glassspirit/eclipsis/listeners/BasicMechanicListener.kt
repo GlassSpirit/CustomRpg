@@ -1,6 +1,5 @@
 package ru.glassspirit.eclipsis.listeners
 
-import net.minecraftforge.event.entity.player.AttackEntityEvent
 import net.minecraftforge.event.entity.player.CriticalHitEvent
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.common.eventhandler.Event
@@ -17,17 +16,6 @@ object BasicMechanicListener {
     @SubscribeEvent
     fun onCritical(event: CriticalHitEvent) {
         event.result = Event.Result.DENY
-    }
-
-    /**
-     * Disables damage when cooldown is not ready
-     */
-    @JvmStatic
-    @SubscribeEvent
-    fun onPlayerAttackEntity(event: AttackEntityEvent) {
-        if (event.entityPlayer.ticksSinceLastSwing / event.entityPlayer.cooldownPeriod < 0.99991) {
-            event.isCanceled = true
-        }
     }
 
 }

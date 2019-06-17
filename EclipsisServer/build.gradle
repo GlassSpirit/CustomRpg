@@ -24,8 +24,9 @@ dependencies {
     implementation('org.spongepowered:spongeforge:1.12.2-2768-7.1.6-RC3639:dev') {
         exclude module: 'testmods'
     }
-    implementation('com.github.Sponge-RPG-dev.NT-RPG:NT-RPG:2.0.0-SNAPSHOT-9')
-    annotationProcessor('com.github.Sponge-RPG-dev.NT-RPG:Generator:2.0.0-SNAPSHOT-9')
+    implementation('com.github.Sponge-RPG-dev:NTCore:NTCore-1.13-SNAPSHOT-11-shaded')
+    implementation('com.github.Sponge-RPG-dev.NT-RPG:NT-RPG:2.0.0-SNAPSHOT-10')
+    annotationProcessor('com.github.Sponge-RPG-dev.NT-RPG:Generator:2.0.0-SNAPSHOT-10')
     implementation(project(':EclipsisCommon'))
 }
 
